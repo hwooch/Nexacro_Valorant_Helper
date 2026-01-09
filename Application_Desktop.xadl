@@ -3,10 +3,10 @@
   <Application id="Application_Desktop" screenid="Desktop_screen">
     <Layout>
       <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" left="0" top="0" width="1920" height="1080" titletext="TopFrame">
-        <VFrameSet id="VFrameSet00" separatesize="100,*">
+        <VFrameSet id="VFrameSet00" separatesize="100,*" border="0px">
           <Frames>
-            <ChildFrame id="TopFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::Form_Top.xfdl"/>
-            <ChildFrame id="WorkFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::Form_Work.xfdl"/>
+            <ChildFrame id="TopFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::Form_Top.xfdl" dragmovetype="none" border="0px"/>
+            <ChildFrame id="WorkFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::Form_Work.xfdl" dragmovetype="none" border="0px"/>
           </Frames>
         </VFrameSet>
       </MainFrame>

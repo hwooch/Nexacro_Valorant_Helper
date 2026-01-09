@@ -1,8 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Top" width="1920" height="100" titletext="Form_Top">
+  <Form id="Form_Top" width="1920" height="100" titletext="Form_Top" visible="true" scrollbartype="none" border="0px none, 0px none, 2px solid #8e8e8e" onload="Form_Top_onload">
     <Layouts>
-      <Layout width="1920" height="100" screenid="Desktop_screen"/>
+      <Layout width="1920" height="100" screenid="Desktop_screen">
+        <Button id="btn_Char" taborder="6" text="요원" left="1023" width="120" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave"/>
+        <Button id="btn_Weapon" taborder="7" text="무기" left="btn_Char:-2" width="120" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave"/>
+        <Button id="btn_discord_login" taborder="0" top="20" height="60" text="Discord로 로그인  " onclick="btn_discord_login_onclick" width="290" right="20" cssclass="top_login"/>
+        <Static id="sta_logo" taborder="1" text="VALORANT Helper" left="20" top="20" width="330" height="60" cssclass="top_logo" onclick="sta_logo_onclick"/>
+        <Button id="btn_Search" taborder="2" text="전적 검색" height="50" cssclass="top_menu_autoclick" bottom="0" onclick="btn_common_onclick" onmouseleave="btn_common_onmouseleave" onmouseenter="btn_common_onmouseenter" width="120" left="551"/>
+        <Button id="btn_Ranking" taborder="3" text="랭킹" left="btn_Search:-2" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave" width="120"/>
+        <Button id="btn_Skin" taborder="4" text="스킨" left="btn_Ranking:-2" cssclass="top_menu" height="50" bottom="0" onmouseenter="btn_common_onmouseenter" onclick="btn_common_onclick" onmouseleave="btn_common_onmouseleave" width="120"/>
+        <Button id="btn_Map" taborder="5" text="맵" left="btn_Skin:-2" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave" right="btn_Char:-2"/>
+        <Static id="Logo_CHAMBER" taborder="8" left="360" top="-47" height="357" background="url('https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/fullportrait.png') no-repeat center center /cover" right="btn_Search:18" opacity="75%"/>
+        <Button id="btn_Party" taborder="10" text="파티 구인" left="btn_Weapon:-2" width="120" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave"/>
+        <Static id="Logo_REYNA" taborder="9" left="btn_Party:10" top="-57" width="233" height="357" background="url('https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/fullportrait.png') no-repeat center center /cover" opacity="75%" text=""/>
+      </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[// 현재 선택된 버튼을 저장할 변수, 최초는 전적검색 버튼
+this.fv_selectedBtn = this.btn_Search;
+
+// 화면이 첫 로딩 될때
+this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// 전적검색 버튼이 가장 위로 올라오게
+	this.btn_Search.bringToFront();
+};
+
+// 모든 버튼이 공유할 onclick 이벤트
+this.btn_common_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
+{
+    // 기존 선택된 버튼이 있다면 스타일 초기화
+    if (this.fv_selectedBtn && this.fv_selectedBtn != obj) {
+        this.fv_selectedBtn.cssclass = "top_menu_remove";
+    }
+
+    // 현재 누른 버튼이 전적검색이 아닐 때만 전적검색 버튼을 초기화
+    if (obj.name != "btn_Search") {
+        this.btn_Search.cssclass = "top_menu_remove";
+    }
+
+    // 현재 버튼 활성화
+    obj.cssclass = "top_menu";
+    obj.setFocus();
+    
+    this.fv_selectedBtn = obj;
+    obj.bringToFront();
+};
+
+// 모든 버튼이 공유할 onmouseenter 이벤트
+this.btn_common_onmouseenter = function(obj:nexacro.Button, e:nexacro.MouseEventInfo)
+{
+    // 마우스가 올라간 버튼을 최상위로
+    obj.bringToFront();
+};
+
+// 모든 버튼이 공유할 onmouseleave 이벤트
+this.btn_common_onmouseleave = function(obj:nexacro.Button, e:nexacro.MouseEventInfo)
+{
+    // 마우스가 나갔을 때, 클릭(선택)되어 있던 버튼이 있다면 다시 위로 올림
+    if (this.fv_selectedBtn) {
+        this.fv_selectedBtn.bringToFront();
+    }
+};
+
+// 로고를 클릭했을때 전적검색 버튼을 누름
+this.sta_logo_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	this.btn_Search.click();
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// 로그인할때 로그인 + 전적검색 페이지로 이동
+this.btn_discord_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+	this.btn_Search.click();
+
+    var client_id = "1455113535951474731";
+    var redirect_uri = encodeURIComponent("http://localhost:8080"); 
+    var scope = encodeURIComponent("identify connections");
+    
+    var authUrl = "https://discord.com/api/oauth2/authorize"
+                + "?client_id=" + client_id
+                + "&redirect_uri=" + redirect_uri
+                + "&response_type=code"
+                + "&scope=" + scope;
+
+    // 방법 1: 사용자의 기본 브라우저(크롬 등)를 새로 실행 (NRE 환경 권장)
+    system.execBrowser(authUrl);
+    
+    // 방법 2: 웹 브라우저 실행 중이라면 새 탭으로 열기 (웹 환경 권장)
+    // window.open(authUrl, "_blank");
+};
+
+]]></Script>
   </Form>
 </FDL>

@@ -2,7 +2,15 @@
 <FDL version="2.1">
   <Form id="Form_Work" width="1920" height="980" titletext="Form_Work">
     <Layouts>
-      <Layout width="1920" height="980" screenid="Desktop_screen"/>
+      <Layout width="1920" height="980" screenid="Desktop_screen">
+        <WebView id="WebView00" taborder="1" left="458" top="213" width="562" height="447" url="https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/b995bab386bd58541eacfe0e065a808081c0b9ea.mp4?accountingTag=VAL" onloadcompleted="WebView00_onloadcompleted"/>
+      </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.WebView00_onloadcompleted = function(obj:nexacro.WebView,e:nexacro.WebLoadCompEventInfo)
+{
+	this.WebView00.reload();
+};
+]]></Script>
   </Form>
 </FDL>
