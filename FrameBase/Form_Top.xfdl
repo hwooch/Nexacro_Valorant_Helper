@@ -16,7 +16,9 @@
         <Static id="Logo_REYNA" taborder="9" left="btn_Party:10" top="-57" width="233" height="357" background="url('https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/fullportrait.png') no-repeat center center /cover" opacity="75%" text=""/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[// 현재 선택된 버튼을 저장할 변수, 최초는 전적검색 버튼
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+// 현재 선택된 버튼을 저장할 변수, 최초는 전적검색 버튼
 this.fv_selectedBtn = this.btn_Search;
 
 // 화면이 첫 로딩 될때
@@ -26,9 +28,23 @@ this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.btn_Search.bringToFront();
 };
 
+var n=0;
 // 모든 버튼이 공유할 onclick 이벤트
 this.btn_common_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
+	n+=1;
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	if (objWorkFrame) {
+        // 3. 해당 프레임의 url을 변경
+        //objWorkFrame.set_formurl("Valorant::testtttt.xfdl");
+		if(n%2==0){
+		objWorkFrame.set_formurl("Valorant::testtttt.xfdl");
+		}else{
+		objWorkFrame.set_formurl("Valorant::test2.xfdl");
+		}
+    } else {
+        trace("WorkFrame을 찾을 수 없습니다. 경로를 확인하세요.");
+    }
     // 기존 선택된 버튼이 있다면 스타일 초기화
     if (this.fv_selectedBtn && this.fv_selectedBtn != obj) {
         this.fv_selectedBtn.cssclass = "top_menu_remove";
@@ -42,10 +58,12 @@ this.btn_common_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
     // 현재 버튼 활성화
     obj.cssclass = "top_menu";
     obj.setFocus();
-    
+	
     this.fv_selectedBtn = obj;
     obj.bringToFront();
+	
 };
+
 
 // 모든 버튼이 공유할 onmouseenter 이벤트
 this.btn_common_onmouseenter = function(obj:nexacro.Button, e:nexacro.MouseEventInfo)

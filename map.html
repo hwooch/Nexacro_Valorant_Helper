@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>발로란트 맵</title>
+    <style>
+        :root { --valorant-red: #ff4655; --bg-dark: #0f1722; }
+        body { background-color: var(--bg-dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; }
+
+        /* 상단 탭 메뉴 */
+        .tab-menu { 
+            display: flex; gap: 8px; padding: 15px; flex-wrap: wrap; justify-content: center;
+            background: #171d28; width: 100%; border-bottom: 2px solid var(--valorant-red);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .map-tab {
+            padding: 10px 18px; background: #2a3544; border: none; color: #fff; cursor: pointer;
+            border-radius: 4px; font-size: 14px; font-weight: bold; transition: background 0.2s;
+        }
+        .map-tab:hover { background: #3d4a5d; }
+        .map-tab.active { background: var(--valorant-red); box-shadow: 0 0 10px var(--valorant-red); }
+
+        /* 맵 뷰포트 */
+        .map-viewport {
+            width: 800px; height: 800px; margin: 30px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        
+        .map-container {
+            position: relative; width: 700px; height: 700px;
+            background: #000; border: 2px solid #333;
+        }
+
+        .map-image { width: 100%; height: 100%; opacity: 0.85; }
+
+        /* 라벨 스타일 */
+        .callout-label {
+            position: absolute; transform: translate(-50%, -50%);
+            color: #fff; font-size: 11px; font-weight: 600;
+            background: rgba(0, 0, 0, 0.85); padding: 3px 7px; border-radius: 4px;
+            white-space: nowrap; z-index: 10; border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .spawn-attacker { background: var(--valorant-red) !important; z-index: 50; }
+        .spawn-defender { background: #00eeff !important; color: #000 !important; z-index: 50; }
+
+        .loading { margin-top: 100px; font-size: 24px; color: var(--valorant-red); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="tab-menu" id="tabMenu"></div>
+    <div id="loading" class="loading">실제 전장 데이터를 선별 중...</div>
+
+    <div class="map-viewport">
+        <div class="map-container" id="mapContainer" style="display: none;">
+            <img id="mapImg" src="" class="map-image">
+            <div id="labelsContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        let allMaps = [];
+
+        async function init() {
+            try {
+                const res = await fetch('https://valorant-api.com/v1/maps?language=ko-KR');
+                const json = await res.json();
+                
+                // 🔥 핵심 필터링: callouts가 있고 coordinates가 null이 아닌 실제 게임용 맵만 추출
+                allMaps = json.data.filter(m => m.callouts !== null && m.coordinates !== null);
+                
+                renderTabs();
+                if (allMaps.length > 0) selectMap(allMaps[0].uuid);
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('mapContainer').style.display = 'block';
+            } catch (e) { 
+                console.error("데이터 로드 중 오류 발생:", e);
+                document.getElementById('loading').innerText = "데이터를 불러오지 못했습니다.";
+            }
+        }
+
+        function renderTabs() {
+            const menu = document.getElementById('tabMenu');
+            allMaps.forEach(map => {
+                const btn = document.createElement('button');
+                btn.className = 'map-tab';
+                btn.innerText = map.displayName;
+                btn.id = 'btn-' + map.uuid;
+                btn.onclick = () => selectMap(map.uuid);
+                menu.appendChild(btn);
+            });
+        }
+
+        function selectMap(uuid) {
+            const map = allMaps.find(m => m.uuid === uuid);
+            const container = document.getElementById('labelsContainer');
+            const mapImg = document.getElementById('mapImg');
+            const mapBox = document.getElementById('mapContainer');
+            
+            document.querySelectorAll('.map-tab').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + uuid).classList.add('active');
+
+            mapImg.src = map.displayIcon;
+            container.innerHTML = '';
+
+            let atkP = {x: 0, y: 0}, defP = {x: 0, y: 0};
+            
+            const points = map.callouts.map(item => {
+                const x = ((item.location.y * map.xMultiplier) + map.xScalarToAdd) * 100;
+                const y = ((item.location.x * map.yMultiplier) + map.yScalarToAdd) * 100;
+                if (item.regionName === "시작 지점") {
+                    if (item.superRegionName.includes("공격")) atkP = {x, y};
+                    if (item.superRegionName.includes("수비")) defP = {x, y};
+                }
+                return { ...item, x, y };
+            });
+
+            // 🎯 공격팀 하단 고정 90도 스냅 로직
+            const dx = defP.x - atkP.x;
+            const dy = defP.y - atkP.y;
+            let finalRotation = 0;
+
+            if (Math.abs(dy) > Math.abs(dx)) {
+                finalRotation = (dy < 0) ? 0 : 180;
+            } else {
+                finalRotation = (dx > 0) ? 270 : 90;
+            }
+
+            mapBox.style.transform = `rotate(${finalRotation}deg)`;
+
+            points.forEach(item => {
+                const label = document.createElement('div');
+                label.className = 'callout-label';
+                label.style.transform = `translate(-50%, -50%) rotate(${-finalRotation}deg)`;
+                
+                let name = item.regionName;
+                if (["지점", "로비", "메인", "서까래"].includes(name)) {
+                    name = (item.superRegionName.length <= 2 ? item.superRegionName : "") + " " + name;
+                }
+                if (item.regionName === "시작 지점") {
+                    name = item.superRegionName.includes("공격") ? "공격팀 시작" : "수비팀 시작";
+                    label.classList.add(item.superRegionName.includes("공격") ? 'spawn-attacker' : 'spawn-defender');
+                }
+
+                label.innerText = name;
+                label.style.left = item.x + '%';
+                label.style.top = item.y + '%';
+
+                label.onmouseenter = () => {
+                    label.style.transform = `translate(-50%, -50%) rotate(${-finalRotation}deg) scale(1.2)`;
+                    label.style.background = "var(--valorant-red)";
+                    label.style.zIndex = "100";
+                };
+                label.onmouseleave = () => {
+                    label.style.transform = `translate(-50%, -50%) rotate(${-finalRotation}deg) scale(1)`;
+                    label.style.background = "rgba(0, 0, 0, 0.85)";
+                    label.style.zIndex = "10";
+                };
+
+                container.appendChild(label);
+            });
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>

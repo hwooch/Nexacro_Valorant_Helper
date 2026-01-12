@@ -43,6 +43,8 @@
     <Component type="JavaScript" id="PopupDateRangePicker" classname="nexacro.PopupDateRangePicker"/>
     <Component type="JavaScript" id="SpinField" classname="nexacro.SpinField"/>
     <Component type="JavaScript" id="WebView" classname="nexacro.WebView"/>
+    <Component type="JavaScript" id="WebBrowser" classname="nexacro.WebBrowser"/>
+    <Component type="JavaScript" id="VideoPlayer" classname="nexacro.VideoPlayer"/>
   </Components>
   <Services>
     <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" cachelevel="session" include_subdir="true"/>
