@@ -7,6 +7,7 @@
     <Module url="ListView.json"/>
     <Module url="DeviceAPI.json"/>
     <Module url="MobileComp.json"/>
+    <Module url="extlib::ExtJs.json"/>
   </Modules>
   <Components>
     <Component type="JavaScript" id="Button" classname="nexacro.Button"/>
@@ -57,6 +58,10 @@
     <Service prefixid="Base" type="form" url="./Base/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="FrameBase" type="form" url="./FrameBase/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="Valorant" type="form" url="./Valorant/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="test" type="form" url="./test/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="ExtJs" type="js" url="./_extlib_/ExtJs/" version="0" cachelevel="dynamic" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="Cmm" type="form" url="./Cmm/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="SvcUrl" type="JSP" url="http://172.10.14.135:8088/edupack_egov/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>
   <Protocols/>
   <DeviceAdaptors/>

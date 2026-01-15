@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="valo4001fm" width="1920" height="980" titletext="New Form">
+    <Layouts>
+      <Layout height="980" width="1920">
+        <Button id="Button00" taborder="0" text="맵" left="335" top="146" width="1260" height="210" background="pink" font="normal 50pt/normal &quot;Arial&quot;"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

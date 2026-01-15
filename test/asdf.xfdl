@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="asdf" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="Button00" taborder="0" text="alert" left="410" top="70" width="120" height="50" onclick="btn_alert_onclick"/>
+        <Button id="Button01" taborder="1" text="confirm" left="410" top="165" width="120" height="50" onclick="btn_Confirm_onclick"/>
+        <Grid id="Grid00" taborder="2" left="20" top="36" width="357" height="284" binddataset="gdsMessage" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="212"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="MSG_ID"/>
+                <Cell col="1" text="MSG_TEXT"/>
+                <Cell col="2" text="MSG_TYPE"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:MSG_ID"/>
+                <Cell col="1" text="bind:MSG_TEXT"/>
+                <Cell col="2" text="bind:MSG_TYPE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="edtDeptCode" taborder="2" left="630" top="120" width="140" height="26"/>
+        <Button id="Button02" taborder="3" text="Button02" left="599" top="20" width="191" height="92" onclick="Button02_onclick" background="gold"/>
+        <Grid id="Grid01" taborder="5" left="545" top="190" width="375" height="270" binddataset="ds_emp">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="EMP_ID"/>
+                <Cell col="1" text="EMP_NAME"/>
+                <Cell col="2" text="DEPT_CODE"/>
+                <Cell col="3" text="POSITION"/>
+                <Cell col="4" text="HIRE_DATE"/>
+                <Cell col="5" text="SALARY"/>
+                <Cell col="6" text="GENDER"/>
+                <Cell col="7" text="MARRIED"/>
+                <Cell col="8" text="SKILL"/>
+                <Cell col="9" text="HOBBY"/>
+                <Cell col="10" text="MEMO"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:EMP_ID"/>
+                <Cell col="1" text="bind:EMP_NAME"/>
+                <Cell col="2" text="bind:DEPT_CODE"/>
+                <Cell col="3" text="bind:POSITION"/>
+                <Cell col="4" text="bind:HIRE_DATE"/>
+                <Cell col="5" text="bind:SALARY"/>
+                <Cell col="6" text="bind:GENDER"/>
+                <Cell col="7" text="bind:MARRIED"/>
+                <Cell col="8" text="bind:SKILL"/>
+                <Cell col="9" text="bind:HOBBY"/>
+                <Cell col="10" text="bind:MEMO"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_alert_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sMsgId = "msg.err.validator.minlength";	 	//메세지ID
+	var arrArg = ["이름","3"];						//메세지취환될값 배열[생략가능]
+	var sPopId = sMsgId;							//메세지팝업ID[생략가능]	*해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+	var sMsgCallback = "";							//메세지콜백[생략가능] 		* confirm성 메시지를 사용 시 반드시 필요
+	
+	this.gfnAlert(sMsgId, arrArg, sPopId, sMsgCallback);
+};
+
+this.btn_Confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sMsgId = "confirm.logout";	 	//메세지ID
+	var arrArg = "";								//메세지취환될값 배열[생략가능]
+	var sPopId = sMsgId;							//메세지팝업ID[생략가능]	*해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+	var sMsgCallback = "fn_callback";							//메세지콜백[생략가능] 		* confirm성 메시지를 사용 시 반드시 필요
+	
+	this.gfnAlert(sMsgId, arrArg, sPopId, sMsgCallback);
+};
+
+this.fn_callback = function (id, rtn)
+{
+	if(rtn) {
+		this.alert("확인");
+	} else {
+		this.alert("취소");
+	}
+	
+};
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.transaction(
+		"svcGetEmpList",
+		"SvcUrl::nexa/getEmpList.do",
+		"",
+		"ds_emp=out_emp",
+		"",
+		""	
+	);
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_emp">
+        <ColumnInfo>
+          <Column id="EMP_ID" type="STRING" size="32"/>
+          <Column id="EMP_NAME" type="STRING" size="32"/>
+          <Column id="DEPT_CODE" type="STRING" size="32"/>
+          <Column id="POSITION" type="STRING" size="32"/>
+          <Column id="HIRE_DATE" type="STRING" size="32"/>
+          <Column id="SALARY" type="INT" size="4"/>
+          <Column id="GENDER" type="STRING" size="32"/>
+          <Column id="MARRIED" type="INT" size="2"/>
+          <Column id="SKILL" type="STRING" size="32"/>
+          <Column id="HOBBY" type="STRING" size="32"/>
+          <Column id="MEMO" type="STRING" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="EMP_ID">KR010</Col>
+            <Col id="EMP_NAME">Melon</Col>
+            <Col id="DEPT_CODE">10</Col>
+            <Col id="POSITION">10</Col>
+            <Col id="HIRE_DATE">20071001</Col>
+            <Col id="SALARY">9000</Col>
+            <Col id="GENDER">F</Col>
+            <Col id="MARRIED">0</Col>
+            <Col id="SKILL">01,07</Col>
+            <Col id="HOBBY">01,05</Col>
+            <Col id="MEMO">olive</Col>
+          </Row>
+          <Row>
+            <Col id="EMP_ID">US050</Col>
+            <Col id="EMP_NAME">Jackson</Col>
+            <Col id="DEPT_CODE">20</Col>
+            <Col id="POSITION">60</Col>
+            <Col id="HIRE_DATE">20091021</Col>
+            <Col id="SALARY">6000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">0</Col>
+            <Col id="SKILL">11,03,13</Col>
+            <Col id="HOBBY">09,14</Col>
+            <Col id="MEMO">lightpink</Col>
+          </Row>
+          <Row>
+            <Col id="EMP_ID">KR240</Col>
+            <Col id="EMP_NAME">Jennie</Col>
+            <Col id="DEPT_CODE">40</Col>
+            <Col id="POSITION">50</Col>
+            <Col id="HIRE_DATE">20110508</Col>
+            <Col id="SALARY">7000</Col>
+            <Col id="GENDER">F</Col>
+            <Col id="MARRIED">1</Col>
+            <Col id="SKILL">02,06</Col>
+            <Col id="HOBBY">05,06</Col>
+            <Col id="MEMO">yellowgreen</Col>
+          </Row>
+          <Row>
+            <Col id="EMP_ID">JP150</Col>
+            <Col id="EMP_NAME">Dennis</Col>
+            <Col id="DEPT_CODE">30</Col>
+            <Col id="POSITION">20</Col>
+            <Col id="HIRE_DATE">20091021</Col>
+            <Col id="SALARY">5000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">0</Col>
+            <Col id="SKILL">04,11</Col>
+            <Col id="HOBBY">07,06,05</Col>
+            <Col id="MEMO">gold</Col>
+          </Row>
+          <Row>
+            <Col id="EMP_ID">US020</Col>
+            <Col id="EMP_NAME">Andrew</Col>
+            <Col id="DEPT_CODE">60</Col>
+            <Col id="POSITION">60</Col>
+            <Col id="HIRE_DATE">20160602</Col>
+            <Col id="SALARY">6500</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">1</Col>
+            <Col id="SKILL">07,06</Col>
+            <Col id="HOBBY">09,13</Col>
+            <Col id="MEMO">skyblue</Col>
+          </Row>
+          <Row>
+            <Col id="EMP_ID">KR200</Col>
+            <Col id="EMP_NAME">Jungkook</Col>
+            <Col id="DEPT_CODE">50</Col>
+            <Col id="POSITION">60</Col>
+            <Col id="HIRE_DATE">20120304</Col>
+            <Col id="SALARY">7000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">1</Col>
+            <Col id="SKILL">01,04</Col>
+            <Col id="HOBBY">09,14</Col>
+            <Col id="MEMO">violet</Col>
+          </Row>
+          <Row>
+            <Col id="EMP_ID">JP230</Col>
+            <Col id="EMP_NAME">Adam</Col>
+            <Col id="DEPT_CODE">30</Col>
+            <Col id="POSITION">50</Col>
+            <Col id="HIRE_DATE">20110928</Col>
+            <Col id="SALARY">8000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">1</Col>
+            <Col id="SKILL">11,03,13</Col>
+            <Col id="HOBBY">09,15</Col>
+            <Col id="MEMO">lightpink</Col>
+          </Row>
+          <Row>
+            <Col id="EMP_ID">KR080</Col>
+            <Col id="EMP_NAME">JiYoung</Col>
+            <Col id="DEPT_CODE">40</Col>
+            <Col id="POSITION">50</Col>
+            <Col id="HIRE_DATE">20131120</Col>
+            <Col id="SALARY">8500</Col>
+            <Col id="GENDER">F</Col>
+            <Col id="MARRIED">0</Col>
+            <Col id="SKILL">01,07</Col>
+            <Col id="HOBBY">02,03,05</Col>
+            <Col id="MEMO">olive</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

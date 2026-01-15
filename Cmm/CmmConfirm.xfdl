@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="CmmConfirm" width="360" height="200" titletext="확인창" onload="form_onload">
+    <Layouts>
+      <Layout height="200" width="360">
+        <Static id="Static00" taborder="4" left="0" top="75" width="360" height="125" cssclass="sta_POP_Bg"/>
+        <Button id="btnOk" taborder="0" text="확인" height="34" bottom="10" onclick="btnOk_onclick" uWord="popup.ok" cssclass="btn_WF_FillTeal" width="70" right="90"/>
+        <Button id="btnCancle" taborder="1" text="취소" width="70" height="34" bottom="10" onclick="btnCancle_onclick" uWord="popup.cancel" cssclass="btn_WF_FillGray" right="15"/>
+        <TextArea id="txtMsgContent" taborder="3" left="0" top="20" width="360" height="125" cssclass="txt_POP_Message" value="해당 row의 위치를 이동하면 변경된 데이터가 사라집니다. \n계속 진행 하시겠습니까?" readonly="true"/>
+        <Static id="staIcon" taborder="2" left="15" top="40" width="50" height="50" cssclass="sta_POP_Confirm"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  Nexacro Professional Training Couse
+*  @MenuPath    Confirm  
+*  @FileName 	CmmConfirm.xfdl 
+*  @Creator 	TOBESOFT Education
+*  @CreateDate 	2025/01/03
+*  @Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2025/01/03      		 TOBESOFT Education	 	  	최초 생성 
+*******************************************************************************
+*/
+
+
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+/***********************************************************************************************
+* FORM EVENT 영역(onload)
+/***********************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+//	this.gfnFormOnLoad(this); //초기화[필수]
+	
+	var sContents = this.getOwnerFrame().paramContents;
+	this.fnMsgSetting(sContents);
+};
+/************************************************************************************************
+* TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/************************************************************************************************
+* CALLBACK 콜백 처리부분
+************************************************************************************************/
+
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+/**
+* @description 메세지설정
+*/
+this.fnMsgSetting = function (sMsgContent)
+{
+ 	this.txtMsgContent.value = sMsgContent;
+};
+
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+/**
+* @description 확인버튼
+*/
+this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close(true);
+};
+
+/**
+* @description 취소버튼
+*/
+this.btnCancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close(false);
+};
+
+
+]]></Script>
+  </Form>
+</FDL>

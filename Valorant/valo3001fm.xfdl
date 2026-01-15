@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="valo3001fm" width="1920" height="980" titletext="New Form" text="전적검색" onload="Valorant_onload">
+    <Layouts>
+      <Layout height="980" mobileorientation="landscape" width="1920">
+        <Div id="div_weapon" left="20" top="20" height="120" right="20" text=""/>
+        <Div id="div_tier" left="20" top="150" height="90" right="20" background="transparent" text=""/>
+        <Div id="div_skin_list" left="20" top="260" right="20" bottom="20" background="transparent" autoscrollbar="true">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fv_selectedWeapon = "all"; 
+this.fv_selectedTier = "all";   
+
+this.Valorant_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo) {
+	nexacro.getEnviroment().set_usewaitcursor(false);
+	this.fn_getData(); 
+	nexacro.getEnviroment().set_usewaitcursor(true);
+};
+
+/** 1. API 데이터 호출 **/
+// this.fn_getData = function() {
+// 	var pThis = this;
+// 	var xhr = new XMLHttpRequest(); 
+// 	xhr.onreadystatechange = function() {
+// 		if (xhr.readyState == 4 && xhr.status == 200) {
+// 			var weaponData = JSON.parse(xhr.responseText).data;
+// 			var xhrTier = new XMLHttpRequest();
+// 			xhrTier.onreadystatechange = function() {
+// 				if (xhrTier.readyState == 4 && xhrTier.status == 200) {
+// 					var tierData = JSON.parse(xhrTier.responseText).data;
+// 					pThis.fn_parsingData(weaponData, tierData);
+// 				}
+// 			};
+// 			xhrTier.open("GET", "https://valorant-api.com/v1/contenttiers", true);
+// 			xhrTier.send();
+// 		}
+// 	};
+// 	xhr.open("GET", "https://valorant-api.com/v1/weapons?language=ko-KR", true);
+// 	xhr.send();
+// };
+
+
+this.fn_getData = function() {
+    // 1. 서버 주소 (eGovFrame 컨트롤러 매핑 주소)
+    var strSvcID    = "svcValorantData";
+    var strURL      = "SvcUrl::getValorantSkinData.do"; // SvcUrl은 Prefix로 설정된 서버 주소
+    var strInDs     = ""; // 서버로 보낼 데이터셋 (없음)
+    var strOutDs    = "ds_weapon=ds_weapon ds_tier=ds_tier ds_skin=ds_skin"; // 서버에서 받을 데이터셋 매핑
+    var strArg      = ""; // 파라미터
+    var strCallback = "fn_callback"; // 콜백 함수
+	
+    // 2. 트랜잭션 호출
+    this.transaction(strSvcID, strURL, strInDs, strOutDs, strArg, strCallback);
+};
+
+// 3. 콜백 함수 (서버에서 응답이 오면 실행)
+this.fn_callback = function(svcID, errCode, errMsg) {
+    if (errCode < 0) {
+        alert("데이터 로드 실패: " + errMsg);
+        return;
+    }
+    
+    if (svcID == "svcValorantData") {
+        // 데이터가 다 들어왔으므로 UI 생성 함수 실행
+        this.fn_makeFilterButtons(this.ds_weapon, this.div_weapon, "weapon");
+        this.fn_makeFilterButtons(this.ds_tier, this.div_tier, "tier");
+        this.fn_applyFilter();
+    }
+};
+
+/** 2. 데이터 처리 (무작위 스킨 제외 로직 추가) **/
+this.fn_parsingData = function(weaponData, tierData) {
+	this.ds_weapon.clearData();
+	this.ds_tier.clearData();
+	this.ds_skin.clearData();
+	
+	// 무기 "전체"
+	var nWRow = this.ds_weapon.addRow();
+	this.ds_weapon.setColumn(nWRow, "uuid", "all");
+	this.ds_weapon.setColumn(nWRow, "name", "전체 무기");
+	
+	// 티어 "전체"
+	var nRow = this.ds_tier.addRow();
+	this.ds_tier.setColumn(nRow, "uuid", "all");
+	this.ds_tier.setColumn(nRow, "name", "전체 등급");
+	
+	var tierOrder = ["Select", "Deluxe", "Premium", "Exclusive", "Ultra"];
+	tierOrder.forEach((tName) => {
+			var apiTier = tierData.find(t => t.devName && t.devName.includes(tName));
+			if(apiTier) {
+				var nRow = this.ds_tier.addRow();
+				this.ds_tier.setColumn(nRow, "uuid", apiTier.uuid);
+				this.ds_tier.setColumn(nRow, "name", tName);
+				this.ds_tier.setColumn(nRow, "icon", apiTier.displayIcon);
+			}
+		});
+	
+	weaponData.forEach((weapon) => {
+			var nRow = this.ds_weapon.addRow();
+			this.ds_weapon.setColumn(nRow, "uuid", weapon.uuid);
+			this.ds_weapon.setColumn(nRow, "name", weapon.displayName);
+			this.ds_weapon.setColumn(nRow, "icon", weapon.killStreamIcon || weapon.displayIcon);
+			
+			weapon.skins.forEach((skin) => {
+					// [수정] "기본" 및 "무작위" 스킨 제외
+					if(skin.displayIcon && !skin.displayName.includes("기본") && !skin.displayName.includes("무작위")) {
+						var sRow = this.ds_skin.addRow();
+						this.ds_skin.setColumn(sRow, "weaponUuid", weapon.uuid);
+						this.ds_skin.setColumn(sRow, "tierUuid", skin.contentTierUuid);
+						this.ds_skin.setColumn(sRow, "name", skin.displayName);
+						this.ds_skin.setColumn(sRow, "icon", skin.displayIcon);
+						var sTier = tierData.find(t => t.uuid === skin.contentTierUuid);
+						if(sTier) {
+							this.ds_skin.setColumn(sRow, "tierIcon", sTier.displayIcon);
+							this.ds_skin.setColumn(sRow, "tierColor", sTier.highlightColor);
+						}
+					}
+				});
+		});
+	
+	this.fn_makeFilterButtons(this.ds_weapon, this.div_weapon, "weapon");
+	this.fn_makeFilterButtons(this.ds_tier, this.div_tier, "tier");
+	this.fn_applyFilter();
+};
+
+/** 3. 필터 버튼 생성 **/
+this.fn_makeFilterButtons = function(ds, divObj, type) {
+	var nLeft = 10, nTop = 10, nWidth = 140, nHeight = 36, nGap = 8;
+	var targetForm = divObj.form;
+	
+	for(var i=targetForm.components.length-1; i>=0; i--) {
+		targetForm.removeChild(targetForm.components[i].id);
+	}
+	
+	for(var i=0; i<ds.rowcount; i++) {
+		if (nLeft + nWidth > divObj.getOffsetWidth() - 20) { nLeft = 10; nTop += nHeight + nGap; }
+		var btnId = "btn_" + type + "_" + i;
+		
+		var objDiv = new Div(btnId, nLeft, nTop, nWidth, nHeight);
+		targetForm.addChild(btnId, objDiv);
+		objDiv.set_cssclass("skins_weapon");
+		objDiv.set_tabstop(false); 
+		objDiv.set_accessibilityenable(false);
+		objDiv._uuid = ds.getColumn(i, "uuid");
+		objDiv._type = type;
+		objDiv.addEventHandler("onclick", this.fn_filter_onclick, this);
+		objDiv.show();
+		
+		var objImg = new ImageViewer("img_icon", 8, 7, 30, 22);
+		objDiv.form.addChild("img_icon", objImg);
+		objImg.set_image(ds.getColumn(i, "icon"));
+		objImg.set_stretch("fixaspectratio"); // 버튼 내 아이콘도 비율 유지
+		objImg.addEventHandler("onclick", this.fn_filter_onclick, this);
+		objImg.show();
+		
+		var objStatic = new Static("st_label", 42, 0, nWidth-45, nHeight);
+		objDiv.form.addChild("st_label", objStatic);
+		objStatic.set_text(ds.getColumn(i, "name"));
+		objStatic.addEventHandler("onclick", this.fn_filter_onclick, this);
+		objStatic.show();
+		
+		var targetUuid = (type == "weapon") ? this.fv_selectedWeapon : this.fv_selectedTier;
+		if(objDiv._uuid == targetUuid) {
+			objDiv.set_cssclass("skins_weapon active");
+			objStatic.set_cssclass("skins_weapon_active");
+		}
+		nLeft += nWidth + nGap;
+	}
+};
+
+/** 4. 클릭 이벤트 **/
+this.fn_filter_onclick = function(obj, e) {
+	var targetDiv = null;
+	var current = obj;
+	
+	if (obj.id.indexOf("btn_") === -1 && (obj.id.indexOf("div_") === 0 || obj instanceof nexacro.Form)) {
+		return false; 
+	}
+	
+	while (current) {
+		if (current.id && current.id.indexOf("btn_") === 0) {
+			targetDiv = current;
+			break;
+		}
+		current = current.parent;
+		if (current && current instanceof nexacro.Form) current = current.parent;
+		if (!current || current instanceof nexacro.ChildFrame) break;
+	}
+	
+	if (!targetDiv || !targetDiv._uuid) return false;
+	
+	var pForm = targetDiv.parent; 
+	for(var i=0; i<pForm.components.length; i++) {
+		var comp = pForm.components[i];
+		if(comp.id.indexOf("btn_") === 0) {
+			comp.set_cssclass("skins_weapon");
+			if(comp.form.st_label) comp.form.st_label.set_cssclass("skins_weapon");
+		}
+	}
+	
+	targetDiv.set_cssclass("skins_weapon active");
+	if(targetDiv.form.st_label) {
+		targetDiv.form.st_label.set_cssclass("skins_weapon_active");
+	}
+	
+	if(targetDiv._type == "weapon") {
+		this.fv_selectedWeapon = targetDiv._uuid;
+	} else {
+		this.fv_selectedTier = targetDiv._uuid;
+	}
+	
+	this.fn_applyFilter();
+	return false;
+};
+
+/** 5. 필터 적용 **/
+this.fn_applyFilter = function() {
+	var sFilter = "";
+	if (this.fv_selectedWeapon != "all") sFilter = "weaponUuid=='" + this.fv_selectedWeapon + "'";
+	if (this.fv_selectedTier != "all") {
+		if (sFilter != "") sFilter += " && ";
+		sFilter += "tierUuid=='" + this.fv_selectedTier + "'";
+	}
+	this.ds_skin.filter(sFilter);
+	this.fn_makeSkinCards();
+};
+
+/** 6. 스킨 리스트 생성 (이미지 비율 수정) **/
+this.fn_makeSkinCards = function() {
+	var divObj = this.div_skin_list;
+	var ds = this.ds_skin;
+	var tForm = divObj.form;
+	
+	for(var i=tForm.components.length-1; i>=0; i--) {
+		tForm.removeChild(tForm.components[i].id);
+	}
+	
+	// 카드의 높이를 180 -> 140으로 조금 줄여서 총기가 더 가로로 길어 보이게 조정
+	var nLeft = 15, nTop = 15, nWidth = 240, nHeight = 140, nGap = 15;
+	
+	for(var i=0; i<ds.rowcount; i++) {
+		if (nLeft + nWidth > divObj.getOffsetWidth() - 30) { nLeft = 15; nTop += nHeight + nGap; }
+		var cardId = "card_" + i;
+		var objCard = new Div(cardId, nLeft, nTop, nWidth, nHeight);
+		tForm.addChild(cardId, objCard);
+		objCard.set_background("#2a2e35");
+		objCard.set_borderRadius("6px");
+		var tColor = ds.getColumn(i, "tierColor");
+		objCard.set_border("0none, 0none, 4px solid #" + (tColor ? tColor.substring(0,6) : "444444"));
+		objCard.show();
+		
+		// [수정] stretch를 "fixaspectratio"으로 설정하여 가로 비율을 유지하며 꽉 채움
+		var objImg = new ImageViewer("img_skin", "5%", "10%", "90%", "60%");
+		objCard.form.addChild("img_skin", objImg);
+		objImg.set_image(ds.getColumn(i, "icon"));
+		objImg.set_stretch("fixaspectratio"); 
+		objImg.set_background("transparent");
+		objImg.set_border("0none");
+		objImg.show();
+		
+		var objStatic = new Static("st_name", 0, "75%", "100%", "20%");
+		objCard.form.addChild("st_name", objStatic);
+		objStatic.set_text(ds.getColumn(i, "name"));
+		objStatic.set_color("#ffffff");
+		objStatic.set_textAlign("center");
+		objStatic.set_font("bold 10pt 'Malgun Gothic'");
+		objStatic.show();
+		
+		nLeft += nWidth + nGap;
+	}
+	tForm.resetScroll();
+};]]></Script>
+    <Objects>
+      <Dataset id="ds_weapon">
+        <ColumnInfo>
+          <Column id="uuid" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="icon" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_tier">
+        <ColumnInfo>
+          <Column id="uuid" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="icon" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_skin">
+        <ColumnInfo>
+          <Column id="weaponUuid" type="STRING" size="256"/>
+          <Column id="tierUuid" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="icon" type="STRING" size="256"/>
+          <Column id="tierIcon" type="STRING" size="256"/>
+          <Column id="tierColor" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_emp"/>
+    </Objects>
+  </Form>
+</FDL>

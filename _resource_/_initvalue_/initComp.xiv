@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GlobalPropInitvalueDefinition version="1.0">
+  <nexacro.Edit>
+    <initvalueid id="iv_edt" autoselect="true" autoskip="true" tooltiptype="hover"/>
+  </nexacro.Edit>
+  <nexacro.MaskEdit>
+    <initvalueid id="iv_msk" autoselect="true" autoskip="true" maskchar=" " tooltiptype="hover" trimtype="both" type="string" limitbymask="both"/>
+  </nexacro.MaskEdit>
+  <nexacro.Button>
+    <initvalueid id="iv_btn" tooltiptype="hover"/>
+  </nexacro.Button>
+  <nexacro.Combo>
+    <initvalueid id="iv_cbo" autoselect="true" autoskip="true" tooltiptype="hover"/>
+  </nexacro.Combo>
+  <nexacro.TextArea>
+    <initvalueid id="iv_txt" autoselect="true" autoskip="true" tooltiptype="hover"/>
+  </nexacro.TextArea>
+  <nexacro.Static>
+    <initvalueid id="iv_sta" tooltiptype="hover"/>
+  </nexacro.Static>
+  <nexacro.Div>
+    <initvalueid id="iv_div" tooltiptype="hover"/>
+  </nexacro.Div>
+  <nexacro.PopupDiv>
+    <initvalueid id="iv_pdiv" tooltiptype="hover"/>
+  </nexacro.PopupDiv>
+  <nexacro.Radio>
+    <initvalueid id="iv_rdo" tooltiptype="hover"/>
+  </nexacro.Radio>
+  <nexacro.CheckBox>
+    <initvalueid id="iv_chk" tooltiptype="hover"/>
+  </nexacro.CheckBox>
+  <nexacro.Grid>
+    <initvalueid id="iv_grd" autoenter="select" cellclickbound="cell" nodatatext="no data" tooltiptype="hover"/>
+  </nexacro.Grid>
+  <nexacro.Spin>
+    <initvalueid id="iv_spn" tooltiptype="hover"/>
+  </nexacro.Spin>
+  <nexacro.ListBox>
+    <initvalueid id="iv_lst" tooltiptype="hover"/>
+  </nexacro.ListBox>
+  <nexacro.PopupMenu>
+    <initvalueid id="iv_pmnu" tooltiptype="hover"/>
+  </nexacro.PopupMenu>
+  <nexacro.Tab>
+    <initvalueid id="iv_tab" tooltiptype="hover"/>
+  </nexacro.Tab>
+  <nexacro.GroupBox>
+    <initvalueid id="iv_grb" tooltiptype="hover"/>
+  </nexacro.GroupBox>
+  <nexacro.Calendar>
+    <initvalueid id="iv_cal" autoselect="true" autoskip="true" tooltiptype="hover" dateformat="yyyy-MM-dd"/>
+  </nexacro.Calendar>
+  <nexacro.ImageViewer>
+    <initvalueid id="iv_img" tooltiptype="hover"/>
+  </nexacro.ImageViewer>
+  <nexacro.ProgressBar>
+    <initvalueid id="iv_pgb" tooltiptype="hover"/>
+  </nexacro.ProgressBar>
+  <nexacro.Plugin>
+    <initvalueid id="iv_plg"/>
+  </nexacro.Plugin>
+  <nexacro.WebBrowser>
+    <initvalueid id="iv_web"/>
+  </nexacro.WebBrowser>
+  <nexacro.FileDownload>
+    <initvalueid id="iv_fdl" tooltiptype="hover"/>
+  </nexacro.FileDownload>
+  <nexacro.FileUpload>
+    <initvalueid id="iv_ful" tooltiptype="hover"/>
+  </nexacro.FileUpload>
+  <nexacro.Sketch>
+    <initvalueid id="iv_skc" tooltiptype="hover"/>
+  </nexacro.Sketch>
+  <nexacro.Splitter>
+    <initvalueid id="iv_spl" tooltiptype="hover"/>
+  </nexacro.Splitter>
+  <nexacro.ListView>
+    <initvalueid id="iv_ltv" autoenter="select" cellclickbound="cell" tooltiptype="hover"/>
+  </nexacro.ListView>
+</GlobalPropInitvalueDefinition>

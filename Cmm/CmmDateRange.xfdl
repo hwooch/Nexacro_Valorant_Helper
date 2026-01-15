@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="CmmDateRange" width="280" height="26" titletext="CmmDateRange" onload="form_onload">
+    <Layouts>
+      <Layout height="26" width="280">
+        <Calendar id="calFrom" taborder="1" left="0" top="0" width="46.43%" height="26" ondropdown="calFrom_ondropdown" dateformat="yyyy-MM-dd" popuptype="none" value="20250101" minwidth="130" maxwidth=""/>
+        <Static id="Static00" taborder="2" text="~" left="calFrom:5" top="0" width="10" height="26"/>
+        <Calendar id="calTo" taborder="0" left="Static00:5" top="0" height="26" popuptype="none" ondropdown="calFrom_ondropdown" dateformat="yyyy-MM-dd" value="20250215" width="46.43%" minwidth="130" maxwidth=""/>
+        <PopupDateRangePicker id="pdrpDateRange" left="0" top="50" width="530" height="230" useclosebutton="true" displaytype="date" onlbuttonup="pdrpDateRange_onlbuttonup" closebuttontext="OK" displaymonthcount="3" useheadline="false"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  Necacro EduPack
+*  @MenuPath    Cmm > CmmDateRange (공통 기간달력)
+*  @FileName 	CmmCalFromTo.xfdl 
+*  @Creator 	Education
+*  @CreateDate 	2025.02.01
+*  @Desction    기간달력
+************** 소스 수정 이력 ***************************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2025.02.01     	Education 	               최초 생성 
+*******************************************************************************
+*/
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+
+/***********************************************************************************************
+* FORM EVENT 영역(onload)
+/***********************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+//	this.gfnFormOnLoad(this);//초기화[필수]
+	this.fnInit(); //달력초기화
+};
+/************************************************************************************************
+* TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분
+ ************************************************************************************************/
+
+ /************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+/**
+* @description 달력초기화
+*/
+this.fnInit = function()
+{
+	//요구사항에 따라 오늘날짜 3개월 등등 지정 
+	this.calFrom.value = this.gfnGetFirstDate();	// FROM 달력 셋팅
+	this.calTo.value = this.gfnGetDate();			// TO 달력 셋팅
+};
+
+/**
+* @description from 일자 갖고오기
+*/
+this.fnGetFromDate = function ()
+{	
+	var sDate = this.calFrom.value;
+	return sDate;
+};
+
+/**
+* @description to 일자 갖고오기
+*/
+this.fnGetToDate = function ()
+{
+	var sDate = this.calTo.value;
+	return sDate;
+};
+
+/**
+* @description from일자 세팅하기
+*/
+this.fnSetFromDate = function (sDate)
+{
+	this.calFrom.value = sDate;
+};
+
+/**
+* @description to일자 세팅하기
+*/
+this.fnSetToDate = function (sDate)
+{
+	this.calTo.value = sDate;
+};
+
+/**
+* @description enable true/false세팅
+*/
+this.fnSetEnable = function (bValue)
+{
+	this.calFrom.enable = bValue;
+	this.calTo.enable = bValue;
+};
+
+/**
+* @description readonly true/false세팅
+*/
+this.fnSetReadonly = function (bValue)
+{
+	this.calFrom.readonly = bValue;
+	this.calTo.readonly = bValue;
+};
+
+/**
+* @description Essential true/false세팅
+*/
+this.fnSetEssential  = function (bValue)
+{
+	//CSS Essential 클래스설정
+	if(bValue){
+        this.calFrom.cssclass = "cal_WF_Essential";
+        this.calTo.cssclass = "cal_WF_Essential";
+	}
+    else{
+        this.calFrom.cssclass = "";
+        this.calTo.cssclass = "";
+	}
+};
+
+ /************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+/**
+* @description Calendar_ondropdown 이벤트 시 PopupDateRangePicker컴포넌트 띄우기
+*/
+this.calFrom_ondropdown = function(obj:nexacro.Calendar,e:nexacro.EventInfo)
+{
+	this.pdrpDateRange.startdate = this.calFrom.value;
+	this.pdrpDateRange.enddate   = this.calTo.value
+	this.pdrpDateRange.trackPopupByComponent("start", this.calFrom, 0, obj.height);
+};
+
+/**
+* @description 기간 PopupDateRangePicker컴포넌트 "CLOSE" 버튼 클릭
+*/
+this.pdrpDateRange_onlbuttonup = function(obj:nexacro.PopupDateRangePicker,e:nexacro.MouseEventInfo)
+{
+	if(e.fromreferenceobject.name == "closebutton"){
+		this.calFrom.value = obj.startdate;
+		this.calTo.value = obj.enddate;
+		this.fnCallback(obj.startdat, obj.enddate);
+	}
+
+};
+
+this.fnCallback = function(sFromValue, sToValue)
+{
+	var sCallback = this.parent.callbackfunc;    
+	if (!this.gfnIsNull(sCallback)) {	
+		try {
+			var svcId = this.parent.name;
+			this.lookupFunc(sCallback).call(svcId, sFromValue, sToValue); 
+		} catch(e) {
+			//trace("함수 실행시 오류가 발생했습니다.");
+		}
+	}    
+};
+
+]]></Script>
+    <Objects>
+      <Dataset id="ds_date">
+        <ColumnInfo>
+          <Column id="DATE_FR" type="STRING" size="256"/>
+          <Column id="DATE_TO" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

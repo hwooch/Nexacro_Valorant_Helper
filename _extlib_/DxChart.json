@@ -1,0 +1,19 @@
+{
+  "name": "DxChart",
+  "version": "2023.11.15.0",
+  "description": "DxChart",
+  "license": "https://chart.dxtobe.com/",
+  "scripts": [
+	"DxChart/DxChart.license.js",
+    "DxChart/DxChart.js"
+  ],
+  "objInfo": [
+  	"DxChart/_metainfo_/Static.info"
+  ],
+  "designscripts": [
+  	"DxChart/Design/DesignChartJS.js"
+  ],
+  "icons": "DxChart/_icons_/",
+  "licensefiles": "DxChart/_license_/",
+  "help": "DxChart/_help_/"
+}
