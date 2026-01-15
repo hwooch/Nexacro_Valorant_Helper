@@ -75,7 +75,8 @@ this.btn_common_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
     }
 	
     // 현재 버튼 활성화
-    obj.cssclass = "top_menu";
+    //obj.cssclass = "top_menu";
+	obj.cssclass = "top_menu_selected";
     obj.setFocus();
 	
     this.fv_selectedBtn = obj;
