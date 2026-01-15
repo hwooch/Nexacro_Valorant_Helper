@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo1001fm" width="1920" titletext="전적 검색" background="url('theme://images/Valo_Match_search_back.jpg') no-repeat left top /contain #101823" border="none">
+  <Form id="valo1001fm" width="1920" titletext="전적 검색" border="none" background="url('theme://images/Valo_Match_search_background.png') no-repeat left top /100% 100% #101823" height="980" scrollbartype="none auto">
     <Layouts>
       <Layout height="980" width="1920">
-        <Button id="Button00" taborder="0" text="Button00" top="87" height="166" background="white" right="0" width="270"/>
-        <Button id="Button00_00" taborder="1" text="Button00" left="0" top="81" width="85" height="166" background="white"/>
-        <Button id="Button00_01" taborder="2" text="Button00" left="1068" width="85" height="166" background="white" bottom="0"/>
+        <Edit id="Edit00" taborder="1" left="56.875%" top="56.42857142857143%" width="476" height="60" text="" displaynulltext="플레이어 이름 + #태그" cssclass="Search_Edit" tabstop="false"/>
+        <Button id="Button00_00" taborder="0" text="검색" left="Edit00:3.36%" top="56.43%" width="66" height="60" cssclass="Search_Btn" tabstop="false"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
   </Form>
 </FDL>

@@ -1018,27 +1018,6 @@
 }
 
 
-/* Edit */
-.Edit,.FileUpload .fileuploaditem .fileuploaditemedit
-{
-	background : #ffffff;
-	-nexa-border : 1px solid #d5d5d5;
-	-nexa-padding : 1px 9px 0px 9px;
-	-nexa-edge : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
-
 .EditControl
 {
 	background : transparent;
@@ -11260,6 +11239,59 @@
 	font : 22px/normal "Black Han Sans";
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-padding : 5px 0px 0px;
+}
+.Edit.Search_Edit,
+.Edit.Search_Edit[status=disabled],
+.Edit.Search_Edit[userstatus=nulltext]
+{
+	cursor : TEXT("auto","pointer");
+	-nexa-border : 2px solid #101823;
+	border-radius : 20px;
+	color : white;
+	font : 22px/normal "Black Han Sans";
+	-nexa-padding : 5px 0px 0px 10px;
+	background : #ff4654;
+}
+.Edit.Search_Edit[status=mouseover],
+.Edit.Search_Edit[status=focused]
+{
+	cursor : TEXT("auto","pointer");
+	-nexa-border : 2px solid #101823;
+	border-radius : 20px;
+	color : white;
+	font : 22px/normal "Black Han Sans";
+	-nexa-padding : 5px 0px 0px 10px;
+	background : #ff4654;
+	box-shadow : 0px 0px 20px #ffffff;
+}
+.Button.Search_Btn,
+.Button.Search_Btn[status=disabled]
+{
+	cursor : TEXT("auto","pointer");
+	-nexa-border : 2px solid #101823;
+	border-radius : 20px;
+	color : white;
+	font : 22px/normal "Black Han Sans";
+	-nexa-padding : 5px 0px 0px;
+	background : #ff4654;
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Button.Search_Btn[status=mouseover],
+.Button.Search_Btn[status=focused],
+.Button.Search_Btn[userstatus=pushed],
+.Button.Search_Btn[userstatus=selected]
+{
+	cursor : TEXT("auto","pointer");
+	-nexa-border : 2px solid #101823;
+	border-radius : 20px;
+	color : white;
+	font : 22px/normal "Black Han Sans";
+	-nexa-padding : 5px 0px 0px 0px;
+	background : #ff4654;
+	box-shadow : 0px 0px 20px #ffffff;
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
