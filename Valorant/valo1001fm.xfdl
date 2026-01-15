@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo1001fm" width="1920" height="980" titletext="전적 검색">
+  <Form id="valo1001fm" width="1920" titletext="전적 검색" background="url('theme://images/Valo_Match_search_back.jpg') no-repeat left top /contain #101823" border="none">
     <Layouts>
       <Layout height="980" width="1920">
-        <Button id="Button00" taborder="0" text="전적검색" left="335" top="146" width="1260" height="210" background="pink" font="normal 50pt/normal &quot;Arial&quot;"/>
+        <Button id="Button00" taborder="0" text="Button00" top="87" height="166" background="white" right="0" width="270"/>
+        <Button id="Button00_00" taborder="1" text="Button00" left="0" top="81" width="85" height="166" background="white"/>
+        <Button id="Button00_01" taborder="2" text="Button00" left="1068" width="85" height="166" background="white" bottom="0"/>
       </Layout>
     </Layouts>
   </Form>

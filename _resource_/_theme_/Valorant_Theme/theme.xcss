@@ -11167,7 +11167,7 @@
 .Button.top_login
 {
 	cursor : pointer;
-	background : url('theme://images/discord_login_icon.png') no-repeat left center /contain #242429;
+	background : url('theme://images/Valo_discord_login_icon.png') no-repeat left center /contain #242429;
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
@@ -11235,7 +11235,7 @@
 .Button.top_login[userstatus=selected]
 {
 	cursor : pointer;
-	background : url('theme://images/discord_login_icon.png') no-repeat left center /contain #242429;
+	background : url('theme://images/Valo_discord_login_icon.png') no-repeat left center /contain #242429;
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
