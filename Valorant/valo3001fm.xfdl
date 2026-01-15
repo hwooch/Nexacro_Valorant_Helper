@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo3001fm" width="1920" height="980" titletext="New Form" text="전적검색" onload="Valorant_onload">
+  <Form id="valo3001fm" width="1920" height="980" titletext="스킨" onload="Valorant_onload">
     <Layouts>
       <Layout height="980" mobileorientation="landscape" width="1920">
         <Div id="div_weapon" left="20" top="20" height="120" right="20" text=""/>
