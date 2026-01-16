@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <!--<Form id="valo1002fm" width="1920" titletext="전적 검색 - 상세" border="none" background="url('theme://images/Valo_Match_search_background.png') no-repeat left top /100% 100% #101823" height="980" scrollbartype="none auto" onclick="valo1001fm_onclick">-->
+  <Form id="valo1002fm" width="1920" titletext="전적 검색 - 상세" border="none" height="980" scrollbartype="none auto" onload="valo1002fm_onload">
+    <Layouts>
+      <Layout height="980" width="1920">
+        <Edit id="Edit00" taborder="0" left="88" top="234" width="140" height="20" background="white"/>
+        <Edit id="Edit01" taborder="1" left="322" top="188" width="140" height="20" background="white"/>
+        <Grid id="Grid00" taborder="2" left="609" top="68" width="1261" height="532" binddataset="ds_matches" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="MAP"/>
+                <Cell col="1" text="AGENT"/>
+                <Cell col="2" text="ROLE"/>
+                <Cell col="3" text="RESULT"/>
+                <Cell col="4" text="RANK"/>
+                <Cell col="5" text="KILL"/>
+                <Cell col="6" text="DEATH"/>
+                <Cell col="7" text="ASSIST"/>
+                <Cell col="8" text="HS_RATE"/>
+                <Cell col="9" text="ADR"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:MAP"/>
+                <Cell col="1" text="bind:AGENT"/>
+                <Cell col="2" text="bind:ROLE"/>
+                <Cell col="3" text="bind:RESULT"/>
+                <Cell col="4" text="bind:RANK"/>
+                <Cell col="5" text="bind:KILL"/>
+                <Cell col="6" text="bind:DEATH"/>
+                <Cell col="7" text="bind:ASSIST"/>
+                <Cell col="8" text="bind:HS_RATE"/>
+                <Cell col="9" text="bind:ADR"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="3" text="Static00" left="373" top="92" width="120" height="60" background="white"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var username = this.fvApp.getVariable("gv_Recent_Search_Name");
+	var usertag  = this.fvApp.getVariable("gv_Recent_Search_Tag");
+	
+	// transaction
+    var sSvcId      = "searchValorant";
+    var sUrl        = "svc::valorant/search.do";
+    var inData      = "";
+    var outData     = "dsTier=dsTier dsMatches=dsMatches";
+    var sParam      = "vName=" + nexacro.wrapQuote(sName) + " vTag=" + nexacro.wrapQuote(sTag);
+    var callBackFnc = "fn_Callback";
+    
+    this.transaction(sSvcId, sUrl, inData, outData, sParam, callBackFnc);
+};
+
+this.fn_Callback = function(svcId, errCode, errMsg)
+{
+    if (svcId == "searchValorant") {
+        // 티어 정보 표시
+        if (this.ds_tier.rowcount > 0) {
+            var tier = this.ds_tier.getColumn(0, "TIER_NAME");
+            var rr   = this.ds_tier.getColumn(0, "RR");
+            this.Static00.set_text("현재 티어: " + tier + " (" + rr + " RR)");
+        } else {
+            this.Static00.set_text("티어 정보 없음");
+        }
+
+        // 전적 조회 결과 메시지
+        if (this.ds_matches.rowcount == 0) {
+            alert("최근 경쟁전 전적이 없습니다.");
+        } else {
+            // 필요하다면 Grid 갱신 처리는 자동 바인딩으로 해결됨
+            alert("조회 완료! " + this.ds_matches.rowcount + "건의 전적을 가져왔습니다.");
+        }
+    }
+};]]></Script>
+    <Objects>
+      <Dataset id="ds_tier">
+        <ColumnInfo>
+          <Column id="TIER_NAME" type="STRING" size="256"/>
+          <Column id="RR" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_matches">
+        <ColumnInfo>
+          <Column id="MAP" type="STRING" size="256"/>
+          <Column id="AGENT" type="STRING" size="256"/>
+          <Column id="ROLE" type="STRING" size="256"/>
+          <Column id="RESULT" type="STRING" size="256"/>
+          <Column id="RANK" type="INT" size="256"/>
+          <Column id="KILL" type="INT" size="256"/>
+          <Column id="DEATH" type="INT" size="256"/>
+          <Column id="ASSIST" type="INT" size="256"/>
+          <Column id="HS_RATE" type="FLOAT" size="256"/>
+          <Column id="ADR" type="FLOAT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Static00" propid="text" datasetid="ds_tier" columnid="TIER_NAME"/>
+    </Bind>
+  </Form>
+</FDL>

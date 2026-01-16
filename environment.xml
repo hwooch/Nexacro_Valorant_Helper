@@ -2,7 +2,7 @@
 <ENV version="2.1">
   <Environment themeid="theme::Valorant_Theme" datatyperule="2.0" networksecurelevel="all" filesecurelevel="all">
     <ScreenDefinition>
-      <Screen id="Desktop_screen" type="desktop" themeid="theme::Valorant_Theme"/>
+      <Screen id="Desktop_screen" type="desktop" themeid="theme::Valorant_Theme" scrollbartype="none auto"/>
     </ScreenDefinition>
     <Variables>
       <Variable id="evRunMode" initval="S"/>

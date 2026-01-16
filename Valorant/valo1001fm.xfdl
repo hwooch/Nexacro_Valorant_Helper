@@ -1,12 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo1001fm" width="1920" titletext="전적 검색" border="none" background="url('theme://images/Valo_Match_search_background.png') no-repeat left top /100% 100% #101823" height="980" scrollbartype="none auto">
+  <Form id="valo1001fm" width="1920" titletext="전적 검색" border="none" background="url('theme://images/Valo_Match_search_background.png') no-repeat left top /100% 100% #101823" height="980" scrollbartype="none auto" onclick="valo1001fm_onclick">
     <Layouts>
       <Layout height="980" width="1920">
-        <Edit id="Edit00" taborder="1" left="56.875%" top="56.42857142857143%" width="476" height="60" text="" displaynulltext="플레이어 이름 + #태그" cssclass="Search_Edit" tabstop="false"/>
-        <Button id="Button00_00" taborder="0" text="검색" left="Edit00:3.36%" top="56.43%" width="66" height="60" cssclass="Search_Btn" tabstop="false"/>
+        <Edit id="etd_Player_Search" taborder="1" left="56.875%" top="56.42857142857143%" width="476" height="60" text="" displaynulltext="플레이어 이름 + #태그" cssclass="Search_Edit" tabstop="false" onkeydown="Player_Search_onimeaction"/>
+        <Button id="btn_Player_Search" taborder="0" text="검색" left="etd_Player_Search:3.36%" top="56.43%" width="66" height="60" cssclass="Search_Btn" tabstop="false" onclick="Player_Search_onimeaction"/>
+        <Button id="btn_focus" taborder="2" left="0" top="0" width="1" height="1" background="transparent"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+// 배경 클릭하면 왼쪽 위 안보이는 버튼에 focus해서 edt에 focus상태 푸는 함수
+this.valo1001fm_onclick = function(obj:nexacro.Form,e:nexacro.ClickEventInfo)
+{
+	this.btn_focus.setFocus();
+};
+
+// edit에서 엔터하거나 버튼 누르면 실행되는 함수로 전적검색 사이트로 이동시킴
+this.Player_Search_onimeaction = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{	
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	
+	// 엔터가 눌렸거나 검색 버튼이 눌렸을 때
+	if (obj.id == "btn_Player_Search"){
+	
+		// 유효성 검사
+		var check_result = this.check_edit_value();
+		if (check_result){
+				objWorkFrame.formurl = "Valorant::valo1002fm.xfdl";
+			}
+	}
+    else {
+		if (e.keycode == 13) {
+			// 유효성 검사
+			var check_result = this.check_edit_value();
+			if (check_result){
+				objWorkFrame.formurl = "Valorant::valo1002fm.xfdl";
+			}
+		}
+	}
+};
+
+// 유효성 검사
+this.check_edit_value = function ()
+{
+	var validation = this.etd_Player_Search.value;
+	
+	// 입력값이 없거나 #을 포함하지 않는다면
+	if (!validation || validation.indexOf("#") == -1) {
+        alert("닉네임#태그 형식으로 입력해주세요.");
+        return 0;
+    }
+	
+	// 입력값을 '#' 기준으로 분리
+    var devide = validation.split("#");
+    
+    // '#'이 여러 개 들어간 경우 예외 처리
+    if (devide.length !== 2) {
+        alert("태그(#)는 한 번만 입력 가능합니다.");
+        return 0;
+    }
+	var sName = devide[0]; // 닉네임 String
+    var sTag  = devide[1]; // 태그   String
+	
+	// 닉네임 검사
+    // 규칙: 3~16자, 시작/끝 공백 불가
+    var nameReg = /^[^\s].{1,14}[^\s]$/; 
+    if (!nameReg.test(sName)) {
+        alert("닉네임은 3~16자이며, 시작과 끝에 공백을 포함할 수 없습니다.");
+        return 0;
+    }
+
+    // 태그 검사
+    // 규칙: 3~5자, 공백 절대 불가
+    var tagReg = /^\S{3,5}$/; 
+    if (!tagReg.test(sTag)) {
+        alert("태그는 공백 없이 3~5자여야 합니다.");
+        return 0;
+    }
+	
+	// 글로벌 변수에 마지막으로 검색한 닉네임과 태그 저장
+	this.fvApp.setVariable("gv_Recent_Search_Name", sName);
+	this.fvApp.setVariable("gv_Recent_Search_Tag", sTag);
+	
+	// trace("최종 닉네임 Name: " + sName + ", Tag: " + sTag);
+	return 1;
+	
+};]]></Script>
   </Form>
 </FDL>

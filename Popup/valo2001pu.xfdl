@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo1001pp" width="1280" height="720" titletext="스킨 상세 정보">
+  <Form id="valo2001pu" width="1280" height="720" titletext="구인 글 등록하기">
     <Layouts>
       <Layout height="720" width="1280"/>
     </Layouts>

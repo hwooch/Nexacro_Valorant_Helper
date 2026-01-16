@@ -2,10 +2,10 @@
 <FDL version="2.1">
   <Form id="valo3001fm" width="1920" height="980" titletext="스킨" onload="Valorant_onload">
     <Layouts>
-      <Layout height="980" mobileorientation="landscape" width="1920">
+      <Layout height="980" width="1920">
         <Div id="div_weapon" left="20" top="20" height="120" right="20" text=""/>
         <Div id="div_tier" left="20" top="150" height="90" right="20" background="transparent" text=""/>
-        <Div id="div_skin_list" left="20" top="260" right="20" bottom="20" background="transparent" autoscrollbar="true">
+        <Div id="div_skin_list" left="20" top="260" right="20" bottom="20" background="transparent" autoscrollbar="true" text="">
           <Layouts>
             <Layout/>
           </Layouts>
@@ -16,48 +16,43 @@
 this.fv_selectedTier = "all";   
 
 this.Valorant_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo) {
-	nexacro.getEnviroment().set_usewaitcursor(false);
-	this.fn_getData(); 
-	nexacro.getEnviroment().set_usewaitcursor(true);
+	this.fn_getData2(); 
 };
 
 /** 1. API 데이터 호출 **/
-// this.fn_getData = function() {
-// 	var pThis = this;
-// 	var xhr = new XMLHttpRequest(); 
-// 	xhr.onreadystatechange = function() {
-// 		if (xhr.readyState == 4 && xhr.status == 200) {
-// 			var weaponData = JSON.parse(xhr.responseText).data;
-// 			var xhrTier = new XMLHttpRequest();
-// 			xhrTier.onreadystatechange = function() {
-// 				if (xhrTier.readyState == 4 && xhrTier.status == 200) {
-// 					var tierData = JSON.parse(xhrTier.responseText).data;
-// 					pThis.fn_parsingData(weaponData, tierData);
-// 				}
-// 			};
-// 			xhrTier.open("GET", "https://valorant-api.com/v1/contenttiers", true);
-// 			xhrTier.send();
-// 		}
-// 	};
-// 	xhr.open("GET", "https://valorant-api.com/v1/weapons?language=ko-KR", true);
-// 	xhr.send();
-// };
-
-
 this.fn_getData = function() {
-    // 1. 서버 주소 (eGovFrame 컨트롤러 매핑 주소)
+	var pThis = this;
+	var xhr = new XMLHttpRequest(); 
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var weaponData = JSON.parse(xhr.responseText).data;
+			var xhrTier = new XMLHttpRequest();
+			xhrTier.onreadystatechange = function() {
+				if (xhrTier.readyState == 4 && xhrTier.status == 200) {
+					var tierData = JSON.parse(xhrTier.responseText).data;
+					pThis.fn_parsingData(weaponData, tierData);
+				}
+			};
+			xhrTier.open("GET", "https://valorant-api.com/v1/contenttiers", true);
+			xhrTier.send();
+		}
+	};
+	xhr.open("GET", "https://valorant-api.com/v1/weapons?language=ko-KR", true);
+	xhr.send();
+};
+
+
+this.fn_getData2 = function() {
     var strSvcID    = "svcValorantData";
-    var strURL      = "SvcUrl::getValorantSkinData.do"; // SvcUrl은 Prefix로 설정된 서버 주소
-    var strInDs     = ""; // 서버로 보낼 데이터셋 (없음)
-    var strOutDs    = "ds_weapon=ds_weapon ds_tier=ds_tier ds_skin=ds_skin"; // 서버에서 받을 데이터셋 매핑
-    var strArg      = ""; // 파라미터
-    var strCallback = "fn_callback"; // 콜백 함수
+    var strURL      = "SvcUrl::getValorantSkinData.do";
+    var strInDs     = "";
+    var strOutDs    = "ds_weapon=ds_weapon ds_tier=ds_tier ds_skin=ds_skin";
+    var strArg      = "";
+    var strCallback = "fn_callback";
 	
-    // 2. 트랜잭션 호출
     this.transaction(strSvcID, strURL, strInDs, strOutDs, strArg, strCallback);
 };
 
-// 3. 콜백 함수 (서버에서 응답이 오면 실행)
 this.fn_callback = function(svcID, errCode, errMsg) {
     if (errCode < 0) {
         alert("데이터 로드 실패: " + errMsg);
@@ -65,7 +60,6 @@ this.fn_callback = function(svcID, errCode, errMsg) {
     }
     
     if (svcID == "svcValorantData") {
-        // 데이터가 다 들어왔으므로 UI 생성 함수 실행
         this.fn_makeFilterButtons(this.ds_weapon, this.div_weapon, "weapon");
         this.fn_makeFilterButtons(this.ds_tier, this.div_tier, "tier");
         this.fn_applyFilter();
@@ -88,13 +82,21 @@ this.fn_parsingData = function(weaponData, tierData) {
 	this.ds_tier.setColumn(nRow, "uuid", "all");
 	this.ds_tier.setColumn(nRow, "name", "전체 등급");
 	
-	var tierOrder = ["Select", "Deluxe", "Premium", "Exclusive", "Ultra"];
-	tierOrder.forEach((tName) => {
-			var apiTier = tierData.find(t => t.devName && t.devName.includes(tName));
+	var tierConfig = [
+		{ key: "Select",    label: "셀렉트" },
+		{ key: "Deluxe",    label: "디럭스" },
+		{ key: "Premium",   label: "프리미엄" },
+		{ key: "Exclusive", label: "익스클루시브" },
+		{ key: "Ultra",     label: "울트라" }
+	];
+	
+	tierConfig.forEach((tier) => {
+			var apiTier = tierData.find(t => t.devName && t.devName.includes(tier.key));
+			
 			if(apiTier) {
 				var nRow = this.ds_tier.addRow();
 				this.ds_tier.setColumn(nRow, "uuid", apiTier.uuid);
-				this.ds_tier.setColumn(nRow, "name", tName);
+				this.ds_tier.setColumn(nRow, "name", tier.label); 
 				this.ds_tier.setColumn(nRow, "icon", apiTier.displayIcon);
 			}
 		});
@@ -103,7 +105,7 @@ this.fn_parsingData = function(weaponData, tierData) {
 			var nRow = this.ds_weapon.addRow();
 			this.ds_weapon.setColumn(nRow, "uuid", weapon.uuid);
 			this.ds_weapon.setColumn(nRow, "name", weapon.displayName);
-			this.ds_weapon.setColumn(nRow, "icon", weapon.killStreamIcon || weapon.displayIcon);
+			this.ds_weapon.setColumn(nRow, "icon", weapon.killStreamIcon);
 			
 			weapon.skins.forEach((skin) => {
 					// [수정] "기본" 및 "무작위" 스킨 제외
@@ -113,7 +115,7 @@ this.fn_parsingData = function(weaponData, tierData) {
 						this.ds_skin.setColumn(sRow, "tierUuid", skin.contentTierUuid);
 						this.ds_skin.setColumn(sRow, "name", skin.displayName);
 						this.ds_skin.setColumn(sRow, "icon", skin.displayIcon);
-						var sTier = tierData.find(t => t.uuid === skin.contentTierUuid);
+						var sTier = tierData.find(t => t.uuid == skin.contentTierUuid);
 						if(sTier) {
 							this.ds_skin.setColumn(sRow, "tierIcon", sTier.displayIcon);
 							this.ds_skin.setColumn(sRow, "tierColor", sTier.highlightColor);
@@ -299,7 +301,6 @@ this.fn_makeSkinCards = function() {
           <Column id="tierColor" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_emp"/>
     </Objects>
   </Form>
 </FDL>

@@ -19,7 +19,7 @@
 /* Frame/Form */
 .Form
 {
-	font :  normal 12px/normal "CookieRunOTF Regular";
+	font :  normal 12px/normal "이사만루체 Medium";
 	color : #555555;
 	background : #1f2326;
 	-nexa-border : 0px none;
@@ -4401,7 +4401,7 @@
 	-nexa-border : 4px solid #f74451;
 	border-radius : 20px;
 	color : #f74451;
-	font : 30px/normal "Black Han Sans";
+	font : 32px/normal "Black Han Sans";
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 	-nexa-padding : 5px 0px 0px;
@@ -11129,7 +11129,7 @@
 	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
-	font : 22px/normal "Black Han Sans";
+	font : 22px/normal "이사만루체 Medium";
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-padding : 5px 0px 0px;
 }
@@ -11140,7 +11140,7 @@
 	-nexa-border : 2px solid #8e8e8e,2px solid #8e8e8e,0px;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #8e8e8e;
-	font : 22px/normal "Black Han Sans";
+	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 }
 .Button.top_login
@@ -11150,7 +11150,7 @@
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
-	font : 27px/normal "Black Han Sans";
+	font : 27px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : right;
@@ -11161,7 +11161,7 @@
 	-nexa-border : 4px solid #f74451;
 	border-radius : 20px;
 	color : #f74451;
-	font : 30px/normal "Black Han Sans";
+	font : 32px/normal "Black Han Sans";
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 	box-shadow : 0px 0px 20px #f74451;
@@ -11175,7 +11175,7 @@
 	-nexa-border : 2px solid #8e8e8e,2px solid #8e8e8e,0px;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #8e8e8e;
-	font : 22px/normal "Black Han Sans";
+	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 }
 .Button.top_menu_remove[status=mouseover],
@@ -11188,7 +11188,7 @@
 	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
-	font : 22px/normal "Black Han Sans";
+	font : 22px/normal "이사만루체 Medium";
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-padding : 5px 0px 0px;
 }
@@ -11204,7 +11204,7 @@
 	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
-	font : 22px/normal "Black Han Sans";
+	font : 22px/normal "이사만루체 Medium";
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-padding : 5px 0px 0px;
 }
@@ -11218,7 +11218,7 @@
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
-	font : 27px/normal "Black Han Sans";
+	font : 27px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : right;
@@ -11236,7 +11236,7 @@
 	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
-	font : 22px/normal "Black Han Sans";
+	font : 22px/normal "이사만루체 Medium";
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-padding : 5px 0px 0px;
 }
@@ -11248,8 +11248,8 @@
 	-nexa-border : 2px solid #101823;
 	border-radius : 20px;
 	color : white;
-	font : 22px/normal "Black Han Sans";
-	-nexa-padding : 5px 0px 0px 10px;
+	font : 22px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 0px 0px 10px;
 	background : #ff4654;
 }
 .Edit.Search_Edit[status=mouseover],
@@ -11259,8 +11259,8 @@
 	-nexa-border : 2px solid #101823;
 	border-radius : 20px;
 	color : white;
-	font : 22px/normal "Black Han Sans";
-	-nexa-padding : 5px 0px 0px 10px;
+	font : 22px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 0px 0px 10px;
 	background : #ff4654;
 	box-shadow : 0px 0px 20px #ffffff;
 }
@@ -11271,8 +11271,8 @@
 	-nexa-border : 2px solid #101823;
 	border-radius : 20px;
 	color : white;
-	font : 22px/normal "Black Han Sans";
-	-nexa-padding : 5px 0px 0px;
+	font : 22px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 0px 0px;
 	background : #ff4654;
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
@@ -11286,8 +11286,8 @@
 	-nexa-border : 2px solid #101823;
 	border-radius : 20px;
 	color : white;
-	font : 22px/normal "Black Han Sans";
-	-nexa-padding : 5px 0px 0px 0px;
+	font : 22px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 0px 0px 0px;
 	background : #ff4654;
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-text-align : center;

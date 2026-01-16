@@ -14,7 +14,7 @@
         <Button id="btn_Ranking" taborder="3" text="랭킹" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave" width="120" right="btn_Skin:-2"/>
         <Button id="btn_Search" taborder="2" text="전적 검색" height="50" cssclass="top_menu_autoclick" bottom="0" onclick="btn_common_onclick" onmouseleave="btn_common_onmouseleave" onmouseenter="btn_common_onmouseenter" width="120" right="btn_Ranking:-2"/>
         <Button id="btn_Party" taborder="10" text="파티 구인" width="120" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave" left="btn_Weapon:-2"/>
-        <Static id="Logo_CHAMBER" taborder="8" left="370" top="-47" height="357" background="url('https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/fullportrait.png') no-repeat center center /cover" opacity="75%" right="btn_Search:3"/>
+        <Static id="Logo_CHAMBER" taborder="8" left="370" top="-47" height="357" background="url('https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/fullportrait.png') no-repeat center center /cover" opacity="75%" right="btn_Search:3" text=""/>
         <Static id="Logo_REYNA" taborder="9" top="-57" width="233" height="357" background="url('https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/fullportrait.png') no-repeat center center /cover" opacity="75%" text="" left="btn_Party:-5"/>
       </Layout>
     </Layouts>
@@ -38,25 +38,25 @@ this.btn_common_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
         // 해당 프레임의 url을 변경
 		switch(obj.id) {
 		case "btn_Search" :
-			objWorkFrame.set_formurl("Valorant::valo1001fm.xfdl");
+			objWorkFrame.formurl = "Valorant::valo1001fm.xfdl";
 			break;
 		case "btn_Ranking" :
-			objWorkFrame.set_formurl("Valorant::valo2001fm.xfdl");
+			objWorkFrame.formurl = "Valorant::valo2001fm.xfdl";
 			break;
 		case "btn_Skin" :
-			objWorkFrame.set_formurl("Valorant::valo3001fm.xfdl");
+			objWorkFrame.formurl = "Valorant::valo3001fm.xfdl";
 			break;
 		case "btn_Map" :
-			objWorkFrame.set_formurl("Valorant::valo4001fm.xfdl");
+			objWorkFrame.formurl = "Valorant::valo4001fm.xfdl";
 			break;
 		case "btn_Char" :
-			objWorkFrame.set_formurl("Valorant::valo5001fm.xfdl");
+			objWorkFrame.formurl = "Valorant::valo5001fm.xfdl";
 			break;
 		case "btn_Weapon" :
-			objWorkFrame.set_formurl("Valorant::valo6001fm.xfdl");
+			objWorkFrame.formurl = "Valorant::valo6001fm.xfdl";
 			break;
 		case "btn_Party" :
-			objWorkFrame.set_formurl("Valorant::valo7001fm.xfdl");
+			objWorkFrame.formurl = "valorant::valo7001fm.xfdl";
 			break;
 		default:
 		}
@@ -130,8 +130,6 @@ this.btn_discord_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
     
     // 방법 2: 웹 브라우저 실행 중이라면 새 탭으로 열기 (웹 환경 권장)
     // window.open(authUrl, "_blank");
-};
-
-]]></Script>
+};]]></Script>
   </Form>
 </FDL>

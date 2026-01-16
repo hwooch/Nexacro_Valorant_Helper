@@ -3063,6 +3063,8 @@
   <Variables>
     <Variable id="gv_var1" initval="App Variable Value1"/>
     <Variable id="gvLogIn"/>
+    <Variable id="gv_Recent_Search_Name" initval=""/>
+    <Variable id="gv_Recent_Search_Tag" initval=""/>
   </Variables>
   <DataObjects/>
 </AppVariables>
