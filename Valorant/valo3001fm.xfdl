@@ -45,12 +45,12 @@ this.fn_getData = function() {
 this.fn_getData2 = function() {
     var strSvcID    = "svcValorantData";
     var strURL      = "SvcUrl::getValorantSkinData.do";
-    var strInDs     = "";
-    var strOutDs    = "ds_weapon=ds_weapon ds_tier=ds_tier ds_skin=ds_skin";
-    var strArg      = "";
-    var strCallback = "fn_callback";
+    var strInDatasets     = "";
+    var strOutDatasets    = "ds_weapon=ds_weapon ds_tier=ds_tier ds_skin=ds_skin";
+    var strArgument      = "";
+    var strCallbackFunc = "fn_callback";
 	
-    this.transaction(strSvcID, strURL, strInDs, strOutDs, strArg, strCallback);
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
 };
 
 this.fn_callback = function(svcID, errCode, errMsg) {
