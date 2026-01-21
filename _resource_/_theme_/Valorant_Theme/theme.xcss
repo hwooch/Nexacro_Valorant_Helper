@@ -6932,7 +6932,7 @@
 .ListView, 
 .ListView[status=readonly]
 {
-	-nexa-border : 1px solid #d5d5d5;
+	-nexa-border : 0px none;
 	background : #ebecee;
 	color : #666666;
 	-nexa-edge : ;
@@ -6947,7 +6947,7 @@
 .ListView[status=mouseover],
 .ListView[status=focused]
 {
-	-nexa-border : 1px solid #5a86cd;
+	-nexa-border : 0px none;
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
 	background : ;
@@ -6978,7 +6978,7 @@
 .ListView .body[status=focused], .ListView .detail[status=focused],
 .ListView .body[status=mouseover], .ListView .detail[status=mouseover]
 {
-	-nexa-border : 0px none, 0px none, 1px solid #dbdee2, 0px none;
+	-nexa-border : 0px none;
 	background : #ffffff;
 	font :  -nexa-define(--MalgunGothic12px);
 	-nexa-edge : ;
@@ -6993,7 +6993,7 @@
 }
 .ListView .detail
 {
-	-nexa-border : 0px none, 0px none, 1px solid #dbdee2, 0px none;
+	-nexa-border : 0px none;
 	background : #f9f9f9;
 	font :  -nexa-define(--MalgunGothic12px);
 	-nexa-edge : ;
@@ -7056,7 +7056,7 @@
 .ListView .body .cell[status=readonly], .ListView .detail .cell[status=readonly],
 .ListView .body .cell[status=focused], .ListView .detail .cell[status=focused]
 {
-	-nexa-border : 1px solid #dbdee2;
+	-nexa-border : 0px none;
 	-nexa-padding : 4px 4px 4px 4px;
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
@@ -7076,7 +7076,7 @@
 }
 .ListView .body .cell[status=mouseover], .ListView .detail .cell[status=mouseover]
 {
-	-nexa-border : 1px solid #c4c9cf;
+	-nexa-border : 0px none;
 	-nexa-edge : ;
 	-nexa-padding : ;
 	-nexa-rtl-background-image : ;
@@ -7497,7 +7497,7 @@
 .ListView .body .expandbar
 {
 	background : linear-gradient(to top,#eaeaea,#ffffff);
-	-nexa-border : 1px solid #c2c2c2;
+	-nexa-border : 0px none;
 	-nexa-edge : ;
 	-nexa-icon : ;
 	-nexa-icon-position : ;
@@ -7523,7 +7523,7 @@
 .ListView .body .expandbar[status=mouseover],.ListView .body .expandbar[status=focused]
 {
 	background : linear-gradient(to top,#e7e7e7,#fefefe);
-	-nexa-border : 1px solid #a0a0a0;
+	-nexa-border : 0px none;
 	-nexa-edge : ;
 	-nexa-icon : ;
 	-nexa-icon-position : ;
@@ -7550,7 +7550,7 @@
 {
 	color : #bbbbbb;
 	background : #f5f5f5;
-	-nexa-border : 1px solid #d9d9d9;
+	-nexa-border : 0px none;
 	opacity : 0.50;
 	-nexa-edge : ;
 	-nexa-icon : ;
@@ -11292,6 +11292,12 @@
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
+}
+.ListView.match_info .body .cell
+{
+	color : black;
+	-nexa-border : 0px none;
+	
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
