@@ -4,7 +4,7 @@
   <Form id="valo1002fm" width="1920" titletext="전적 검색 - 상세" border="none" height="980" scrollbartype="none auto" onload="valo1002fm_onload">
     <Layouts>
       <Layout height="980" width="1920">
-        <Div id="div_user_status" taborder="2" left="0" top="0" height="150" background="#31313c" right="0" formscrollbartype="none none">
+        <Div id="div_user_status" taborder="2" left="0" top="0" height="150" background="#31313c" right="0" formscrollbartype="none none" formscrolltype="none">
           <Layouts>
             <Layout>
               <Static id="Logo_CHAMBER" taborder="3" left="728" top="-110" height="901" background="url('https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/fullportrait.png') no-repeat center center /cover" opacity="50%" right="727" text=""/>
@@ -14,7 +14,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="0" top="190" height="710" autofittype="col" binddataset="ds_list" left="466" right="34">
+        <Grid id="Grid00" taborder="0" top="170" height="740" autofittype="col" binddataset="ds_list" left="468" right="34">
           <Formats>
             <Format id="default">
               <Columns>
@@ -60,8 +60,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="sta_hide_screen" taborder="1" left="0" top="930" background="black" visible="true" width="50" height="50"/>
-        <ListView id="ListView00" taborder="3" left="33" top="190" width="400" height="350" binddataset="ds_stats" background="#31313c" border="0px none" borderRadius="20px">
+        <ListView id="list_statistics" taborder="3" left="34" top="div_user_status:20" width="400" height="350" binddataset="ds_stats" background="#31313c" border="0px none" borderRadius="20px">
           <Formats>
             <Format id="default">
               <Band id="body" width="100%" height="50" background="transparent" color="#666666" border="0px none,0px none,2px solid #1f2326">
@@ -88,7 +87,7 @@
                 <Cell id="Cell17" left="20" top="Cell16:4" width="100" height="22" text="bind:AVG_DMG" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
                 <Cell id="Cell18" left="149" top="10" width="100" height="20" text="KD 비율" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
                 <Cell id="Cell19" left="149" top="Cell18:4" width="100" height="22" text="bind:KD_RATE" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
-                <Cell id="Cell20" top="10" width="100" height="20" text="KDA 비율" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" right="20" background="transparent"/>
+                <Cell id="Cell20" top="10" width="100" height="20" text="평점" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" right="20" background="transparent"/>
                 <Cell id="Cell21" top="Cell20:4" height="22" text="bind:KDA_RATE" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="20"/>
                 <Cell id="Cell22" top="64" height="20" text="점수/라운드" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="20" background="transparent"/>
                 <Cell id="Cell23" top="Cell22:4" height="22" text="bind:AVG_SCORE" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="20"/>
@@ -97,97 +96,197 @@
             </Format>
           </Formats>
         </ListView>
+        <Static id="Static02_01" taborder="12" left="35" top="list_statistics:0" width="400" height="20"/>
+        <Static id="Static00" taborder="6" text="선호 역할군" left="34" top="Static02_01:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
+        <ListView id="list_role" taborder="4" left="34" top="Static00:0" width="400" height="300" binddataset="ds_role" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
+          <Formats>
+            <Format id="default">
+              <Band id="body" width="100%" height="80" background="transparent" border="0px none">
+                <Cell id="CellLine" left="10" right="10" top="0" height="1" background="#1f2326" border="0px none" visible="expr:currow &gt; 0"/>
+                <Cell id="CellRoleIcon" left="20" top="15" width="50" height="50" border="2px solid #ff4655" borderRadius="50px" text="" background="transparent"/>
+                <Cell id="CellRoleName" left="80" top="17" width="80" height="24" text="bind:ROLE" color="white" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="left"/>
+                <Cell id="CellPickRate" left="80" top="43" width="80" height="20" text="expr:PICK_RATE + '%'" color="#ff4655" font="14px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="left"/>
+                <Cell id="CellKdaRate" top="17" width="120" height="24" text="expr:KDA_RATE + ':1 평점'" color="#00ffba" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="center" right="130" textAlign="right"/>
+                <Cell id="CellKdaDetail" top="43" width="150" height="20" text="expr:KILL + ' / ' + DEATH + ' / ' + ASSIST" color="#98979f" font="13px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="center" right="130" textAlign="right"/>
+                <Cell id="CellWinRate" right="20" top="17" width="80" height="24" text="expr:WIN_RATE + '%'" color="#98979f" font="15px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="right" textAlign="right"/>
+                <Cell id="CellWinLoss" right="20" top="43" width="100" height="20" text="expr:WIN_COUNT + '승 / ' + LOSE_COUNT + '패'" color="#98979f" font="13px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="right" textAlign="right"/>
+              </Band>
+            </Format>
+          </Formats>
+        </ListView>
+        <Static id="Static01" taborder="7" left="34" top="Static00:-2" width="400" height="2" background="#1f2326"/>
+        <Static id="Static02" taborder="8" left="34" top="list_role:0" width="400" height="20"/>
+        <Static id="Static00_00" taborder="10" text="선호 요원" left="34" top="Static02:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
+        <ListView id="list_agent" taborder="5" left="34" top="Static00_00:0" width="400" height="200" binddataset="ds_agent" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
+          <Formats>
+            <Format id="default">
+              <Band id="body" width="100%" height="80" background="transparent" border="0px none">
+                <Cell id="CellLine" left="10" right="10" top="0" height="1" background="#1f2326" border="0px none" visible="expr:currow &gt; 0"/>
+                <Cell id="CellAgentIcon" left="20" top="15" width="50" height="50" displaytype="imagecontrol" borderRadius="50px" border="0px none" background="red"/>
+                <Cell id="CellAgentName" left="80" top="17" width="100" height="24" text="bind:AGENT" color="white" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="left"/>
+                <Cell id="CellAvgScore" left="80" top="43" width="120" height="20" text="expr:AVG_SCORE + ' 평균 점수'" color="#98979f" font="13px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="left"/>
+                <Cell id="CellKdaRate" top="17" width="120" height="24" text="expr:KDA_RATE + ':1 평점'" color="#00ffba" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="center" right="130" textAlign="right"/>
+                <Cell id="CellKdaDetail" top="43" width="150" height="20" text="expr:KILL + ' / ' + DEATH + ' / ' + ASSIST" color="#98979f" font="13px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="center" right="130" textAlign="right"/>
+                <Cell id="CellWinRate" right="20" top="17" width="80" height="24" text="expr:WIN_RATE + '%'" color="#98979f" font="15px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="right" textAlign="right"/>
+                <Cell id="CellWinLoss" right="20" top="43" width="100" height="20" text="expr:WIN_COUNT + '승 / ' + LOSE_COUNT + '패'" color="#98979f" font="13px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="right" textAlign="right"/>
+              </Band>
+            </Format>
+          </Formats>
+        </ListView>
+        <Static id="Static01_00" taborder="9" left="34" top="Static00_00:-2" width="400" height="2" background="#1f2326"/>
+        <Static id="sta_hide_screen" taborder="1" left="0" top="10" background="black" visible="true" width="50" height="50"/>
+        <Static id="Static02_00" taborder="11" left="35" top="list_agent:0" width="400" height="20"/>
+        <Static id="Static00_00_00" taborder="13" text="선호 무기" left="35" top="Static02_00:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
+        <ListView id="list_weapon" taborder="16" left="35" top="Static00_00_00:0" width="400" height="200" binddataset="ds_weapon" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
+          <Formats>
+            <Format id="default">
+              <Band id="body" width="100%" height="80" background="transparent" border="0px none">
+                <Cell id="CellLine" left="10" right="10" top="0" height="1" background="#1f2326" border="0px none" visible="expr:currow &gt; 0"/>
+                <Cell id="CellAgentIcon" left="20" top="15" width="100" height="50" displaytype="imagecontrol" borderRadius="50px" border="0px none" background="red"/>
+                <Cell id="CellAgentName" left="140" top="17" width="100" height="24" text="bind:WEAPON" color="white" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="left"/>
+                <Cell id="CellWinRate" right="20" top="17" width="80" height="24" text="expr:KILL + '킬'" color="#98979f" font="15px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="right" textAlign="right"/>
+              </Band>
+            </Format>
+          </Formats>
+        </ListView>
+        <Static id="Static02_00_00" taborder="15" left="35" top="list_weapon:0" width="400" height="20"/>
+        <Static id="Static01_00_00" taborder="14" left="35" top="Static00_00_00:0" width="400" height="2" background="#1f2326"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
 
+// 화면 로드시에 이름 입력했던걸 기반으로 전적 검색
 this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	// 혹시모를 데이터 지우기
+	this.ds_tier.clearData();
+    this.ds_list.clearData();
+    this.ds_stats.clearData();
+    this.ds_role.clearData();
+    this.ds_agent.clearData();
+    this.ds_weapon.clearData();
+	
     var username = this.fvApp.getVariable("gv_Recent_Search_Name");
     var usertag  = this.fvApp.getVariable("gv_Recent_Search_Tag");
     
-    // alert(username + usertag); // 테스트용 얼럿은 주석 처리 추천
-    
+    // 메인화면 이름, 태그 설정
     this.div_user_status.form.sta_user_name.text = username;
     this.div_user_status.form.sta_user_tag.text = "#" + usertag;
+	
+	// 로딩 중 상태 표시 
+	this.div_user_status.form.sta_user_status.text = "조회 중...";
+    this.div_user_status.form.sta_user_status.background = "";
     
-    // 1. Transaction 설정
-    var strSvcID        = "searchValorant";
-    var strURL          = "SvcUrl::getValorantUserMatchData.do";
+	// 전적 조회 transaction
+    var strSvcID        = "searchMatch";
+    var strURL          = "SvcUrl::getValorantMatches.do";
     var strInDatasets   = "";
-    
-    // ★★★ [수정 포인트] 서버에서 오는 ds_list와 ds_stats를 받도록 수정 ★★★
-    // ClientDS=ServerDS 형식입니다.
-    // 기존: "ds_tier=out_tier ds_matches=out_matches"
-    // 변경: "ds_tier=out_tier ds_list=ds_list ds_stats=ds_stats"
-    var strOutDatasets  = "ds_tier=out_tier ds_list=ds_list ds_stats=ds_stats";
-    
+    var strOutDatasets  = "ds_list=out_list ds_stats=out_stats ds_role=out_role ds_agent=out_agent ds_weapon=out_weapon";
     var strArgument     = "vName=" + nexacro.wrapQuote(username) + " vTag=" + nexacro.wrapQuote(usertag);
     var strCallbackFunc = "fn_Callback";
-    
+	
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+	
+    // 티어 조회 transaction
+    var strSvcID        = "searchTier";
+    var strURL          = "SvcUrl::getValorantTier.do";
+    var strInDatasets   = "";
+    var strOutDatasets  = "ds_tier=out_tier";
+    var strArgument     = "vName=" + nexacro.wrapQuote(username) + " vTag=" + nexacro.wrapQuote(usertag);
+    var strCallbackFunc = "fn_Callback";
+	
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);	
 };
 
+// 역할군 리스트뷰 다시 그리기
+this.fn_resizeRoleList = function()
+{
+    var nRowHeight = 80;
+    
+    var nTotalCount = this.ds_role.getRowCount();
+    var nNewHeight = nTotalCount * nRowHeight;
+    if (nNewHeight == 0) { // 값이 없으면 높이 0
+		nNewHeight = 0;
+	}
+    
+    this.list_role.height = nNewHeight;
+    this.resetScroll();
+};
+
+// 요원 리스트뷰 다시 그리기
+this.fn_resizeAgentList = function()
+{
+    var nRowHeight = 80;
+    
+    var nTotalCount = this.ds_agent.getRowCount();
+    var nNewHeight = nTotalCount * nRowHeight;
+    if (nNewHeight == 0) { // 값이 없으면 높이 0
+		nNewHeight = 0;
+	}
+    
+    this.list_agent.height = nNewHeight;
+    this.resetScroll();
+};
+
+// 무기 리스트뷰 다시 그리기
+this.fn_resizeWeaponList = function()
+{
+    var nRowHeight = 80;
+    
+    var nTotalCount = this.ds_weapon.getRowCount();
+    var nNewHeight = nTotalCount * nRowHeight;
+    if (nNewHeight == 0) { // 값이 없으면 높이 0
+		nNewHeight = 0;
+	}
+    
+    this.list_weapon.height = nNewHeight;
+    this.resetScroll();
+};
+
+// 트랜잭션 콜백
 this.fn_Callback = function(svcId, errCode, errMsg)
 {
-	if(errCode < 0) {
+    if(errCode < 0) {
         this.alert("조회 실패: " + errMsg);
         return;
     }
-
-    if (svcId == "searchValorant") {
-        
-        // 2. 티어 정보 처리 (기존 로직 유지)
+    
+	// 티어 조회
+    if (svcId == "searchTier") {
         if (this.ds_tier.rowcount > 0) {
-			var tier     = this.ds_tier.getColumn(0, "TIER_NAME");
+            var tier     = this.ds_tier.getColumn(0, "TIER_NAME");
             var rr       = this.ds_tier.getColumn(0, "RR");
             var tierIcon = this.ds_tier.getColumn(0, "TIER_ICON");
             var wins     = this.ds_tier.getColumn(0, "SEASON_WINS");
             var total    = this.ds_tier.getColumn(0, "SEASON_GAMES");
             var winRate  = this.ds_tier.getColumn(0, "SEASON_WIN_RATE");
-			
+            
             var Statustext = "현재 티어: " + tier + " (" + rr + " 포인트)\n";
             Statustext += "이번 시즌: " + wins + "승 / " + total + "전 (" + winRate + "%)";
             
-			//alert(Statustext);
-			
             this.div_user_status.form.sta_user_status.text = Statustext;
-			this.div_user_status.form.sta_user_status.background = "url("+tierIcon+") no-repeat left center /contain"
-			
+            if(tierIcon) {
+				this.div_user_status.form.sta_user_status.background = "url('"+tierIcon+"') no-repeat left center /contain";
+			}
         } else {
             this.div_user_status.form.sta_user_status.text = "티어 정보 없음";
-            this.div_user_status.form.sta_user_status.set_background("");
+            this.div_user_status.form.sta_user_status.background = "";
         }
-
-        // 3. 통계 정보 바인딩 (★★★ 신규 추가 ★★★)
-        if (this.ds_stats.rowcount > 0) {
-            var avgDmg   = this.ds_stats.getColumn(0, "AVG_DMG");
-            var kdRate   = this.ds_stats.getColumn(0, "KD_RATE");
-            var headShot = this.ds_stats.getColumn(0, "TOTAL_HEAD");
-            var playTime = this.ds_stats.getColumn(0, "PLAY_TIME");
-            
-            // 예: 통계 표시용 Static 컴포넌트들에 값 세팅
-            // (화면에 만들어두신 컴포넌트 ID에 맞춰 수정하세요)
-            // this.div_stats.form.sta_avg_dmg.text = "평균딜량: " + avgDmg;
-            // this.div_stats.form.sta_kd.text      = "K/D: " + kdRate;
-            
-            // 확인용 로그
-            trace(">>> 통계 로드 완료: K/D=" + kdRate + ", ADR=" + avgDmg);
-        }
-
-        // 4. 매치 리스트 처리
-        // (기존 ds_matches를 ds_list로 이름을 변경했습니다.)
-        if (this.ds_list.rowcount == 0) {
-            this.alert("최근 경쟁전 전적이 없습니다.");
-        } else {
-            // this.alert("조회 완료! " + this.ds_list.rowcount + "건의 전적을 가져왔습니다.");
-        }
-        
-        // 5. 화면 마무리
-        this.div_user_status.form.resetScroll(); 
-        this.sta_hide_screen.set_visible(false);
+		this.div_user_status.form.resetScroll();
     }
-};]]></Script>
+	// 전적 조회
+    else if (svcId == "searchMatch") {
+	
+		// 왼쪽 리스트뷰 다시 그리기
+        this.fn_resizeRoleList();
+        this.fn_resizeAgentList();
+		this.fn_resizeWeaponList();
+        
+        // 검은색 배경 숨기기
+        this.sta_hide_screen.visible = false;
+    }
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_tier">
         <ColumnInfo>
@@ -199,18 +298,18 @@ this.fn_Callback = function(svcId, errCode, errMsg)
           <Column id="SEASON_WIN_RATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_matches">
+      <Dataset id="ds_role">
         <ColumnInfo>
-          <Column id="MAP" type="STRING" size="256"/>
-          <Column id="AGENT" type="STRING" size="256"/>
           <Column id="ROLE" type="STRING" size="256"/>
-          <Column id="RESULT" type="STRING" size="256"/>
-          <Column id="RANK" type="INT" size="256"/>
+          <Column id="PLAY_COUNT" type="INT" size="256"/>
+          <Column id="PICK_RATE" type="FLOAT" size="256"/>
+          <Column id="WIN_COUNT" type="INT" size="256"/>
+          <Column id="LOSE_COUNT" type="INT" size="256"/>
+          <Column id="WIN_RATE" type="FLOAT" size="256"/>
           <Column id="KILL" type="INT" size="256"/>
           <Column id="DEATH" type="INT" size="256"/>
           <Column id="ASSIST" type="INT" size="256"/>
-          <Column id="HS_RATE" type="FLOAT" size="256"/>
-          <Column id="ADR" type="FLOAT" size="256"/>
+          <Column id="KDA_RATE" type="FLOAT" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_list">
@@ -241,6 +340,28 @@ this.fn_Callback = function(svcId, errCode, errMsg)
           <Column id="KD_RATE" type="FLOAT" size="256"/>
           <Column id="KDA_RATE" type="FLOAT" size="256"/>
           <Column id="AVG_SCORE" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_agent">
+        <ColumnInfo>
+          <Column id="AGENT" type="STRING" size="256"/>
+          <Column id="ROLE" type="STRING" size="256"/>
+          <Column id="PLAY_COUNT" type="INT" size="256"/>
+          <Column id="PICK_RATE" type="FLOAT" size="256"/>
+          <Column id="WIN_COUNT" type="INT" size="256"/>
+          <Column id="LOSE_COUNT" type="INT" size="256"/>
+          <Column id="WIN_RATE" type="FLOAT" size="256"/>
+          <Column id="KILL" type="INT" size="256"/>
+          <Column id="DEATH" type="INT" size="256"/>
+          <Column id="ASSIST" type="INT" size="256"/>
+          <Column id="KDA_RATE" type="FLOAT" size="256"/>
+          <Column id="AVG_SCORE" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_weapon">
+        <ColumnInfo>
+          <Column id="WEAPON" type="STRING" size="256"/>
+          <Column id="KILL" type="INT" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
