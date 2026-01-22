@@ -134,7 +134,7 @@
           </Formats>
         </ListView>
         <Static id="Static01_00" taborder="9" left="34" top="Static00_00:-2" width="400" height="2" background="#1f2326"/>
-        <Static id="sta_hide_screen" taborder="1" left="0" top="10" background="black" visible="true" width="50" height="50"/>
+        <Static id="sta_hide_screen" taborder="1" left="0" top="0" background="black" visible="true" width="1920" height="980"/>
         <Static id="Static02_00" taborder="11" left="35" top="list_agent:0" width="400" height="20"/>
         <Static id="Static00_00_00" taborder="13" text="선호 무기" left="35" top="Static02_00:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
         <ListView id="list_weapon" taborder="16" left="35" top="Static00_00_00:0" width="400" height="200" binddataset="ds_weapon" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
