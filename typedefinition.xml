@@ -8,6 +8,8 @@
     <Module url="DeviceAPI.json"/>
     <Module url="MobileComp.json"/>
     <Module url="extlib::ExtJs.json"/>
+    <Module url="extlib::rMateChartH5.json"/>
+    <Module url="extlib::DxChart.json"/>
   </Modules>
   <Components>
     <Component type="JavaScript" id="Button" classname="nexacro.Button"/>
@@ -46,6 +48,7 @@
     <Component type="JavaScript" id="WebView" classname="nexacro.WebView"/>
     <Component type="JavaScript" id="WebBrowser" classname="nexacro.WebBrowser"/>
     <Component type="JavaScript" id="VideoPlayer" classname="nexacro.VideoPlayer"/>
+    <Component type="JavaScript" id="ChartJS" classname="nexacro.ChartJS"/>
   </Components>
   <Services>
     <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" cachelevel="session" include_subdir="true"/>
