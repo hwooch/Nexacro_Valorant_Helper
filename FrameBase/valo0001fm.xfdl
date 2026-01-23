@@ -100,7 +100,7 @@ this.btn_common_onmouseleave = function(obj:nexacro.Button, e:nexacro.MouseEvent
     }
 };
 
-// 로고를 클릭했을때 전적검색 버튼을 누름
+// 로고를 클릭했을때 전적검색 버튼을 누른것과 동일한 효과
 this.sta_logo_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
 {
 	this.btn_Search.click();

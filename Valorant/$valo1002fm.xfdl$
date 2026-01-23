@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <!--<Form id="valo1002fm" width="1920" titletext="전적 검색 - 상세" border="none" background="url('theme://images/Valo_Match_search_background.png') no-repeat left top /100% 100% #101823" height="980" scrollbartype="none auto" onclick="valo1001fm_onclick">-->
   <Form id="valo1002fm" width="1920" titletext="전적 검색 - 상세" border="none" height="980" scrollbartype="none auto" onload="valo1002fm_onload">
     <Layouts>
       <Layout height="980" width="1920">
@@ -50,14 +49,14 @@
             </Format>
           </Formats>
         </ListView>
-        <Static id="Static02_01" taborder="11" left="35" top="list_statistics:0" width="400" height="20"/>
-        <Static id="Static00" taborder="5" text="선호 역할군" left="34" top="Static02_01:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
-        <ListView id="list_role" taborder="3" left="34" top="Static00:0" width="400" height="300" binddataset="ds_role" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
+        <Static id="sta_space_1" taborder="11" left="35" top="list_statistics:0" width="400" height="20"/>
+        <Static id="sta_role" taborder="5" text="선호 역할군" left="34" top="sta_space_1:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
+        <ListView id="list_role" taborder="3" left="34" top="sta_role:0" width="400" height="300" binddataset="ds_role" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
           <Formats>
             <Format id="default">
               <Band id="body" width="100%" height="80" background="transparent" border="0px none">
                 <Cell id="CellLine" left="10" right="10" top="0" height="1" background="#1f2326" border="0px none" visible="expr:currow &gt; 0"/>
-                <Cell id="CellRoleIcon" left="20" top="15" width="50" height="50" border="2px solid #ff4655" borderRadius="50px" text="" background="transparent"/>
+                <Cell id="CellRoleIcon" left="15" top="15" width="50" height="50" text="" background="transparent" displaytype="imagecontrol"/>
                 <Cell id="CellRoleName" left="80" top="17" width="80" height="24" text="bind:ROLE" color="white" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="left"/>
                 <Cell id="CellPickRate" left="80" top="43" width="80" height="20" text="expr:PICK_RATE + '%'" color="#ff4655" font="14px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="left"/>
                 <Cell id="CellKdaRate" top="17" width="120" height="24" text="expr:KDA_RATE + ':1 평점'" color="#00ffba" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="center" right="130" textAlign="right"/>
@@ -68,15 +67,15 @@
             </Format>
           </Formats>
         </ListView>
-        <Static id="Static01" taborder="6" left="34" top="Static00:-2" width="400" height="2" background="#1f2326"/>
-        <Static id="Static02" taborder="7" left="34" top="list_role:0" width="400" height="20"/>
-        <Static id="Static00_00" taborder="9" text="선호 요원" left="34" top="Static02:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
-        <ListView id="list_agent" taborder="4" left="34" top="Static00_00:0" width="400" height="200" binddataset="ds_agent" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
+        <Static id="sta_devide_1" taborder="6" left="34" top="sta_role:-2" width="400" height="2" background="#1f2326"/>
+        <Static id="sta_space_2" taborder="7" left="34" top="list_role:0" width="400" height="20"/>
+        <Static id="sta_agent" taborder="9" text="선호 요원" left="34" top="sta_space_2:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
+        <ListView id="list_agent" taborder="4" left="34" top="sta_agent:0" width="400" height="200" binddataset="ds_agent" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
           <Formats>
             <Format id="default">
               <Band id="body" width="100%" height="80" background="transparent" border="0px none">
                 <Cell id="CellLine" left="10" right="10" top="0" height="1" background="#1f2326" border="0px none" visible="expr:currow &gt; 0"/>
-                <Cell id="CellAgentIcon" left="20" top="15" width="50" height="50" displaytype="imagecontrol" borderRadius="50px" border="0px none" background="red"/>
+                <Cell id="CellAgentIcon" left="10" top="10" width="60" height="60" displaytype="imagecontrol" border="0px none" borderRadius="10px"/>
                 <Cell id="CellAgentName" left="80" top="17" width="100" height="24" text="bind:AGENT" color="white" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="left"/>
                 <Cell id="CellAvgScore" left="80" top="43" width="120" height="20" text="expr:AVG_SCORE + ' 평균 점수'" color="#98979f" font="13px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="left"/>
                 <Cell id="CellKdaRate" top="17" width="120" height="24" text="expr:KDA_RATE + ':1 평점'" color="#00ffba" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" border="0px none" align="center" right="130" textAlign="right"/>
@@ -87,11 +86,11 @@
             </Format>
           </Formats>
         </ListView>
-        <Static id="Static01_00" taborder="8" left="34" top="Static00_00:-2" width="400" height="2" background="#1f2326"/>
+        <Static id="sta_devide2" taborder="8" left="34" top="sta_agent:-2" width="400" height="2" background="#1f2326"/>
         <Static id="sta_hide_screen" taborder="0" left="0" top="0" background="black" visible="true" width="50" height="50"/>
-        <Static id="Static02_00" taborder="10" left="35" top="list_agent:0" width="400" height="20"/>
-        <Static id="Static00_00_00" taborder="12" text="선호 무기" left="35" top="Static02_00:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
-        <ListView id="list_weapon" taborder="15" left="35" top="Static00_00_00:0" width="400" height="200" binddataset="ds_weapon" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
+        <Static id="sta_space_3" taborder="10" left="35" top="list_agent:0" width="400" height="20"/>
+        <Static id="sta_weapon" taborder="12" text="선호 무기" left="35" top="sta_space_3:0" width="400" height="50" background="#31313c" borderRadius="20px 20px 0px 0px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px"/>
+        <ListView id="list_weapon" taborder="15" left="35" top="sta_weapon:0" width="400" height="200" binddataset="ds_weapon" background="#31313c" border="0px none" borderRadius="0px 0px 20px 20px">
           <Formats>
             <Format id="default">
               <Band id="body" width="100%" height="80" background="transparent" border="0px none">
@@ -103,51 +102,16 @@
             </Format>
           </Formats>
         </ListView>
-        <Static id="Static02_00_00" taborder="14" left="35" top="list_weapon:0" width="400" height="20"/>
-        <Static id="Static01_00_00" taborder="13" left="35" top="Static00_00_00:0" width="400" height="2" background="#1f2326"/>
-        <ListView id="list_statistics00" taborder="16" left="468" top="div_user_status:240" height="340" binddataset="ds_list" background="#31313c" border="0px none" borderRadius="20px" right="34">
-          <Formats>
-            <Format id="default">
-              <Band id="body" width="100%" height="50" background="transparent" color="#666666" border="0px none,0px none,2px solid #1f2326">
-                <Cell id="Cell16" left="20" top="0" width="120" text="최근 전적" cssclass="match_info" color="white" bottom="0" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" border="0px none"/>
-              </Band>
-              <Band id="detail" width="100%" height="299" background="transparent" border="0px none">
-                <Cell id="Cell00" top="136" height="20" text="킬" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="60" background="transparent"/>
-                <Cell id="Cell01" top="Cell00:4" height="22" text="bind:TOTAL_KILL" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="60"/>
-                <Cell id="Cell02" top="190" height="20" text="데스" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="60" background="transparent"/>
-                <Cell id="Cell03" top="Cell02:4" height="22" text="bind:TOTAL_DEATH" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="60"/>
-                <Cell id="Cell04" top="244" height="20" text="어시스트" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="60" background="transparent"/>
-                <Cell id="Cell05" top="Cell04:4" height="22" text="bind:TOTAL_ASSIST" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="60"/>
-                <Cell id="Cell06" left="70" top="136" width="100" height="20" text="헤드샷" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
-                <Cell id="Cell07" left="55" top="Cell06:4" width="130" height="22" text="bind:TOTAL_HEAD" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
-                <Cell id="Cell08" left="70" top="190" width="100" height="20" text="바디샷" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
-                <Cell id="Cell09" left="55" top="Cell08:4" width="130" height="22" text="bind:TOTAL_BODY" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
-                <Cell id="Cell10" left="70" top="244" width="100" height="20" text="레그샷" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
-                <Cell id="Cell11" left="55" top="Cell10:4" width="130" height="22" text="bind:TOTAL_LEG" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
-                <Cell id="Cell12" left="149" top="64" width="100" height="20" text="최다 킬" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
-                <Cell id="Cell13" left="149" top="Cell12:4" width="100" height="22" text="bind:MAX_KILL" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
-                <Cell id="Cell14" left="20" top="64" width="100" height="20" text="플레이 한 시간" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
-                <Cell id="Cell15" left="20" top="Cell14:4" width="100" height="22" text="bind:PLAY_TIME" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
-                <Cell id="Cell16" left="20" top="10" width="100" height="20" text="데미지/라운드" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
-                <Cell id="Cell17" left="20" top="Cell16:4" width="100" height="22" text="bind:AVG_DMG" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
-                <Cell id="Cell18" left="149" top="10" width="100" height="20" text="KD 비율" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
-                <Cell id="Cell19" left="149" top="Cell18:4" width="100" height="22" text="bind:KD_RATE" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
-                <Cell id="Cell20" top="10" width="100" height="20" text="평점" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" right="20" background="transparent"/>
-                <Cell id="Cell21" top="Cell20:4" height="22" text="bind:KDA_RATE" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="20"/>
-                <Cell id="Cell22" top="64" height="20" text="점수/라운드" cssclass="match_info" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="20" background="transparent"/>
-                <Cell id="Cell23" top="Cell22:4" height="22" text="bind:AVG_SCORE" cssclass="match_info" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="20"/>
-                <Cell id="Cell24" left="0" top="Cell13:20" height="2" background="#1f2326" color="#1f2326" text="" right="0"/>
-              </Band>
-            </Format>
-          </Formats>
-        </ListView>
-        <ChartJS id="ChartJS00" taborder="17" text="ChartJS00" left="480" top="540" width="1360" height="410" background="white"/>
-        <Div id="div_recent_history" taborder="18" text="Div00" left="468" top="div_user_status:20" height="175" borderRadius="20px 20px 0px 0px" right="34" background="#31313c">
+        <Static id="sta_space_4" taborder="14" left="35" top="list_weapon:0" width="400" height="20"/>
+        <Static id="sta_devide_3" taborder="13" left="35" top="sta_weapon:0" width="400" height="2" background="#1f2326"/>
+        <Div id="div_recent_history" taborder="16" text="Div00" left="468" top="div_user_status:20" borderRadius="20px" right="34" background="#31313c" bottom="20">
           <Layouts>
             <Layout>
-              <Static id="sta_recent_summary" taborder="0" text="n전 n승 n무 n패" left="0" top="50" width="190" height="50" padding="0px 0px 0px 20px"/>
-              <Static id="Static01_01" taborder="1" left="0" top="50" height="2" background="#1f2326" right="0"/>
-              <Static id="Static00_01" taborder="2" text="최근 매치" left="0" top="0" height="50" background="#31313c" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px" right="0"/>
+              <ChartJS id="chart_win_rate" taborder="3" text="ChartJS00" left="-150" top="50" width="500" height="200"/>
+              <Static id="sta_recent_summary" taborder="0" text="n전 n승 n무 n패" left="200" top="100" width="300" height="50" color="#9e9eb1" font="20px/normal AppleSDGothicNeoEB00"/>
+              <Static id="sta_recent_match" taborder="2" text="최근 매치" left="0" top="0" height="50" background="#31313c" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px" right="0"/>
+              <Static id="sta_devide_5" taborder="1" left="0" top="48" height="2" background="#1f2326" right="0"/>
+              <Static id="sta_devide_5_00" taborder="4" left="0" top="248" height="2" background="#1f2326" right="0"/>
             </Layout>
           </Layouts>
         </Div>
@@ -166,6 +130,7 @@ this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.ds_role.clearData();
     this.ds_agent.clearData();
     this.ds_weapon.clearData();
+	this.ds_chart_win_rate.clearData();
 	
     var username = this.fvApp.getVariable("gv_Recent_Search_Name");
     var usertag  = this.fvApp.getVariable("gv_Recent_Search_Tag");
@@ -197,6 +162,16 @@ this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     var strCallbackFunc = "fn_Callback";
 	
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);	
+	
+	// 요원 정보 조회 transaction
+	var strSvcID        = "getAgents";
+    var strURL          = "SvcUrl::getAgentList.do";
+    var strInDatasets   = "";
+    var strOutDatasets  = "ds_agent_info=out_agent_info";
+    var strArgument     = "";
+    var strCallbackFunc = "fn_Callback";
+	
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
 };
 
 // 역할군 리스트뷰 다시 그리기
@@ -251,7 +226,10 @@ this.fn_Callback = function(svcId, errCode, errMsg)
         this.alert("조회 실패: " + errMsg);
         return;
     }
-    
+    // 요원 정보 조회
+    if (svcId == "getAgents") {
+		// 아무 동작 안해도 괜찮음
+    }
 	// 티어 조회
     if (svcId == "searchTier") {
         if (this.ds_tier.rowcount > 0) {
@@ -278,19 +256,28 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 	// 전적 조회
     else if (svcId == "searchMatch") {
 	
+		this.list_agent.setCellProperty("body", "CellAgentIcon", "background", 
+		"expr:\"url('\" + AGENT_ICON + \"') no-repeat center center /contain\"");
+		
+		this.list_role.setCellProperty("body", "CellRoleIcon", "background", 
+		"expr:\"url('\" + ROLE_ICON + \"') no-repeat center center /contain\"");
+		
 		// 왼쪽 리스트뷰 다시 그리기
         this.fn_resizeRoleList();
         this.fn_resizeAgentList();
 		this.fn_resizeWeaponList();
 		
+		// 차트와 승패 박스 그리기
 		this.fn_drawRecentHistory(10);
         this.fnCreateChart();
+		
         // 검은색 배경 숨기기
         this.sta_hide_screen.visible = false;
 		this.scrollbartype = "none auto";
     }
 };
-//////////////////////////////////////////////////////////////////////////
+
+// 승패 박스 그리기
 this.fn_drawRecentHistory = function(nLimit)
 {
     var nTotal = this.ds_list.getRowCount();
@@ -309,23 +296,22 @@ this.fn_drawRecentHistory = function(nLimit)
     // 기존에 그려진 컴포넌트 초기화
     // div_recent_history 내부의 모든 동적 컴포넌트 삭제
     var comps = this.div_recent_history.form.components;
-    for (var i = comps.length - 1; i >= 0; i--) {
-        var comp = comps[i];
-        // 동적으로 만든 컴포넌트만 삭제 (ID에 "sta_result_"가 포함된 것)
-        if (comp.name.indexOf("sta_result_") > -1) {
-            this.div_recent_history.form.removeChild(comp.name);
-            comp.destroy();
-			comp = null;
-        }
-    }
+//     for (var i = comps.length - 1; i >= 0; i--) {
+//         var comp = comps[i];
+//         // 동적으로 만든 컴포넌트만 삭제 (ID에 "sta_result_"가 포함된 것)
+//         if (comp.id.indexOf("sta_result_") > -1) {
+//             this.div_recent_history.form.removeChild(comp.id);
+//             comp.destroy();
+// 			comp = null;
+//         }
+//     }
 
     //박스 그리기 설정 값
-	var nLeft = null;
-    var nRight = 410;   // 시작 위치
-    var nTop  = 55;     // 시작 위치
+	var nLeft = 200;
+    var nTop  = 150;     // 시작 위치
     var nWidth = 40;    // 박스 너비
     var nHeight = 40;   // 박스 높이
-    var nGap = 5;       // 박스 간격
+    var nGap = 10;       // 박스 간격
 
     // 5. 반복문으로 데이터 순회 및 박스 생성
     for (var i = 0; i < nCount; i++) {
@@ -335,7 +321,7 @@ this.fn_drawRecentHistory = function(nLimit)
         
 		var sId = "sta_result_" + i;
 		var objStatic = new Static();
-		objStatic.init(sId, nLeft, nTop, nWidth, nHeight, nRight, null);
+		objStatic.init(sId, nLeft, nTop, nWidth, nHeight);
 		// 스타일 설정
         objStatic.textAlign = "center";
         objStatic.verticalAlign = "middle";
@@ -366,112 +352,67 @@ this.fn_drawRecentHistory = function(nLimit)
         objStatic.show();
         
         // 다음 박스 위치 계산
-        nRight = nRight - nWidth - nGap;
+        nLeft = nLeft + nWidth + nGap;
     }
-    
+	
     // 6. 텍스트 요약 정보 표시 (예: "10전 4승 0무 6패")
 	var nRate = Math.round((nWins / nCount) * 100);
     var sSummary = nCount + "전 " + nWins + "승 " + nDraws + "무 " + nLosses + "패 (" + nRate + "%)";
 	
     this.div_recent_history.form.sta_recent_summary.text = sSummary;
+	
+	// 1번째 : 승리
+	var nRowWin = this.ds_chart_win_rate.addRow();
+	this.ds_chart_win_rate.setColumn(nRowWin, "RATE", nWins);
+
+	// 2번째 : 무승부
+	var nRowLoss = this.ds_chart_win_rate.addRow();
+	this.ds_chart_win_rate.setColumn(nRowLoss, "RATE", nDraws);
+	
+	// 3번째 : 패배
+	var nRowDraw = this.ds_chart_win_rate.addRow();
+	this.ds_chart_win_rate.setColumn(nRowDraw, "RATE", nLosses);
+	
 	this.div_recent_history.form.resetScroll();
 };
-//////////////////////////////////////////////////////////////////////////
-
 
 // 차트 그리기
 this.fnCreateChart = function() {
-	var chart = this.ChartJS00;			    // Chart id
-	var canvas = chart.getCanvas();			// Canvas 가져오기
-	var cvs = canvas.id;					// Canvas id
-	var ds = this.dsChart;					// bind Dataset
+	var chart = this.div_recent_history.form.chart_win_rate;	// Chart id
+	var canvas = chart.getCanvas();								// Canvas 가져오기
+	var cvs = canvas.id;										// Canvas id
+	var ds = this.ds_chart_win_rate;							// bind Dataset
 	
-	DxChart.reset(canvas);					// 차트영역(Canvas) reset
+	DxChart.reset(canvas);										// 차트영역(Canvas) reset
 	
 	// Chart 그리기  DxChartPie - Pie(파이) chart  
 	var chartObj = new DxChartPie({
-		id: cvs,										// 차트 canvas의 아이디
-		elem: canvas,									// 차트 canvas 오브젝트
-		binddataset: ds,								// Binddataset
-		datachangeevent : {Use:true, Effect:"roundRobin"}, 	// Binddataset의 data가 변경이되면 차트를 다시 그릴지 여부 
-		data:["bind:Total"],	// 차트에 표현할 데이터 리스트 ["bind:Col0","bind:Col1"]
-		options: this.fnGetOption(canvas) 	//  차트에 대한 옵션값 {background:() , key:() , xaxis , yaxis , tooltip }  : 	
+		id: cvs,							// 차트 canvas의 아이디
+		elem: canvas,						// 차트 canvas 오브젝트
+		binddataset: ds,					// Binddataset
+		data:["bind:RATE"],					// 차트에 표현할 데이터 리스트 ["bind:Col0","bind:Col1"]
+		options: this.fnGetOption(canvas) 	// 차트에 대한 옵션값 {background:() , key:() , xaxis , yaxis , tooltip }  : 	
 	}).roundRobin();
 };
 
-// ====================== options ======================
 this.fnGetOption = function (canvas, background)
 {
 	var Option = {
-		radius:125,
-		CustomData: ['bind:Year'],
-		shadow: { Use : true },
+		radius:75,
+		CustomData: ['bind:RATE'],
+		shadow: { Use : false },
 		labels: "",
-		//labels: this.fnGetLabels(),
-		//title:  this.fnGetTitle(),
 		title:  "",
 		background:{ GridVlines: false, GridBorder: true },
-		tooltips: this.fnGetTooltip(),
-		key: this.fnGetKey(canvas),
+		tooltips: "",
+		key: "",
+		colors: ["#4a76d2","#6e6e86","#e74056"],
 		colorsStroke: 'transparent',
 	}
 	return Option;
 };
 
-this.fnGetTitle = function() {
-	return {
-		Text : "넥사크로 수강생 현황",					// 중앙 상단 제목
-		Color : "blue",							//	제목 색상
-		FontStyle : "18px bold Malgun Gothic", 	// 제목 글꼴 스타일
-		Halign : "center",						// 제목 가로 정렬
-		Y : 30,   								// 제목 세로 좌표
-		Subtitle : "연도별 넥사크로 수강생 참여 인원", 	// 부제목
-		SubtitleFontStyle : "12px bold Malgun Gothic",
-		SubtitleOffsetX : 0,					// 부제목의 가로 오프셋
-		SubtitleOffsetY : 10					// 부제목의 세로 오프셋 	};
-	};
-};
-
-/************************************************************************
- * tooltips
- ************************************************************************/
-this.fnGetTooltip = function() {
-	return {
-		Data : '%{property:CustomData[%{index}]}<br /><span style="font-weight: bold; font-size:13pt">%{value_formatted}</span>',
-		FormattedUnitsPost: '%',
-		Pointer: false,
-		PositionStatic: false
-	}	
-}
-
-/************************************************************************
- * key
- ************************************************************************/
-this.fnGetKey = function (canvas)
-{
-	return {
-		Data : ['bind:Year']
-		, PositionGraphBoxed: false
-		, Position :'graph'
-		, PositionGraphBoxed: false
-	}
-};
-
-/************************************************************************
- * labels
- ************************************************************************/
-this.fnGetLabels = function (canvas)
-{
-	return {
-		Data : ['bind:Year'],
-				List : false,
-				Sticks : true,
-				SticksLength: 40,
-				SticksLineWidth : 1,
-				StickStyle:'line',
-				SticksColors:['#333333']
-	}
-};]]></Script>
+]]></Script>
     <Objects>
       <Dataset id="ds_tier">
         <ColumnInfo>
@@ -495,6 +436,7 @@ this.fnGetLabels = function (canvas)
           <Column id="DEATH" type="INT" size="256"/>
           <Column id="ASSIST" type="INT" size="256"/>
           <Column id="KDA_RATE" type="FLOAT" size="256"/>
+          <Column id="ROLE_ICON" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_list">
@@ -530,6 +472,7 @@ this.fnGetLabels = function (canvas)
       <Dataset id="ds_agent">
         <ColumnInfo>
           <Column id="AGENT" type="STRING" size="256"/>
+          <Column id="AGENT_ICON" type="STRING" size="256"/>
           <Column id="ROLE" type="STRING" size="256"/>
           <Column id="PLAY_COUNT" type="INT" size="256"/>
           <Column id="PICK_RATE" type="FLOAT" size="256"/>
@@ -549,72 +492,49 @@ this.fnGetLabels = function (canvas)
           <Column id="KILL" type="INT" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="dsChart">
+      <Dataset id="ds_chart_win_rate">
         <ColumnInfo>
-          <Column id="Year" type="STRING" size="256"/>
-          <Column id="Miplatform" type="INT" size="256"/>
-          <Column id="XPLATFORM" type="INT" size="256"/>
-          <Column id="Nexacro" type="INT" size="256"/>
-          <Column id="Total" type="INT" size="256"/>
+          <Column id="RATE" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="Year">2018</Col>
-            <Col id="Miplatform">302</Col>
-            <Col id="XPLATFORM">199</Col>
-            <Col id="Nexacro">121</Col>
-            <Col id="Total">622</Col>
-          </Row>
-          <Row>
-            <Col id="Year">2019</Col>
-            <Col id="Miplatform">358</Col>
-            <Col id="XPLATFORM">238</Col>
-            <Col id="Nexacro">285</Col>
-            <Col id="Total">881</Col>
-          </Row>
-          <Row>
-            <Col id="Year">2020</Col>
-            <Col id="Miplatform">215</Col>
-            <Col id="XPLATFORM">238</Col>
-            <Col id="Nexacro">394</Col>
-            <Col id="Total">847</Col>
-          </Row>
-          <Row>
-            <Col id="Year">2021</Col>
-            <Col id="Miplatform">152</Col>
-            <Col id="XPLATFORM">356</Col>
-            <Col id="Nexacro">241</Col>
-            <Col id="Total">749</Col>
-          </Row>
-          <Row>
-            <Col id="Year">2022</Col>
-            <Col id="Miplatform">171</Col>
-            <Col id="XPLATFORM">344</Col>
-            <Col id="Nexacro">356</Col>
-            <Col id="Total">871</Col>
-          </Row>
-          <Row>
-            <Col id="Year">2023</Col>
-            <Col id="Miplatform">264</Col>
-            <Col id="XPLATFORM">358</Col>
-            <Col id="Nexacro">365</Col>
-            <Col id="Total">987</Col>
-          </Row>
-          <Row>
-            <Col id="Year">2024</Col>
-            <Col id="Miplatform">213</Col>
-            <Col id="XPLATFORM">256</Col>
-            <Col id="Nexacro">431</Col>
-            <Col id="Total">900</Col>
-          </Row>
-          <Row>
-            <Col id="Year">2025</Col>
-            <Col id="Miplatform">137</Col>
-            <Col id="XPLATFORM">241</Col>
-            <Col id="Nexacro">489</Col>
-            <Col id="Total">867</Col>
-          </Row>
-        </Rows>
+      </Dataset>
+      <Dataset id="ds_agent_info">
+        <ColumnInfo>
+          <Column id="AGENT_NAME" type="STRING" size="256"/>
+          <Column id="AGENT_ICON" type="STRING" size="256"/>
+          <Column id="AGENT_IMG" type="STRING" size="256"/>
+          <Column id="ROLE_NAME" type="STRING" size="256"/>
+          <Column id="ROLE_ICON" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_match_info">
+        <ColumnInfo>
+          <Column id="MATCH_ID" type="STRING" size="256"/>
+          <Column id="MAP" type="STRING" size="256"/>
+          <Column id="START_TIME" type="STRING" size="256"/>
+          <Column id="PLAY_TIME" type="STRING" size="256"/>
+          <Column id="IS_WIN" type="STRING" size="256"/>
+          <Column id="SCORE_RED" type="STRING" size="256"/>
+          <Column id="SCORE_BLUE" type="STRING" size="256"/>
+          <Column id="MY_TEAM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_match_players">
+        <ColumnInfo>
+          <Column id="PLAYER_NAME" type="STRING" size="256"/>
+          <Column id="TAG" type="STRING" size="256"/>
+          <Column id="TEAM" type="STRING" size="256"/>
+          <Column id="AGENT" type="STRING" size="256"/>
+          <Column id="AGENT_ICON" type="STRING" size="256"/>
+          <Column id="TIER" type="STRING" size="256"/>
+          <Column id="RANK" type="STRING" size="256"/>
+          <Column id="KILL" type="STRING" size="256"/>
+          <Column id="DEATH" type="STRING" size="256"/>
+          <Column id="ASSIST" type="STRING" size="256"/>
+          <Column id="KD" type="STRING" size="256"/>
+          <Column id="KDA" type="STRING" size="256"/>
+          <Column id="ACS" type="STRING" size="256"/>
+          <Column id="HS_RATE" type="STRING" size="256"/>
+        </ColumnInfo>
       </Dataset>
     </Objects>
   </Form>

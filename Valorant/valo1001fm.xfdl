@@ -5,7 +5,7 @@
       <Layout height="980" width="1920">
         <Edit id="etd_Player_Search" taborder="1" left="56.875%" top="56.42857142857143%" width="476" height="60" text="" displaynulltext="플레이어 이름 + #태그" cssclass="Search_Edit" tabstop="false" onkeydown="Player_Search_onimeaction"/>
         <Button id="btn_Player_Search" taborder="0" text="검색" left="etd_Player_Search:3.36%" top="56.43%" width="66" height="60" cssclass="Search_Btn" tabstop="false" onclick="Player_Search_onimeaction"/>
-        <Button id="btn_focus" taborder="2" left="0" top="0" width="1" height="1" background="transparent"/>
+        <Button id="btn_focus" taborder="2" left="0" top="0" width="0" height="0" background="transparent"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
