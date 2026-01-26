@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Top" width="1920" height="100" titletext="헤더" visible="true" scrollbartype="none" border="0px none, 0px none, 2px solid #8e8e8e" onload="Form_Top_onload">
+  <Form id="Form_Top" width="2000" height="100" titletext="헤더" visible="true" scrollbartype="none" border="0px none, 0px none, 2px solid #8e8e8e" onload="Form_Top_onload">
     <Layouts>
-      <Layout width="1920" height="100" screenid="Desktop_screen">
+      <Layout width="2000" height="100" screenid="Desktop_screen">
         <Static id="Static01" taborder="12" text="Static01" left="46.875%" top="120" width="120" height="120" background="gold" opacity="10%" visible="false"/>
         <Button id="btn_Char" taborder="6" text="요원" left="Static01:-2" width="120" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave"/>
         <Button id="btn_Weapon" taborder="7" text="무기" width="120" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave" left="btn_Char:-2"/>

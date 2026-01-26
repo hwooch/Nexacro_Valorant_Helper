@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo3001fm" width="1920" height="980" titletext="스킨" onload="Valorant_onload">
+  <Form id="valo3001fm" width="2000" height="980" titletext="스킨" onload="Valorant_onload">
     <Layouts>
-      <Layout height="980" width="1920">
+      <Layout height="980" width="2000">
         <Div id="div_weapon" left="20" top="20" height="120" right="20" text=""/>
         <Div id="div_tier" left="20" top="150" height="90" right="20" background="transparent" text=""/>
         <Div id="div_skin_list" left="20" top="260" right="20" bottom="20" background="transparent" autoscrollbar="true" text="">

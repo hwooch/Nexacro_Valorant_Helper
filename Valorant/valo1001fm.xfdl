@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo1001fm" width="1920" titletext="전적 검색" border="none" background="url('theme://images/Valo_Match_search_background.png') no-repeat left top /100% 100% #101823" height="980" scrollbartype="none auto" onclick="valo1001fm_onclick">
+  <Form id="valo1001fm" width="2000" titletext="전적 검색" border="none" background="url('theme://images/Valo_Match_search_background.png') no-repeat left top /100% 100% #101823" height="980" scrollbartype="none auto" onclick="valo1001fm_onclick">
     <Layouts>
-      <Layout height="980" width="1920">
-        <Edit id="etd_Player_Search" taborder="1" left="56.875%" top="56.42857142857143%" width="476" height="60" text="" displaynulltext="플레이어 이름 + #태그" cssclass="Search_Edit" tabstop="false" onkeydown="Player_Search_onimeaction"/>
-        <Button id="btn_Player_Search" taborder="0" text="검색" left="etd_Player_Search:3.36%" top="56.43%" width="66" height="60" cssclass="Search_Btn" tabstop="false" onclick="Player_Search_onimeaction"/>
+      <Layout height="980" width="2000">
+        <Edit id="etd_Player_Search" taborder="1" left="58.30%" top="56.43%" width="476" height="60" text="" displaynulltext="플레이어 이름 + #태그" cssclass="Search_Edit" tabstop="false" onkeydown="Player_Search_onimeaction"/>
+        <Button id="btn_Player_Search" taborder="0" text="검색" left="etd_Player_Search:2.73%" top="56.43%" width="66" height="60" cssclass="Search_Btn" tabstop="false" onclick="Player_Search_onimeaction"/>
         <Button id="btn_focus" taborder="2" left="0" top="0" width="0" height="0" background="transparent"/>
       </Layout>
     </Layouts>

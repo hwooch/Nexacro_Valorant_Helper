@@ -11293,12 +11293,6 @@
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 }
-.ListView.match_info .body .cell
-{
-	color : black;
-	-nexa-border : 0px none;
-	
-}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>

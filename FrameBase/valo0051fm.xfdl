@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Work" width="1920" height="980" titletext="메인" onload="Form_Work_onload">
+  <Form id="Form_Work" width="2000" height="980" titletext="메인" onload="Form_Work_onload">
     <Layouts>
-      <Layout width="1920" height="980" screenid="Desktop_screen"/>
+      <Layout width="2000" height="980" screenid="Desktop_screen"/>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[// var flag = false;
 // this.WebView00_onloadcompleted = function(obj:nexacro.WebView,e:nexacro.WebLoadCompEventInfo)
