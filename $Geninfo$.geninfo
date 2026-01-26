@@ -9,6 +9,55 @@
       <Script rule_version="1.02"/>
       <GeneratorInfo rule_version="1.3"/>
     </Rule>
-    <Info project="C:\EduPack24\workspace\edupack_egov\src\main\p03\project030\" generated="C:\EduPack24\workspace\edupack_egov\src\main\webapp\p03\project030\"><File url="typedefinition.xml" checksum="20260126132424" errormsg=""/><File url="appvariables.xml" checksum="20260120132142" errormsg=""/><File url="environment.xml" checksum="20260120132142" errormsg=""/><File url="_resource_\_theme_\Valorant_Theme\theme.xcss" checksum="20260126111549" errormsg=""/><File url="_resource_\_stringrc_\stringresource.xstring" checksum="20260120132142" errormsg=""/><File url="Application_Desktop.xadl" checksum="20260126141925" errormsg=""/><File url="FrameBase\valo0001fm.xfdl" checksum="20260126140835" errormsg=""/><File url="FrameBase\valo0051fm.xfdl" checksum="20260126140959" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\framework\Framework.json" checksum="20250826164906" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\resources\Resource.json" checksum="20250826164906" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\CompBase.json" checksum="20250826164902" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ComComp.json" checksum="20250826164900" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\Grid.json" checksum="20250826164902" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ListView.json" checksum="20250826164906" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\DeviceAPI.json" checksum="20250826164902" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\MobileComp.json" checksum="20250826164908" errormsg=""/><File url="Valorant\valo1002fm.xfdl" checksum="20260126165615" errormsg=""/><File url="Valorant\test2.xfdl" checksum="20260120132142" errormsg=""/><File url="Valorant\testtttt.xfdl" checksum="20260120132142" errormsg=""/><File url="Valorant\valo1001fm.xfdl" checksum="20260126140934" errormsg=""/><File url="Valorant\valo2001fm.xfdl" checksum="20260126141006" errormsg=""/><File url="Valorant\valo3001fm.xfdl" checksum="20260126141017" errormsg=""/><File url="Valorant\valo4001fm.xfdl" checksum="20260126141021" errormsg=""/><File url="Valorant\valo5001fm.xfdl" checksum="20260126141025" errormsg=""/><File url="Valorant\valo6001fm.xfdl" checksum="20260126141029" errormsg=""/><File url="Valorant\valo7001fm.xfdl" checksum="20260126141032" errormsg=""/><File url="test\asdf.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmAlert.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmCalendarFromTo.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmCalendarMonth.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmCalendarMonthPdv.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmColumnHide.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmConfirm.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmDateRange.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmDebug.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmFindReplace.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmGridFilter.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmPaging.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmPopup.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmRmateChartAll.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmSlide.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmToggle.xfdl" checksum="20260120132142" errormsg=""/><File url="Cmm\CmmWebpage.xfdl" checksum="20260120132142" errormsg=""/><File url="Popup\valo1001pu.xfdl" checksum="20260120132142" errormsg=""/><File url="Popup\valo2001pu.xfdl" checksum="20260120132142" errormsg=""/><File url="_extlib_\ExtJs.json" checksum="20260120132142" errormsg=""/><File url="_extlib_\rMateChartH5.json" checksum="20260120132142" errormsg=""/><File url="_extlib_\DxChart.json" checksum="20260120132142" errormsg=""/></Info>
+    <Info project="C:\EduPack24\workspace\edupack_egov\src\main\p03\project030\" generated="C:\EduPack24\workspace\edupack_egov\src\main\webapp\p03\project030\">
+      <File url="typedefinition.xml" checksum="20260126132424" errormsg=""/>
+      <File url="appvariables.xml" checksum="20260120132142" errormsg=""/>
+      <File url="environment.xml" checksum="20260120132142" errormsg=""/>
+      <File url="_resource_\_theme_\Valorant_Theme\theme.xcss" checksum="20260126111549" errormsg=""/>
+      <File url="_resource_\_stringrc_\stringresource.xstring" checksum="20260120132142" errormsg=""/>
+      <File url="Application_Desktop.xadl" checksum="20260126141925" errormsg=""/>
+      <File url="FrameBase\valo0001fm.xfdl" checksum="20260126171416" errormsg=""/>
+      <File url="FrameBase\valo0051fm.xfdl" checksum="20260126140959" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\framework\Framework.json" checksum="20250826164906" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\resources\Resource.json" checksum="20250826164906" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\CompBase.json" checksum="20250826164902" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ComComp.json" checksum="20250826164900" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\Grid.json" checksum="20250826164902" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ListView.json" checksum="20250826164906" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\DeviceAPI.json" checksum="20250826164902" errormsg=""/>
+      <File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\MobileComp.json" checksum="20250826164908" errormsg=""/>
+      <File url="Valorant\valo1002fm.xfdl" checksum="20260126165647" errormsg=""/>
+      <File url="Valorant\test2.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Valorant\testtttt.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Valorant\valo1001fm.xfdl" checksum="20260126140934" errormsg=""/>
+      <File url="Valorant\valo2001fm.xfdl" checksum="20260126141006" errormsg=""/>
+      <File url="Valorant\valo3001fm.xfdl" checksum="20260126141017" errormsg=""/>
+      <File url="Valorant\valo4001fm.xfdl" checksum="20260126141021" errormsg=""/>
+      <File url="Valorant\valo5001fm.xfdl" checksum="20260126141025" errormsg=""/>
+      <File url="Valorant\valo6001fm.xfdl" checksum="20260126141029" errormsg=""/>
+      <File url="Valorant\valo7001fm.xfdl" checksum="20260126141032" errormsg=""/>
+      <File url="test\asdf.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmAlert.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmCalendarFromTo.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmCalendarMonth.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmCalendarMonthPdv.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmColumnHide.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmConfirm.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmDateRange.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmDebug.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmFindReplace.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmGridFilter.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmPaging.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmPopup.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmRmateChartAll.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmSlide.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmToggle.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Cmm\CmmWebpage.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Popup\valo1001pu.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="Popup\valo2001pu.xfdl" checksum="20260120132142" errormsg=""/>
+      <File url="_extlib_\ExtJs.json" checksum="20260120132142" errormsg=""/>
+      <File url="_extlib_\rMateChartH5.json" checksum="20260120132142" errormsg=""/>
+      <File url="_extlib_\DxChart.json" checksum="20260120132142" errormsg=""/>
+    </Info>
   </GenInfo>
 </root>

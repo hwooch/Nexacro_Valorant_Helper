@@ -115,7 +115,7 @@
           </Layouts>
         </Div>
         <Static id="sta_devide_0" taborder="15" left="34" top="sta_statistics:-2" width="400" height="2" background="#1f2326"/>
-        <Static id="sta_hide_screen" taborder="17" text="&#13;&#10;&#13;&#10;&#13;&#10;정보 검색 중 . . ." left="2064" top="190" background="#31313c" textAlign="center" verticalAlign="middle" color="white" font="normal 50pt/normal &quot;AppleSDGothicNeoH00&quot;" borderRadius="20px" right="-1996" bottom="20"/>
+        <Static id="sta_hide_screen" taborder="17" text="&#13;&#10;&#13;&#10;&#13;&#10;정보 검색 중 . . ." left="34" top="190" background="#31313c" textAlign="center" verticalAlign="middle" color="white" font="normal 50pt/normal &quot;AppleSDGothicNeoH00&quot;" borderRadius="20px" right="34" bottom="20"/>
         <Button id="Button00" taborder="18" left="34" top="list_weapon:0" width="400" height="20"/>
         <ListView id="list_match_list" taborder="19" left="468" top="455" height="690" binddataset="ds_list" border="0px none" right="34" background="transparent">
           <Formats>
