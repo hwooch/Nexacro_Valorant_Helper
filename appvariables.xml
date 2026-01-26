@@ -3059,6 +3059,14 @@
         <Column id="USE_FLAG" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
+    <Dataset id="gds_login">
+      <ColumnInfo>
+        <Column id="DISCORD_ID" type="STRING" size="256"/>
+        <Column id="PERMISSION" type="STRING" size="256"/>
+        <Column id="RIOT_ID" type="STRING" size="256"/>
+        <Column id="RIOT_TAG" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
   </Datasets>
   <Variables>
     <Variable id="gv_var1" initval="App Variable Value1"/>
