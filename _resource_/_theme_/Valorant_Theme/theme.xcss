@@ -11143,7 +11143,7 @@
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 }
-.Button.top_login
+.Button.top_logout
 {
 	cursor : pointer;
 	background : url('theme://images/Valo_discord_login_icon.png') no-repeat left center /contain #242429;
@@ -11151,7 +11151,7 @@
 	color : white;
 	border-radius : 20px;
 	font : 27px/normal "이사만루체 Medium";
-	-nexa-padding : 5px 0px 0px;
+	-nexa-padding : 5px 15px 0px 55px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : right;
 }
@@ -11209,7 +11209,6 @@
 	-nexa-padding : 5px 0px 0px;
 }
 .Button.top_login[status=mouseover],
-.Button.top_login[status=focused],
 .Button.top_login[userstatus=pushed],
 .Button.top_login[userstatus=selected]
 {
@@ -11219,7 +11218,7 @@
 	color : white;
 	border-radius : 20px;
 	font : 27px/normal "이사만루체 Medium";
-	-nexa-padding : 5px 0px 0px;
+	-nexa-padding : 5px 15px 0px 55px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : right;
 	box-shadow : 0px 0px 10px #ffffff;
@@ -11292,6 +11291,34 @@
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
+}
+.Button.top_login
+{
+	cursor : pointer;
+	background : url('theme://images/Valo_discord_login_icon.png') no-repeat left center /contain #242429;
+	-nexa-border : 2px solid #8e8e8e;
+	color : white;
+	border-radius : 20px;
+	font : 27px/normal "이사만루체 Medium";
+	-nexa-padding : 5px 15px 0px 55px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : right;
+}
+.Button.top_logout[status=disabled],
+.Button.top_logout[status=mouseover],
+.Button.top_logout[userstatus=pushed],
+.Button.top_logout[userstatus=selected]
+{
+	cursor : pointer;
+	background : url('theme://images/Valo_discord_login_icon.png') no-repeat left center /contain #242429;
+	-nexa-border : 2px solid #8e8e8e;
+	color : white;
+	border-radius : 20px;
+	font : 27px/normal "이사만루체 Medium";
+	-nexa-padding : 5px 15px 0px 55px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : right;
+	box-shadow : 0px 0px 10px #ffffff;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>

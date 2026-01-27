@@ -3065,6 +3065,7 @@
         <Column id="PERMISSION" type="STRING" size="256"/>
         <Column id="RIOT_ID" type="STRING" size="256"/>
         <Column id="RIOT_TAG" type="STRING" size="256"/>
+        <Column id="USER_NAME" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
   </Datasets>
