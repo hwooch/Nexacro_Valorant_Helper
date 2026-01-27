@@ -154,6 +154,7 @@
           </Formats>
         </ListView>
         <Button id="btn_space_1" taborder="20" left="1010" top="list_match_list:0" width="400" height="20"/>
+        <Button id="Button01" taborder="21" left="2128" top="630" width="192" height="380" background="#1f2326"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();

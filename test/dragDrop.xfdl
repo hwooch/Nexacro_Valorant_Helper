@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="dragDrop" width="1010" height="870" titletext="드래그 &amp; 드롭" onload="form_onload" onsize="form_onsize" ondrop="form_ondrop" ondragmove="form_ondragmove" ontimer="form_ontimer" ontouchend="form_ontouchend" onlbuttonup="form_onlbuttonup">
+    <Layouts>
+      <Layout height="870" width="1010">
+        <Div id="div_container" taborder="1" text="Div01" left="55" top="0" height="870" right="45">
+          <Layouts>
+            <Layout>
+              <Div id="divTitle1" taborder="0" left="0" top="30" width="190" height="546" cssclass="div_WF_PortletBox01" ondrag="fnComBtnOnDrag">
+                <Layouts>
+                  <Layout>
+                    <Static id="staTitle" taborder="1" text="Faded Denim" left="0" top="31.501831501831504%" height="30" cssclass="sta_WF_PortletTitleD" right="0"/>
+                    <Static id="staDesc" taborder="0" left="0" top="staTitle:10" right="0" cssclass="sta_WF_PortletTextD" text="Faded Denim, a relatable and dependable blue conveys comfort and ease" bottom="30"/>
+                    <Button id="btn_move" taborder="2" top="8" width="44" height="44" cssclass="btn_WF_PortletMove" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTitle2" taborder="1" left="215" top="30" width="255" height="260" cssclass="div_WF_PortletBox02" ondrag="fnComBtnOnDrag">
+                <Layouts>
+                  <Layout>
+                    <Static id="staTitle" taborder="1" text="Ultimate Gray" left="0" top="30%" height="30" cssclass="sta_WF_PortletTitleD" right="0"/>
+                    <Static id="staDesc" taborder="0" left="0" top="staTitle:10" cssclass="sta_WF_PortletTextD" text="emblematic of solid and dependable elements which are everlasting and provide a firm faundation" bottom="30" right="0"/>
+                    <Button id="btn_move" taborder="2" top="8" width="44" height="44" cssclass="btn_WF_PortletMove" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTitle4" taborder="2" top="30" height="260" cssclass="div_WF_PortletBox04" right="0" left="745.00" ondrag="fnComBtnOnDrag">
+                <Layouts>
+                  <Layout>
+                    <Static id="staTitle" taborder="1" text="Blossom" left="0" top="30%" height="30" cssclass="sta_WF_PortletTitleD" right="0"/>
+                    <Static id="staDesc" taborder="0" left="0" top="staTitle:10" cssclass="sta_WF_PortletTextD" text="Blossom, a petal soft pink elicits an aura of romance" bottom="30" right="0"/>
+                    <Button id="btn_move" taborder="2" top="8" width="44" height="44" cssclass="btn_WF_PortletMove" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTitle5" taborder="3" left="215" top="316" width="362" height="260" cssclass="div_WF_PortletBox05" ondrag="fnComBtnOnDrag">
+                <Layouts>
+                  <Layout>
+                    <Static id="staTitle" taborder="1" text="Classic Blue" left="0" top="30%" height="30" cssclass="sta_WF_PortletTitleL" right="0"/>
+                    <Static id="staDesc" taborder="0" left="0" top="staTitle:10" cssclass="sta_WF_PortletTextL" text="An expansive presence, Classic blue is evocative of the vast and infinite evening sky opening a world of possibilities" bottom="30" right="0"/>
+                    <Button id="btn_move" taborder="2" top="8" width="44" height="44" cssclass="btn_WF_PortletMove" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTitle6" taborder="4" left="602" top="316" height="260" cssclass="div_WF_PortletBox06" right="0" ondrag="fnComBtnOnDrag">
+                <Layouts>
+                  <Layout>
+                    <Static id="staTitle" taborder="1" text="Grape Compote" left="0" top="30%" height="30" cssclass="sta_WF_PortletTitleL" right="0"/>
+                    <Static id="staDesc" taborder="0" left="0" top="staTitle:10" cssclass="sta_WF_PortletTextL" text="Grape Compote is a composite of mysterious and mellow purple shades" bottom="30" right="0"/>
+                    <Button id="btn_move" taborder="2" top="8" width="44" height="44" cssclass="btn_WF_PortletMove" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTitle7" taborder="5" left="0" top="600" width="470" height="220" cssclass="div_WF_PortletBox07" ondrag="fnComBtnOnDrag">
+                <Layouts>
+                  <Layout>
+                    <Static id="staTitle" taborder="1" text="Tanager Turquoise" left="0" top="30%" height="30" cssclass="sta_WF_PortletTitleD" right="0"/>
+                    <Static id="staDesc" taborder="0" left="0" top="staTitle:10" cssclass="sta_WF_PortletTextD" text="Tanager Turquoise cools with its soothing presence" bottom="30" right="0"/>
+                    <Button id="btn_move" taborder="2" top="8" width="44" height="44" cssclass="btn_WF_PortletMove" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTitle8" taborder="6" left="495" top="600" height="220" cssclass="div_WF_PortletBox08" right="0" ondrag="fnComBtnOnDrag">
+                <Layouts>
+                  <Layout>
+                    <Static id="staTitle" taborder="1" text="Polar Night" left="0" top="30%" height="30" cssclass="sta_WF_PortletTitleL" right="0"/>
+                    <Static id="staDesc" taborder="0" left="0" top="staTitle:10" cssclass="sta_WF_PortletTextL" text="A profoundly deep and restful twilight blue" bottom="30" right="0"/>
+                    <Button id="btn_move" taborder="2" top="8" width="44" height="44" cssclass="btn_WF_PortletMove" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTitle3" taborder="7" left="495" top="30" height="260" cssclass="div_WF_PortletBox03" ondrag="fnComBtnOnDrag" width="225">
+                <Layouts>
+                  <Layout>
+                    <Static id="staTitle" taborder="1" text="Princess Blue" left="0" top="30%" height="30" cssclass="sta_WF_PortletTitleL" right="0"/>
+                    <Static id="staDesc" taborder="0" left="0" top="staTitle:10" cssclass="sta_WF_PortletTextL" text="Princess Blue, a majestic royal blue hue, glistens and gleams" bottom="30" right="0"/>
+                    <Button id="btn_move" taborder="2" top="8" width="44" height="44" cssclass="btn_WF_PortletMove" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_move" taborder="0" left="1065.00" top="30" width="190" height="546" cssclass="div_WF_PortletBox01" visible="false" text="">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" taborder="1" left="0" top="31.501831501831504%" height="30" cssclass="sta_WF_PortletTitleD" right="0"/>
+              <Button id="btn_move" taborder="2" top="8" width="44" height="44" cssclass="btn_WF_PortletMove" right="0"/>
+              <Static id="staDesc" taborder="0" left="0" top="staTitle:10" right="0" cssclass="sta_WF_PortletTextD" bottom="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DEMO site
+*  @FileName 	dragDrop.xfdl
+*  @Creator 	PRESALES
+*  @CreateDate 	2024/06/13
+*  @Desction   
+************** 소스 수정 이력 ****************************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2024/06/13			PRESALES					최초생성
+*********************************************************************  **********
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.fvObjAni = false;
+this.fvObjDrag = false;
+this.fvTimerIdx = 0;
+this.fvTimerMax = 30;
+this.fvObjFrom;
+this.fvObjTo;
+
+/*******************************************************************************************************************************
+ * FORM EVENT 영역
+*******************************************************************************************************************************/
+
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.resetScroll();
+};
+
+
+this.form_ondragmove = function(obj:nexacro.Form,e:nexacro.DragEventInfo)
+{
+	this.div_move.move(e.clientx + 10, e.clienty + 10);
+};
+
+
+this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
+{
+	this.resetScroll();
+};
+
+this.form_ondrop = function(obj:nexacro.Form,e:nexacro.DragEventInfo)
+{
+	if (this.fvObjAni == false) 
+	{
+		this.fvObjFrom = e.userdata;
+		this.fvObjTo = e.fromobject.parent;
+		
+		if (this.fvObjTo.name.includes("divTitle") || this.fvObjTo.parent.name.includes("divTitle")) {
+			this.fvObjTo.name.includes("divTitle") ? this.fvObjTo = e.fromobject.parent  : this.fvObjTo = e.fromobject.parent.parent;
+			
+			
+			this.fvObjFrom.orgLeft = this.fvObjFrom.getOffsetLeft();
+			this.fvObjFrom.orgTop = this.fvObjFrom.getOffsetTop();
+			this.fvObjFrom.orgWidth = this.fvObjFrom.getOffsetWidth();
+			this.fvObjFrom.orgHeight = this.fvObjFrom.getOffsetHeight();
+			
+			this.fvObjTo.orgLeft = this.fvObjTo.getOffsetLeft();
+			this.fvObjTo.orgTop = this.fvObjTo.getOffsetTop();
+			this.fvObjTo.orgWidth = this.fvObjTo.getOffsetWidth();
+			this.fvObjTo.orgHeight = this.fvObjTo.getOffsetHeight();
+			
+			this.fvObjAni = true;
+			this.setTimer(1, 10);
+		}else{
+			return;
+		}
+	}	
+};
+
+this.form_onlbuttonup = function(obj:nexacro.Form,e:nexacro.MouseEventInfo)
+{
+	if (this.fvObjDrag == true) {
+		this.fvObjDrag = false;
+		
+		this.div_move.visible = false;
+	}	
+};
+
+this.form_ontouchend = function(obj:nexacro.Form,e:nexacro.TouchEventInfo)
+{
+	
+	if (this.fvObjDrag == true) {
+		this.fvObjDrag = false;
+		
+		this.div_move.visible = false;
+	}	
+};
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+
+this.fnMakeDragObj = function(obj)
+{
+	let nWidth = obj.getOffsetWidth();
+	let nHeight = obj.getOffsetHeight();
+	let sCssClass = obj.parent.cssclass;
+	let sTitle = obj.staTitle.text;
+	let sDesc = obj.staDesc.text;
+	this.div_move.cssclass = sCssClass;
+	this.div_move.form.staTitle.cssclass = obj.staTitle.cssclass;
+	this.div_move.form.staDesc.cssclass = obj.staDesc.cssclass;
+	this.div_move.form.staTitle.text = sTitle;
+	this.div_move.form.staDesc.text = sDesc;
+	
+	this.div_move.setOffsetWidth(nWidth);
+	this.div_move.setOffsetHeight(nHeight);
+	this.div_move.visible = true;
+};
+
+this.fnMoveAni = function(t, b, c, d)
+{
+	t /= d / 2;
+
+	if (t < 1) {
+		return c / 2 * t * t * t + b;
+	}
+	
+	t -= 2;
+	
+	return c / 2 * (t * t * t + 2) + b;
+};
+
+this.form_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{
+	
+	if (e.timerid == 1) 
+	{
+		this.fvTimerIdx++;
+		
+		let nLeft1 = this.fnMoveAni(this.fvTimerIdx, this.fvObjFrom.orgLeft, this.fvObjTo.orgLeft - this.fvObjFrom.orgLeft, this.fvTimerMax);
+		let nTop1 = this.fnMoveAni(this.fvTimerIdx, this.fvObjFrom.orgTop, this.fvObjTo.orgTop - this.fvObjFrom.orgTop, this.fvTimerMax);
+		let nWidth1 = this.fnMoveAni(this.fvTimerIdx, this.fvObjFrom.orgWidth, this.fvObjTo.orgWidth - this.fvObjFrom.orgWidth, this.fvTimerMax);
+		let nHeight1 = this.fnMoveAni(this.fvTimerIdx, this.fvObjFrom.orgHeight, this.fvObjTo.orgHeight - this.fvObjFrom.orgHeight, this.fvTimerMax);
+
+		let nLeft2 = this.fnMoveAni(this.fvTimerIdx, this.fvObjTo.orgLeft, this.fvObjFrom.orgLeft - this.fvObjTo.orgLeft, this.fvTimerMax);
+		let nTop2 = this.fnMoveAni(this.fvTimerIdx, this.fvObjTo.orgTop, this.fvObjFrom.orgTop - this.fvObjTo.orgTop, this.fvTimerMax);
+		let nWidth2 = this.fnMoveAni(this.fvTimerIdx, this.fvObjTo.orgWidth, this.fvObjFrom.orgWidth - this.fvObjTo.orgWidth, this.fvTimerMax);
+		let nHeight2 = this.fnMoveAni(this.fvTimerIdx, this.fvObjTo.orgHeight, this.fvObjFrom.orgHeight - this.fvObjTo.orgHeight, this.fvTimerMax);
+
+		this.fvObjFrom.move(nLeft1, nTop1, nWidth1, nHeight1);
+		this.fvObjTo.move(nLeft2, nTop2, nWidth2, nHeight2);
+		
+	
+		if (this.fvTimerIdx == this.fvTimerMax) {
+			this.fvObjAni = false;
+			this.fvTimerIdx = 0;
+
+			this.killTimer(e.timerid);
+		}
+	}	
+};
+
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+
+this.fnComBtnOnDrag = function(obj:nexacro.Button,e:nexacro.DragEventInfo)
+{	
+	if(obj.name){
+		this.fvObjDrag = true;	
+		e.userdata = obj;
+		this.fnMakeDragObj(obj.form);
+		return true;	
+	}
+};]]></Script>
+    <Objects/>
+  </Form>
+</FDL>
