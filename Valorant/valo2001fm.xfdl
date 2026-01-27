@@ -3,7 +3,8 @@
   <Form id="valo2001fm" width="2000" height="980" titletext="랭킹">
     <Layouts>
       <Layout height="980" width="2000">
-        <Grid id="Grid00" taborder="0" left="100" top="190" height="735" borderRadius="20px" background="#31313c" border="0px" binddataset="ds_ranking" right="100" autofittype="col">
+        <Button id="btn_refresh_ranking" taborder="0" text="랭킹 새로고침" left="60" top="37" width="306" height="107" background="white" font="normal 25pt/normal &quot;Arial&quot;" onclick="btn_refresh_ranking_onclick"/>
+        <Grid id="Grid00" taborder="1" left="78" top="199" width="1743" height="693" binddataset="ds_ranking" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -17,7 +18,7 @@
                 <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="24" band="head"/>
+                <Row band="head" size="24"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
@@ -31,52 +32,32 @@
                 <Cell col="7" text="LAST_UPDATE"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:RANKING" background="#a5a5a5" textAlign="center"/>
-                <Cell col="1" text="bind:USER_NAME" background="#a5a5a5"/>
-                <Cell col="2" text="bind:USER_TAG" background="#a5a5a5"/>
-                <Cell col="3" text="bind:TIER_ICON" background="#a5a5a5"/>
-                <Cell col="4" text="bind:TIER" background="#a5a5a5"/>
-                <Cell col="5" text="bind:RANKED_RATING" background="#a5a5a5"/>
-                <Cell col="6" text="bind:WINS" background="#a5a5a5"/>
-                <Cell col="7" text="bind:LAST_UPDATE" background="#a5a5a5"/>
+                <Cell text="bind:RANKING"/>
+                <Cell col="1" text="bind:USER_NAME"/>
+                <Cell col="2" text="bind:USER_TAG"/>
+                <Cell col="3" text="bind:TIER_ICON"/>
+                <Cell col="4" text="bind:TIER"/>
+                <Cell col="5" text="bind:RANKED_RATING"/>
+                <Cell col="6" text="bind:WINS"/>
+                <Cell col="7" text="bind:LAST_UPDATE"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_refresh_ranking" taborder="1" text="랭킹 새로고침" left="77" top="47" width="306" height="107" background="white" font="normal 25pt/normal &quot;Arial&quot;" onclick="btn_refresh_ranking_onclick"/>
-        <Button id="Button00" taborder="2" text="Button00" left="425" top="32" width="156" height="140" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
       <Dataset id="ds_ranking">
         <ColumnInfo>
-          <Column id="RANKING" type="STRING" size="256"/>
+          <Column id="RANKING" type="INT" size="256"/>
           <Column id="USER_NAME" type="STRING" size="256"/>
           <Column id="USER_TAG" type="STRING" size="256"/>
           <Column id="TIER_ICON" type="STRING" size="256"/>
           <Column id="TIER" type="STRING" size="256"/>
-          <Column id="RANKED_RATING" type="STRING" size="256"/>
-          <Column id="WINS" type="STRING" size="256"/>
+          <Column id="RANKED_RATING" type="INT" size="256"/>
+          <Column id="WINS" type="INT" size="256"/>
           <Column id="LAST_UPDATE" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="USER_NAME">나는 냐옹이다옹</Col>
-            <Col id="USER_TAG">겸둥이악당</Col>
-            <Col id="TIER_ICON">111</Col>
-            <Col id="TIER">실버</Col>
-            <Col id="RANKED_RATING">25</Col>
-            <Col id="WINS">50</Col>
-          </Row>
-          <Row>
-            <Col id="USER_NAME">수없는씨박</Col>
-            <Col id="USER_TAG">씨없는수박</Col>
-            <Col id="TIER_ICON">222</Col>
-            <Col id="TIER">브론즈</Col>
-            <Col id="RANKED_RATING">35</Col>
-            <Col id="WINS">65</Col>
-          </Row>
-        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[
@@ -103,11 +84,6 @@ this.fn_Callback = function(svcId, errCode, errMsg)
     if (svcId == "searchRanking") {
 		// 콜백 동작
     }
-};
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	trace(this.ds_ranking.saveXML());
-};
-]]></Script>
+};]]></Script>
   </Form>
 </FDL>
