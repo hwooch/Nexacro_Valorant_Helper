@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo2001fm" width="2000" height="980" titletext="랭킹">
+  <Form id="valo2001fm" width="2000" height="980" titletext="랭킹" onload="valo2001fm_onload">
     <Layouts>
       <Layout height="980" width="2000">
-        <Button id="btn_refresh_ranking" taborder="0" text="랭킹 새로고침" left="60" top="37" width="306" height="107" background="white" font="normal 25pt/normal &quot;Arial&quot;" onclick="btn_refresh_ranking_onclick"/>
-        <Grid id="Grid00" taborder="1" left="78" top="199" width="1743" height="693" binddataset="ds_ranking" autofittype="col">
+        <Button id="btn_refresh_ranking" taborder="0" text="랭킹 새로고침" left="80" top="40" width="220" height="90" onclick="btn_refresh_ranking_onclick" tabstop="false" cssclass="rank_refresh"/>
+        <Grid id="Grid00" taborder="1" left="78" top="btn_refresh_ranking:40" width="1743" height="591" binddataset="ds_ranking" autofittype="col" borderRadius="20px">
           <Formats>
             <Format id="default">
               <Columns>
@@ -44,6 +44,8 @@
             </Format>
           </Formats>
         </Grid>
+        <Static id="Static00" taborder="2" text="Static00" left="btn_refresh_ranking:20" top="40" width="450" height="90" color="white" borderRadius="20px" font="normal 18pt/normal &quot;AppleSDGothicNeoH00&quot;" textAlign="center"/>
+        <Button id="Button00" taborder="3" left="0" top="0" width="0" height="0"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -60,12 +62,24 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
-this.btn_refresh_ranking_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.valo2001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	// 랭킹 조회 transaction
     var strSvcID        = "searchRanking";
     var strURL          = "SvcUrl::getValorantRankings.do";
+    var strInDatasets   = "";
+    var strOutDatasets  = "ds_ranking=out_ranking";
+    var strArgument     = "";
+    var strCallbackFunc = "fn_Callback";
+	
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+};
+
+this.btn_refresh_ranking_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// 랭킹 검색, DB저장, 조회 transaction
+    var strSvcID        = "searchNewRanking";
+    var strURL          = "SvcUrl::getNewValorantRankings.do";
     var strInDatasets   = "";
     var strOutDatasets  = "ds_ranking=out_ranking";
     var strArgument     = "";
@@ -81,7 +95,14 @@ this.fn_Callback = function(svcId, errCode, errMsg)
         this.alert("조회 실패: " + errMsg);
         return;
     }
+	
+	// Static에 마지막 갱신 시간 표시해야함
+	this.Static00.text = "마지막 갱신 일시 : " + this.ds_ranking.getColumn(0,"LAST_UPDATE");
+	
     if (svcId == "searchRanking") {
+		// 콜백 동작
+    }
+	if (svcId == "searchNewRanking") {
 		// 콜백 동작
     }
 };]]></Script>
