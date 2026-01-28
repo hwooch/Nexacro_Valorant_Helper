@@ -19,8 +19,8 @@
 */
 
 /************************************************************************************************
- * FORM 변수 선언 영역
- ************************************************************************************************/
+* FORM 변수 선언 영역
+************************************************************************************************/
 this.fvPageLeft=0; 			// div가운데 위치시키기 위한 left값
 this.fvFnCallback = "";// 조회함수
 this.fvRecords=0;			// 목록수
@@ -34,7 +34,7 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 };
 
 /**
- * @description CommPaging_onsize page size가 변경될때 호출
+* @description CommPaging_onsize page size가 변경될때 호출
 */
 this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 {
@@ -46,7 +46,7 @@ this.form_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
 * 사용자 FUNCTION 영역
 ************************************************************************************************/
 /**
- * @description  page초기화
+* @description  page초기화
 */
 this.fnInitPage = function()
 {
@@ -54,7 +54,7 @@ this.fnInitPage = function()
 };
 
 /**
- * @description  nCreatePage page갯수에 맞게 버튼 생성
+* @description  nCreatePage page갯수에 맞게 버튼 생성
 */
 this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCount)
 {
@@ -64,7 +64,7 @@ this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCou
 	
 	// 총 건수가 0이면 페이징 삭제
 	if (nTotalCount == 0) {
-	
+		
 		// DIV 초기화
 		if (this.isValidObject("divPage")) {
 			var obj = this.removeChild("divPage");
@@ -85,20 +85,20 @@ this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCou
     }
     /*실제 페이지 갯수는 MAX 10개로 조정*/	
 	var nPageScaleC = 10;
-
-	var nTermBtn = 2;		 //버튼사이
-    var nTerm = 14;   		 //큰버튼과 숫자사이
-    var nTernLastNum = 12; 	 //마지막숫자버튼과 뒤로버튼사이
+	
+	var nTermBtn = 20;		 //버튼사이
+    var nTerm = 32;   		 //큰버튼과 숫자사이
+    var nTernLastNum = 30; 	 //마지막숫자버튼과 뒤로버튼사이
     
 	var nLeft = 3;
-	var nTop = 0;
-    var nWidth = 21;
-    var nNumWidth = 38;
-    var nHeight = 23;
+	var nTop = 20;
+    var nWidth = 50;
+    var nNumWidth = 50;
+    var nHeight = 50;
     
     var objBtnPage;
     var sPageView = this.pageview;
-      
+	
     if (this.gfnIsNull(sPageView)) 	 sPageView = "all";
     if (this.gfnIsNull(nRecords)) 	 nRecords = 50;
     if (this.gfnIsNull(nPage)) 		 nPage = 0;
@@ -117,66 +117,75 @@ this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCou
 	
 	//현재페이지
     var uint = Math.floor( ( nexacro.toNumber( nPage ) - 1 ) / nexacro.toNumber( nPageScaleC ) );
-        uint = ( uint * nPageScaleC ) + 1;      
-   //다음페이지
+	uint = ( uint * nPageScaleC ) + 1;      
+	//다음페이지
     var nextUnit = nexacro.toNumber( uint + nPageScaleC );
 	if( nextUnit > nTotalPageC) nextUnit = nTotalPageC + 1;
 	
 	//div생성
     var objDivPaging = new Div();
-	objDivPaging.init("divPage", 0, 5, 800, 23, null, null);
+	objDivPaging.init("divPage", 0, 0, 800, 100, null, null);
     this.addChild(objDivPaging.name, objDivPaging);
     objDivPaging.show();    
-/*     var objDivPaging = this.divPage;*/
+	/*     var objDivPaging = this.divPage;*/
     //컨트롤버튼생성
     if (sPageView == "all" || sPageView == "number")
     {
         
 		/************************************************************************
-		 * 첫페이지(<<) 버튼생성
-		 ************************************************************************/
+		* 첫페이지(<<) 버튼생성
+		************************************************************************/
 		var objBtnFirst = new Button("btnFirst", nLeft, nTop, nWidth, nHeight, null, null);   
 		objDivPaging.addChild(objBtnFirst.name, objBtnFirst);
-		objBtnFirst.cssclass = "btn_WF_PagingDPrev";
+		objBtnFirst.cssclass = "rank_paging";
 		objBtnFirst.page = 1;
+		objBtnFirst.text = "<<";  //////////////////////////////////////////////////////////////////////////
 		objBtnFirst.addEventHandler("onclick", this.fnMovePage, this);
 		objBtnFirst.enable = true;
 		
 		// 현재페이지가 '1'이면 비활성화
-		if( nPage == 1 ) objBtnFirst.enable = false;
+		if( nPage <= 10 ) objBtnFirst.visible = false;
 		objBtnFirst.show();
 		nLeft = nLeft + nWidth + nTermBtn;	//left값 계산	
 		
-
+		
 		/************************************************************************
-		 * 앞으로(<) 버튼생성
-		 ************************************************************************/
+		* 앞으로(<) 버튼생성
+		************************************************************************/
 		var objBtnBefore = new Button("btnBefore", nLeft, nTop, nWidth, nHeight, null, null);   
 		objDivPaging.addChild(objBtnBefore.name, objBtnBefore);
-		objBtnBefore.cssclass = "btn_WF_PagingPrev";
-		//objBtnBefore.text = "<";
+		objBtnBefore.cssclass = "rank_paging";
+		objBtnBefore.text = "<";  //////////////////////////////////////////////////////////////////////////
 		objBtnBefore.page = nPage - 1;
 		objBtnBefore.addEventHandler("onclick", this.fnMovePage, this);	
 		objBtnBefore.enable = true;
 		// 현재페이지가 '1'이면 비활성화
-		if( nPage == 1) objBtnBefore.enable = false;
+		if( nPage == 1) objBtnBefore.visible = false;
 		nLeft = nLeft + nWidth + nTerm;	//left값 계산
 		objBtnBefore.show();
 		
 		/************************************************************************
-		 *페이징[1 2 3 4 5 6 7 8 9 10] 버튼생성
-		 ************************************************************************/
+		*페이징[1 2 3 4 5 6 7 8 9 10] 버튼생성
+		************************************************************************/
 		for(var i=uint; i<nextUnit; i++ )
 		{         
 			if(i > nTotalPageC ) break; //페이지갯수만큼만 생성
 			
 			objBtnPage = new Button("btnPage"+i,  nLeft, nTop, nNumWidth, nHeight, null, null);   
 			objDivPaging.addChild(objBtnPage.name, objBtnPage);
-			objBtnPage.cssclass = "btn_WF_Paging";
+			
+			// --------------------------------------------------------------------
+			if (i == nPage) {
+				objBtnPage.cssclass = "rank_paging_selected"; // 선택된 스타일
+			} else {
+				objBtnPage.cssclass = "rank_paging";          // 기본 스타일
+			}
+			// --------------------------------------------------------------------
+			
 			objBtnPage.text = i;
 			objBtnPage.page = i;
 			objBtnPage.addEventHandler("onclick", this.fnMovePage, this);
-		
+			
 			//if(i == nPage) objBtnPage.cssclass = "btn_WF_Paging"; //누름표시
 			objBtnPage.show();
 			
@@ -184,35 +193,36 @@ this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCou
 		}    
 		nLeft = nLeft + nTernLastNum;//left값 계산
 		/************************************************************************
-		 * 뒤로(>) 버튼생성
-		 ************************************************************************/
+		* 뒤로(>) 버튼생성
+		************************************************************************/
 		var objBtnNext = new Button("btnNext", nLeft, nTop, nWidth, nHeight, null, null);   
 		objDivPaging.addChild(objBtnNext.name, objBtnNext);
-		objBtnNext.cssclass = "btn_WF_PagingNext";
-		//objBtnNext.text = ">";
+		objBtnNext.cssclass = "rank_paging";
+		objBtnNext.text = ">";  //////////////////////////////////////////////////////////////////////////
 		objBtnNext.addEventHandler("onclick", this.fnMovePage, this);
 		objBtnNext.enable = true;
 		objBtnNext.page = nPage +1;
 		//현재페이지가 전체페이지갯수만큼이면 비활성화
-		if( nPage >= nTotalPageC) objBtnNext.enable = false;
+		if( nPage == nTotalPageC) objBtnNext.visible = false;
+		
 		objBtnNext.show();
 		nLeft = nLeft + nWidth + nTermBtn; //left값 계산
 		
 		/************************************************************************
-		 * 마지막페이지(>>) 버튼생성
-		 ************************************************************************/	
+		* 마지막페이지(>>) 버튼생성
+		************************************************************************/	
 		var objBtnEnd = new Button("btnEnd", nLeft, nTop, nWidth, nHeight, null, null);   
 		objDivPaging.addChild(objBtnEnd.name, objBtnEnd);
-		objBtnEnd.cssclass = "btn_WF_PagingDNext";
-		//objBtnEnd.text = ">>";
+		objBtnEnd.cssclass = "rank_paging";
+		objBtnEnd.text = ">>"; //////////////////////////////////////////////////////////////////////////
 		objBtnEnd.addEventHandler("onclick", this.fnMovePage, this);
 		objBtnEnd.page = nTotalPageC;
 		//현재페이지가 전체페이지갯수만큼이면 비활성화
-		if( nPage == nTotalPageC) objBtnEnd.enable = false;
+		if( nPage >= Math.floor((nTotalPageC - 1) / 10) * 10 + 1) objBtnEnd.visible = false;
 		objBtnEnd.show();
 		nLeft = nLeft + nWidth ;	//left값 계산
 	}
-		
+	
 	//생성된 컴포넌트 갯수에 따른 div의 Width 조절
 	objDivPaging.width = (nLeft + 6);
 	
@@ -222,7 +232,7 @@ this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCou
 };
 
 /**
- * @description  page이동함수
+* @description  page이동함수
 */
 this.fnMovePage = function(obj)
 {
@@ -233,7 +243,7 @@ this.fnMovePage = function(obj)
 };
 
 /**
- * @description  pagingDiv가 가운데오도록
+* @description  pagingDiv가 가운데오도록
 */
 this.fnSetCenter = function(obj)
 {

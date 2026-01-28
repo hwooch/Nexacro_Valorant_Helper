@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="SamplePaging" width="1020" height="680" titletext="그리드 페이징" onload="form_onload">
+    <Layouts>
+      <Layout height="680" mobileorientation="landscape" width="1020" screenid="Desktop_screen">
+        <TextArea id="txtDesc" taborder="4" left="20" top="60" height="170" cssclass="txt_WF_Desc" value="그리드 페이징 구현 샘플이다.&#10;1. 페이지가 표현되는 영역에 Div를 생성하고 url을 Cmm::CmmPaging.xfdl 로 지정한다.&#10;2. 조회조건을 넘길 Dataset을 생성 하여 record, page, recordsOffset, pagecount 값을 설정한다.&#10;    초기 조회일 경우 page, recordsOffset, pagecount값은 default로 0으로 세팅, records값은 각 회면별 그리드에 표현될 목록수로 세팅&#10;       this.dsSearch.setColumn(nRow, &quot;records&quot;, this.fvRecords);&#10;       this.dsSearch.setColumn(nRow, &quot;recordsOffset&quot;, this.fvRecordsOffset); &#10;3. this.divPage.fnCreatePage(this.dsSearch, this.dsList, &quot;fnSearch&quot;, this.grd00); 를 호출한다" right="20" onchanged="txtDesc_onchanged"/>
+        <Div id="divSearch" taborder="1" text="" left="20" top="txtDesc:20" height="46" cssclass="div_WF_Search" right="20">
+          <Layouts>
+            <Layout>
+              <Button id="btnSearch" taborder="0" text="조회" top="9" width="60" height="26" right="20" onclick="divSearch_btnSearch_onclick" uWord="search"/>
+              <Static id="Static01" taborder="1" text="목록갯수" left="20" top="10" width="100" height="26" cssclass="sta_WF_SchLabel" uWord="listcount" minwidth="100" maxwidth=""/>
+              <Combo id="cboCnt" taborder="2" text="2" left="120" top="10" width="112" height="26" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">2</Col>
+                      <Col id="datacolumn">2</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">10</Col>
+                      <Col id="datacolumn">10</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">50</Col>
+                      <Col id="datacolumn">50</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">100</Col>
+                      <Col id="datacolumn">100</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd00" taborder="0" left="20" top="divSearch:10" right="20" binddataset="dsList" autofittype="col" height="332">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="116"/>
+                <Column size="104"/>
+                <Column size="174"/>
+                <Column size="80"/>
+                <Column size="96"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="ID"/>
+                <Cell col="2" text="NAME"/>
+                <Cell col="3" text="DESCRIPTION"/>
+                <Cell col="4" text="USE_YN"/>
+                <Cell col="5" text="REG_USER"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ROWNUM" displaytype="text"/>
+                <Cell col="1" text="bind:ID"/>
+                <Cell col="2" text="bind:NAME"/>
+                <Cell col="3" text="bind:DESCRIPTION"/>
+                <Cell col="4" text="bind:USE_YN"/>
+                <Cell col="5" text="bind:REG_USER"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="divPage" taborder="2" left="20" right="20" url="Cmm::CmmPaging.xfdl" height="30" top="grd00:0"/>
+        <Static id="staTitle" taborder="3" text="그리드 페이징" left="20" top="0" width="281" height="60" cssclass="sta_WF_Title1"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="ID" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="USE_YN" type="STRING" size="256"/>
+          <Column id="REG_USER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearch">
+        <ColumnInfo>
+          <Column id="records" type="INT" size="256"/>
+          <Column id="page" type="INT" size="256"/>
+          <Column id="recordsOffset" type="INT" size="256"/>
+          <Column id="pageCount" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPagingInfo">
+        <ColumnInfo>
+          <Column id="totalCount" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  Nexacro Professional Training Couse
+*  @MenuPath    개발가이드 > 표준 및 기본 정의 > 그리드 페이징
+*  @FileName 	SamplePaging.xfdl 
+*  @Creator 	TOBESOFT Education
+*  @CreateDate 	2025/01/03
+*  @Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2025/01/03      		 TOBESOFT Education	 	  	최초 생성 
+*******************************************************************************
+*/
+
+
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+this.fvRecords=0; 			//목록갯수
+this.fvPage=0;	 			//페이지번호
+this.fvRecordsOffset=0;		//시작rownum
+this.fvTotalCount=0;		//전체데이터갯수
+this.fvPageCount=0; 		//실제표출페이지갯수
+/************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose)
+ ************************************************************************************************/
+/**
+ * @description 화면 onload시 처리내역(필수)
+*/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoad(this);
+};
+
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분(Transaction, Popup)
+ ************************************************************************************************/
+/**
+ * @description TRANSACTION콜백 트랜젝션 후, 반드시페이지 메이킹 함수 호출
+*/
+this.fnCallback = function(svcID,errorCode,errorMsg)
+{
+	switch(svcID)
+	{
+		case "search":
+			this.fnPagingSetting(); //make paging
+			break;
+	}
+};
+
+/**
+ * @description 페이징콜백 페이징화면에서 눌린페이지 넘겨줌
+*/
+this.fnPagingCallback = function(nPage, nRecordsOffset)
+{
+	this.fvPage = nPage; 				
+	this.fvRecordsOffset = nRecordsOffset;
+	
+	this.fnSearch(); //조회함수호출
+};
+/************************************************************************************************
+ * CRUD 및 TRANSACTION 서비스 호출 처리
+ ************************************************************************************************/
+/**
+ * @description 조회이벤트
+*/
+this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// 조회조건 설정
+	//데이터를 넘길 경우 데이터셋에 추가해서 넘기는 방식과
+	//아규먼트를 추가해서 넘기는 방식 모두 사용가능
+	this.dsSearch.clearData();
+	var nRow = this.dsSearch.addRow();
+	this.dsSearch.setColumn(nRow, "records", this.fvRecords);
+	this.dsSearch.setColumn(nRow, "recordsOffset", this.fvRecordsOffset); 
+	
+ 	var strSvcId    = "search";
+	var strSvcUrl   = "selectPagingSample.do";
+	var inData      = "dsSearch=dsSearch";
+	var outData     = "dsList=dsList dsPagingInfo=dsPagingInfo";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	var isAsync   	= true;
+	
+	this.gfnTransaction(strSvcId , 		// transaction을 구분하기 위한 svc id값
+						strSvcUrl , 	// trabsaction을 요청할 주소
+						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+						callBackFnc, 	// transaction의 결과를 받을 Function 이름
+						isAsync); 		// 비동기통신 여부 [생략가능]
+};
+
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+/**
+ * @description 최초조회시, 전역변수 초기화
+*/
+ this.fnPageInit = function ()
+ {
+ 	//pagin info init setting
+	this.fvRecords=this.divSearch.form.cboCnt.value; //목록갯수
+	this.fvPage=0;	 								 //페이지번호
+	this.fvRecordsOffset=0;							 //시작rownum
+	this.fvPageCount = 10;							 //실제표출페이지갯수
+	
+	this.fnSearch();
+ };
+
+/**
+ * @description 페이징만들기
+*/
+this.fnPagingSetting = function ()
+{
+	this.fvTotalCount = nexacro.toNumber(this.dsPagingInfo.getColumn("totalCount")); //전체로우갯수
+	//create page 
+	this.divPage.form.fnCreatePage("fnPagingCallback",
+									this.fvTotalCount,
+									this.fvRecords,
+									this.fvPage,
+									this.fvPageCount);	
+};
+/************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+/**
+ * @description 조회버튼이벤트
+*/
+this.divSearch_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnPageInit(); //최초조회조건세팅
+};
+]]></Script>
+  </Form>
+</FDL>
