@@ -10,8 +10,8 @@
               <Columns>
                 <Column size="80"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="150"/>
+                <Column size="67"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -29,9 +29,9 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:RANKING" border="0px,1px solid #292932,1px solid black,0px" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
-                <Cell col="1" colspan="2" text="expr:USER_NAME +&quot;#&quot;+ USER_TAG" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
-                <Cell col="3" textAlign="right" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" imagestretch="fixaspectratio" padding="0px 0px 0px 100px" displaytype="imagecontrol" text="bind:TIER_ICON"/>
-                <Cell col="4" border="0px,1px solid #292932,1px solid black" text="bind:TIER"/>
+                <Cell col="1" colspan="2" text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
+                <Cell col="3" textAlign="right" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,0px,1px solid black,1px solid #292932" imagestretch="fixaspectratio" padding="0px 0px 0px 120px" displaytype="imagecontrol" text="bind:TIER_ICON"/>
+                <Cell col="4" border="0px,1px solid #292932,1px solid black,0px" text="bind:TIER" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
                 <Cell col="5" text="bind:RANKED_RATING" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
                 <Cell col="6" text="bind:WINS" border="0px,0px,1px solid black,1px solid #292932" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
               </Band>
@@ -131,7 +131,6 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 
         // 페이징 네비게이션 그리기
         this.fnPagingSetting();
-
     }
     
     // 랭킹 갱신 버튼
