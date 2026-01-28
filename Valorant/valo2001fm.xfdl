@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="980" width="2000">
         <Button id="btn_refresh_ranking" taborder="0" text="랭킹 새로고침" left="200" top="40" width="220" height="90" onclick="btn_refresh_ranking_onclick" tabstop="false" cssclass="rank_refresh"/>
-        <Grid id="grd_ranking" taborder="1" left="200" top="btn_refresh_ranking:40" binddataset="ds_ranking" autofittype="col" borderRadius="20px 20px 0px 0px" right="200" height="830" border="0px">
+        <Grid id="grd_ranking" taborder="6" left="200" top="btn_refresh_ranking:40" height="852" binddataset="ds_ranking" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px 20px 0px 0px" tabstop="false" right="200" cssclass="grid_test">
           <Formats>
             <Format id="default">
               <Columns>
@@ -17,38 +17,36 @@
                 <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="30" band="head"/>
+                <Row size="50" band="head"/>
                 <Row size="40"/>
               </Rows>
               <Band id="head">
-                <Cell text="RANKING"/>
-                <Cell col="1" text="USER_NAME"/>
-                <Cell col="2" text="USER_TAG"/>
-                <Cell col="3" text="TIER_ICON"/>
-                <Cell col="4" text="TIER"/>
-                <Cell col="5" text="RANKED_RATING"/>
-                <Cell col="6" text="WINS"/>
+                <Cell text="랭킹" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
+                <Cell col="1" colspan="2" text="플레이어" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="3" colspan="2" text="티어" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
+                <Cell col="5" text="포인트" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="6" text="승리 횟수" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:RANKING"/>
-                <Cell col="1" text="bind:USER_NAME"/>
-                <Cell col="2" text="bind:USER_TAG"/>
-                <Cell col="3" text="bind:TIER_ICON"/>
-                <Cell col="4" text="bind:TIER"/>
-                <Cell col="5" text="bind:RANKED_RATING"/>
-                <Cell col="6" text="bind:WINS"/>
+                <Cell text="bind:RANKING" border="0px,1px solid #292932,1px solid black,0px" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
+                <Cell col="1" colspan="2" text="expr:USER_NAME +&quot;#&quot;+ USER_TAG" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
+                <Cell col="3" textAlign="right" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" imagestretch="fixaspectratio" padding="0px 0px 0px 100px" displaytype="imagecontrol" text="bind:TIER_ICON"/>
+                <Cell col="4" border="0px,1px solid #292932,1px solid black" text="bind:TIER"/>
+                <Cell col="5" text="bind:RANKED_RATING" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
+                <Cell col="6" text="bind:WINS" border="0px,0px,1px solid black,1px solid #292932" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Div id="divPage" taborder="5" left="200" right="200" url="Cmm::CmmPaging.xfdl" height="100" text="" top="grd_ranking:0" background="#31313c" borderRadius="0px 0px 20px 20px">
+        <Static id="sta_space" taborder="5" left="201" top="grd_ranking:-2" height="2" right="201" background="black"/>
+        <Div id="divPage" taborder="3" left="201" right="201" url="Cmm::CmmPaging.xfdl" height="100" text="" background="#31313c" borderRadius="0px 0px 20px 20px" border="2px none black,0px none,0px none" top="sta_space:0">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Static id="sta_last_update" taborder="2" text="랭킹 불러오는 중..." left="btn_refresh_ranking:20" top="40" width="450" height="90" color="white" borderRadius="20px" font="normal 18pt/normal &quot;AppleSDGothicNeoH00&quot;" textAlign="center"/>
-        <Button id="Button00" taborder="3" left="0" top="0" width="0" height="0"/>
-        <Button id="btn_space" taborder="5" left="890" top="divPage:0" width="255" height="30"/>
+        <Static id="sta_last_update" taborder="1" text="랭킹 불러오는 중..." left="btn_refresh_ranking:20" top="40" width="620" height="90" color="white" borderRadius="20px" font="normal 18pt/normal &quot;이사만루체 Medium&quot;" textAlign="left"/>
+        <Button id="Button00" taborder="2" left="0" top="0" width="0" height="0"/>
+        <Button id="btn_space" taborder="4" left="201" top="divPage:0" height="30" right="201"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -63,6 +61,11 @@
           <Column id="WINS" type="INT" size="256"/>
           <Column id="LAST_UPDATE" type="STRING" size="256"/>
         </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
       </Dataset>
       <Dataset id="ds_search">
         <ColumnInfo>
@@ -113,17 +116,31 @@ this.fn_Callback = function(svcId, errCode, errMsg)
         this.alert("조회 실패: " + errMsg);
         return;
     }
-	
-	// Static에 마지막 갱신 시간 표시해야함
-	this.sta_last_update.text = "마지막 갱신 일시 : " + this.ds_ranking.getColumn(0,"LAST_UPDATE");
+    
+    // 그리드 선택 없애기
+    this.ds_ranking.set_rowposition(-1);
 
-	if (svcId == "paging") {
-        // 페이징 네비게이션(숫자 버튼들) 그리기 함수 호출
+    // 페이징 조회
+    if (svcId == "paging") {
+        // 마지막 갱신 시간 표시
+        if(this.ds_ranking.getRowCount() > 0) {
+             this.sta_last_update.text = "마지막 갱신 일시 : " + this.ds_ranking.getColumn(0, "LAST_UPDATE");
+        } else {
+             this.sta_last_update.text = "데이터가 없습니다.";
+        }
+
+        // 페이징 네비게이션 그리기
         this.fnPagingSetting();
+
+    }
+    
+    // 랭킹 갱신 버튼
+    else if (svcId == "searchNewRanking") {
+        this.fnPageInit(); 
     }
 };
 
- this.fnPageInit = function ()
+this.fnPageInit = function ()
  {
 	this.fvRecords = 20; 							 //목록갯수
 	this.fvPage = 0;	 							 //페이지번호

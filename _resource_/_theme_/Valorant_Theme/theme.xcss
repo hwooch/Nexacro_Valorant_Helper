@@ -11322,7 +11322,7 @@
 }
 .Button.rank_refresh
 {
-	font : normal 25pt/normal "AppleSDGothicNeoH00";
+	font : normal 25pt/normal "이사만루체";
 	cursor : pointer;
 	background : #31313c;
 	-nexa-border : 2px solid #8e8e8e;
@@ -11337,7 +11337,7 @@
 	-nexa-border : 2px solid #ffffff;
 	border-radius : 20px;
 	color : #ffffff;
-	font : normal 25pt/normal "AppleSDGothicNeoH00";
+	font : normal 25pt/normal "이사만루체";
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-padding : 5px 0px 0px;
 }
@@ -11375,6 +11375,21 @@
 	-nexa-padding : 5px 0px 0px;
 	
 
+}
+.Grid.grid_test .body .row .cell[status=focused],
+.Grid.grid_test .body .row .cell[status=mouseover],
+.Grid.grid_test .body .row .cell[userstatus=selected]
+{
+	background : #444454;
+	color : white;
+	-nexa-background-odd : #4b4b5c;
+}
+.Grid.grid_test .body .row .cell
+{
+	background : #31313c;
+	color : white;
+	-nexa-background-odd : #393946;
+	
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
