@@ -62,11 +62,6 @@
           <Column id="WINS" type="INT" size="256"/>
           <Column id="LAST_UPDATE" type="STRING" size="256"/>
         </ColumnInfo>
-        <Rows>
-          <Row/>
-          <Row/>
-          <Row/>
-        </Rows>
       </Dataset>
       <Dataset id="ds_search">
         <ColumnInfo>
@@ -116,7 +111,7 @@ this.btn_refresh_ranking_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
 this.fn_Callback = function(svcId, errCode, errMsg)
 {
     if(errCode < 0) {
-        this.alert("조회 실패: " + errMsg);
+        this.gfnAlert("msg.notice.search_failed", [errMsg], "nodata"); //////////////////
         return;
     }
     
@@ -210,9 +205,14 @@ this.fnSearch_user_match = function (clicked_nickname)
 	
 	this.fvApp.setVariable("gv_Recent_Search_Name", sName);
 	this.fvApp.setVariable("gv_Recent_Search_Tag", sTag);
-
-	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
-	objWorkFrame.formurl = "Valorant::valo1002fm.xfdl";
+	
+	var objTopFrame = this.fvApp.mainframe.VFrameSet00.TopFrame.form;
+	
+	if (objTopFrame.btn_Search) {
+		objTopFrame.btn_Search.click();
+		var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+		objWorkFrame.formurl = "Valorant::valo1002fm.xfdl";
+	}
 };
 
 // 그리드에서 닉네임 부분 클릭하면 발생하는 함수
@@ -221,12 +221,26 @@ this.grd_ranking_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEven
 	if (e.cell == 1) {
 		var clicked_nickname = this.grd_ranking.getCellPropertyValue( e.row, 1, "text");
 		
-		if( confirm(clicked_nickname) ) {
-			this.fnSearch_user_match(clicked_nickname);
-		}
+		var sMsgId = "msg.notice.clicked_nickname";	//메세지ID
+		var arrArg = [clicked_nickname];			//메세지취환될값 배열[생략가능]
+		var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+		var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
+		
+		// 변경된 내역을 저장 하시겠습니까?
+		//this.gfnAlert(sMsgId, arrArg, sPopId, sMsgCallback);	
+		
+		// function 전달
+		this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
+				if (strVal == true) {
+					// 확인 선택
+					this.fnSearch_user_match(clicked_nickname);
+				}
+				else {
+					// 취소 선택
+				}
+			});
 	}
 };
-
 // 그리드에서 닉네임 부분에 마우스 올려놓을 때 or 그렇지 않을 때 커서 변경 함수
 this.grd_ranking_onmousemove = function(obj:nexacro.Grid,e:nexacro.GridMouseEventInfo)
 {

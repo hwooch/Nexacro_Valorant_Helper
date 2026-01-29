@@ -16,37 +16,6 @@
         <Button id="btn_Party" taborder="10" text="파티 구인" width="120" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave" left="btn_Weapon:-2"/>
         <Static id="Logo_CHAMBER" taborder="8" left="370" top="-47" height="357" background="url('https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/fullportrait.png') no-repeat center center /cover" opacity="75%" right="btn_Search:3" text="" visible="false"/>
         <Static id="Logo_REYNA" taborder="9" top="-57" width="233" height="357" background="url('https://media.valorant-api.com/agents/a3bfb853-43b2-7238-a4f1-ad90e9e46bcc/fullportrait.png') no-repeat center center /cover" opacity="75%" text="" left="btn_Party:-5" visible="false"/>
-        <Grid id="Grid00" taborder="13" left="7" top="6" width="513" height="83" binddataset="gds_login" autofittype="col" visible="false">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="DISCORD_ID"/>
-                <Cell col="1" text="PERMISSION"/>
-                <Cell col="2" text="RIOT_ID"/>
-                <Cell col="3" text="RIOT_TAG"/>
-                <Cell col="4" text="USER_NAME"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:DISCORD_ID"/>
-                <Cell col="1" text="bind:PERMISSION"/>
-                <Cell col="2" text="bind:RIOT_ID"/>
-                <Cell col="3" text="bind:RIOT_TAG"/>
-                <Cell col="4" text="bind:USER_NAME"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -65,35 +34,33 @@ this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.btn_common_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {	
 	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
-	if (objWorkFrame) {
-        // 해당 프레임의 url을 변경
-		switch(obj.id) {
-		case "btn_Search" :
+	// 해당 프레임의 url을 변경
+	switch(obj.id) {
+	case "btn_Search" :
+		if(objWorkFrame.formurl != "Valorant::valo1002fm.xfdl"){
 			objWorkFrame.formurl = "Valorant::valo1001fm.xfdl";
-			break;
-		case "btn_Ranking" :
-			objWorkFrame.formurl = "Valorant::valo2001fm.xfdl";
-			break;
-		case "btn_Skin" :
-			objWorkFrame.formurl = "Valorant::valo3001fm.xfdl";
-			break;
-		case "btn_Map" :
-			objWorkFrame.formurl = "Valorant::valo4001fm.xfdl";
-			break;
-		case "btn_Char" :
-			objWorkFrame.formurl = "Valorant::valo5001fm.xfdl";
-			break;
-		case "btn_Weapon" :
-			objWorkFrame.formurl = "Valorant::valo6001fm.xfdl";
-			break;
-		case "btn_Party" :
-			objWorkFrame.formurl = "Valorant::valo7001fm.xfdl";
-			break;
-		default:
 		}
-    } else {
-        trace("WorkFrame을 찾을 수 없습니다.");
-    }
+		break;
+	case "btn_Ranking" :
+		objWorkFrame.formurl = "Valorant::valo2001fm.xfdl";
+		break;
+	case "btn_Skin" :
+		objWorkFrame.formurl = "Valorant::valo3001fm.xfdl";
+		break;
+	case "btn_Map" :
+		objWorkFrame.formurl = "Valorant::valo4001fm.xfdl";
+		break;
+	case "btn_Char" :
+		objWorkFrame.formurl = "Valorant::valo5001fm.xfdl";
+		break;
+	case "btn_Weapon" :
+		objWorkFrame.formurl = "Valorant::valo6001fm.xfdl";
+		break;
+	case "btn_Party" :
+		objWorkFrame.formurl = "Valorant::valo7001fm.xfdl";
+		break;
+	default:
+	}
 	
     // 기존 선택된 버튼이 있다면 스타일 초기화
     if (this.fv_selectedBtn && this.fv_selectedBtn != obj) {
@@ -131,10 +98,11 @@ this.btn_common_onmouseleave = function(obj:nexacro.Button, e:nexacro.MouseEvent
     }
 };
 
-// 로고를 클릭했을때 전적검색 버튼을 누른것과 동일한 효과
+// 로고를 클릭했을때 무조건 전적검색 화면으로
 this.sta_logo_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
 {
-	this.btn_Search.click();
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	objWorkFrame.formurl = "Valorant::valo1001fm.xfdl";
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -183,8 +151,9 @@ this.fn_Callback = function(svcID, errorCode, errorMsg)
             if (this.fvApp.gds_login.getRowCount() > 0) {
                 this.killTimer(7777); // 타이머 종료
                 
-                var username = this.fvApp.gds_login.getColumn(0, "RIOT_ID") + " #" + this.fvApp.gds_login.getColumn(0, "RIOT_TAG");
-                this.alert("디스코드 로그인 성공!\n" + username);
+                //var username = this.fvApp.gds_login.getColumn(0, "RIOT_ID") + " #" + this.fvApp.gds_login.getColumn(0, "RIOT_TAG");
+				var username = this.fvApp.gds_login.getColumn(0, "RIOT_ID");
+				this.gfnAlert("msg.notice.login1", [username], "nodata"); //////////////////
 				
 				// 디스코드 로그인이 다 성공했을 때
 				if(this.btn_discord_login.text == "Discord로 로그인") {
@@ -197,7 +166,7 @@ this.fn_Callback = function(svcID, errorCode, errorMsg)
         // 로그인 취소/실패 감지 시 (ErrorCode -99)
         else if (errorCode == -99) {
             this.killTimer(7777);
-            alert("로그인이 취소되어 확인 작업을 중단합니다.");
+			this.gfnAlert("msg.notice.login3", "", "nodata"); //////////////////
         }
         else if (errorCode == -1) {
             // 로그인 대기중으로 아무동작 하지 않음 (계속 타이머 돎)
@@ -237,7 +206,8 @@ this.DiscordLogin_Check = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
 	
 	if(this.fv_loopCount > this.fv_maxLoop) {
 		this.killTimer(7777);
-		alert("로그인 시간이 초과되었습니다 (1분).\n다시 시도해주세요.");
+		this.gfnAlert("msg.notice.login2", "", "nodata"); //////////////////
+		
 		return;
 	}
     if(e.timerid == 7777)

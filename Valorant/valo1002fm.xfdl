@@ -6,7 +6,7 @@
         <Div id="div_user_status" taborder="0" left="34" top="20" height="150" background="#31313c" right="34" formscrollbartype="none none" formscrolltype="none" borderRadius="20px">
           <Layouts>
             <Layout>
-              <Static id="Logo_CHAMBER" taborder="3" left="37.68115942028985%" top="-110" height="901" background="url('https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/fullportrait.png') no-repeat center center /cover" opacity="50%" text="" width="477"/>
+              <Static id="Logo_CHAMBER" taborder="3" left="37.68115942028985%" top="-110" height="901" opacity="50%" text="" width="477"/>
               <Static id="sta_user_status" taborder="0" top="15" width="540" height="120" color="white" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="left" text="티어 조회 중 ..." fittocontents="width" padding="0px 0px 0px 130px" left="Logo_CHAMBER:65"/>
               <Static id="sta_user_tag" taborder="2" top="15" height="120" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="사용자 태그" fittocontents="width" right="Logo_CHAMBER:0" textAlign="right" width="242"/>
               <Static id="sta_user_name" taborder="1" top="15" height="120" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" right="sta_user_tag:0" width="400"/>
@@ -18,16 +18,16 @@
           <Formats>
             <Format id="default">
               <Band id="body" width="100%" height="298" background="transparent" border="0px none">
-                <Cell id="Cell00" top="136" height="20" text="킬" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="50" background="transparent"/>
-                <Cell id="Cell01" top="160" height="22" text="bind:TOTAL_KILL" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="50"/>
-                <Cell id="Cell02" top="190" height="20" text="데스" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="50" background="transparent"/>
-                <Cell id="Cell03" top="214" height="22" text="bind:TOTAL_DEATH" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="50"/>
-                <Cell id="Cell04" top="244" height="20" text="어시스트" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="50" background="transparent"/>
-                <Cell id="Cell05" top="268" height="22" text="bind:TOTAL_ASSIST" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="50"/>
-                <Cell id="Cell06" left="75" top="136" width="100" height="20" text="헤드샷" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
-                <Cell id="Cell07" left="37" top="160" width="80" height="22" color="white" background="transparent" textAlign="right" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="bind:TOTAL_HEAD"/>
-                <Cell id="Cell08" left="75" top="190" width="100" height="20" text="바디샷" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
-                <Cell id="Cell10" left="75" top="244" width="100" height="20" text="레그샷" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
+                <Cell id="Cell00" top="136" height="20" text="킬" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="60" background="transparent"/>
+                <Cell id="Cell01" top="160" height="22" text="bind:TOTAL_KILL" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="60"/>
+                <Cell id="Cell02" top="190" height="20" text="데스" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="60" background="transparent"/>
+                <Cell id="Cell03" top="214" height="22" text="bind:TOTAL_DEATH" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="60"/>
+                <Cell id="Cell04" top="244" height="20" text="어시스트" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="60" background="transparent"/>
+                <Cell id="Cell05" top="268" height="22" text="bind:TOTAL_ASSIST" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="60"/>
+                <Cell id="Cell06" left="72" top="136" width="100" height="20" text="헤드샷" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
+                <Cell id="Cell07" left="34" top="160" width="80" height="22" color="white" background="transparent" textAlign="right" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="bind:TOTAL_HEAD"/>
+                <Cell id="Cell08" left="72" top="190" width="100" height="20" text="바디샷" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
+                <Cell id="Cell10" left="72" top="244" width="100" height="20" text="레그샷" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
                 <Cell id="Cell12" left="149" top="64" width="100" height="20" text="최다 킬" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
                 <Cell id="Cell13" left="149" top="88" width="100" height="22" text="bind:MAX_KILL" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;"/>
                 <Cell id="Cell14" left="20" top="64" width="100" height="20" text="플레이 한 시간" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" background="transparent"/>
@@ -41,11 +41,11 @@
                 <Cell id="Cell22" top="64" height="20" text="점수/라운드" color="#98979f" font="16px/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="center" width="100" right="20" background="transparent"/>
                 <Cell id="Cell23" top="88" height="22" text="bind:AVG_SCORE" color="white" background="transparent" textAlign="center" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" width="100" right="20"/>
                 <Cell id="Cell24" left="-28" top="130" width="528" height="2" background="#1f2326" color="#1f2326" text=""/>
-                <Cell id="Cell25" left="123" top="160" width="110" height="22" color="#98979f" background="transparent" textAlign="left" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="expr:&quot;( &quot;+(TOTAL_HEAD / (TOTAL_HEAD + TOTAL_LEG + TOTAL_BODY) * 100).toFixed(1) + &quot;% )&quot;"/>
-                <Cell id="Cell09" left="37" top="214" width="80" height="22" color="white" background="transparent" textAlign="right" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="bind:TOTAL_BODY"/>
-                <Cell id="Cell11" left="123" top="214" width="110" height="22" color="#98979f" background="transparent" textAlign="left" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="expr:&quot;( &quot;+(TOTAL_BODY / (TOTAL_HEAD + TOTAL_LEG + TOTAL_BODY) * 100).toFixed(1) + &quot;% )&quot;"/>
-                <Cell id="Cell26" left="37" top="268" width="80" height="22" color="white" background="transparent" textAlign="right" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="bind:TOTAL_LEG"/>
-                <Cell id="Cell27" left="123" top="268" width="110" height="22" color="#98979f" background="transparent" textAlign="left" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="expr:&quot;( &quot;+(TOTAL_LEG / (TOTAL_HEAD + TOTAL_LEG + TOTAL_BODY) * 100).toFixed(1) + &quot;% )&quot;"/>
+                <Cell id="Cell25" left="120" top="160" width="110" height="22" color="#98979f" background="transparent" textAlign="left" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="expr:&quot;( &quot;+(TOTAL_HEAD / (TOTAL_HEAD + TOTAL_LEG + TOTAL_BODY) * 100).toFixed(1) + &quot;% )&quot;"/>
+                <Cell id="Cell09" left="34" top="214" width="80" height="22" color="white" background="transparent" textAlign="right" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="bind:TOTAL_BODY"/>
+                <Cell id="Cell11" left="120" top="214" width="110" height="22" color="#98979f" background="transparent" textAlign="left" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="expr:&quot;( &quot;+(TOTAL_BODY / (TOTAL_HEAD + TOTAL_LEG + TOTAL_BODY) * 100).toFixed(1) + &quot;% )&quot;"/>
+                <Cell id="Cell26" left="34" top="268" width="80" height="22" color="white" background="transparent" textAlign="right" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="bind:TOTAL_LEG"/>
+                <Cell id="Cell27" left="120" top="268" width="110" height="22" color="#98979f" background="transparent" textAlign="left" font="16px/normal &quot;AppleSDGothicNeoEB00&quot;" text="expr:&quot;( &quot;+(TOTAL_LEG / (TOTAL_HEAD + TOTAL_LEG + TOTAL_BODY) * 100).toFixed(1) + &quot;% )&quot;"/>
               </Band>
             </Format>
           </Formats>
@@ -184,9 +184,10 @@ this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.div_user_status.form.sta_user_tag.text = " #" + usertag;
 	
 	// 로딩 중 상태 표시 
-	this.div_user_status.form.sta_user_status.text = "조회 중...";
+	this.div_user_status.form.sta_user_status.text = "티어 조회 중...";
     this.div_user_status.form.sta_user_status.background = "";
-    
+    this.div_user_status.form.resetScroll();
+	
 	// 전적 조회 transaction
     var strSvcID        = "searchMatch";
     var strURL          = "SvcUrl::getValorantMatches.do";
@@ -283,7 +284,7 @@ this.fn_resizeMatchList = function()
 this.fn_Callback = function(svcId, errCode, errMsg)
 {
     if(errCode < 0) {
-        this.alert("조회 실패: " + errMsg);
+		this.gfnAlert("msg.notice.search_failed", [errMsg], "nodata"); //////////////////
         return;
     }
     // 요원 정보 조회
@@ -328,6 +329,9 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 		this.list_match_list.setCellProperty("body", "cell_match_agent_icon", "background", 
 		"expr:\"url('\" + AGENT_ICON + \"') no-repeat center center /contain\"");
 		
+		var Most_Agent = "url('"+ this.ds_agent.getColumn(0,"AGENT_FULL_BODY") +"') no-repeat center center /cover";
+		this.div_user_status.form.Logo_CHAMBER.background = Most_Agent;
+		
 		// 왼쪽 리스트뷰 다시 그리기
         this.fn_resizeRoleList();
         this.fn_resizeAgentList();
@@ -339,8 +343,13 @@ this.fn_Callback = function(svcId, errCode, errMsg)
         this.fnCreateChart();
 		
         // 검색 중 화면 숨기기
-		this.sta_hide_screen.visible = false;
-		this.btn_space_2.visible = false;
+		if(this.ds_list.getRowCount()){
+			this.sta_hide_screen.visible = false;
+			this.btn_space_2.visible = false;
+		}
+		else{
+			this.sta_hide_screen.text = "최근 전적 정보 없음" // 위에거 조건! 넣어서 어떻게나오나 확인
+		}
 		this.resetScroll();
         this.scrollbartype = "none auto";
     }
@@ -480,10 +489,7 @@ this.fnGetOption = function (canvas, background)
 		colorsStroke: 'transparent',
 	}
 	return Option;
-};
-
-
-]]></Script>
+};]]></Script>
     <Objects>
       <Dataset id="ds_tier">
         <ColumnInfo>
@@ -551,6 +557,7 @@ this.fnGetOption = function (canvas, background)
         <ColumnInfo>
           <Column id="AGENT" type="STRING" size="256"/>
           <Column id="AGENT_ICON" type="STRING" size="256"/>
+          <Column id="AGENT_FULL_BODY" type="STRING" size="256"/>
           <Column id="ROLE" type="STRING" size="256"/>
           <Column id="PLAY_COUNT" type="INT" size="256"/>
           <Column id="PICK_RATE" type="FLOAT" size="256"/>

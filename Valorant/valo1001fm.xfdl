@@ -48,7 +48,7 @@ this.check_edit_value = function ()
 	
 	// 입력값이 없거나 #을 포함하지 않는다면
 	if (!validation || validation.indexOf("#") == -1) {
-        alert("닉네임#태그 형식으로 입력해주세요.");
+		this.gfnAlert("msg.notice.nickname1", "", "nodata"); //////////////////
         return 0;
     }
 	
@@ -57,8 +57,8 @@ this.check_edit_value = function ()
     
     // '#'이 여러 개 들어간 경우 예외 처리
     if (devide.length !== 2) {
-        alert("태그(#)는 한 번만 입력 가능합니다.");
-        return 0;
+        this.gfnAlert("msg.notice.nickname2", "", "nodata"); //////////////////
+		return 0;
     }
 	var sName = devide[0]; // 닉네임 String
     var sTag  = devide[1]; // 태그   String
@@ -67,7 +67,7 @@ this.check_edit_value = function ()
     // 규칙: 3~16자, 시작/끝 공백 불가
     var nameReg = /^[^\s].{1,14}[^\s]$/; 
     if (!nameReg.test(sName)) {
-        alert("닉네임은 3~16자이며, 시작과 끝에 공백을 포함할 수 없습니다.");
+		this.gfnAlert("msg.notice.nickname3", "", "nodata"); //////////////////
         return 0;
     }
 
@@ -75,7 +75,7 @@ this.check_edit_value = function ()
     // 규칙: 3~5자, 공백 절대 불가
     var tagReg = /^\S{3,5}$/; 
     if (!tagReg.test(sTag)) {
-        alert("태그는 공백 없이 3~5자여야 합니다.");
+		this.gfnAlert("msg.notice.nickname4", "", "nodata"); //////////////////
         return 0;
     }
 	
@@ -83,7 +83,6 @@ this.check_edit_value = function ()
 	this.fvApp.setVariable("gv_Recent_Search_Name", sName);
 	this.fvApp.setVariable("gv_Recent_Search_Tag", sTag);
 	
-	// trace("최종 닉네임 Name: " + sName + ", Tag: " + sTag);
 	return 1;
 	
 };]]></Script>

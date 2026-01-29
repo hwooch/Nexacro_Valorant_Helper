@@ -159,6 +159,9 @@ pForm.gfnOpenPopup = function (sPopupId, sUrl, oArg, sPopupCallback, oOption)
 		newChild.set_layered(bLayered);
 		newChild.set_overlaycolor("RGBA(0, 0, 0, 0.2)");
 		newChild.set_titlebarheight(30);
+		
+		newChild.border = "0px";
+		newChild.borderRadius = "20px";
 
 
 		//newChild.titlebar.closebutton.set_visible(false);	//close버튼 visible false 처리

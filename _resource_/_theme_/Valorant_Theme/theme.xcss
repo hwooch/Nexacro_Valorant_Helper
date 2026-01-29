@@ -11391,6 +11391,77 @@
 	-nexa-background-odd : #393946;
 	
 }
+.Button.btn_WF_FillRed,
+.Button.btn_WF_FillRed[status=mouseover]
+{
+	background : #ff4654;
+	color : white;
+	border-radius : 10px;
+	font : normal 18pt/normal "AppleSDGothicNeoEB00";
+	cursor : pointer;
+}
+
+.Button.btn_WF_FillYellow[status=focused],
+.Button.btn_WF_FillYellow[userstatus=pushed],
+.Button.btn_WF_FillYellow[userstatus=selected]
+{
+	-nexa-border : 1px solid #ffa105;
+	background : #ffa105;
+	color : #ffffff;	
+}
+.Button.btn_WF_FillYellow[status=disabled]
+{
+	-nexa-border : 1px solid #ffd75e;
+	background : #ffd75e;
+	color : #fff2b9;
+}
+.Button.btn_WF_FillYellow,
+.Button.btn_WF_FillYellow[status=mouseover]
+{
+	-nexa-border : 1px solid #ffbf05;
+	background : #ffbf05;
+	color : #ffffff;
+	border-radius : 3px;	
+}
+.Static.sta_POP_Error
+{
+	background : url('theme://images/img_Error.png') no-repeat center center;
+}
+.Button.btn_WF_FillRed[status=focused],
+.Button.btn_WF_FillRed[userstatus=pushed],
+.Button.btn_WF_FillRed[userstatus=selected]
+{
+	background : #c82333;
+	color : #ffffff;
+	cursor : pointer;
+}
+.Button.btn_WF_FillGray,
+.Button.btn_WF_FillGray[status=mouseover]
+{
+	background : #393946;
+	color : white;
+	border-radius : 10px;
+	font : normal 18pt/normal "AppleSDGothicNeoEB00";
+	cursor : pointer;
+}
+.Button.btn_WF_FillGray[status=focused],
+.Button.btn_WF_FillGray[userstatus=pushed],
+.Button.btn_WF_FillGray[userstatus=selected]
+{
+	background : #2d2d38;
+	color : #ffffff;
+	cursor : pointer;
+}
+.Button.btn_WF_FillGray[status=disabled]
+{
+	background : #7b7b93;
+	color : #cccccc;
+}
+.Button.btn_WF_FillRed[status=disabled]
+{
+	background : #e97b86;
+	color : #f0b9bc;
+}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>

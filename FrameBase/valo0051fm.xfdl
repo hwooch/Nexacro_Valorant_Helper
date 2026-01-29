@@ -27,11 +27,7 @@ this.fvApp = nexacro.getApplication();
 this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
-	if (objWorkFrame) {
-        objWorkFrame.set_formurl("Valorant::valo1001fm.xfdl");
-    } else {
-        trace("WorkFrame을 찾을 수 없습니다.");
-    }
+	objWorkFrame.formurl = "Valorant::valo1001fm.xfdl";
 };
 ]]></Script>
   </Form>
