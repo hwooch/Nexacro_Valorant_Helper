@@ -11391,8 +11391,7 @@
 	-nexa-background-odd : #393946;
 	
 }
-.Button.btn_WF_FillRed,
-.Button.btn_WF_FillRed[status=mouseover]
+.Button.btn_WF_FillRed
 {
 	background : #ff4654;
 	color : white;
@@ -11427,7 +11426,7 @@
 {
 	background : url('theme://images/img_Error.png') no-repeat center center;
 }
-.Button.btn_WF_FillRed[status=focused],
+.Button.btn_WF_FillRed[status=mouseover],
 .Button.btn_WF_FillRed[userstatus=pushed],
 .Button.btn_WF_FillRed[userstatus=selected]
 {
@@ -11435,8 +11434,7 @@
 	color : #ffffff;
 	cursor : pointer;
 }
-.Button.btn_WF_FillGray,
-.Button.btn_WF_FillGray[status=mouseover]
+.Button.btn_WF_FillGray
 {
 	background : #393946;
 	color : white;
@@ -11444,9 +11442,9 @@
 	font : normal 18pt/normal "AppleSDGothicNeoEB00";
 	cursor : pointer;
 }
-.Button.btn_WF_FillGray[status=focused],
 .Button.btn_WF_FillGray[userstatus=pushed],
-.Button.btn_WF_FillGray[userstatus=selected]
+.Button.btn_WF_FillGray[userstatus=selected],
+.Button.btn_WF_FillGray[status=mouseover]
 {
 	background : #2d2d38;
 	color : #ffffff;
