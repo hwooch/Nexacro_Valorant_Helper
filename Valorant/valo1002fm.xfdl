@@ -7,9 +7,9 @@
           <Layouts>
             <Layout>
               <Static id="Logo_CHAMBER" taborder="3" left="37.68115942028985%" top="-110" height="901" background="url('https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/fullportrait.png') no-repeat center center /cover" opacity="50%" text="" width="477"/>
-              <Static id="sta_user_status" taborder="0" top="15" width="540" height="120" color="white" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="left" text="asdfafdsafsdf11" fittocontents="width" padding="0px 0px 0px 130px" left="Logo_CHAMBER:65"/>
-              <Static id="sta_user_tag" taborder="2" top="15" height="120" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="asdfafdsafsdf" fittocontents="width" right="Logo_CHAMBER:0" textAlign="right" width="242"/>
-              <Static id="sta_user_name" taborder="1" top="15" height="120" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="asdfafdsafsdf" fittocontents="width" textAlign="right" right="sta_user_tag:0" width="400"/>
+              <Static id="sta_user_status" taborder="0" top="15" width="540" height="120" color="white" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="left" text="티어 조회 중 ..." fittocontents="width" padding="0px 0px 0px 130px" left="Logo_CHAMBER:65"/>
+              <Static id="sta_user_tag" taborder="2" top="15" height="120" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="사용자 태그" fittocontents="width" right="Logo_CHAMBER:0" textAlign="right" width="242"/>
+              <Static id="sta_user_name" taborder="1" top="15" height="120" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" right="sta_user_tag:0" width="400"/>
             </Layout>
           </Layouts>
         </Div>
@@ -115,7 +115,6 @@
           </Layouts>
         </Div>
         <Static id="sta_devide_0" taborder="15" left="34" top="sta_statistics:-2" width="400" height="2" background="#1f2326"/>
-        <Static id="sta_hide_screen" taborder="17" left="2044" top="190" background="#31313c" textAlign="center" verticalAlign="middle" color="white" font="normal 50pt/normal &quot;AppleSDGothicNeoH00&quot;" borderRadius="20px" right="-1976" bottom="20" text="&#13;&#10;로딩바 수정하고&#13;&#10;화면 가리개 왼쪽 밑에 없애는거까지 수정해야됨"/>
         <Button id="Button00" taborder="18" left="34" top="list_weapon:0" width="400" height="20"/>
         <ListView id="list_match_list" taborder="19" left="468" top="455" height="690" binddataset="ds_list" border="0px none" right="34" background="transparent">
           <Formats>
@@ -154,7 +153,8 @@
           </Formats>
         </ListView>
         <Button id="btn_space_1" taborder="20" left="1010" top="list_match_list:0" width="400" height="20"/>
-        <Button id="Button01" taborder="21" left="2128" top="630" width="192" height="380" background="#1f2326"/>
+        <Button id="btn_space_2" taborder="21" left="0" top="630" background="#1f2326" bottom="0" right="0"/>
+        <Static id="sta_hide_screen" taborder="17" left="34" top="190" background="#31313c" textAlign="center" verticalAlign="middle" color="white" font="normal 50pt/normal &quot;AppleSDGothicNeoH00&quot;" borderRadius="20px" right="34" bottom="20"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -171,6 +171,10 @@ this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.ds_agent.clearData();
     this.ds_weapon.clearData();
 	this.ds_chart_win_rate.clearData();
+	
+	// 검색 중 화면 표시하기
+	this.sta_hide_screen.visible = true;
+	this.btn_space_2.visible = true;
 	
     var username = this.fvApp.getVariable("gv_Recent_Search_Name");
     var usertag  = this.fvApp.getVariable("gv_Recent_Search_Tag");
@@ -335,7 +339,8 @@ this.fn_Callback = function(svcId, errCode, errMsg)
         this.fnCreateChart();
 		
         // 검색 중 화면 숨기기
-		this.sta_hide_screen.visible = false;		
+		this.sta_hide_screen.visible = false;
+		this.btn_space_2.visible = false;
 		this.resetScroll();
         this.scrollbartype = "none auto";
     }

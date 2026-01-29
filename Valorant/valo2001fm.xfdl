@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="980" width="2000">
         <Button id="btn_refresh_ranking" taborder="0" text="랭킹 새로고침" left="200" top="40" width="220" height="90" onclick="btn_refresh_ranking_onclick" tabstop="false" cssclass="rank_refresh"/>
-        <Grid id="grd_ranking" taborder="6" left="200" top="btn_refresh_ranking:40" height="852" binddataset="ds_ranking" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px 20px 0px 0px" tabstop="false" right="200" cssclass="grid_test">
+        <Grid id="grd_ranking" taborder="6" left="200" top="btn_refresh_ranking:40" height="852" binddataset="ds_ranking" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px 20px 0px 0px" tabstop="false" right="200" cssclass="grid_test" oncellclick="grd_ranking_oncellclick" onmousemove="grd_ranking_onmousemove">
           <Formats>
             <Format id="default">
               <Columns>
@@ -47,6 +47,7 @@
         <Static id="sta_last_update" taborder="1" text="랭킹 불러오는 중..." left="btn_refresh_ranking:20" top="40" width="620" height="90" color="white" borderRadius="20px" font="normal 18pt/normal &quot;이사만루체 Medium&quot;" textAlign="left"/>
         <Button id="Button00" taborder="2" left="0" top="0" width="0" height="0"/>
         <Button id="btn_space" taborder="4" left="201" top="divPage:0" height="30" right="201"/>
+        <Static id="sta_description" taborder="7" text="상위 1000명의 랭킹 정보를 제공합니다.&#13;&#10;닉네임을 클릭하면 해당 유저의 전적을 검색합니다." top="40" width="620" height="90" color="white" borderRadius="20px" font="normal 18pt/normal &quot;이사만루체 Medium&quot;" textAlign="right" right="200"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -81,7 +82,9 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.fvRecords=0; 			//목록갯수
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+this.fvRecords=0; 			//목록갯수
 this.fvPage=0;	 			//페이지번호
 this.fvRecordsOffset=0;		//시작rownum
 this.fvTotalCount=0;		//전체데이터갯수
@@ -89,8 +92,8 @@ this.fvPageCount=0; 		//실제표출페이지갯수
 
 this.valo2001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.gfnFormOnLoad(this);
-
+	//this.gfnFormOnLoad(this);
+	
 	this.fnPageInit();
 };
 
@@ -119,16 +122,16 @@ this.fn_Callback = function(svcId, errCode, errMsg)
     
     // 그리드 선택 없애기
     this.ds_ranking.set_rowposition(-1);
-
+	
     // 페이징 조회
     if (svcId == "paging") {
         // 마지막 갱신 시간 표시
         if(this.ds_ranking.getRowCount() > 0) {
-             this.sta_last_update.text = "마지막 갱신 일시 : " + this.ds_ranking.getColumn(0, "LAST_UPDATE");
+			this.sta_last_update.text = "마지막 갱신 일시 : " + this.ds_ranking.getColumn(0, "LAST_UPDATE");
         } else {
-             this.sta_last_update.text = "데이터가 없습니다.";
+			this.sta_last_update.text = "데이터가 없습니다.";
         }
-
+		
         // 페이징 네비게이션 그리기
         this.fnPagingSetting();
     }
@@ -140,14 +143,14 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 };
 
 this.fnPageInit = function ()
- {
+{
 	this.fvRecords = 20; 							 //목록갯수
 	this.fvPage = 0;	 							 //페이지번호
 	this.fvRecordsOffset = 0;					     //시작rownum
 	this.fvPageCount = 10;							 //실제표출페이지갯수
 	
 	this.fnSearch();
- };
+};
 this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	// 조회조건 설정
@@ -167,12 +170,12 @@ this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var isAsync   	= true;
 	
 	this.gfnTransaction(strSvcId , 		// transaction을 구분하기 위한 svc id값
-						strSvcUrl , 	// trabsaction을 요청할 주소
-						inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
-						outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
-						strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
-						callBackFnc, 	// transaction의 결과를 받을 Function 이름
-						isAsync); 		// 비동기통신 여부 [생략가능]
+		strSvcUrl , 	// trabsaction을 요청할 주소
+		inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+		outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+		strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+		callBackFnc, 	// transaction의 결과를 받을 Function 이름
+		isAsync); 		// 비동기통신 여부 [생략가능]
 };
 
 // 페이징 세팅 (하단 숫자 버튼 생성)
@@ -183,10 +186,10 @@ this.fnPagingSetting = function ()
     
     // fnCreatePage 함수는 샘플에 있는 공통 함수
     this.divPage.form.fnCreatePage("fnPagingCallback",
-                                    this.fvTotalCount,
-                                    this.fvRecords,
-                                    this.fvPage,
-                                    this.fvPageCount);  
+		this.fvTotalCount,
+		this.fvRecords,
+		this.fvPage,
+		this.fvPageCount);  
 };
 // 페이지 번호 클릭 시 실행되는 콜백
 this.fnPagingCallback = function(nPage, nRecordsOffset)
@@ -195,6 +198,49 @@ this.fnPagingCallback = function(nPage, nRecordsOffset)
     this.fvRecordsOffset = nRecordsOffset;
     
     this.fnSearch(); // 변경된 페이지 정보로 다시 조회
+};
+
+// 전적 검색 함수
+this.fnSearch_user_match = function (clicked_nickname)
+{
+	var devide = clicked_nickname.split(" #");
+	
+	var sName = devide[0]; // 닉네임 String
+    var sTag  = devide[1]; // 태그   String
+	
+	this.fvApp.setVariable("gv_Recent_Search_Name", sName);
+	this.fvApp.setVariable("gv_Recent_Search_Tag", sTag);
+
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	objWorkFrame.formurl = "Valorant::valo1002fm.xfdl";
+};
+
+// 그리드에서 닉네임 부분 클릭하면 발생하는 함수
+this.grd_ranking_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if (e.cell == 1) {
+		var clicked_nickname = this.grd_ranking.getCellPropertyValue( e.row, 1, "text");
+		
+		if( confirm(clicked_nickname) ) {
+			this.fnSearch_user_match(clicked_nickname);
+		}
+	}
+};
+
+// 그리드에서 닉네임 부분에 마우스 올려놓을 때 or 그렇지 않을 때 커서 변경 함수
+this.grd_ranking_onmousemove = function(obj:nexacro.Grid,e:nexacro.GridMouseEventInfo)
+{
+	if (e.cell == 1) {
+		if( e.row != -1 ) {
+			this.grd_ranking.cursor = "pointer";
+		}
+	}
+	if (e.cell != 1) {
+		this.grd_ranking.cursor = "auto";
+	}
+	if( e.row == -1 ) {
+		this.grd_ranking.cursor = "auto";
+	}
 };]]></Script>
   </Form>
 </FDL>
