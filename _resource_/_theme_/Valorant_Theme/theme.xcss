@@ -6010,8 +6010,8 @@
 /* ScrollBar */
 .VScrollBarControl
 {
-	background : #f7f7f7;
-	-nexa-border : 0px none, 0px none, 0px none, 1px solid #d5d5d5;
+	background : black;
+	-nexa-border : 0px none,0px none,0px none,1px solid #8e8e8e;
 	-nexa-padding : 2px 2px 2px 2px;
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
@@ -6348,7 +6348,7 @@
 
 .VScrollBarControl .trackbar,.HScrollBarControl .trackbar
 {
-	background : #dddddd;
+	background : #f74451;
 	-nexa-border : ;
 	-nexa-edge : ;
 	-nexa-icon : ;
@@ -6374,7 +6374,7 @@
 
 .VScrollBarControl .trackbar[userstatus=pushed],.VScrollBarControl .trackbar[status=focused],.VScrollBarControl .trackbar[userstatus=selected],.HScrollBarControl .trackbar[userstatus=pushed],.HScrollBarControl .trackbar[status=focused],.HScrollBarControl .trackbar[userstatus=selected]
 {
-	background : #999999;
+	background : #f74451;
 	-nexa-border : ;
 	-nexa-edge : ;
 	-nexa-icon : ;
@@ -6400,7 +6400,7 @@
 
 .VScrollBarControl .trackbar[status=mouseover],.HScrollBarControl .trackbar[status=mouseover]
 {
-	background : #bbbbbb;
+	background : #f85d67;
 	-nexa-border : ;
 	-nexa-edge : ;
 	-nexa-icon : ;
@@ -6426,7 +6426,7 @@
 
 .VScrollBarControl .trackbar[status=disabled],.HScrollBarControl .trackbar[status=disabled]
 {
-	background : #eeeeee;
+	background : #f74451;
 	-nexa-border : ;
 	-nexa-edge : ;
 	-nexa-icon : ;
