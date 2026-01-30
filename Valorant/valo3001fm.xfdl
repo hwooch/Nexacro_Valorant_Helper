@@ -12,102 +12,8 @@
             <Layout/>
           </Layouts>
         </Div>
-        <Button id="Button00" taborder="3" text="스킨 최신데이터 리로드" left="5170" top="120" width="410" height="105" background="white" onclick="Button00_onclick" visible="false"/>
-        <Grid id="Grid00" taborder="4" left="3610" top="35" height="220" binddataset="ds_weapon" autofittype="col" right="-3107" visible="false">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="UUID"/>
-                <Cell col="1" text="NAME"/>
-                <Cell col="2" text="ICON"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:UUID"/>
-                <Cell col="1" text="bind:NAME"/>
-                <Cell col="2" text="bind:ICON"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Grid id="Grid01" taborder="5" left="3610" top="301" height="234" binddataset="ds_tier" autofittype="col" right="-3527" visible="false">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="UUID"/>
-                <Cell col="1" text="NAME"/>
-                <Cell col="2" text="ICON"/>
-                <Cell col="3" text="COLOR"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:UUID"/>
-                <Cell col="1" text="bind:NAME"/>
-                <Cell col="2" text="bind:ICON"/>
-                <Cell col="3" text="bind:COLOR"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Grid id="Grid02" taborder="6" left="3613" top="605" height="285" binddataset="ds_skin" autofittype="col" right="-3527" visible="false">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="WEAPON_UUID"/>
-                <Cell col="1" text="TIER_UUID"/>
-                <Cell col="2" text="NAME"/>
-                <Cell col="3" text="ICON"/>
-                <Cell col="4" text="TIER_ICON"/>
-                <Cell col="5" text="TIER_COLOR"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:WEAPON_UUID"/>
-                <Cell col="1" text="bind:TIER_UUID"/>
-                <Cell col="2" text="bind:NAME"/>
-                <Cell col="3" text="bind:ICON"/>
-                <Cell col="4" text="bind:TIER_ICON"/>
-                <Cell col="5" text="bind:TIER_COLOR"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Panel id="Panel00" taborder="7" left="2345" top="45" width="1110" height="760" background="skyblue" type="horizontal" tabletemplate="2* / 2*" visible="false">
-          <Contents>
-            <PanelItem id="PanelItem00" componentid="Button01"/>
-            <PanelItem id="PanelItem01" componentid="Combo00"/>
-          </Contents>
-        </Panel>
-        <Button id="Button01" taborder="8" text="Button01" left="2345" top="45" width="175" height="415" background="green" tablecellarea="0/0" visible="false"/>
-        <Combo id="Combo00" taborder="9" text="Combo00" left="2805" top="45" width="27.027027027027028%" height="16.44736842105263%" tablecellarea="0/0" visible="false"/>
+        <Button id="btn_reload" taborder="3" text="스킨 최신데이터 리로드" left="2105" top="170" width="410" height="105" background="white" onclick="Button00_onclick" visible="false" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;"/>
+        <Button id="btn_space1" taborder="12" left="855" top="div_skin_list:0" width="0" height="30"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[// 현재 선택한 값
@@ -158,6 +64,7 @@ this.fn_Callback = function(svcID, errCode, errMsg) {
         this.fn_drawTierList();
         this.fn_drawWeaponList();
         this.fn_drawSkinList();
+		
 		this.resetScroll();
     }
 };
@@ -180,13 +87,13 @@ this.fn_clearComps = function(objForm)
     }
 };
 
-// 무기 div 그리기 (텍스트 길이에 따른 동적 너비 적용)
+// 무기 div 그리기
 this.fn_drawWeaponList = function()
 {
     var pDiv    = this.div_weapon.form;
     var ds      = this.ds_weapon;
     
-    // 기존 컴포넌트 초기화
+	// 컴포넌트 초기화
     this.fn_clearComps(pDiv);
     
     // 배치 설정
@@ -195,7 +102,7 @@ this.fn_drawWeaponList = function()
     var nLeft   = nStartX;
     var nTop    = nStartY;
     
-    var nBtnH   = 50;  // 버튼 높이 (고정)
+    var nBtnH   = 50;  // 버튼 높이
     var nGapX   = 15;  // 버튼 간 가로 간격
     var nGapY   = 15;  // 버튼 간 세로 간격
     
@@ -210,28 +117,21 @@ this.fn_drawWeaponList = function()
         var sName = ds.getColumn(i, "NAME");
         var sIcon = ds.getColumn(i, "ICON");
         
-        // -----------------------------------------------------------------------
-        // [1] 텍스트 너비 계산 (동적 사이즈의 핵심)
-        // -----------------------------------------------------------------------
+        // 텍스트 너비 계산
         var sFont = "normal 12pt/normal 'AppleSDGothicNeoB00'";
         var objSize = nexacro.getTextSize(sName, sFont); // 텍스트 사이즈 객체 반환
         var nTextWidth = objSize.nx; // 텍스트의 실제 너비
         
-        // 버튼 너비 계산 공식:
         // 왼쪽여백(10) + 아이콘(90) + 간격(10) + 텍스트너비(nTextWidth) + 오른쪽여백(10)
         var nDynamicBtnW = 10 + 90 + 10 + nTextWidth + 10;
 		
-        // -----------------------------------------------------------------------
-        // [2] 줄바꿈 로직
-        // -----------------------------------------------------------------------
+        // 줄바꿈 로직
         if ((nLeft + nDynamicBtnW) > nMaxWidth) {
-            nLeft = nStartX;          // 왼쪽 초기화
-            nTop  = nTop + nBtnH + nGapY; // 아래로 이동
+            nLeft = nStartX;          		// 왼쪽 초기화
+            nTop  = nTop + nBtnH + nGapY; 	// 아래로 이동
         }
         
-        // -----------------------------------------------------------------------
-        // [3] 컨테이너 Div 생성 (계산된 nDynamicBtnW 사용)
-        // -----------------------------------------------------------------------
+        // 무기 버튼역할하는 Div 생성
         var sDivId = "div_weapon_item_" + i;
         var objDiv = new nexacro.Div(); 
         objDiv.init( sDivId, nLeft, nTop, nDynamicBtnW, nBtnH, null, null );
@@ -239,7 +139,6 @@ this.fn_drawWeaponList = function()
         var isSelected = (this.fv_selectedWeapon == sUuid);
         objDiv.border = isSelected ? "2px solid #ffffff" : "2px solid #8e8e8e";
         objDiv.background = isSelected ? "#ff4655" : "#31313c";
-		objDiv.boxShadow = isSelected ? "0px 0px 10px #ffffff" : "";
         objDiv.borderRadius = "20px";
         
         objDiv.addEventHandler("onclick", this.fn_itemOnClick, this);
@@ -253,12 +152,9 @@ this.fn_drawWeaponList = function()
         pDiv.addChild(sDivId, objDiv);
         objDiv.show();
 		
-        // -----------------------------------------------------------------------
-        // [4] 아이콘 생성 (왼쪽 고정)
-        // -----------------------------------------------------------------------
+        // 무기 아이콘 생성
         var sImgId = "img_weapon_" + i;
         var objImg = new nexacro.ImageViewer();
-        // 왼쪽 10px, 너비 90px 고정
         objImg.init( sImgId, 10, 5, 90, 38, null, null );
         
         objImg.image = sIcon;
@@ -274,14 +170,10 @@ this.fn_drawWeaponList = function()
         objDiv.addChild(sImgId, objImg);
         objImg.show();
 		
-        // -----------------------------------------------------------------------
-        // [5] 텍스트 생성 (동적 너비 적용)
-        // -----------------------------------------------------------------------
+        // 무기 텍스트 생성
         var sStaId = "sta_weapon_name_" + i;
         var objSta = new nexacro.Static();
         
-        // Left: 105 (아이콘 끝 95 + 간격 10)
-        // Width: 계산된 텍스트 너비 + 여유분(5)
         objSta.init( sStaId, 105, 5, nTextWidth + 5, 38, null, null );
         
         objSta.text = sName;
@@ -307,10 +199,8 @@ this.fn_drawWeaponList = function()
 	
     pDiv.resetScroll();
 };
-/* ========================================================================
-[3] 동적 컴포넌트: 티어 목록 (가로 배치 / Flow Layout)
-========================================================================
-*/
+
+// 티어 div 그리기
 this.fn_drawTierList = function()
 {
     var pDiv    = this.div_tier.form; 
@@ -329,21 +219,18 @@ this.fn_drawTierList = function()
     var nGapY   = 15;
 	
 	
-    // 부모 Div 크기 (줄바꿈 계산용)
+    // 부모 Div 크기
     var nContainerWidth = this.div_weapon.getOffsetWidth();
-    // 스크롤바 영역 고려하여 여유공간 20px 뺌
     var nMaxWidth = nContainerWidth - 20;
 	
 	var sFont = "normal 12pt/normal 'AppleSDGothicNeoB00'";
     var objSize = nexacro.getTextSize("전체", sFont); // 텍스트 사이즈 객체 반환
     var nTextWidth = objSize.nx; // 텍스트의 실제 너비
 	
-    // 버튼 너비 계산 공식:
     // 왼쪽여백(30) + 텍스트너비(nTextWidth) + 오른쪽여백(30)
     var nDynamicBtnW = 30 + nTextWidth + 30;
 	
-    // 1. "전체" 버튼
-    // -----------------------------------------------------
+    // 전체 버튼
     var sAllDivId = "div_tier_item_all";
     var objAllDiv = new nexacro.Div();
 	objAllDiv.init(sAllDivId, nLeft, nTop, nDynamicBtnW, nBtnH, null, null);
@@ -353,7 +240,6 @@ this.fn_drawTierList = function()
 	
     objAllDiv.border = isSelected ? "2px solid #ffffff" : "2px solid #8e8e8e";
     objAllDiv.background = isSelected ? "#ff4655" : "#31313c"; 
-	objAllDiv.boxShadow = isSelected ? "0px 0px 10px #ffffff" : "";
     objAllDiv.borderRadius = "20px";
 	objAllDiv.text = "전체";
 	objAllDiv.color = this.fv_selectedTier == "all" ? "#ffffff" : "#ffffff";
@@ -370,7 +256,6 @@ this.fn_drawTierList = function()
     objAllDiv.show();
     
     nLeft = nLeft + nDynamicBtnW + nGapX;
-    // -----------------------------------------------------
 	
     for (var i = 0; i < ds.getRowCount(); i++) 
     {
@@ -378,14 +263,11 @@ this.fn_drawTierList = function()
         var sName = ds.getColumn(i, "NAME").slice(0, -4);
         var sIcon = ds.getColumn(i, "ICON");
         
-		// -----------------------------------------------------------------------
-        // [1] 텍스트 너비 계산 (동적 사이즈의 핵심)
-        // -----------------------------------------------------------------------
+        // 텍스트 너비 계산
         var sFont = "normal 12pt/normal 'AppleSDGothicNeoB00'";
         var objSize = nexacro.getTextSize(sName, sFont); // 텍스트 사이즈 객체 반환
         var nTextWidth = objSize.nx; // 텍스트의 실제 너비
         
-        // 버튼 너비 계산 공식:
         // 왼쪽여백(10) + 아이콘(40) + 간격(10) + 텍스트너비(nTextWidth) + 오른쪽여백(15)
         var nDynamicBtnW = 10 + 40 + 10 + nTextWidth + 15;
 		
@@ -402,8 +284,7 @@ this.fn_drawTierList = function()
         var isSelected = (this.fv_selectedTier == sUuid);
         
         objDiv.border = isSelected ? "2px solid #ffffff" : "2px solid #8e8e8e";
-		objDiv.background = isSelected ? "#ff4655" : "#31313c"; 
-		objDiv.boxShadow = isSelected ? "0px 0px 10px #ffffff" : "";
+		objDiv.background = isSelected ? "#ff4655" : "#31313c";
 		objDiv.borderRadius = "20px";
         objDiv.addEventHandler("onclick", this.fn_itemOnClick, this);
 		objDiv.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
@@ -417,7 +298,7 @@ this.fn_drawTierList = function()
         pDiv.addChild(sDivId, objDiv);
         objDiv.show();
 		
-        // 아이콘
+        // 티어 아이콘
         var sImgId = "img_tier_" + i;
         var objImg = new nexacro.ImageViewer();
 		objImg.init(sImgId, 10, 4, 40, 40, null, null);
@@ -435,7 +316,7 @@ this.fn_drawTierList = function()
         objDiv.addChild(sImgId, objImg);
         objImg.show();
 		
-        // 이름
+        // 티어 이름
         var sStaId = "sta_tier_name_" + i;
         var objSta = new nexacro.Static();
 		objSta.init(sStaId, 60, 4, nTextWidth, 40, null, null);
@@ -460,22 +341,19 @@ this.fn_drawTierList = function()
     pDiv.resetScroll();
 };
 
-/* ========================================================================
-[5] 클릭 이벤트 (필터링 로직)
-========================================================================
-*/
+// 클릭 이벤트 (필터링 로직)
 this.fn_itemOnClick = function(obj, e)
 {
-    // 1. 일단 클릭된 컴포넌트를 타겟으로 잡음
+    // 일단 클릭된 컴포넌트를 타겟으로 잡음
     var targetObj = obj;
     
-    // 2. 만약 클릭된 컴포넌트에 'u_uuid' 값이 없다면? (이미지나 스태틱을 누른 경우)
-    //    -> 바로 위 부모(parent)인 Div를 타겟으로 변경함
+    // 만약 클릭된 컴포넌트에 'u_uuid' 값이 없다면? (이미지나 스태틱을 누른 경우)
+    // -> 바로 위 부모(parent)인 Div를 타겟으로 변경함
     if (targetObj.u_uuid == undefined || targetObj.u_uuid == null || targetObj.u_uuid == "undefined") {
         targetObj = obj.parent.parent;
     }
 	
-    // 3. 이제 targetObj는 무조건 데이터를 가진 Div가 됨
+    // 이제 targetObj는 무조건 데이터를 가진 Div가 됨
     var sType = targetObj.u_type; 
     var sUuid = targetObj.u_uuid;
     
@@ -489,6 +367,8 @@ this.fn_itemOnClick = function(obj, e)
     
     this.fn_drawSkinList();
 };
+
+// 마우스롤 올렸을 때
 this.fn_itemOnMouseEnter = function(obj, e){
     var targetObj = obj;
     
@@ -497,6 +377,8 @@ this.fn_itemOnMouseEnter = function(obj, e){
     }
 	targetObj.boxShadow = "0px 0px 10px #ffffff";
 }
+
+// 마우스롤 내렸을 때
 this.fn_itemOnMouseLeave = function(obj, e){
     var targetObj = obj;
     
@@ -505,10 +387,8 @@ this.fn_itemOnMouseLeave = function(obj, e){
     }
 	targetObj.boxShadow = "";
 }
-/* ========================================================================
-[6] 동적 컴포넌트: 스킨 목록 (갤러리) - 컬럼명 대문자 적용 완료
-========================================================================
-*/
+
+// 스킨 목록 div 그리기
 this.fn_drawSkinList = function()
 {
 	this.div_skin_list.top = this.div_tier.getOffsetBottom() + 20;
@@ -534,7 +414,6 @@ this.fn_drawSkinList = function()
 	
     for (var i = 0; i < ds.getRowCount(); i++) 
     {
-        // [수정] 대문자 컬럼명 사용 (매우 중요)
         var sUuid      = ds.getColumn(i, "UUID");
         var sWeaponUuid= ds.getColumn(i, "WEAPON_UUID"); 
         var sTierUuid  = ds.getColumn(i, "TIER_UUID");   
@@ -571,7 +450,7 @@ this.fn_drawSkinList = function()
         pDiv.addChild(sDivId, objDiv);
         objDiv.show();
 		
-        // 이미지
+        // 스킨 이미지
         var sImgId = "img_skin_" + i;
         var objImg = new nexacro.ImageViewer();
 		objImg.init(sImgId, 10, 20, null, 110, 10, null);
@@ -584,7 +463,7 @@ this.fn_drawSkinList = function()
         objDiv.addChild(sImgId, objImg);
         objImg.show();
 		
-        // 이름
+        // 스킨 이름
         var sStaId = "sta_skin_name_" + i;
         var objSta = new nexacro.Static();
 		objSta.init(sStaId, 10, 135, null, 25, 10, null);
@@ -601,7 +480,7 @@ this.fn_drawSkinList = function()
         // 티어 아이콘
         if (sTierIcon) {
             var sTierId = "img_skin_tier_" + i;
-            var nIconSize = 20;
+            var nIconSize = 25;
             var nIconLeft = (nCardW - nIconSize) / 2;
             
             var objTier = new nexacro.ImageViewer();
@@ -634,9 +513,9 @@ this.fn_drawSkinList = function()
 	var nTotalHeight = nTop + nCardH + 10;
     this.div_skin_list.height = nTotalHeight;
 	
-	this.height = this.div_skin_list.getOffsetBottom()+20;
-	
     pDiv.resetScroll();
+	
+	this.resetScroll();
 };]]></Script>
     <Objects>
       <Dataset id="ds_weapon">

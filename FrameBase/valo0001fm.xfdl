@@ -14,6 +14,7 @@
         <Button id="btn_Ranking" taborder="3" text="랭킹" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave" width="120" right="btn_Skin:-2"/>
         <Button id="btn_Search" taborder="2" text="전적 검색" height="50" cssclass="top_menu_autoclick" bottom="0" onclick="btn_common_onclick" onmouseleave="btn_common_onmouseleave" onmouseenter="btn_common_onmouseenter" width="120" right="btn_Ranking:-2"/>
         <Button id="btn_Party" taborder="8" text="파티 구인" width="120" cssclass="top_menu" height="50" bottom="0" onclick="btn_common_onclick" onmouseenter="btn_common_onmouseenter" onmouseleave="btn_common_onmouseleave" left="btn_Weapon:-2"/>
+        <Button id="btn_mypage" taborder="11" top="20" height="60" text="마이페이지" onclick="btn_discord_mypage_onclick" width="161" right="btn_discord_login:20" cssclass="top_mypage" tabstop="false" fittocontents="width" visible="false"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -133,6 +134,7 @@ this.fn_Callback = function(svcID, errorCode, errorMsg)
 				// 초기화가 성공인데 로그아웃 버튼을 눌렀을 때
 				this.btn_discord_login.text = "Discord로 로그인"
 				this.btn_discord_login.cssclass = "top_login";
+				this.btn_mypage.visible = false;
 				this.resetScroll();
 			} else {
 				// 초기화가 성공인데 로그인 버튼을 눌렀을 때
@@ -155,8 +157,9 @@ this.fn_Callback = function(svcID, errorCode, errorMsg)
 				
 				// 디스코드 로그인이 다 성공했을 때
 				if(this.btn_discord_login.cssclass == "top_login") {
-					this.btn_discord_login.text = username+", 로그아웃"
+					this.btn_discord_login.text = "로그아웃";
 					this.btn_discord_login.cssclass = "top_logout";
+					this.btn_mypage.visible = true;
 					this.resetScroll();
 				} 
             }
@@ -225,6 +228,11 @@ this.fn_checkLogin = function()
     var strCallbackFunc = "fn_Callback";
 	
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+};
+
+this.btn_discord_mypage_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// 마이페이지 로직 짜기
 };
 ]]></Script>
     <Objects/>

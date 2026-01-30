@@ -127,11 +127,11 @@
                 <Cell id="Cell24" left="20" width="155" text="bind:PLAY_TIME" height="35" top="96" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#7f9eb1"/>
                 <Cell id="cell_match_agent_icon" left="190" top="10" width="90" height="90" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="imagecontrol"/>
                 <Cell id="Cell26" left="200" width="70" height="25" text="expr:RANK + &quot;등&quot;" background="#57646f" bottom="19" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white" borderRadius="20px"/>
-                <Cell id="Cell27" left="316" top="23" width="31" height="37" text="bind:KILL" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
-                <Cell id="Cell28" left="350" top="23" width="14" height="37" text="/" textAlign="center" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#8f9eb1"/>
-                <Cell id="Cell29" left="368" top="23" width="31" height="37" text="bind:DEATH" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#e84057"/>
+                <Cell id="Cell27" left="314" top="23" width="32" height="37" text="bind:KILL" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
+                <Cell id="Cell28" left="349" top="23" width="14" height="37" text="/" textAlign="center" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#8f9eb1"/>
+                <Cell id="Cell29" left="367" top="23" width="32" height="37" text="bind:DEATH" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#e84057"/>
                 <Cell id="Cell30" left="402" top="23" width="14" height="37" text="/" textAlign="center" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#8f9eb1"/>
-                <Cell id="Cell31" left="420" top="23" width="31" height="37" text="bind:ASSIST" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
+                <Cell id="Cell31" left="420" top="23" width="32" height="37" text="bind:ASSIST" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
                 <Cell id="Cell32" left="316" top="64" width="135" height="31" text="expr:(( KILL + ASSIST ) / DEATH ).toFixed(2) + &quot; : 1 평점&quot;" textAlign="center" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" color="#8f9eb1"/>
                 <Cell id="Cell33" left="316" top="94" width="135" height="21" text="bind:TIER" textAlign="center" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1"/>
                 <Cell id="Cell34" left="501" top="18" width="135" height="45" text="bind:MAP" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>

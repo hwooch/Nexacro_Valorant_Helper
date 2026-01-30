@@ -11391,7 +11391,15 @@
 	-nexa-background-odd : #393946;
 	
 }
-.Button.btn_WF_FillRed
+.Grid .body .row .cell.grid_test1
+{
+	background : #31313c;
+	color : white;
+	-nexa-background-odd : #393946;
+	-nexa-padding : 0px 20px;
+	-nexa-text-align : left;
+	
+}.Button.btn_WF_FillRed
 {
 	background : #ff4654;
 	color : white;
@@ -11459,6 +11467,34 @@
 {
 	background : #e97b86;
 	color : #f0b9bc;
+}
+.Button.top_mypage
+{
+	cursor : pointer;
+	background : #242429;
+	-nexa-border : 2px solid #8e8e8e;
+	color : white;
+	border-radius : 20px;
+	font : normal 27px/normal "AppleSDGothicNeoH00";
+	-nexa-padding : 5px 20px 0px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+}
+.Button.top_mypage[status=disabled],
+.Button.top_mypage[status=mouseover],
+.Button.top_mypage[userstatus=pushed],
+.Button.top_mypage[userstatus=selected]
+{
+	cursor : pointer;
+	background : #242429;
+	-nexa-border : 2px solid #8e8e8e;
+	color : white;
+	border-radius : 20px;
+	font : normal 27px/normal "AppleSDGothicNeoH00";
+	-nexa-padding : 5px 20px 0px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+	box-shadow : 0px 0px 10px #ffffff;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>

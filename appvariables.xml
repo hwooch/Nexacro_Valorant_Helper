@@ -1928,7 +1928,7 @@
           <Col id="MSG_ICON">ERR</Col>
         </Row>
         <Row>
-          <Col id="MSG_TEXT">로그인이 취소되어 확인 작업을 중단합니다.</Col>
+          <Col id="MSG_TEXT">로그인이 취소되었습니다.</Col>
           <Col id="MSG_TEXT_EN">로그인이 취소되어 확인 작업을 중단합니다.</Col>
           <Col id="MSG_ID">msg.notice.login3</Col>
           <Col id="MSG_TYPE">A</Col>
