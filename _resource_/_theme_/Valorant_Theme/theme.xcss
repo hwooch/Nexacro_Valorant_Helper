@@ -11146,14 +11146,14 @@
 .Button.top_logout
 {
 	cursor : pointer;
-	background : url('theme://images/Valo_discord_login_icon.png') no-repeat left center /contain #242429;
+	background : #242429;
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
 	font : normal 27px/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 15px 0px 55px;
+	-nexa-padding : 5px 20px 0px;
 	-nexa-vertical-align : middle;
-	-nexa-text-align : right;
+	-nexa-text-align : center;
 }
 .Static.top_logo[status=mouseover]
 {
@@ -11310,14 +11310,14 @@
 .Button.top_logout[userstatus=selected]
 {
 	cursor : pointer;
-	background : url('theme://images/Valo_discord_login_icon.png') no-repeat left center /contain #242429;
+	background : #242429;
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
 	font : normal 27px/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 15px 0px 55px;
+	-nexa-padding : 5px 20px 0px;
 	-nexa-vertical-align : middle;
-	-nexa-text-align : right;
+	-nexa-text-align : center;
 	box-shadow : 0px 0px 10px #ffffff;
 }
 .Button.rank_refresh
