@@ -6023,8 +6023,8 @@
 
 .HScrollBarControl
 {
-	background : #f7f7f7;
-	-nexa-border : 1px solid #d5d5d5, 0px none, 0px none, 0px none;
+	background : black;
+	-nexa-border : 1px solid #8e8e8e, 0px none, 0px none, 0px none;
 	-nexa-padding : 2px 2px 2px 2px;
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
@@ -11495,6 +11495,15 @@
 	-nexa-vertical-align : middle;
 	-nexa-text-align : center;
 	box-shadow : 0px 0px 10px #ffffff;
+}
+.Button.btn_weapon
+{
+	-nexa-vertical-align : bottom;
+	-nexa-text-align : left;
+	border-radius : 20px;
+	-nexa-padding : 0px 0px 5px 10px;
+	font : normal 14pt/normal "이사만루체 Medium";
+	color : white;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>

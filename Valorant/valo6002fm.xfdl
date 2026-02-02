@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="valo6002fm" width="2500" height="140" titletext="무기 카테고리">
+    <Layouts>
+      <Layout height="140" width="2500">
+        <Static id="sta_background" taborder="0" left="0" top="0" background="#31313c" width="2500" height="140"/>
+        <Button id="btn_weapon_1" taborder="1" text="오퍼레이터" left="5" top="200" width="220" height="100" background="url('https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png') no-repeat center 20% /contain #4d4d60" color="white" verticalAlign="bottom" borderRadius="20px" textAlign="left" padding="0px 0px 5px 10px" border="1px solid #8e8e8e" font="normal 14pt/normal &quot;AppleSDGothicNeoEB00&quot;" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[// 트랜잭션 끝나고 데이터셋 받아옴, 버튼 동적생성
+this.fn_init = function()
+{
+    // 부모 데이터셋 가져오기
+   	this.ds_copy_weapon.copyData(this.parent.parent.ds_weapon);
+	var objDs = this.ds_copy_weapon;
+
+    // 기존에 생성된 버튼이 있다면 삭제 (초기화)
+    // "btn_weapon_" 으로 시작하는 컴포넌트들을 찾아서 제거
+    var arrComps = this.components;
+    for (var i = arrComps.length - 1; i >= 0; i--)
+    {
+        var objComp = arrComps[i];
+        
+        if (objComp.name.indexOf("btn_weapon_") > -1) 
+        {
+            var sName = objComp.name;
+            this.removeChild(sName);
+            objComp.destroy();       
+            objComp = null;
+        }
+    }
+
+    // 변수 설정
+    var nLeft   = 20;   // 시작 Left 좌표
+    var nTop    = 20;   // 시작 Top 좌표
+    var nWidth  = 220; // 버튼 너비
+    var nHeight = 100; // 버튼 높이
+    var nGap    = 20;  // 버튼 사이 간격
+    
+    // 데이터셋 반복문
+    for (var i = 0; i < objDs.rowcount; i++)
+    {
+        var sUUID = objDs.getColumn(i, "UUID");
+        var sName = objDs.getColumn(i, "DISPLAY_NAME");
+        var sIcon = objDs.getColumn(i, "DISPLAY_ICON");
+        
+        // 버튼 ID 생성
+        var sBtnId = "btn_weapon_" + i; 
+        
+        // 버튼 동적 생성
+        var objBtn = new Button();
+        objBtn.init(sBtnId, nLeft, nTop, nWidth, nHeight);
+        
+        // 스타일 및 속성 설정
+        objBtn.text = sName;
+		objBtn.border = "2px solid #8e8e8e";
+		objBtn.cssclass = "btn_weapon";
+		objBtn.u_uuid = sUUID;
+        
+        var sBgVal = "url('" + sIcon + "') no-repeat center 20% /contain #4d4d60";
+        objBtn.background = sBgVal;
+		
+        // 화면에 추가 및 표시
+        this.addChild(sBtnId, objBtn);
+        objBtn.show();
+        
+        // 다음 버튼 위치 계산
+        nLeft = nLeft + nWidth + nGap;
+    }
+    
+    // 스크롤이 생기도록 Form의 너비를 늘려줌
+    this.sta_background.width = nLeft ;
+    
+    this.resetScroll();
+    
+	this.grap_onload();
+};
+
+this.fv_isDragging  = false;
+this.fv_nPrevX      = 0;
+this.fv_nSpeed      = 1.5; // 드래그 가속도
+this.fv_isDragMoved = false;
+
+// 현재 선택된 버튼의 ID를 저장할 변수
+this.fv_sSelectedBtnId = "";
+
+this.grap_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
+{
+    // 컴포넌트 찾기
+    var arrComps = this.components;
+	
+    for (var i = 0; i < arrComps.length; i++)
+    {
+        var targetComp = arrComps[i];
+		
+		if (targetComp.id == "sta_background"){
+			targetComp.addEventHandler("onlbuttondown", this.fn_common_mousedown, this);
+			targetComp.addEventHandler("onmousemove", this.fn_common_mousemove, this);
+			targetComp.addEventHandler("onlbuttonup",   this.fn_common_mouseup,   this);
+		}
+		else{
+			targetComp.addEventHandler("onlbuttondown", this.fn_common_mousedown, this);
+			targetComp.addEventHandler("onmousemove", this.fn_common_mousemove, this);
+			targetComp.addEventHandler("onlbuttonup",   this.fn_common_mouseup,   this);
+			targetComp.addEventHandler("onclick",   this.Button_onclick,   this);
+			targetComp.addEventHandler("onmouseenter",   this.Button_onmouseenter,   this);
+			targetComp.addEventHandler("onmouseleave",   this.Button_onmouseleave,   this);
+		}
+    }
+	
+	this.btn_weapon_0.click();
+};
+
+// 마우스 다운
+this.fn_common_mousedown = function(obj, e)
+{
+	this.parent.cursor = "grabbing";
+    
+	this.fv_isDragging  = true;
+    this.fv_isDragMoved = false;
+    this.fv_nPrevX      = e.screenx;
+};
+
+// 마우스 이동
+this.fn_common_mousemove = function(obj, e)
+{
+	// 드래그 상태일 때
+	if (this.fv_isDragging)
+    {
+        var objDiv = this.parent;
+		
+		// 가로 스크롤바
+        var objScrollBar = objDiv.form.hscrollbar;
+		
+		// 스크린기준 x좌표
+        var nNowX = e.screenx;
+		var nGap  = this.fv_nPrevX - nNowX;
+		
+		if (Math.abs(nGap) < 5 && this.fv_isDragMoved == false) return;
+		this.fv_isDragMoved = true;
+		
+		// 가속도
+		nGap = nGap * this.fv_nSpeed;
+		
+		objScrollBar.set_pos(objScrollBar.pos + Math.round(nGap));
+		
+		this.fv_nPrevX = nNowX;
+    }
+};
+
+// 마우스 뗌
+this.fn_common_mouseup = function(obj, e)
+{
+    this.fv_isDragging = false;
+    
+    // 마우스를 뗀 대상이 배경이라면
+    if (obj.id == "sta_background") 
+    {
+        this.parent.cursor = "default";
+    }
+    // 그게 아니라면
+    else 
+    {
+        this.parent.cursor = "pointer";
+    }
+};
+
+this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    // 드래그를 하다가 놓은 거라면, 클릭 이벤트를 실행 X
+    if (this.fv_isDragMoved == true) {
+        return;
+    }
+	
+	// 이미 선택된 버튼을 또 누른 거라면, 클릭 이벤트를 실행 X
+	if (this.fv_sSelectedBtnId == obj.id) {
+        return;
+    }
+	
+	var sColorDefault = "#4d4d60"; // 원래 회색 (fn_init에서 설정한 값)
+    var sColorSelect  = "#ff4655"; // 선택 시 보여줄 빨간색
+    
+    // 이전에 선택된 버튼이 있다면
+    if (this.fv_sSelectedBtnId != "")
+    {
+        var objPrevBtn = this.components[this.fv_sSelectedBtnId];
+        
+        var sPrevBg = objPrevBtn.background;
+        // 배경 문자열에서 "빨간색"을 "원래 회색"으로 치환
+        objPrevBtn.background = sPrevBg.replace(sColorSelect, sColorDefault);
+            
+        // 테두리 색깔도 되돌리고 싶다면
+        objPrevBtn.border = "2px solid #8e8e8e";
+    }
+
+    // 지금 클릭한 버튼 -> 빨간색으로 변경
+    var sCurrBg = obj.background;
+    // 배경 문자열에서 "원래 회색"을 "빨간색"으로 치환
+    obj.background = sCurrBg.replace(sColorDefault, sColorSelect);
+    
+    // 테두리 색깔도 바꾸고 싶다면
+    obj.border = "2px solid white";
+
+    // C. 현재 버튼 ID를 변수에 저장
+    this.fv_sSelectedBtnId = obj.id;
+	
+	
+    // 진짜 클릭일 때만 실행됨
+    var sWeaponName = obj.text; 
+    var sBtnId = obj.id;
+    var sWeaponUUID = obj.u_uuid;
+	
+	this.parent.parent.fn_selectedWeapon(sBtnId, sWeaponName, sWeaponUUID);
+};
+this.Button_onmouseenter = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    this.parent.cursor = "pointer";
+	obj.boxShadow = "0px 0px 10px #ffffff";
+};
+
+this.Button_onmouseleave = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    this.parent.cursor = "default";
+	obj.boxShadow = "";
+};]]></Script>
+    <Objects>
+      <Dataset id="ds_copy_weapon"/>
+    </Objects>
+  </Form>
+</FDL>
