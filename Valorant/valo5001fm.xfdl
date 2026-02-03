@@ -50,6 +50,7 @@
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
                 <Row band="head" size="24"/>
@@ -61,6 +62,7 @@
                 <Cell col="2" text="DISPLAY_NAME"/>
                 <Cell col="3" text="DESCRIPTION"/>
                 <Cell col="4" text="DISPLAY_ICON"/>
+                <Cell col="5" text="SKILL_VIDEO"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:AGENT_UUID"/>
@@ -68,6 +70,7 @@
                 <Cell col="2" text="bind:DISPLAY_NAME"/>
                 <Cell col="3" text="bind:DESCRIPTION"/>
                 <Cell col="4" text="bind:DISPLAY_ICON"/>
+                <Cell col="5" text="bind:SKILL_VIDEO"/>
               </Band>
             </Format>
           </Formats>
@@ -93,6 +96,7 @@
           <Column id="DISPLAY_NAME" type="STRING" size="256"/>
           <Column id="DESCRIPTION" type="STRING" size="4000"/>
           <Column id="DISPLAY_ICON" type="STRING" size="512"/>
+          <Column id="SKILL_VIDEO" type="STRING" size="512"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
