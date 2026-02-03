@@ -1949,8 +1949,11 @@
           <Col id="MSG_TEXT_EN">{0}\n님의 전적을 검색하시겠습니까?</Col>
         </Row>
         <Row>
-          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_TYPE">C</Col>
           <Col id="MSG_ICON">ERR</Col>
+          <Col id="MSG_ID">msg.notice.new_search</Col>
+          <Col id="MSG_TEXT">전적 검색 화면으로 돌아가시겠습니까?</Col>
+          <Col id="MSG_TEXT_EN">전적 검색 화면으로 돌아가시겠습니까?</Col>
         </Row>
         <Row>
           <Col id="MSG_TYPE">A</Col>

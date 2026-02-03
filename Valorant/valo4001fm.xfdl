@@ -3,15 +3,99 @@
   <Form id="valo4001fm" width="2000" height="980" titletext="맵" onload="valo4001fm_onload">
     <Layouts>
       <Layout height="980" width="2000">
-        <WebView id="WebView00" taborder="1" left="350" top="200" height="1300" right="350"/>
-        <Button id="Button00" taborder="0" left="835" height="50" top="WebView00:0" right="800"/>
+        <Div id="div_map" taborder="2" left="100" top="40" height="180" url="Valorant::valo4002fm.xfdl" formscrollbartype="autoindicator" right="100" borderRadius="10px" text="Div00"/>
+        <Static id="sta_background" taborder="6" left="100" top="div_map:30" height="800" background="#31313c" borderRadius="20px" right="100" text=""/>
+        <Static id="sta_background_img" taborder="7" left="100" top="div_map:30" height="800" background="none" borderRadius="20px" right="100" opacity="20%"/>
+        <WebView id="webView_map" taborder="0" top="div_map:50" height="750" width="750" left="200" onusernotify="webView_map_onusernotify"/>
+        <Button id="btn_reload" taborder="1" text="맵 정보 리로드" left="2144" top="264" width="296" height="336" background="yellow" onclick="btn_reload_onclick" font="normal 30pt/normal &quot;Arial&quot;" visible="false"/>
+        <Button id="btn_space" taborder="3" left="696" top="sta_background:0" width="144" height="30"/>
+        <Static id="sta_map_name" taborder="4" left="1050" top="div_map:110" width="244" height="61" font="normal 40pt/normal &quot;이사만루체 Medium&quot;" color="white"/>
+        <Static id="sta_map_description" taborder="5" left="1050" top="sta_map_name:40" height="406" right="200" font="normal 23pt/normal &quot;이사만루체 Medium&quot;" color="#cdcdd0" text="" fittocontents="both"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
 this.valo4001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{	
+	// DB조회 transaction
+	var strSvcID        = "searchMap";
+    var strURL          = "SvcUrl::selectMapList.do";
+    var strInDatasets   = "";
+    var strOutDatasets  = "ds_map=out_map";
+    var strArgument     = "";
+    var strCallbackFunc = "fn_Callback";
+    
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+};
+
+this.btn_reload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	// API 조회 transaction
+	var strSvcID        = "searchNewMap";
+    var strURL          = "SvcUrl::selectNewMapList.do";
+    var strInDatasets   = "";
+    var strOutDatasets  = "ds_map=out_map";
+    var strArgument     = "";
+    var strCallbackFunc = "fn_Callback";
+    
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+};
+
+this.fn_Callback = function(strSvcId, nErrorCode, strErrorMsg)
 {
-	this.WebView00.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map.html";
+    if (nErrorCode < 0) {
+		return;
+	}
+	this.div_map.form.fn_init();
+	// html 연결
+	this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map.html";
+};
+
+this.fn_selectedMap = function(sBtnId, sUUID)
+{
+	this.webView_map.callScript("fn_loadMap('" + sUUID + "');");
+	
+	var sDisplayName = this.ds_map.lookup("UUID", sUUID, "DISPLAY_NAME");
+    var sDescription = this.ds_map.lookup("UUID", sUUID, "DESCRIPTION");
+	var sDisplayIcon = this.ds_map.lookup("UUID", sUUID, "LIST_VIEW_ICON_TALL");
+	
+	var sStr = sDescription.split("***");
+	var sResult = "";
+	
+	for(var i = 0; i < sStr.length; i++) {
+		// 1. 문장 추가
+		sResult += sStr[i];
+		
+		// 2. 마지막 줄이 아니라면 줄바꿈 추가
+		if (i < sStr.length - 1) {
+			sResult += String.fromCharCode(10);
+		}
+	}
+	
+	this.sta_map_name.text = sDisplayName;
+	this.sta_map_description.text = sResult;
+	this.sta_background_img.background = "url('"+sDisplayIcon+"') no-repeat center center /auto";
+	this.resetScroll();
+}
+
+this.webView_map_onusernotify = function(obj:nexacro.WebView,e:nexacro.WebUserNotifyEventInfo)
+{
+	// HTML에서 보낸 메시지가 "MAP_LOAD_COMPLETE" 인지 확인
+    if (e.userdata == "MAP_LOAD_COMPLETE")
+    {
+		this.div_map.form.btn_map_0.click();
+    }
 };
 ]]></Script>
+    <Objects>
+      <Dataset id="ds_map">
+        <ColumnInfo>
+          <Column id="UUID" type="STRING" size="256"/>
+          <Column id="DISPLAY_NAME" type="STRING" size="256"/>
+          <Column id="LIST_VIEW_ICON_TALL" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

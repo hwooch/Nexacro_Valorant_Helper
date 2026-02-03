@@ -3,7 +3,7 @@
   <Form id="valo6001fm" width="2000" height="980" titletext="무기" onload="valo6001fm_onload">
     <Layouts>
       <Layout height="980" width="2000">
-        <Button id="btn_reload" taborder="0" text="무기 데이터 새로 받아오기" left="2130" top="490" width="520" height="243" background="yellow" font="normal 30pt/normal &quot;Arial&quot;" onclick="btn_reload_onclick"/>
+        <Button id="btn_reload" taborder="0" text="무기 데이터 새로 받아오기" left="2130" top="490" width="520" height="243" background="yellow" font="normal 30pt/normal &quot;Arial&quot;" onclick="btn_reload_onclick" visible="false"/>
         <Div id="div_weapon" taborder="1" text="Div00" left="150" top="50" height="140" url="Valorant::valo6002fm.xfdl" formscrollbartype="autoindicator" right="150" borderRadius="10px"/>
         <Static id="sta_weapon_name" taborder="2" left="150" top="div_weapon:30" width="120" height="31" color="white" text="무기 이름" fittocontents="width" font="normal 20pt/normal &quot;이사만루체 Medium&quot;"/>
         <Static id="sta_weapon_category" taborder="3" left="sta_weapon_name:30" top="div_weapon:34" width="120" height="23" color="#8e8e8e" text="무기 종류" fittocontents="width" font="normal 15pt/normal &quot;이사만루체 Medium&quot;"/>
@@ -402,10 +402,12 @@ this.fn_selectedWeapon = function(sBtnId, sName, sUUID)
 	if(asdf%2==1){
 		
 		//this.video_weapon.url = "https://cmsassets.rgpub.io/sanity/files/dsfx7636/game_data/9df59d490062acceb7c6ca32a3650b55718381f7.mp4?accountingTag=VAL";
-		this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/181376-866506956_small.mp4";
+		//this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/181376-866506956_small.mp4";
+		this.video_weapon.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/181376-866506956_small.mp4";
 	}
 	else{
-		this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/big_buck_bunny.mp4";
+		//this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/big_buck_bunny.mp4";
+		this.video_weapon.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/big_buck_bunny.mp4";
 	}
 	asdf++;
 	this.video_weapon.play();

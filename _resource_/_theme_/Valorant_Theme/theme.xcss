@@ -11505,6 +11505,11 @@
 	font : normal 14pt/normal "이사만루체 Medium";
 	color : white;
 }
+.Button.btn_new_search[status=mouseover]
+{
+	box-shadow : 0px 0px 10px #FFFFFF;
+
+}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>

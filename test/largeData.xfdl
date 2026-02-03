@@ -1,0 +1,1490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="largeData" width="1070" height="550" titletext="대용량 데이터" onload="form_onload">
+    <Layouts>
+      <Layout height="550" width="1070">
+        <Tab id="tabLarge" taborder="0" tabindex="0" left="55.00" top="22" cssclass="tab_WF_Round" tabbuttonheight="40" right="45" height="528">
+          <Tabpages>
+            <Tabpage id="tpageGeneral" text="TEXT(&quot;grid.largedata.general&quot;,&quot;일반표현&quot;)" tabbuttoncssclass="tab_WF_BtnFirst">
+              <Layouts>
+                <Layout>
+                  <Div id="divSearch" taborder="0" left="0" top="20" height="70" cssclass="div_WF_SearchBg" right="0">
+                    <Layouts>
+                      <Layout>
+                        <Static id="staColCnt" taborder="0" text="TEXT(&quot;grid.col.count&quot;,&quot;열 갯수&quot;)" left="22" top="19" width="51" height="32" cssclass="sta_WF_SearchLabel" fittocontents="width" wordWrap="none"/>
+                        <Combo id="cboColCnt" taborder="1" text="10*10,000" left="staColCnt:10" top="19" width="120" height="32" value="10_10000" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" itemheight="32">
+                          <Dataset id="innerdataset">
+                            <ColumnInfo>
+                              <Column id="codecolumn" size="256"/>
+                              <Column id="datacolumn" size="256"/>
+                            </ColumnInfo>
+                            <Rows>
+                              <Row>
+                                <Col id="codecolumn">10</Col>
+                                <Col id="datacolumn">10</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">50</Col>
+                                <Col id="datacolumn">50</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">100</Col>
+                                <Col id="datacolumn">100</Col>
+                              </Row>
+                            </Rows>
+                          </Dataset>
+                        </Combo>
+                        <Button id="btnSearch" taborder="2" text="TEXT(&quot;grid.search&quot;,&quot;조회&quot;)" top="10" width="82" height="50" right="10" cssclass="btn_WF_Search" onclick="tabLarge_tpageGeneral_divSearch_btnSearch_onclick"/>
+                        <Static id="staRowCnt" taborder="3" text="TEXT(&quot;grid.row.count&quot;,&quot;행 갯수&quot;)" left="cboColCnt:22" top="19" width="51" height="32" cssclass="sta_WF_SearchLabel" fittocontents="width" wordWrap="none"/>
+                        <Combo id="cboRowCnt" taborder="4" text="10*10,000" left="staRowCnt:10" top="19" width="120" height="32" value="10_10000" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" itemheight="32">
+                          <Dataset id="innerdataset">
+                            <ColumnInfo>
+                              <Column id="codecolumn" size="256"/>
+                              <Column id="datacolumn" size="256"/>
+                            </ColumnInfo>
+                            <Rows>
+                              <Row>
+                                <Col id="codecolumn">10000</Col>
+                                <Col id="datacolumn">10,000</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">50000</Col>
+                                <Col id="datacolumn">50,000</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">100000</Col>
+                                <Col id="datacolumn">100,000</Col>
+                              </Row>
+                            </Rows>
+                          </Dataset>
+                        </Combo>
+                      </Layout>
+                    </Layouts>
+                  </Div>
+                  <Grid id="grdData" taborder="1" left="0" top="120" binddataset="dsList1" autofittype="col" right="0" showselection="true" initvalueid="iv_Grid0" bottom="52" scrollbarbarminsize="30" formatid="format10">
+                    <Formats>
+                      <Format id="format10">
+                        <Columns>
+                          <Column size="50"/>
+                          <Column size="80"/>
+                          <Column size="100"/>
+                          <Column size="220"/>
+                          <Column size="120"/>
+                          <Column size="90"/>
+                          <Column size="90"/>
+                          <Column size="50"/>
+                          <Column size="90"/>
+                          <Column size="90"/>
+                          <Column size="70"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="50" band="head"/>
+                          <Row size="50"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="No."/>
+                          <Cell col="1" text="First"/>
+                          <Cell col="2" text="Last"/>
+                          <Cell col="3" text="Email"/>
+                          <Cell col="4" text="Gender"/>
+                          <Cell col="5" text="Married"/>
+                          <Cell col="6" text="Date"/>
+                          <Cell col="7" text="ID"/>
+                          <Cell col="8" text="Money"/>
+                          <Cell col="9" text="Number"/>
+                          <Cell col="10" text="Button"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="expr:(currow+1).toLocaleString()"/>
+                          <Cell col="1" text="bind:first_name"/>
+                          <Cell col="2" text="bind:last_name"/>
+                          <Cell col="3" text="bind:email"/>
+                          <Cell col="4" text="bind:gender"/>
+                          <Cell col="5" text="bind:married"/>
+                          <Cell col="6" text="bind:date" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="7" text="bind:id"/>
+                          <Cell col="8" text="bind:money"/>
+                          <Cell col="9" text="bind:number"/>
+                          <Cell col="10" text="bind:button"/>
+                        </Band>
+                      </Format>
+                      <Format id="format50">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="50" band="head"/>
+                          <Row size="50"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="No."/>
+                          <Cell col="1" text="First"/>
+                          <Cell col="2" text="Last"/>
+                          <Cell col="3" text="Email"/>
+                          <Cell col="4" text="Gender"/>
+                          <Cell col="5" text="Married"/>
+                          <Cell col="6" text="Date"/>
+                          <Cell col="7" text="ID"/>
+                          <Cell col="8" text="Money"/>
+                          <Cell col="9" text="Number"/>
+                          <Cell col="10" text="Button"/>
+                          <Cell col="11" text="First2"/>
+                          <Cell col="12" text="Last2"/>
+                          <Cell col="13" text="Email2"/>
+                          <Cell col="14" text="Gender2"/>
+                          <Cell col="15" text="Married2"/>
+                          <Cell col="16" text="Date2"/>
+                          <Cell col="17" text="ID2"/>
+                          <Cell col="18" text="Money2"/>
+                          <Cell col="19" text="Number2"/>
+                          <Cell col="20" text="Button2"/>
+                          <Cell col="21" text="First3"/>
+                          <Cell col="22" text="Last3"/>
+                          <Cell col="23" text="Email3"/>
+                          <Cell col="24" text="Gender3"/>
+                          <Cell col="25" text="Married3"/>
+                          <Cell col="26" text="Date3"/>
+                          <Cell col="27" text="ID3"/>
+                          <Cell col="28" text="Money3"/>
+                          <Cell col="29" text="Number3"/>
+                          <Cell col="30" text="Button3"/>
+                          <Cell col="31" text="First4"/>
+                          <Cell col="32" text="Last4"/>
+                          <Cell col="33" text="Email4"/>
+                          <Cell col="34" text="Gender4"/>
+                          <Cell col="35" text="Married4"/>
+                          <Cell col="36" text="Date4"/>
+                          <Cell col="37" text="ID4"/>
+                          <Cell col="38" text="Money4"/>
+                          <Cell col="39" text="Number4"/>
+                          <Cell col="40" text="Button4"/>
+                          <Cell col="41" text="First5"/>
+                          <Cell col="42" text="Last5"/>
+                          <Cell col="43" text="Email5"/>
+                          <Cell col="44" text="Gender5"/>
+                          <Cell col="45" text="Married5"/>
+                          <Cell col="46" text="Date5"/>
+                          <Cell col="47" text="ID5"/>
+                          <Cell col="48" text="Money5"/>
+                          <Cell col="49" text="Number5"/>
+                          <Cell col="50" text="Button5"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="expr:currow+1"/>
+                          <Cell col="1" text="bind:first_name"/>
+                          <Cell col="2" text="bind:last_name"/>
+                          <Cell col="3" text="bind:email"/>
+                          <Cell col="4" text="bind:gender"/>
+                          <Cell col="5" text="bind:married"/>
+                          <Cell col="6" text="bind:date" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="7" text="bind:id"/>
+                          <Cell col="8" text="bind:money"/>
+                          <Cell col="9" text="bind:number"/>
+                          <Cell col="10" text="bind:button"/>
+                          <Cell col="11" text="bind:first_name2"/>
+                          <Cell col="12" text="bind:last_name2"/>
+                          <Cell col="13" text="bind:email2"/>
+                          <Cell col="14" text="bind:gender2"/>
+                          <Cell col="15" text="bind:married2"/>
+                          <Cell col="16" text="bind:date2" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="17" text="bind:id2"/>
+                          <Cell col="18" text="bind:money2"/>
+                          <Cell col="19" text="bind:number2"/>
+                          <Cell col="20" text="bind:button2"/>
+                          <Cell col="21" text="bind:first_name3"/>
+                          <Cell col="22" text="bind:last_name3"/>
+                          <Cell col="23" text="bind:email3"/>
+                          <Cell col="24" text="bind:gender3"/>
+                          <Cell col="25" text="bind:married3"/>
+                          <Cell col="26" text="bind:date3" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="27" text="bind:id3"/>
+                          <Cell col="28" text="bind:money3"/>
+                          <Cell col="29" text="bind:number3"/>
+                          <Cell col="30" text="bind:button3"/>
+                          <Cell col="31" text="bind:first_name4"/>
+                          <Cell col="32" text="bind:last_name4"/>
+                          <Cell col="33" text="bind:email4"/>
+                          <Cell col="34" text="bind:gender4"/>
+                          <Cell col="35" text="bind:married4"/>
+                          <Cell col="36" text="bind:date4" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="37" text="bind:id4"/>
+                          <Cell col="38" text="bind:money4"/>
+                          <Cell col="39" text="bind:number4"/>
+                          <Cell col="40" text="bind:button5"/>
+                          <Cell col="41" text="bind:first_name5"/>
+                          <Cell col="42" text="bind:last_name5"/>
+                          <Cell col="43" text="bind:email5"/>
+                          <Cell col="44" text="bind:gender5"/>
+                          <Cell col="45" text="bind:married5"/>
+                          <Cell col="46" text="bind:date5" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="47" text="bind:id5"/>
+                          <Cell col="48" text="bind:money5"/>
+                          <Cell col="49" text="bind:number5"/>
+                          <Cell col="50" text="bind:button5"/>
+                        </Band>
+                      </Format>
+                      <Format id="format100">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="50" band="head"/>
+                          <Row size="50"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="No."/>
+                          <Cell col="1" text="First"/>
+                          <Cell col="2" text="Last"/>
+                          <Cell col="3" text="Email"/>
+                          <Cell col="4" text="Gender"/>
+                          <Cell col="5" text="Married"/>
+                          <Cell col="6" text="Date"/>
+                          <Cell col="7" text="ID"/>
+                          <Cell col="8" text="Money"/>
+                          <Cell col="9" text="Number"/>
+                          <Cell col="10" text="Button"/>
+                          <Cell col="11" text="First2"/>
+                          <Cell col="12" text="Last2"/>
+                          <Cell col="13" text="Email2"/>
+                          <Cell col="14" text="Gender2"/>
+                          <Cell col="15" text="Married2"/>
+                          <Cell col="16" text="Date2"/>
+                          <Cell col="17" text="ID2"/>
+                          <Cell col="18" text="Money2"/>
+                          <Cell col="19" text="Number2"/>
+                          <Cell col="20" text="Button2"/>
+                          <Cell col="21" text="First3"/>
+                          <Cell col="22" text="Last3"/>
+                          <Cell col="23" text="Email3"/>
+                          <Cell col="24" text="Gender3"/>
+                          <Cell col="25" text="Married3"/>
+                          <Cell col="26" text="Date3"/>
+                          <Cell col="27" text="ID3"/>
+                          <Cell col="28" text="Money3"/>
+                          <Cell col="29" text="Number3"/>
+                          <Cell col="30" text="Button3"/>
+                          <Cell col="31" text="First4"/>
+                          <Cell col="32" text="Last4"/>
+                          <Cell col="33" text="Email4"/>
+                          <Cell col="34" text="Gender4"/>
+                          <Cell col="35" text="Married4"/>
+                          <Cell col="36" text="Date4"/>
+                          <Cell col="37" text="ID4"/>
+                          <Cell col="38" text="Money4"/>
+                          <Cell col="39" text="Number4"/>
+                          <Cell col="40" text="Button4"/>
+                          <Cell col="41" text="First5"/>
+                          <Cell col="42" text="Last5"/>
+                          <Cell col="43" text="Email5"/>
+                          <Cell col="44" text="Gender5"/>
+                          <Cell col="45" text="Married5"/>
+                          <Cell col="46" text="Date5"/>
+                          <Cell col="47" text="ID5"/>
+                          <Cell col="48" text="Money5"/>
+                          <Cell col="49" text="Number5"/>
+                          <Cell col="50" text="Button5"/>
+                          <Cell col="51" text="First6"/>
+                          <Cell col="52" text="Last6"/>
+                          <Cell col="53" text="Email6"/>
+                          <Cell col="54" text="Gender6"/>
+                          <Cell col="55" text="Married6"/>
+                          <Cell col="56" text="Date6"/>
+                          <Cell col="57" text="ID6"/>
+                          <Cell col="58" text="Money6"/>
+                          <Cell col="59" text="Number6"/>
+                          <Cell col="60" text="Button6"/>
+                          <Cell col="61" text="First7"/>
+                          <Cell col="62" text="Last7"/>
+                          <Cell col="63" text="Email7"/>
+                          <Cell col="64" text="Gender7"/>
+                          <Cell col="65" text="Married7"/>
+                          <Cell col="66" text="Date7"/>
+                          <Cell col="67" text="ID7"/>
+                          <Cell col="68" text="Money7"/>
+                          <Cell col="69" text="Number7"/>
+                          <Cell col="70" text="Button7"/>
+                          <Cell col="71" text="First8"/>
+                          <Cell col="72" text="Last8"/>
+                          <Cell col="73" text="Email8"/>
+                          <Cell col="74" text="Gender8"/>
+                          <Cell col="75" text="Married8"/>
+                          <Cell col="76" text="Date8"/>
+                          <Cell col="77" text="ID8"/>
+                          <Cell col="78" text="Money8"/>
+                          <Cell col="79" text="Number8"/>
+                          <Cell col="80" text="Button8"/>
+                          <Cell col="81" text="First9"/>
+                          <Cell col="82" text="Last9"/>
+                          <Cell col="83" text="Email9"/>
+                          <Cell col="84" text="Gender9"/>
+                          <Cell col="85" text="Married9"/>
+                          <Cell col="86" text="Date9"/>
+                          <Cell col="87" text="ID9"/>
+                          <Cell col="88" text="Money9"/>
+                          <Cell col="89" text="Number9"/>
+                          <Cell col="90" text="Button9"/>
+                          <Cell col="91" text="First10"/>
+                          <Cell col="92" text="Last10"/>
+                          <Cell col="93" text="Email10"/>
+                          <Cell col="94" text="Gender10"/>
+                          <Cell col="95" text="Married10"/>
+                          <Cell col="96" text="Date10"/>
+                          <Cell col="97" text="ID10"/>
+                          <Cell col="98" text="Money10"/>
+                          <Cell col="99" text="Number10"/>
+                          <Cell col="100" text="Button10"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="expr:currow+1"/>
+                          <Cell col="1" text="bind:first_name"/>
+                          <Cell col="2" text="bind:last_name"/>
+                          <Cell col="3" text="bind:email"/>
+                          <Cell col="4" text="bind:gender"/>
+                          <Cell col="5" text="bind:married"/>
+                          <Cell col="6" text="bind:date" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="7" text="bind:id"/>
+                          <Cell col="8" text="bind:money"/>
+                          <Cell col="9" text="bind:number"/>
+                          <Cell col="10" text="bind:button"/>
+                          <Cell col="11" text="bind:first_name2"/>
+                          <Cell col="12" text="bind:last_name2"/>
+                          <Cell col="13" text="bind:email2"/>
+                          <Cell col="14" text="bind:gender2"/>
+                          <Cell col="15" text="bind:married2"/>
+                          <Cell col="16" text="bind:date2" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="17" text="bind:id2"/>
+                          <Cell col="18" text="bind:money2"/>
+                          <Cell col="19" text="bind:number2"/>
+                          <Cell col="20" text="bind:button2"/>
+                          <Cell col="21" text="bind:first_name3"/>
+                          <Cell col="22" text="bind:last_name3"/>
+                          <Cell col="23" text="bind:email3"/>
+                          <Cell col="24" text="bind:gender3"/>
+                          <Cell col="25" text="bind:married3"/>
+                          <Cell col="26" text="bind:date3" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="27" text="bind:id3"/>
+                          <Cell col="28" text="bind:money3"/>
+                          <Cell col="29" text="bind:number3"/>
+                          <Cell col="30" text="bind:button3"/>
+                          <Cell col="31" text="bind:first_name4"/>
+                          <Cell col="32" text="bind:last_name4"/>
+                          <Cell col="33" text="bind:email4"/>
+                          <Cell col="34" text="bind:gender4"/>
+                          <Cell col="35" text="bind:married4"/>
+                          <Cell col="36" text="bind:date4" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="37" text="bind:id4"/>
+                          <Cell col="38" text="bind:money4"/>
+                          <Cell col="39" text="bind:number4"/>
+                          <Cell col="40" text="bind:button5"/>
+                          <Cell col="41" text="bind:first_name5"/>
+                          <Cell col="42" text="bind:last_name5"/>
+                          <Cell col="43" text="bind:email5"/>
+                          <Cell col="44" text="bind:gender5"/>
+                          <Cell col="45" text="bind:married5"/>
+                          <Cell col="46" text="bind:date5" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="47" text="bind:id5"/>
+                          <Cell col="48" text="bind:money5"/>
+                          <Cell col="49" text="bind:number5"/>
+                          <Cell col="50" text="bind:button5"/>
+                          <Cell col="51" text="bind:first_name6"/>
+                          <Cell col="52" text="bind:last_name6"/>
+                          <Cell col="53" text="bind:email6"/>
+                          <Cell col="54" text="bind:gender6"/>
+                          <Cell col="55" text="bind:married6"/>
+                          <Cell col="56" text="bind:date6" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="57" text="bind:id6"/>
+                          <Cell col="58" text="bind:money6"/>
+                          <Cell col="59" text="bind:number6"/>
+                          <Cell col="60" text="bind:button6"/>
+                          <Cell col="61" text="bind:first_name7"/>
+                          <Cell col="62" text="bind:last_name7"/>
+                          <Cell col="63" text="bind:email7"/>
+                          <Cell col="64" text="bind:gender7"/>
+                          <Cell col="65" text="bind:married7"/>
+                          <Cell col="66" text="bind:date7" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="67" text="bind:id7"/>
+                          <Cell col="68" text="bind:money7"/>
+                          <Cell col="69" text="bind:number7"/>
+                          <Cell col="70" text="bind:button7"/>
+                          <Cell col="71" text="bind:first_name8"/>
+                          <Cell col="72" text="bind:last_name8"/>
+                          <Cell col="73" text="bind:email8"/>
+                          <Cell col="74" text="bind:gender8"/>
+                          <Cell col="75" text="bind:married8"/>
+                          <Cell col="76" text="bind:date8" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="77" text="bind:id8"/>
+                          <Cell col="78" text="bind:money8"/>
+                          <Cell col="79" text="bind:number8"/>
+                          <Cell col="80" text="bind:button8"/>
+                          <Cell col="81" text="bind:first_name9"/>
+                          <Cell col="82" text="bind:last_name9"/>
+                          <Cell col="83" text="bind:email9"/>
+                          <Cell col="84" text="bind:gender9"/>
+                          <Cell col="85" text="bind:married9"/>
+                          <Cell col="86" text="bind:date9" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="87" text="bind:id9"/>
+                          <Cell col="88" text="bind:money9"/>
+                          <Cell col="89" text="bind:number9"/>
+                          <Cell col="90" text="bind:button10"/>
+                          <Cell col="91" text="bind:first_name10"/>
+                          <Cell col="92" text="bind:last_name10"/>
+                          <Cell col="93" text="bind:email10"/>
+                          <Cell col="94" text="bind:gender10"/>
+                          <Cell col="95" text="bind:married10"/>
+                          <Cell col="96" text="bind:date10" calendardateformat="yyyy-MM-dd"/>
+                          <Cell col="97" text="bind:id10"/>
+                          <Cell col="98" text="bind:money10"/>
+                          <Cell col="99" text="bind:number10"/>
+                          <Cell col="100" text="bind:button10"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Div id="divSearchTime" taborder="2" left="0" top="grdData:0" cssclass="div_WF_ResultBg" right="0" height="52">
+                    <Layouts>
+                      <Layout>
+                        <Static id="staServer" taborder="3" text="TEXT(&quot;grid.largedata.server&quot;,&quot;서버/네트워크시간&quot;)" left="43.14%" top="15" width="96" height="20" cssclass="sta_WF_ResultText" wordWrap="none" fittocontents="width"/>
+                        <Static id="staSec" taborder="1" top="15" height="20" cssclass="sta_WF_ResultText" text="TEXT(&quot;grid.largedata.sec&quot;)" wordWrap="none" fittocontents="width" right="staServer:5" width="24"/>
+                        <Static id="staRenderTime" taborder="2" text="0" top="15" height="20" cssclass="sta_WF_ResultValue" right="staSec:0" width="42" wordWrap="none"/>
+                        <Static id="staRender" taborder="0" text="TEXT(&quot;grid.largedata.search&quot;,&quot;랜더링시간&quot;)" top="15" height="20" cssclass="sta_WF_ResultText" wordWrap="none" fittocontents="width" right="staRenderTime:5" width="64"/>
+                        <Static id="staServerTime" taborder="5" text="0" top="15" height="20" cssclass="sta_WF_ResultValue" left="staServer:5" fittocontents="none" width="55" wordWrap="none"/>
+                        <Static id="staSec1" taborder="4" left="staServerTime:0" top="15" width="24" height="20" cssclass="sta_WF_ResultText" text="TEXT(&quot;grid.largedata.sec&quot;)" wordWrap="none" fittocontents="width"/>
+                        <Static id="staSerarchCnt" taborder="6" text="TEXT(&quot;grid.largedata.searchresult&quot;,&quot;조회건수&quot;)" left="staSec1:5" top="15" width="48" height="20" cssclass="sta_WF_ResultText" wordWrap="none" fittocontents="width"/>
+                        <Static id="staSearchCount" taborder="8" text="0" top="15" height="20" cssclass="sta_WF_ResultValue" width="52" left="staSerarchCnt:5" wordWrap="none"/>
+                        <Static id="staCnt" taborder="7" text="TEXT(&quot;grid.rows&quot;,&quot;건&quot;)" left="staSearchCount:0" top="15" width="24" height="20" cssclass="sta_WF_ResultText" wordWrap="none" fittocontents="width"/>
+                      </Layout>
+                    </Layouts>
+                  </Div>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tpageVarious" text="TEXT(&quot;grid.largedata.multi&quot;,&quot;다양한표현&quot;)" tabbuttoncssclass="tab_WF_BtnLast">
+              <Layouts>
+                <Layout>
+                  <Div id="divSearch" taborder="0" left="0" top="20" height="70" cssclass="div_WF_SearchBg" right="0">
+                    <Layouts>
+                      <Layout>
+                        <Button id="btnSearch" taborder="2" text="TEXT(&quot;grid.search&quot;,&quot;조회&quot;)" top="10" width="82" height="50" right="10" cssclass="btn_WF_Search" onclick="tabLarge_tpageVarious_divSearch_btnSearch_onclick"/>
+                        <Static id="staColCnt" taborder="1" text="TEXT(&quot;grid.col.count&quot;,&quot;열 갯수&quot;)" left="22" top="19" width="51" height="32" cssclass="sta_WF_SearchLabel" fittocontents="width" wordWrap="none"/>
+                        <Combo id="cboColCnt" taborder="2" text="10*10,000" left="staColCnt:10" top="19" width="120" height="32" value="10_10000" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" itemheight="32">
+                          <Dataset id="innerdataset">
+                            <ColumnInfo>
+                              <Column id="codecolumn" size="256"/>
+                              <Column id="datacolumn" size="256"/>
+                            </ColumnInfo>
+                            <Rows>
+                              <Row>
+                                <Col id="codecolumn">10</Col>
+                                <Col id="datacolumn">10</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">50</Col>
+                                <Col id="datacolumn">50</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">100</Col>
+                                <Col id="datacolumn">100</Col>
+                              </Row>
+                            </Rows>
+                          </Dataset>
+                        </Combo>
+                        <Static id="staRowCnt" taborder="3" text="TEXT(&quot;grid.row.count&quot;,&quot;행 갯수&quot;)" left="cboColCnt:22" top="19" width="51" height="32" cssclass="sta_WF_SearchLabel" fittocontents="width" wordWrap="none"/>
+                        <Combo id="cboRowCnt" taborder="4" text="10*10,000" left="staRowCnt:10" top="19" width="120" height="32" value="10_10000" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" itemheight="32">
+                          <Dataset id="innerdataset">
+                            <ColumnInfo>
+                              <Column id="codecolumn" size="256"/>
+                              <Column id="datacolumn" size="256"/>
+                            </ColumnInfo>
+                            <Rows>
+                              <Row>
+                                <Col id="codecolumn">10000</Col>
+                                <Col id="datacolumn">10,000</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">50000</Col>
+                                <Col id="datacolumn">50,000</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">100000</Col>
+                                <Col id="datacolumn">100,000</Col>
+                              </Row>
+                            </Rows>
+                          </Dataset>
+                        </Combo>
+                      </Layout>
+                    </Layouts>
+                  </Div>
+                  <Grid id="grdData" taborder="1" left="0" top="120" binddataset="dsList2" autofittype="col" right="0" showselection="true" initvalueid="iv_Grid0" bottom="52" scrollbarbarminsize="30">
+                    <Formats>
+                      <Format id="format10">
+                        <Columns>
+                          <Column size="50"/>
+                          <Column size="80"/>
+                          <Column size="100"/>
+                          <Column size="220"/>
+                          <Column size="120"/>
+                          <Column size="90"/>
+                          <Column size="90"/>
+                          <Column size="50"/>
+                          <Column size="90"/>
+                          <Column size="90"/>
+                          <Column size="70"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="50" band="head"/>
+                          <Row size="50"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="No."/>
+                          <Cell col="1" text="First"/>
+                          <Cell col="2" text="Last"/>
+                          <Cell col="3" text="Email"/>
+                          <Cell col="4" text="Gender"/>
+                          <Cell col="5" text="Married"/>
+                          <Cell col="6" text="Date"/>
+                          <Cell col="7" text="ID"/>
+                          <Cell col="8" text="Money"/>
+                          <Cell col="9" text="Number"/>
+                          <Cell col="10" text="Button"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="expr:(currow+1).toLocaleString()"/>
+                          <Cell col="1" text="bind:first_name"/>
+                          <Cell col="2" text="bind:last_name"/>
+                          <Cell col="3" text="bind:email"/>
+                          <Cell col="4" text="bind:gender" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="5" text="bind:married" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="6" text="bind:date" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="7" text="bind:id"/>
+                          <Cell col="8" text="bind:money" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="9" text="bind:number" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="10" text="bind:button" displaytype="buttoncontrol" cursor="pointer"/>
+                        </Band>
+                      </Format>
+                      <Format id="format50">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="50" band="head"/>
+                          <Row size="50"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="No."/>
+                          <Cell col="1" text="First"/>
+                          <Cell col="2" text="Last"/>
+                          <Cell col="3" text="Email"/>
+                          <Cell col="4" text="Gender"/>
+                          <Cell col="5" text="Married"/>
+                          <Cell col="6" text="Date"/>
+                          <Cell col="7" text="ID"/>
+                          <Cell col="8" text="Money"/>
+                          <Cell col="9" text="Number"/>
+                          <Cell col="10" text="Button"/>
+                          <Cell col="11" text="First2"/>
+                          <Cell col="12" text="Last2"/>
+                          <Cell col="13" text="Email2"/>
+                          <Cell col="14" text="Gender2"/>
+                          <Cell col="15" text="Married2"/>
+                          <Cell col="16" text="Date2"/>
+                          <Cell col="17" text="ID2"/>
+                          <Cell col="18" text="Money2"/>
+                          <Cell col="19" text="Number2"/>
+                          <Cell col="20" text="Button2"/>
+                          <Cell col="21" text="First3"/>
+                          <Cell col="22" text="Last3"/>
+                          <Cell col="23" text="Email3"/>
+                          <Cell col="24" text="Gender3"/>
+                          <Cell col="25" text="Married3"/>
+                          <Cell col="26" text="Date3"/>
+                          <Cell col="27" text="ID3"/>
+                          <Cell col="28" text="Money3"/>
+                          <Cell col="29" text="Number3"/>
+                          <Cell col="30" text="Button3"/>
+                          <Cell col="31" text="First4"/>
+                          <Cell col="32" text="Last4"/>
+                          <Cell col="33" text="Email4"/>
+                          <Cell col="34" text="Gender4"/>
+                          <Cell col="35" text="Married4"/>
+                          <Cell col="36" text="Date4"/>
+                          <Cell col="37" text="ID4"/>
+                          <Cell col="38" text="Money4"/>
+                          <Cell col="39" text="Number4"/>
+                          <Cell col="40" text="Button4"/>
+                          <Cell col="41" text="First5"/>
+                          <Cell col="42" text="Last5"/>
+                          <Cell col="43" text="Email5"/>
+                          <Cell col="44" text="Gender5"/>
+                          <Cell col="45" text="Married5"/>
+                          <Cell col="46" text="Date5"/>
+                          <Cell col="47" text="ID5"/>
+                          <Cell col="48" text="Money5"/>
+                          <Cell col="49" text="Number5"/>
+                          <Cell col="50" text="Button5"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="expr:currow+1"/>
+                          <Cell col="1" text="bind:first_name"/>
+                          <Cell col="2" text="bind:last_name"/>
+                          <Cell col="3" text="bind:email"/>
+                          <Cell col="4" text="bind:gender" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="5" text="bind:married" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="6" text="bind:date" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="7" text="bind:id"/>
+                          <Cell col="8" text="bind:money" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="9" text="bind:number" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="10" text="bind:button" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="11" text="bind:first_name2"/>
+                          <Cell col="12" text="bind:last_name2"/>
+                          <Cell col="13" text="bind:email2"/>
+                          <Cell col="14" text="bind:gender2" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="15" text="bind:married2" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="16" text="bind:date2" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="17" text="bind:id2"/>
+                          <Cell col="18" text="bind:money2" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="19" text="bind:number2" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="20" text="bind:button2" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="21" text="bind:first_name3"/>
+                          <Cell col="22" text="bind:last_name3"/>
+                          <Cell col="23" text="bind:email3"/>
+                          <Cell col="24" text="bind:gender3" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="25" text="bind:married3" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="26" text="bind:date3" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="27" text="bind:id3"/>
+                          <Cell col="28" text="bind:money3" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="29" text="bind:number3" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="30" text="bind:button3" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="31" text="bind:first_name4"/>
+                          <Cell col="32" text="bind:last_name4"/>
+                          <Cell col="33" text="bind:email4"/>
+                          <Cell col="34" text="bind:gender4" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="35" text="bind:married4" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="36" text="bind:date4" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="37" text="bind:id4"/>
+                          <Cell col="38" text="bind:money4" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="39" text="bind:number4" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="40" text="bind:button4" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="41" text="bind:first_name5"/>
+                          <Cell col="42" text="bind:last_name5"/>
+                          <Cell col="43" text="bind:email5"/>
+                          <Cell col="44" text="bind:gender5" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="45" text="bind:married5" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="46" text="bind:date5" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="47" text="bind:id5"/>
+                          <Cell col="48" text="bind:money5" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="49" text="bind:number5" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="50" text="bind:button5" displaytype="buttoncontrol" cursor="pointer"/>
+                        </Band>
+                      </Format>
+                      <Format id="format100">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                          <Column size="110"/>
+                          <Column size="130"/>
+                          <Column size="220"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="100"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="50" band="head"/>
+                          <Row size="50"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="No."/>
+                          <Cell col="1" text="First"/>
+                          <Cell col="2" text="Last"/>
+                          <Cell col="3" text="Email"/>
+                          <Cell col="4" text="Gender"/>
+                          <Cell col="5" text="Married"/>
+                          <Cell col="6" text="Date"/>
+                          <Cell col="7" text="ID"/>
+                          <Cell col="8" text="Money"/>
+                          <Cell col="9" text="Number"/>
+                          <Cell col="10" text="Button"/>
+                          <Cell col="11" text="First2"/>
+                          <Cell col="12" text="Last2"/>
+                          <Cell col="13" text="Email2"/>
+                          <Cell col="14" text="Gender2"/>
+                          <Cell col="15" text="Married2"/>
+                          <Cell col="16" text="Date2"/>
+                          <Cell col="17" text="ID2"/>
+                          <Cell col="18" text="Money2"/>
+                          <Cell col="19" text="Number2"/>
+                          <Cell col="20" text="Button2"/>
+                          <Cell col="21" text="First3"/>
+                          <Cell col="22" text="Last3"/>
+                          <Cell col="23" text="Email3"/>
+                          <Cell col="24" text="Gender3"/>
+                          <Cell col="25" text="Married3"/>
+                          <Cell col="26" text="Date3"/>
+                          <Cell col="27" text="ID3"/>
+                          <Cell col="28" text="Money3"/>
+                          <Cell col="29" text="Number3"/>
+                          <Cell col="30" text="Button3"/>
+                          <Cell col="31" text="First4"/>
+                          <Cell col="32" text="Last4"/>
+                          <Cell col="33" text="Email4"/>
+                          <Cell col="34" text="Gender4"/>
+                          <Cell col="35" text="Married4"/>
+                          <Cell col="36" text="Date4"/>
+                          <Cell col="37" text="ID4"/>
+                          <Cell col="38" text="Money4"/>
+                          <Cell col="39" text="Number4"/>
+                          <Cell col="40" text="Button4"/>
+                          <Cell col="41" text="First5"/>
+                          <Cell col="42" text="Last5"/>
+                          <Cell col="43" text="Email5"/>
+                          <Cell col="44" text="Gender5"/>
+                          <Cell col="45" text="Married5"/>
+                          <Cell col="46" text="Date5"/>
+                          <Cell col="47" text="ID5"/>
+                          <Cell col="48" text="Money5"/>
+                          <Cell col="49" text="Number5"/>
+                          <Cell col="50" text="Button5"/>
+                          <Cell col="51" text="First6"/>
+                          <Cell col="52" text="Last6"/>
+                          <Cell col="53" text="Email6"/>
+                          <Cell col="54" text="Gender6"/>
+                          <Cell col="55" text="Married6"/>
+                          <Cell col="56" text="Date6"/>
+                          <Cell col="57" text="ID6"/>
+                          <Cell col="58" text="Money6"/>
+                          <Cell col="59" text="Number6"/>
+                          <Cell col="60" text="Button6"/>
+                          <Cell col="61" text="First7"/>
+                          <Cell col="62" text="Last7"/>
+                          <Cell col="63" text="Email7"/>
+                          <Cell col="64" text="Gender7"/>
+                          <Cell col="65" text="Married7"/>
+                          <Cell col="66" text="Date7"/>
+                          <Cell col="67" text="ID7"/>
+                          <Cell col="68" text="Money7"/>
+                          <Cell col="69" text="Number7"/>
+                          <Cell col="70" text="Button7"/>
+                          <Cell col="71" text="First8"/>
+                          <Cell col="72" text="Last8"/>
+                          <Cell col="73" text="Email8"/>
+                          <Cell col="74" text="Gender8"/>
+                          <Cell col="75" text="Married8"/>
+                          <Cell col="76" text="Date8"/>
+                          <Cell col="77" text="ID8"/>
+                          <Cell col="78" text="Money8"/>
+                          <Cell col="79" text="Number8"/>
+                          <Cell col="80" text="Button8"/>
+                          <Cell col="81" text="First9"/>
+                          <Cell col="82" text="Last9"/>
+                          <Cell col="83" text="Email9"/>
+                          <Cell col="84" text="Gender9"/>
+                          <Cell col="85" text="Married9"/>
+                          <Cell col="86" text="Date9"/>
+                          <Cell col="87" text="ID9"/>
+                          <Cell col="88" text="Money9"/>
+                          <Cell col="89" text="Number9"/>
+                          <Cell col="90" text="Button9"/>
+                          <Cell col="91" text="First10"/>
+                          <Cell col="92" text="Last10"/>
+                          <Cell col="93" text="Email10"/>
+                          <Cell col="94" text="Gender10"/>
+                          <Cell col="95" text="Married10"/>
+                          <Cell col="96" text="Date10"/>
+                          <Cell col="97" text="ID10"/>
+                          <Cell col="98" text="Money10"/>
+                          <Cell col="99" text="Number10"/>
+                          <Cell col="100" text="Button10"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="expr:currow+1"/>
+                          <Cell col="1" text="bind:first_name"/>
+                          <Cell col="2" text="bind:last_name"/>
+                          <Cell col="3" text="bind:email"/>
+                          <Cell col="4" text="bind:gender" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="5" text="bind:married" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="6" text="bind:date" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="7" text="bind:id"/>
+                          <Cell col="8" text="bind:money" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="9" text="bind:number" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="10" text="bind:button" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="11" text="bind:first_name2"/>
+                          <Cell col="12" text="bind:last_name2"/>
+                          <Cell col="13" text="bind:email2"/>
+                          <Cell col="14" text="bind:gender2" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="15" text="bind:married2" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="16" text="bind:date2" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="17" text="bind:id2"/>
+                          <Cell col="18" text="bind:money2" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="19" text="bind:number2" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="20" text="bind:button2" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="21" text="bind:first_name3"/>
+                          <Cell col="22" text="bind:last_name3"/>
+                          <Cell col="23" text="bind:email3"/>
+                          <Cell col="24" text="bind:gender3" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="25" text="bind:married3" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="26" text="bind:date3" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="27" text="bind:id3"/>
+                          <Cell col="28" text="bind:money3" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="29" text="bind:number3" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="30" text="bind:button3" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="31" text="bind:first_name4"/>
+                          <Cell col="32" text="bind:last_name4"/>
+                          <Cell col="33" text="bind:email4"/>
+                          <Cell col="34" text="bind:gender4" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="35" text="bind:married4" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="36" text="bind:date4" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="37" text="bind:id4"/>
+                          <Cell col="38" text="bind:money4" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="39" text="bind:number4" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="40" text="bind:button4" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="41" text="bind:first_name5"/>
+                          <Cell col="42" text="bind:last_name5"/>
+                          <Cell col="43" text="bind:email5"/>
+                          <Cell col="44" text="bind:gender5" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="45" text="bind:married5" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="46" text="bind:date5" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="47" text="bind:id5"/>
+                          <Cell col="48" text="bind:money5" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="49" text="bind:number5" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="50" text="bind:button5" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="51" text="bind:first_name6"/>
+                          <Cell col="52" text="bind:last_name6"/>
+                          <Cell col="53" text="bind:email6"/>
+                          <Cell col="54" text="bind:gender6" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="55" text="bind:married6" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="56" text="bind:date6" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="57" text="bind:id6"/>
+                          <Cell col="58" text="bind:money6" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="59" text="bind:number6" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="60" text="bind:button6" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="11" text="bind:first_name7"/>
+                          <Cell col="62" text="bind:last_name7"/>
+                          <Cell col="63" text="bind:email7"/>
+                          <Cell col="64" text="bind:gender7" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="65" text="bind:married7" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="66" text="bind:date7" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="67" text="bind:id7"/>
+                          <Cell col="68" text="bind:money7" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="69" text="bind:number7" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="70" text="bind:button7" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="71" text="bind:first_name8"/>
+                          <Cell col="72" text="bind:last_name8"/>
+                          <Cell col="73" text="bind:email8"/>
+                          <Cell col="74" text="bind:gender8" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="75" text="bind:married8" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="76" text="bind:date8" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="77" text="bind:id8"/>
+                          <Cell col="78" text="bind:money8" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="79" text="bind:number8" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="80" text="bind:button8" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="81" text="bind:first_name9"/>
+                          <Cell col="82" text="bind:last_name9"/>
+                          <Cell col="83" text="bind:email9"/>
+                          <Cell col="84" text="bind:gender9" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="85" text="bind:married9" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="86" text="bind:date9" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="87" text="bind:id9"/>
+                          <Cell col="88" text="bind:money9" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="89" text="bind:number9" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="90" text="bind:button9" displaytype="buttoncontrol" cursor="pointer"/>
+                          <Cell col="91" text="bind:first_name10"/>
+                          <Cell col="92" text="bind:last_name10"/>
+                          <Cell col="93" text="bind:email10"/>
+                          <Cell col="94" text="bind:gender10" textAlign="left" displaytype="combocontrol" edittype="combo" combodataset="dsCombo" combodatacol="data" combocodecol="code"/>
+                          <Cell col="95" text="bind:married10" textAlign="right" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="married" checkboxfalsevalue="single"/>
+                          <Cell col="96" text="bind:date10" calendardateformat="yyyy-MM-dd" displaytype="date" edittype="date"/>
+                          <Cell col="97" text="bind:id10"/>
+                          <Cell col="98" text="bind:money10" displaytype="mask" maskeditformat="#,##0"/>
+                          <Cell col="99" text="bind:number10" textAlign="right" displaytype="progressbarcontrol" padding="5px" progressbarsmooth="true"/>
+                          <Cell col="100" text="bind:button10" displaytype="buttoncontrol" cursor="pointer"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Div id="divSearchTime" taborder="2" left="0" top="grdData:0" cssclass="div_WF_ResultBg" right="0" height="52">
+                    <Layouts>
+                      <Layout>
+                        <Static id="staServer" taborder="3" text="TEXT(&quot;grid.largedata.server&quot;,&quot;서버/네트워크시간&quot;)" left="43.17%" top="15" width="97" height="20" cssclass="sta_WF_ResultText" wordWrap="none" fittocontents="width"/>
+                        <Static id="staSec" taborder="1" top="15" height="20" cssclass="sta_WF_ResultText" text="TEXT(&quot;grid.largedata.sec&quot;)" wordWrap="none" fittocontents="width" right="staServer:5" width="25"/>
+                        <Static id="staRenderTime" taborder="2" text="0" top="15" height="20" cssclass="sta_WF_ResultValue" right="staSec:0" width="42" wordWrap="none"/>
+                        <Static id="staRender" taborder="0" text="TEXT(&quot;grid.largedata.search&quot;,&quot;랜더링시간&quot;)" top="15" height="20" cssclass="sta_WF_ResultText" wordWrap="none" fittocontents="width" right="staRenderTime:5" width="64"/>
+                        <Static id="staServerTime" taborder="5" text="0" top="15" height="20" cssclass="sta_WF_ResultValue" width="55" left="staServer:5" wordWrap="none"/>
+                        <Static id="staSec1" taborder="4" left="staServerTime:0" top="15" width="24" height="20" cssclass="sta_WF_ResultText" text="TEXT(&quot;grid.largedata.sec&quot;)" wordWrap="none" fittocontents="width"/>
+                        <Static id="staSerarchCnt" taborder="6" text="TEXT(&quot;grid.largedata.searchresult&quot;,&quot;조회건수&quot;)" left="staSec1:5" top="15" width="48" height="20" cssclass="sta_WF_ResultText" wordWrap="none" fittocontents="width"/>
+                        <Static id="staSearchCount" taborder="8" text="0" top="15" height="20" cssclass="sta_WF_ResultValue" width="52" left="staSerarchCnt:5" wordWrap="none"/>
+                        <Static id="staCnt" taborder="7" text="TEXT(&quot;grid.rows&quot;,&quot;건&quot;)" left="staSearchCount:0" top="15" width="24" height="20" cssclass="sta_WF_ResultText" wordWrap="none" fittocontents="width"/>
+                      </Layout>
+                    </Layouts>
+                  </Div>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Static id="Static00_00" taborder="1" text="22" left="45.00" top="0" width="120" height="22" background="RGBA(255,0,0,0.14)" visible="false" textAlign="center"/>
+        <Static id="Static00_00_01" taborder="2" text="20" left="45.00" top="66" width="120" height="20" background="RGBA(255,0,0,0.14)" visible="false" textAlign="center"/>
+        <Static id="Static00_00_01_00" taborder="3" text="55" left="0" top="235" width="55" height="40" background="RGBA(255,0,0,0.14)" visible="false" textAlign="center"/>
+        <Static id="Static00_00_01_00_00" taborder="4" text="45" left="1025.00" top="133" width="45" height="40" background="RGBA(255,0,0,0.14)" visible="false" textAlign="center"/>
+        <Static id="Static00_00_01_01" taborder="5" text="30" left="45.00" top="156" width="120" height="30" background="RGBA(255,0,0,0.14)" visible="false" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DEMO site
+*  @FileName 	largeData.xfdl
+*  @Creator 	PRESALES
+*  @CreateDate 	2024/05/29
+*  @Desction   
+************** 소스 수정 이력 ****************************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2024/05/29			PRESALES					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.starttime;
+this.endtime;
+/*******************************************************************************************************************************
+ * FORM EVENT 영역
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+};
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역
+*******************************************************************************************************************************/
+this.fnCallback = function(svcId, errCode, errMsg, elapsedTime)
+{
+	if (errCode < 0) {
+		alert(errMsg);
+	} else {
+		// 탭 일반표현
+		if (svcId == "searchGeneral") {
+			this.endtime = new Date();
+			let totaltime = nexacro.round((this.endtime - this.starttime) / 1000, 3);
+			let nColCount = this.dsList1.colcount;
+			let nRowCount = this.dsList1.rowcount;
+			
+			let resDivForm = this.tabLarge.tpageGeneral.form.divSearchTime.form;
+			
+			resDivForm.staServerTime.text 			= elapsedTime;
+			resDivForm.staRenderTime.text 			= nexacro.round(totaltime - elapsedTime, 3);
+			resDivForm.staSearchCount.text 			= this.appendComma(nColCount) + "*" + this.appendComma(nRowCount);
+			resDivForm.staSearchCount.fittocontents = "width";
+			resDivForm.staSearchCount.wordWrap 		= "none";
+			resDivForm.resetScroll();
+			
+		} 
+		// 탭 다양한 표현
+		else if (svcId == "searchVarious") {
+			this.endtime = new Date();
+			let totaltime = nexacro.round((this.endtime - this.starttime) / 1000, 3);
+			let nColCount = this.dsList2.colcount;
+			let nRowCount = this.dsList2.rowcount;
+			
+			let resDivForm = this.tabLarge.tpageVarious.form.divSearchTime.form;
+	
+			resDivForm.staServerTime.text 			= elapsedTime;
+			resDivForm.staRenderTime.text 			= nexacro.round(totaltime - elapsedTime, 3);
+			resDivForm.staSearchCount.text 			= this.appendComma(nColCount) + "*" + this.appendComma(nRowCount);
+			resDivForm.staSearchCount.fittocontents = "width";
+			resDivForm.staSearchCount.wordWrap 		= "none";
+			resDivForm.resetScroll();
+		
+		}
+	}
+}
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+this.appendComma = function (nNumber, nDetail) {
+	if (nNumber == null) return "";
+	if (nDetail == null) nDetail = 0;
+	
+	nNumber = parseFloat(nNumber);
+	nNumber = nexacro.round(nNumber, nDetail);
+	
+	let strNumber = new String(nNumber);
+	let arrNumber = strNumber.split(".");
+	let strFormatNum = "";
+	let j = 0;
+	
+	for (let i = arrNumber[0].length - 1; i >= 0; i--) {
+		if (i != strNumber.length && j == 3) {
+			strFormatNum = arrNumber[0].charAt(i) + "," + strFormatNum;
+			j = 0;
+		} else {
+			strFormatNum = arrNumber[0].charAt(i) + strFormatNum;
+		}
+		j++;
+	}
+	
+	if (arrNumber.length > 1) strFormatNum = strFormatNum + "." + arrNumber[1];
+	
+	return strFormatNum;
+};
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+
+this.tabLarge_tpageGeneral_divSearch_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.dsList1.clearData();
+	
+	let resDivGrid = this.tabLarge.tpageGeneral.form.grdData;
+	let resDivForm = this.tabLarge.tpageGeneral.form.divSearchTime.form;
+	
+	
+	resDivForm.staServerTime.text = "0";
+	resDivForm.staRenderTime.text = "0";
+	resDivForm.staSearchCount.text = "0";
+	
+	let colcount = this.tabLarge.tpageGeneral.form.divSearch.form.cboColCnt.value;
+	let rowcount = this.tabLarge.tpageGeneral.form.divSearch.form.cboRowCnt.value;
+	
+	resDivGrid.formatid 	= "format" + colcount;
+	resDivGrid.autofittype 	= (colcount == 10) ? "col" : "none";
+		
+	let strSvcId 	= "searchGeneral";
+	let strSvcUrl 	= "svc::largedata";
+	let inData 		= "";
+	let outData 	= "dsList1=output";
+	let strArg 		= "colcount=" + nexacro.wrapQuote(colcount) + " rowcount=" + nexacro.wrapQuote(rowcount);
+	let callBackFnc = "fnCallback";
+	let isAsync 	= true;
+	let nDataType 	= 2;
+	
+	this.starttime = new Date();
+	this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc, isAsync, nDataType);
+};
+
+this.tabLarge_tpageVarious_divSearch_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.dsList2.clearData();
+	
+	let resDivGrid = this.tabLarge.tpageVarious.form.grdData;
+	let resDivForm = this.tabLarge.tpageVarious.form.divSearchTime.form;
+	
+	resDivForm.staServerTime.text = "0";
+	resDivForm.staRenderTime.text = "0";
+	resDivForm.staSearchCount.text = "0";
+	
+	let colcount = this.tabLarge.tpageVarious.form.divSearch.form.cboColCnt.value;
+	let rowcount = this.tabLarge.tpageVarious.form.divSearch.form.cboRowCnt.value;
+	
+	resDivGrid.formatid 	= "format" + colcount;
+	resDivGrid.autofittype 	= (colcount == 10) ? "col" : "none";
+	
+	let strSvcId 	= "searchVarious";
+	let strSvcUrl 	= "svc::largedata";
+	let inData 		= "";
+	let outData 	= "dsList2=output";
+	let strArg 		= "colcount=" + nexacro.wrapQuote(colcount) + " rowcount=" + nexacro.wrapQuote(rowcount);
+	let callBackFnc = "fnCallback";
+	let isAsync 	= true;
+	let nDataType 	= 2;
+	
+	this.starttime = new Date();
+	this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc, isAsync, nDataType);
+};]]></Script>
+    <Objects>
+      <Dataset id="dsList1">
+        <ColumnInfo>
+          <Column id="money" type="STRING" size="50"/>
+          <Column id="number" type="STRING" size="50"/>
+          <Column id="button" type="STRING" size="50"/>
+          <Column id="gender" type="STRING" size="50"/>
+          <Column id="date" type="STRING" size="8"/>
+          <Column id="id" type="STRING" size="50"/>
+          <Column id="last_name" type="STRING" size="50"/>
+          <Column id="email" type="STRING" size="50"/>
+          <Column id="married" type="STRING" size="50"/>
+          <Column id="first_name" type="STRING" size="50"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCombo">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">Female</Col>
+            <Col id="data">Female</Col>
+          </Row>
+          <Row>
+            <Col id="code">Male</Col>
+            <Col id="data">Male</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsList2">
+        <ColumnInfo>
+          <Column id="money" type="STRING" size="50"/>
+          <Column id="number" type="STRING" size="50"/>
+          <Column id="button" type="STRING" size="50"/>
+          <Column id="gender" type="STRING" size="50"/>
+          <Column id="date" type="STRING" size="8"/>
+          <Column id="id" type="STRING" size="50"/>
+          <Column id="last_name" type="STRING" size="50"/>
+          <Column id="email" type="STRING" size="50"/>
+          <Column id="married" type="STRING" size="50"/>
+          <Column id="first_name" type="STRING" size="50"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTemp">
+        <ColumnInfo>
+          <Column id="money" type="STRING" size="50"/>
+          <Column id="number" type="STRING" size="50"/>
+          <Column id="button" type="STRING" size="50"/>
+          <Column id="gender" type="STRING" size="50"/>
+          <Column id="date" type="STRING" size="8"/>
+          <Column id="id" type="STRING" size="50"/>
+          <Column id="last_name" type="STRING" size="50"/>
+          <Column id="email" type="STRING" size="50"/>
+          <Column id="married" type="STRING" size="50"/>
+          <Column id="first_name" type="STRING" size="50"/>
+          <Column id="money2" type="STRING" size="50"/>
+          <Column id="number2" type="STRING" size="50"/>
+          <Column id="button2" type="STRING" size="50"/>
+          <Column id="gender2" type="STRING" size="50"/>
+          <Column id="date2" type="STRING" size="8"/>
+          <Column id="id2" type="STRING" size="50"/>
+          <Column id="last_name2" type="STRING" size="50"/>
+          <Column id="email2" type="STRING" size="50"/>
+          <Column id="married2" type="STRING" size="50"/>
+          <Column id="first_name2" type="STRING" size="50"/>
+          <Column id="money3" type="STRING" size="50"/>
+          <Column id="number3" type="STRING" size="50"/>
+          <Column id="button3" type="STRING" size="50"/>
+          <Column id="gender3" type="STRING" size="50"/>
+          <Column id="date3" type="STRING" size="8"/>
+          <Column id="id3" type="STRING" size="50"/>
+          <Column id="last_name3" type="STRING" size="50"/>
+          <Column id="email3" type="STRING" size="50"/>
+          <Column id="married3" type="STRING" size="50"/>
+          <Column id="first_name3" type="STRING" size="50"/>
+          <Column id="money4" type="STRING" size="50"/>
+          <Column id="number4" type="STRING" size="50"/>
+          <Column id="button4" type="STRING" size="50"/>
+          <Column id="gender4" type="STRING" size="50"/>
+          <Column id="date4" type="STRING" size="8"/>
+          <Column id="id4" type="STRING" size="50"/>
+          <Column id="last_name4" type="STRING" size="50"/>
+          <Column id="email4" type="STRING" size="50"/>
+          <Column id="married4" type="STRING" size="50"/>
+          <Column id="first_name4" type="STRING" size="50"/>
+          <Column id="money5" type="STRING" size="50"/>
+          <Column id="number5" type="STRING" size="50"/>
+          <Column id="button5" type="STRING" size="50"/>
+          <Column id="gender5" type="STRING" size="50"/>
+          <Column id="date5" type="STRING" size="8"/>
+          <Column id="id5" type="STRING" size="50"/>
+          <Column id="last_name5" type="STRING" size="50"/>
+          <Column id="email5" type="STRING" size="50"/>
+          <Column id="married5" type="STRING" size="50"/>
+          <Column id="first_name5" type="STRING" size="50"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

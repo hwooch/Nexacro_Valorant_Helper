@@ -6,9 +6,9 @@
         <Div id="div_user_status" taborder="0" left="34" top="20" height="150" background="#31313c" right="34" formscrollbartype="none none" formscrolltype="none" borderRadius="20px">
           <Layouts>
             <Layout>
-              <Static id="Logo_CHAMBER" taborder="3" left="37.68115942028985%" top="-110" height="901" opacity="50%" text="" width="477"/>
-              <Static id="sta_user_status" taborder="0" top="15" width="540" height="120" color="white" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="left" text="티어 조회 중 ..." fittocontents="width" padding="0px 0px 0px 130px" left="Logo_CHAMBER:65"/>
-              <Static id="sta_user_tag" taborder="2" top="15" height="120" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="사용자 태그" fittocontents="width" right="Logo_CHAMBER:0" textAlign="right" width="242"/>
+              <Static id="Logo_CHAMBER" taborder="3" left="38.51%" top="-110" height="861" opacity="50%" text="" width="436"/>
+              <Static id="sta_user_status" taborder="0" top="15" width="540" height="120" color="white" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="left" text="티어 조회 중 ..." fittocontents="width" padding="0px 0px 0px 130px" left="Logo_CHAMBER:83"/>
+              <Static id="sta_user_tag" taborder="2" top="15" height="120" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="사용자 태그" fittocontents="width" right="Logo_CHAMBER:30" textAlign="right" width="242"/>
               <Static id="sta_user_name" taborder="1" top="15" height="120" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" right="sta_user_tag:0" width="400"/>
             </Layout>
           </Layouts>
@@ -111,6 +111,7 @@
               <Static id="sta_recent_match" taborder="2" text="최근 매치" left="0" top="0" height="50" background="#31313c" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px" right="0"/>
               <Static id="sta_devide_5" taborder="1" left="0" top="48" height="2" background="#1f2326" right="0"/>
               <Static id="sta_hole" taborder="4" left="50" top="100" width="100" height="100" background="#31313c" borderRadius="200px" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" verticalAlign="middle" textAlign="center" padding="5px 0px 0px" color="white"/>
+              <Button id="btn_new_search" taborder="5" top="sta_devide_5:50" width="200" text="다른 플레이어&#13;&#10;검색하기" borderRadius="20px" border="5px solid #f74451" color="#f74451" font="normal 20pt/normal &quot;이사만루체 Medium&quot;" right="50" bottom="50" cursor="pointer" onclick="div_recent_history_btn_new_search_onclick" cssclass="btn_new_search"/>
             </Layout>
           </Layouts>
         </Div>
@@ -316,18 +317,18 @@ this.fn_Callback = function(svcId, errCode, errMsg)
     }
 	// 전적 조회
     else if (svcId == "searchMatch") {
-	
+		
 		this.list_agent.setCellProperty("body", "CellAgentIcon", "background", 
-		"expr:\"url('\" + AGENT_ICON + \"') no-repeat center center /contain\"");
+			"expr:\"url('\" + AGENT_ICON + \"') no-repeat center center /contain\"");
 		
 		this.list_role.setCellProperty("body", "CellRoleIcon", "background", 
-		"expr:\"url('\" + ROLE_ICON + \"') no-repeat center center /contain\"");
+			"expr:\"url('\" + ROLE_ICON + \"') no-repeat center center /contain\"");
 		
 		this.list_weapon.setCellProperty("body", "CellWeaponIcon", "background", 
-		"expr:\"url('\" + WEAPON_ICON + \"') no-repeat center center /contain\"");
+			"expr:\"url('\" + WEAPON_ICON + \"') no-repeat center center /contain\"");
 		
 		this.list_match_list.setCellProperty("body", "cell_match_agent_icon", "background", 
-		"expr:\"url('\" + AGENT_ICON + \"') no-repeat center center /contain\"");
+			"expr:\"url('\" + AGENT_ICON + \"') no-repeat center center /contain\"");
 		
 		var Most_Agent = "url('"+ this.ds_agent.getColumn(0,"AGENT_FULL_BODY") +"') no-repeat center center /cover";
 		this.div_user_status.form.Logo_CHAMBER.background = Most_Agent;
@@ -365,7 +366,7 @@ this.fn_drawRecentHistory = function(nLimit)
     
     // 표시할 개수 제한 (데이터가 10개보다 적으면 전체 표시)
     var nCount = (nTotal < nLimit) ? nTotal : nLimit;
-
+	
     // 카운팅 변수
     var nWins = 0;
     var nDraws = 0;
@@ -383,14 +384,14 @@ this.fn_drawRecentHistory = function(nLimit)
 			comp = null;
         }
     }
-
+	
     //박스 그리기 설정 값
 	var nLeft = 200;
     var nTop  = 150;     // 시작 위치
     var nWidth = 40;    // 박스 너비
     var nHeight = 40;   // 박스 높이
     var nGap = 10;       // 박스 간격
-
+	
     // 5. 반복문으로 데이터 순회 및 박스 생성
     for (var i = 0; i < nCount; i++) {
         
@@ -443,7 +444,7 @@ this.fn_drawRecentHistory = function(nLimit)
 	// 1번째 : 승리
 	var nRowWin = this.ds_chart_win_rate.addRow();
 	this.ds_chart_win_rate.setColumn(nRowWin, "RATE", nWins);
-
+	
 	// 2번째 : 무승부
 	var nRowLoss = this.ds_chart_win_rate.addRow();
 	this.ds_chart_win_rate.setColumn(nRowLoss, "RATE", nDraws);
@@ -466,12 +467,12 @@ this.fnCreateChart = function() {
 	
 	// Chart 그리기  DxChartPie - Pie(파이) chart  
 	var chartObj = new DxChartPie({
-		id: cvs,							// 차트 canvas의 아이디
-		elem: canvas,						// 차트 canvas 오브젝트
-		binddataset: ds,					// Binddataset
-		data:["bind:RATE"],					// 차트에 표현할 데이터 리스트 ["bind:Col0","bind:Col1"]
-		options: this.fnGetOption(canvas) 	// 차트에 대한 옵션값 {background:() , key:() , xaxis , yaxis , tooltip }  : 	
-	}).roundRobin();
+			id: cvs,							// 차트 canvas의 아이디
+			elem: canvas,						// 차트 canvas 오브젝트
+			binddataset: ds,					// Binddataset
+			data:["bind:RATE"],					// 차트에 표현할 데이터 리스트 ["bind:Col0","bind:Col1"]
+			options: this.fnGetOption(canvas) 	// 차트에 대한 옵션값 {background:() , key:() , xaxis , yaxis , tooltip }  : 	
+		}).roundRobin();
 };
 
 this.fnGetOption = function (canvas, background)
@@ -489,7 +490,26 @@ this.fnGetOption = function (canvas, background)
 		colorsStroke: 'transparent',
 	}
 	return Option;
-};]]></Script>
+};
+this.div_recent_history_btn_new_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+	var sMsgId = "msg.notice.new_search";	//메세지ID
+	var arrArg = "";						//메세지취환될값 배열[생략가능]
+	var sPopId = "";
+	// function 전달
+	this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
+			if (strVal == true) {
+				// 확인 선택
+				var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+				objWorkFrame.formurl = "Valorant::valo1001fm.xfdl";
+			}
+			else {
+				// 취소 선택
+			}
+		});
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_tier">
         <ColumnInfo>
