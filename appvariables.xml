@@ -1935,11 +1935,25 @@
           <Col id="MSG_ICON">ERR</Col>
         </Row>
         <Row>
+          <Col id="MSG_ID">msg.notice.login4</Col>
+          <Col id="MSG_TEXT">로그인이 필요한 서비스입니다.</Col>
+          <Col id="MSG_TEXT_EN">로그인이 필요한 서비스입니다.</Col>
           <Col id="MSG_TYPE">A</Col>
           <Col id="MSG_ICON">ERR</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">ERR</Col>
+          <Col id="MSG_TEXT">디스코드 로그인 성공!\n {0} 님 환영합니다!\n디스코드에 라이엇 연동이 필요합니다.</Col>
+          <Col id="MSG_TEXT_EN">디스코드 로그인 성공!\n {0} 님 환영합니다!\n디스코드에 라이엇 연동이 필요합니다.</Col>
+          <Col id="MSG_ID">msg.notice.login5</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">ERR</Col>
+          <Col id="MSG_ID">msg.notice.search_failed</Col>
           <Col id="MSG_TEXT">조회 실패. 다시 시도해 주십시오</Col>
           <Col id="MSG_TEXT_EN">조회 실패. 다시 시도해 주십시오</Col>
-          <Col id="MSG_ID">msg.notice.search_failed</Col>
         </Row>
         <Row>
           <Col id="MSG_TYPE">C</Col>
@@ -1951,16 +1965,9 @@
         <Row>
           <Col id="MSG_TYPE">C</Col>
           <Col id="MSG_ICON">ERR</Col>
-          <Col id="MSG_ID">msg.notice.new_search</Col>
           <Col id="MSG_TEXT">전적 검색 화면으로 돌아가시겠습니까?</Col>
           <Col id="MSG_TEXT_EN">전적 검색 화면으로 돌아가시겠습니까?</Col>
-        </Row>
-        <Row>
-          <Col id="MSG_TYPE">A</Col>
-          <Col id="MSG_ICON">ERR</Col>
-          <Col id="MSG_TEXT">로그인이 필요한 서비스입니다.</Col>
-          <Col id="MSG_TEXT_EN">로그인이 필요한 서비스입니다.</Col>
-          <Col id="MSG_ID">msg.notice.login4</Col>
+          <Col id="MSG_ID">msg.notice.new_search</Col>
         </Row>
         <Row>
           <Col id="MSG_TYPE">A</Col>

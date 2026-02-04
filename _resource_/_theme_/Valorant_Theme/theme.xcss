@@ -11521,6 +11521,24 @@
 {
 	background : url('theme://images/valo_star_fill.png') no-repeat center center /contain;
 }
+.Button.top_mypage_selected,
+.Button.top_mypage_selected[status=disabled],
+.Button.top_mypage_selected[status=mouseover],
+.Button.top_mypage_selected[status=focused],
+.Button.top_mypage_selected[userstatus=pushed],
+.Button.top_mypage_selected[userstatus=selected]
+{
+	cursor : pointer;
+	background : #242429;
+	-nexa-border : 2px solid #8e8e8e;
+	color : white;
+	border-radius : 20px;
+	font : normal 27px/normal "AppleSDGothicNeoH00";
+	-nexa-padding : 5px 20px 0px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+	box-shadow : 0px 0px 10px #ffffff;
+}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>
