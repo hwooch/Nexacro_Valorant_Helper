@@ -11510,6 +11510,17 @@
 	box-shadow : 0px 0px 10px #FFFFFF;
 
 }
+.ListView.star_empty
+{
+}
+.ListView .body .cell.star_empty
+{
+	background : url('theme://images/valo_star_empty.png') no-repeat center center /contain;
+}
+.ListView .body .cell.star_fill
+{
+	background : url('theme://images/valo_star_fill.png') no-repeat center center /contain;
+}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo1002fm" width="2000" titletext="전적 검색 - 상세" border="none" height="980" scrollbartype="none auto" onload="valo1002fm_onload">
+  <Form id="valo1002fm" width="2000" titletext="전적 검색 - 상세" border="none" height="980" scrollbartype="none auto" onload="valo1002fm_onload" onclose="valo1002fm_onclose">
     <Layouts>
       <Layout height="980" width="2000">
         <Div id="div_user_status" taborder="0" left="34" top="20" height="150" background="#31313c" right="34" formscrollbartype="none none" formscrolltype="none" borderRadius="20px">
@@ -121,7 +121,7 @@
           <Formats>
             <Format id="default">
               <Band id="body" width="100%" height="150" background="transparent" border="0px none" borderRadius="10px 10px" expandbartype="false">
-                <Cell id="cell_win_background" left="10" top="10" right="0" bottom="0" background="expr:RESULT == '승리' ? '#28344e' : '#59343b'" borderRadius="0px 10px 10px 0px"/>
+                <Cell id="cell_win_background" left="10" top="10" right="0" bottom="0" background="expr:RESULT == '승리' ? '#28344e' : '#59343b'" borderRadius="0px 10px 10px 0px" text=""/>
                 <Cell id="Cell22" left="0" top="10" height="1" right="0" background="#1f2326"/>
                 <Cell id="Cell20" left="20" top="20" width="155" height="35" text="bind:START_TIME" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#7f9eb1"/>
                 <Cell id="cell_result" left="20" top="63" width="155" height="35" text="bind:RESULT" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white"/>
@@ -149,7 +149,7 @@
                 <Cell id="Cell03" left="1085" top="43" width="175" height="35" text="라운드당 평균 데미지" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
                 <Cell id="Cell04" left="965" top="43" width="105" height="35" text="헤드샷 %" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
                 <Cell id="Cell00" left="0" height="10" right="0" top="0"/>
-                <Cell id="cell_star" top="32" width="38" height="36" right="32" text="" imagestretch="fixaspectratio" cssclass="star_empty"/>
+                <Cell id="cell_star" top="32" width="38" height="36" right="32" text="" imagestretch="fixaspectratio" cssclass="bind:STAR_CSS"/>
                 <Cell id="cell_expand" width="38" height="36" right="32" displaytype="imagecontrol" imagestretch="fixaspectratio" bottom="12" background="url('theme://valo_arrow_down.png') no-repeat center center /contain"/>
               </Band>
               <Band id="detail" width="100%" height="50">
@@ -159,15 +159,86 @@
           </Formats>
         </ListView>
         <Button id="btn_space_1" taborder="20" left="1010" top="list_match_list:0" width="400" height="20"/>
-        <Button id="btn_space_2" taborder="21" left="2316" top="630" background="#1f2326" bottom="0" right="-2316"/>
-        <Static id="sta_hide_screen" taborder="17" left="2350" top="190" background="#31313c" textAlign="center" verticalAlign="middle" color="white" font="normal 50pt/normal &quot;AppleSDGothicNeoH00&quot;" borderRadius="20px" right="-2282" bottom="20"/>
+        <Button id="btn_space_2" taborder="21" left="0" top="630" background="#1f2326" bottom="0" right="0"/>
+        <Static id="sta_hide_screen" taborder="17" left="34" top="190" background="#31313c" textAlign="center" verticalAlign="middle" color="white" font="normal 50pt/normal &quot;AppleSDGothicNeoH00&quot;" borderRadius="20px" right="34" bottom="20" text=""/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
 
+this.valo1002fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
+{
+	this.fvApp.gds_login.removeEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
+	this.fvApp.gds_login.removeEventHandler("onload", this.fn_LoginDataChanged, this);
+};
+
+// 글로벌 데이터셋(gds_login) 변경 시
+this.fn_LoginDataChanged = function(obj:nexacro.NormalDataset, e:nexacro.DSRowsetChangeEventInfo)
+{
+    // 1. 로그인이 된 경우 (데이터가 생김)
+    if (obj.getRowCount() > 0) {
+        // 아까 만든 로그인 상태 갱신 함수 호출
+        this.fn_setLoginState(); 
+    }
+    // 2. 로그아웃 된 경우 (데이터가 사라짐)
+    else {
+        // 아까 만든 로그아웃 처리 함수 호출
+        this.fn_setLogoutState();
+    }
+};
+/* =================================================================
+로그인 / 로그아웃 상태 변화 처리
+================================================================= */
+
+/**
+* [함수 1] 로그인 성공 시 호출할 함수
+* 설명: 로그인 팝업 콜백 등에서 이 함수를 실행하세요.
+*/
+this.fn_setLoginState = function()
+{
+    // 1. 로그인 여부 재확인
+    if(this.fvApp.gds_login.getRowCount() == 0) return;
+	
+    var sLoginDiscordId = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+	
+    // 2. DB에서 저장된 목록 다시 가져오기 (비동기)
+    // -> 완료되면 fn_Callback의 'getSavedList' 부분에서 별을 다시 칠해줌
+    var strSvcID        = "getSavedList";
+    var strURL          = "SvcUrl::selectSavedMatchIds.do";
+    var strInDatasets   = "";
+    var strOutDatasets  = "ds_saved_ids=out_saved_ids";
+    var strArgument     = "discord_id=" + nexacro.wrapQuote(sLoginDiscordId);
+    var strCallbackFunc = "fn_Callback";
+    
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+};
+
+/**
+* [함수 2] 로그아웃 시 호출할 함수
+* 설명: 로그아웃 버튼 클릭 시 이 함수를 실행하세요.
+*/
+this.fn_setLogoutState = function()
+{
+    this.list_match_list.enableevent = false;
+	
+    // 1. 저장된 목록 데이터셋 비우기
+    this.ds_saved_ids.clearData();
+	
+    // 2. 화면의 모든 별을 '빈 별'로 초기화
+    for(var i=0; i<this.ds_list.getRowCount(); i++)
+    {
+        this.ds_list.setColumn(i, "STAR_CSS", "star_empty");
+    }
+	
+    this.list_match_list.enableevent = true;
+};
 // 화면 로드시에 이름 입력했던걸 기반으로 전적 검색
 this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	// [추가] gds_login 데이터셋 변경 감지 이벤트 등록
+    // gds_login의 행 개수가 바뀌거나 데이터가 바뀌면 'fn_LoginDataChanged' 함수를 실행해라!
+    this.fvApp.gds_login.addEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
+	this.fvApp.gds_login.addEventHandler("onload", this.fn_LoginDataChanged, this);
+	
 	this.scrollbartype = "none none";
 	// 혹시모를 데이터 지우기
 	this.ds_tier.clearData();
@@ -177,6 +248,7 @@ this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.ds_agent.clearData();
     this.ds_weapon.clearData();
 	this.ds_chart_win_rate.clearData();
+	this.ds_saved_ids.clearData();
 	
 	// 검색 중 화면 표시하기
 	this.sta_hide_screen.visible = true;
@@ -224,6 +296,20 @@ this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     var strCallbackFunc = "fn_Callback";
 	
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+	
+	
+	// 로그인 했을 때만 조회
+    if(this.fvApp.gds_login.getRowCount() > 0) {
+        var sLoginDiscordId = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+        var strSvcID        = "getSavedList";
+        var strURL          = "SvcUrl::selectSavedMatchIds.do"; // 단순히 MATCH_ID만 리턴하는 쿼리 호출
+        var strInDatasets   = "";
+        var strOutDatasets  = "ds_saved_ids=out_saved_ids";      // 결과는 ds_saved_ids에 담음
+        var strArgument     = "discord_id=" + nexacro.wrapQuote(sLoginDiscordId);
+        var strCallbackFunc = "fn_Callback";
+        
+        this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+    }
 };
 
 // 역할군 리스트뷰 다시 그리기
@@ -320,8 +406,57 @@ this.fn_Callback = function(svcId, errCode, errMsg)
         }
 		this.div_user_status.form.resetScroll();
     }
+	else if (svcId == "getSavedList") {
+		
+		// 데이터가 제대로 왔는지 개수 확인
+		var nSavedCount = this.ds_saved_ids.getRowCount();
+		
+		// 데이터가 없으면 중단
+		if (nSavedCount == 0) return;
+		
+		// 매칭 시작
+		for(var i=0; i<this.ds_list.getRowCount(); i++)
+		{
+			var sMatchId = this.ds_list.getColumn(i, "MATCH_ID");
+			var sStarCss = "star_empty"; 
+			
+			// 검색 시도
+			var nFindRow = this.ds_saved_ids.findRow("MATCH_ID", sMatchId);
+			
+			if(nFindRow >= 0) {
+				sStarCss = "star_fill"; 
+			}
+			
+			this.ds_list.setColumn(i, "STAR_CSS", sStarCss);
+		}
+		
+		// 강제 갱신
+		this.list_match_list.redraw();
+	}
+	
 	// 전적 조회
     else if (svcId == "searchMatch") {
+		
+		this.ds_list.addColumn("STAR_CSS", "string");
+		// 디버깅용 로그 (개발자 도구 F12 또는 넥사크로 Output 창 확인)
+		
+		this.list_match_list.enableevent = false; // 그리기 일시 중지 (속도 향상)
+		for(var i=0; i<this.ds_list.getRowCount(); i++)
+        {
+            var sMatchId = this.ds_list.getColumn(i, "MATCH_ID");
+            var sStarCss = "star_empty"; // 기본값: 빈 별
+            
+            // ds_saved_ids 안에 해당 MATCH_ID가 있다면
+            if(this.ds_saved_ids.findRow("MATCH_ID", sMatchId) >= 0) {
+                sStarCss = "star_fill"; // 채운 별
+            }
+            
+            // 데이터셋에 값을 박아넣음 (ListView 바인딩이 되어 있어야 함)
+            this.ds_list.setColumn(i, "STAR_CSS", sStarCss);
+        }
+		
+        this.list_match_list.enableevent = true; // 그리기 재개
+		
 		
 		this.list_agent.setCellProperty("body", "CellAgentIcon", "background", 
 			"expr:\"url('\" + AGENT_ICON + \"') no-repeat center center /contain\"");
@@ -359,14 +494,6 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 		this.resetScroll();
         this.scrollbartype = "none auto";
     }
-	else if (svcId == "savematch") {
-		this.list_match_list.setCellProperty( "body", "cell_star", "cssclass", "star_fill" );
-		this.resetScroll();
-	}
-	else if (svcId == "deletematch") {
-		this.list_match_list.setCellProperty( "body", "cell_star", "cssclass", "star_empty" );
-		this.resetScroll();
-	}
 };
 
 // 승패 박스 그리기
@@ -528,29 +655,51 @@ this.list_match_list_oncellclick = function(obj:nexacro.ListView,e:nexacro.ListV
 {
 	if(e.cellid == 'cell_star')
 	{
-		alert(e.row)
-// 		if (this.list_match_list.getCellProperty( "body", "cell_star", "cssclass" ) == "star_empty"){
-// 			// 전적 저장 transaction
-// 			var strSvcID        = "savematch";
-// 			var strURL          = "SvcUrl::savematch.do";
-// 			var strInDatasets   = "in_list=ds_list";
-// 			var strOutDatasets  = "";
-// 			var strArgument     = "";
-// 			var strCallbackFunc = "fn_Callback";
-// 			
-// 			this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
-// 		}
-// 		else{
-// 			// 전적 저장 transaction
-// 			var strSvcID        = "deletematch";
-// 			var strURL          = "SvcUrl::deletematch.do";
-// 			var strInDatasets   = "in_list=ds_list";
-// 			var strOutDatasets  = "";
-// 			var strArgument     = "";
-// 			var strCallbackFunc = "fn_Callback";
-// 			
-// 			this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
-// 		}
+		
+		// 1. 로그인 체크 (ds_login에 데이터가 없으면 로그인 안 된 것으로 간주)
+        if (this.fvApp.gds_login.getRowCount() == 0) {
+			this.gfnAlert("msg.notice.login4", "", "nodata"); //////////////////
+            return;
+        }
+		
+		this.ds_list_copy.clearData();
+		
+		var nRow = this.ds_list_copy.addRow();
+		this.ds_list_copy.copyRow(nRow, this.ds_list, e.row);
+		
+		var sUserDiscordId = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+		var sUserDiscordName = this.fvApp.gds_login.getColumn(0, "USER_NAME");
+		this.ds_list_copy.setColumn(nRow, "DISCORD_ID", sUserDiscordId);
+        this.ds_list_copy.setColumn(nRow, "USER_NAME", sUserDiscordName);
+		
+		// 현재 상태값 가져오기 (데이터셋 기준)
+        var sCurrentCss = this.ds_list.getColumn(e.row, "STAR_CSS");
+		
+		if ( sCurrentCss == "star_empty" ) {		
+			this.ds_list.setColumn(e.row, "STAR_CSS", "star_fill");
+			// 전적 저장 transaction
+			var strsvcid        = "savematch";
+			var strurl          = "SvcUrl::savematch.do";
+			var strindatasets   = "in_list=ds_list_copy";
+			var stroutdatasets  = "";
+			var strargument     = "";
+			var strcallbackfunc = "fn_Callback";
+			
+			this.transaction(strsvcid, strurl, strindatasets, stroutdatasets, strargument, strcallbackfunc);
+		}
+		else{
+			// 전적 삭제 transaction
+			this.ds_list.setColumn(e.row, "STAR_CSS", "star_empty");
+			
+			var strsvcid        = "deletematch";
+			var strurl          = "SvcUrl::deletematch.do";
+			var strindatasets   = "in_list=ds_list_copy";
+			var stroutdatasets  = "";
+			var strargument     = "";
+			var strcallbackfunc = "fn_Callback";
+			
+			this.transaction(strsvcid, strurl, strindatasets, stroutdatasets, strargument, strcallbackfunc);
+		}
 	}
 	if(e.cellid == 'cell_expand')
 	{
@@ -589,6 +738,7 @@ this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListV
 		this.list_match_list.cursor = "default";
 	}
 };
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_tier">
@@ -635,6 +785,8 @@ this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListV
           <Column id="ACS" type="STRING" size="256"/>
           <Column id="HS_RATE" type="STRING" size="256"/>
           <Column id="ADR" type="STRING" size="256"/>
+          <Column id="MATCH_ID" type="STRING" size="256"/>
+          <Column id="STAR_CSS" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_stats">
@@ -720,6 +872,36 @@ this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListV
           <Column id="KDA" type="STRING" size="256"/>
           <Column id="ACS" type="STRING" size="256"/>
           <Column id="HS_RATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list_copy">
+        <ColumnInfo>
+          <Column id="START_TIME" type="STRING" size="256"/>
+          <Column id="PLAY_TIME" type="STRING" size="256"/>
+          <Column id="MAP" type="STRING" size="256"/>
+          <Column id="AGENT_ICON" type="STRING" size="256"/>
+          <Column id="AGENT" type="STRING" size="256"/>
+          <Column id="RESULT" type="STRING" size="256"/>
+          <Column id="MY_SCORE" type="STRING" size="256"/>
+          <Column id="ENEMY_SCORE" type="STRING" size="256"/>
+          <Column id="RANK" type="STRING" size="256"/>
+          <Column id="TIER" type="STRING" size="256"/>
+          <Column id="KILL" type="STRING" size="256"/>
+          <Column id="DEATH" type="STRING" size="256"/>
+          <Column id="ASSIST" type="STRING" size="256"/>
+          <Column id="KD" type="STRING" size="256"/>
+          <Column id="ACS" type="STRING" size="256"/>
+          <Column id="HS_RATE" type="STRING" size="256"/>
+          <Column id="ADR" type="STRING" size="256"/>
+          <Column id="MATCH_ID" type="STRING" size="256"/>
+          <Column id="DISCORD_ID" type="STRING" size="256"/>
+          <Column id="USER_NAME" type="STRING" size="256"/>
+          <Column id="STAR_CSS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_saved_ids">
+        <ColumnInfo>
+          <Column id="MATCH_ID" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

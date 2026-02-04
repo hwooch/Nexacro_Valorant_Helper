@@ -1958,6 +1958,9 @@
         <Row>
           <Col id="MSG_TYPE">A</Col>
           <Col id="MSG_ICON">ERR</Col>
+          <Col id="MSG_TEXT">로그인이 필요한 서비스입니다.</Col>
+          <Col id="MSG_TEXT_EN">로그인이 필요한 서비스입니다.</Col>
+          <Col id="MSG_ID">msg.notice.login4</Col>
         </Row>
         <Row>
           <Col id="MSG_TYPE">A</Col>
