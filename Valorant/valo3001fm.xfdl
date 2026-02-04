@@ -470,7 +470,7 @@ this.fn_drawSkinList = function()
 		
         objSta.text = sName;
         objSta.color = "#ffffff";
-        objSta.font = "14px 'Malgun Gothic'";
+        objSta.font = "normal 14pt/normal '이사만루체 Light'";
         objSta.textAlign = "center";
         objSta.wordWrap = "none";
 		

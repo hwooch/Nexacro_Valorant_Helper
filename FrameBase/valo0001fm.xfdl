@@ -134,6 +134,7 @@ this.fn_Callback = function(svcID, errorCode, errorMsg)
 				this.btn_discord_login.text = "Discord로 로그인"
 				this.btn_discord_login.cssclass = "top_login";
 				this.btn_mypage.visible = false;
+				this.fvApp.gds_login.clearData();
 				this.resetScroll();
 			} else {
 				// 초기화가 성공인데 로그인 버튼을 눌렀을 때
@@ -231,7 +232,8 @@ this.fn_checkLogin = function()
 
 this.btn_discord_mypage_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	// 마이페이지 로직 짜기
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	objWorkFrame.formurl = "Valorant::valo8001fm.xfdl";
 };
 ]]></Script>
     <Objects/>
