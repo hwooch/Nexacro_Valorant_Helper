@@ -78,7 +78,7 @@
         <Div id="div_move" taborder="0" left="0" top="0" width="70" height="70" visible="false" background="rgba(255,0,0,0.5)" border="1px solid red">
           <Layouts>
             <Layout>
-              <Static id="staTitle" taborder="0" text="Q" left="0" top="0" right="0" bottom="0" textAlign="center" verticalAlign="middle" font="bold 20px 'Arial'" color="white"/>
+              <Static id="staTitle" taborder="0" text="Q" left="11" top="0" right="-11" bottom="0" textAlign="center" verticalAlign="middle" font="bold 20px 'Arial'" color="white"/>
             </Layout>
           </Layouts>
         </Div>
