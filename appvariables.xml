@@ -1970,8 +1970,11 @@
           <Col id="MSG_ID">msg.notice.new_search</Col>
         </Row>
         <Row>
-          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_TYPE">C</Col>
           <Col id="MSG_ICON">ERR</Col>
+          <Col id="MSG_ID">msg.notice.delete_match</Col>
+          <Col id="MSG_TEXT">저장한 전적을 삭제하시겠습니까?</Col>
+          <Col id="MSG_TEXT_EN">정말 저장한 전적을 삭제하시겠습니까?</Col>
         </Row>
       </Rows>
     </Dataset>

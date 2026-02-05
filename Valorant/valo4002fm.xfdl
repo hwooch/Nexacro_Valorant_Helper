@@ -81,6 +81,7 @@ this.fn_init = function()
         objSta.textAlign = "center";       // 가운데 정렬
         objSta.verticalAlign = "top";      // 상단 정렬
         objSta.font = "normal 16pt/normal '이사만루체 Light'";
+		objSta.opacity = "50%";
         
         this.addChild(sStaId, objSta);
         objSta.show();
@@ -203,11 +204,29 @@ this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
         // 테두리 색깔 되돌리기
         objPrevBtn.border = "2px solid #8e8e8e";
 		objPrevBtn.opacity = "50%";
+		
+		// 이전 텍스트 찾기
+        var sPrevStaId = this.fv_sSelectedBtnId.replace("btn_map_", "sta_map_name_");
+        var objPrevSta = this.components[sPrevStaId];
+
+        // 이전 텍스트 투명도 50%로 되돌리기
+        if (objPrevSta) {
+            objPrevSta.opacity = "50%";
+        }
     }
     
     // 테두리 색깔 흰색
     obj.border = "2px solid white";
 	obj.opacity = "";
+
+	// 현재 텍스트 찾기
+    var sCurrStaId = obj.id.replace("btn_map_", "sta_map_name_");
+    var objCurrSta = this.components[sCurrStaId];
+
+    // 현재 텍스트 투명도 100%로 설정
+    if (objCurrSta) {
+        objCurrSta.opacity = "100%";
+    }
 
     // 현재 버튼 ID를 변수에 저장
     this.fv_sSelectedBtnId = obj.id;

@@ -1,18 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo6002fm" width="2500" height="140" titletext="무기 카테고리">
+  <Form id="valo5002fm" width="3000" height="160" titletext="요원 목록">
     <Layouts>
-      <Layout height="140" width="2500">
-        <Static id="sta_background" taborder="0" left="0" top="0" background="#31313c" width="2500" height="140"/>
-        <Button id="btn_weapon_1" taborder="1" text="오퍼레이터" left="5" top="200" width="220" height="100" background="url('https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png') no-repeat center 20% /contain #4d4d60" color="white" verticalAlign="bottom" borderRadius="20px" textAlign="left" padding="0px 0px 5px 10px" border="1px solid #8e8e8e" font="normal 14pt/normal &quot;AppleSDGothicNeoEB00&quot;" visible="false"/>
+      <Layout height="160" width="3000">
+        <Static id="sta_background" taborder="0" left="0" top="0" background="#31313c" width="3000" height="160" text=""/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[// 트랜잭션 끝나고 데이터셋 받아옴, 버튼 동적생성
 this.fn_init = function()
 {
     // 부모 데이터셋 가져오기
-   	this.ds_copy_weapon.copyData(this.parent.parent.ds_weapon);
-	var objDs = this.ds_copy_weapon;
+   	this.ds_agent_copy.copyData(this.parent.parent.ds_agent);
+	var objDs = this.ds_agent_copy;
 
     // 기존에 생성된 버튼이 있다면 삭제 (초기화)
     // "btn_weapon_" 으로 시작하는 컴포넌트들을 찾아서 제거
@@ -21,7 +20,7 @@ this.fn_init = function()
     {
         var objComp = arrComps[i];
         
-        if (objComp.name.indexOf("btn_weapon_") > -1) 
+        if (objComp.name.indexOf("btn_agent_") > -1 || objComp.name.indexOf("sta_agent_name_") > -1) 
         {
             var sName = objComp.name;
             this.removeChild(sName);
@@ -30,13 +29,17 @@ this.fn_init = function()
         }
     }
 
-    // 변수 설정
+    // 버튼 관련 설정
     var nLeft   = 20;   // 시작 Left 좌표
-    var nTop    = 20;   // 시작 Top 좌표
-    var nWidth  = 220; // 버튼 너비
-    var nHeight = 100; // 버튼 높이
-    var nGap    = 20;  // 버튼 사이 간격
-    
+    var nTop    = 10;   // 시작 Top 좌표
+    var nWidth  = 110;  // 버튼 너비
+    var nHeight = 110;  // 버튼 높이
+    var nGap    = 20;   // 버튼 사이 간격
+	
+	// 텍스트 관련 설정
+    var nStaHeight = 30; // 텍스트 높이
+    var nStaGap    = 7;  // 버튼과 텍스트 사이 간격
+	
     // 데이터셋 반복문
     for (var i = 0; i < objDs.rowcount; i++)
     {
@@ -44,36 +47,51 @@ this.fn_init = function()
         var sName = objDs.getColumn(i, "DISPLAY_NAME");
         var sIcon = objDs.getColumn(i, "DISPLAY_ICON");
         
-        // 버튼 ID 생성
-        var sBtnId = "btn_weapon_" + i; 
-        
+        // ID 생성
+        var sBtnId = "btn_agent_" + i; 
+        var sStaId = "sta_agent_name_" + i;
+		
         // 버튼 동적 생성
         var objBtn = new Button();
         objBtn.init(sBtnId, nLeft, nTop, nWidth, nHeight);
         
-        // 스타일 및 속성 설정
-        objBtn.text = sName;
-		objBtn.border = "2px solid #8e8e8e";
-		objBtn.cssclass = "btn_weapon";
+        // 속성 설정
 		objBtn.u_uuid = sUUID;
-		objBtn.opacity = "50%";
         
-        var sBgVal = "url('" + sIcon + "') no-repeat center 20% /contain #4d4d60";
+        var sBgVal = "url('" + sIcon + "') no-repeat center top /contain";
         objBtn.background = sBgVal;
+		objBtn.borderRadius = "10px";
+		objBtn.border = "2px solid #8e8e8e";
+		objBtn.opacity = "50%";
 		
         // 화면에 추가 및 표시
         this.addChild(sBtnId, objBtn);
         objBtn.show();
         
+		
+		
+        // 텍스트 동적 생성
+        var objSta = new Static();
+        // 위치: 버튼 바로 아래 (Top + Height + Gap)
+        objSta.init(sStaId, nLeft, nTop + nHeight + nStaGap, nWidth, nStaHeight);
+        
+        objSta.text = sName;
+        objSta.color = "#ffffff";          // 흰색 텍스트
+        objSta.textAlign = "center";       // 가운데 정렬
+        objSta.verticalAlign = "top";      // 상단 정렬
+        objSta.font = "normal 16pt/normal '이사만루체 Light'";
+		objSta.opacity = "50%";
+        
+        this.addChild(sStaId, objSta);
+        objSta.show();
+		
         // 다음 버튼 위치 계산
         nLeft = nLeft + nWidth + nGap;
     }
-    
+	
     // 스크롤이 생기도록 Form의 너비를 늘려줌
     this.sta_background.width = nLeft ;
-    
     this.resetScroll();
-    
 	this.grap_onload();
 };
 
@@ -94,7 +112,7 @@ this.grap_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
     {
         var targetComp = arrComps[i];
 		
-		if (targetComp.id == "sta_background"){
+		if (targetComp.id == "sta_background" || (targetComp.id.indexOf("sta_agent_name") > -1)){
 			targetComp.addEventHandler("onlbuttondown", this.fn_common_mousedown, this);
 			targetComp.addEventHandler("onmousemove", this.fn_common_mousemove, this);
 			targetComp.addEventHandler("onlbuttonup",   this.fn_common_mouseup,   this);
@@ -108,8 +126,6 @@ this.grap_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
 			targetComp.addEventHandler("onmouseleave",   this.Button_onmouseleave,   this);
 		}
     }
-	
-	this.btn_weapon_0.click();
 };
 
 // 마우스 다운
@@ -177,31 +193,47 @@ this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	if (this.fv_sSelectedBtnId == obj.id) {
         return;
     }
-	
     // 이전에 선택된 버튼이 있다면
     if (this.fv_sSelectedBtnId != "")
     {
         var objPrevBtn = this.components[this.fv_sSelectedBtnId];
-		
-        // 테두리 색깔도 되돌리고 싶다면
+        
+        // 테두리 색깔 되돌리기
         objPrevBtn.border = "2px solid #8e8e8e";
 		objPrevBtn.opacity = "50%";
-    }
+		
+		// 이전 텍스트 찾기
+        var sPrevStaId = this.fv_sSelectedBtnId.replace("btn_agent_", "sta_agent_name_");
+        var objPrevSta = this.components[sPrevStaId];
 
-    // 테두리 색깔도 바꾸고 싶다면
+        // 이전 텍스트 투명도 50%로 되돌리기
+        if (objPrevSta) {
+            objPrevSta.opacity = "50%";
+        }
+    }
+    
+    // 테두리 색깔 흰색
     obj.border = "2px solid white";
 	obj.opacity = "";
+	
+	// 현재 텍스트 찾기
+    var sCurrStaId = obj.id.replace("btn_agent_", "sta_agent_name_");
+    var objCurrSta = this.components[sCurrStaId];
 
-    // C. 현재 버튼 ID를 변수에 저장
+    // 현재 텍스트 투명도 100%로 설정
+    if (objCurrSta) {
+        objCurrSta.opacity = "100%";
+    }
+
+    // 현재 버튼 ID를 변수에 저장
     this.fv_sSelectedBtnId = obj.id;
 	
 	
     // 진짜 클릭일 때만 실행됨
-    var sWeaponName = obj.text; 
     var sBtnId = obj.id;
-    var sWeaponUUID = obj.u_uuid;
+    var sAgentUUID = obj.u_uuid;
 	
-	this.parent.parent.fn_selectedWeapon(sBtnId, sWeaponName, sWeaponUUID);
+	this.parent.parent.fn_selectedAgent(sBtnId, sAgentUUID);
 };
 this.Button_onmouseenter = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -215,7 +247,17 @@ this.Button_onmouseleave = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	obj.boxShadow = "";
 };]]></Script>
     <Objects>
-      <Dataset id="ds_copy_weapon"/>
+      <Dataset id="ds_agent_copy">
+        <ColumnInfo>
+          <Column id="UUID" type="STRING" size="256"/>
+          <Column id="DISPLAY_NAME" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="4000"/>
+          <Column id="FULL_PORTRAIT" type="STRING" size="512"/>
+          <Column id="DISPLAY_ICON" type="STRING" size="512"/>
+          <Column id="ROLE_NAME" type="STRING" size="256"/>
+          <Column id="ROLE_ICON" type="STRING" size="512"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
   </Form>
 </FDL>

@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="dragDrop" width="1010" height="870" titletext="Valorant Skill Drag" onload="form_onload" ondragmove="form_ondragmove" ondrop="form_ondrop" onlbuttonup="form_onlbuttonup">
+    <Layouts>
+      <Layout height="870" width="1010">
+        <Div id="div_container" taborder="1" text="" left="50" top="0" height="870" right="50">
+          <Layouts>
+            <Layout>
+              <Button id="btn_prev" taborder="0" text="&lt;" left="0" top="100" width="40" height="60" onclick="btn_prev_onclick" font="bold 20px 'Arial'"/>
+              <Button id="btn_next" taborder="1" text="&gt;" right="0" top="100" width="40" height="60" onclick="btn_next_onclick" font="bold 20px 'Arial'"/>
+              <Div id="divTopList" taborder="2" left="50" top="50" height="180" right="50" text="" border="0px none, 0px none, 2px solid #dddddd" formscrolltype="none" formscrollbartype="none">
+                <Layouts>
+                  <Layout>
+                    <Div id="divListContent" taborder="0" left="0" top="0" width="1000" height="180">
+                      <Layouts>
+                        <Layout>
+                          <Div id="divAg1" taborder="0" left="0" top="10" width="220" height="150" cssclass="div_WF_PortletBox01" background="#ffeedd" onclick="divAgent_onclick" cursor="pointer">
+                            <Layouts>
+                              <Layout>
+                                <Static id="staTitle" taborder="1" text="RAZE" left="10" top="10" height="30" right="10" font="bold 16px 'Arial'"/>
+                                <Static id="staDesc" taborder="0" left="10" top="50" right="10" text="Duelist / Brazil" bottom="10" verticalAlign="top"/>
+                              </Layout>
+                            </Layouts>
+                          </Div>
+                          <Div id="divAg2" taborder="1" left="230" top="10" width="220" height="150" background="#ddeeff" onclick="divAgent_onclick" cursor="pointer">
+                            <Layouts>
+                              <Layout>
+                                <Static id="staTitle" taborder="1" text="JETT" left="10" top="10" height="30" right="10" font="bold 16px 'Arial'"/>
+                                <Static id="staDesc" taborder="0" left="10" top="50" text="Duelist / Korea" bottom="10" right="10" verticalAlign="top"/>
+                              </Layout>
+                            </Layouts>
+                          </Div>
+                          <Div id="divAg3" taborder="2" left="460" top="10" width="220" height="150" background="#eeeedd" onclick="divAgent_onclick" cursor="pointer">
+                            <Layouts>
+                              <Layout>
+                                <Static id="staTitle" taborder="1" text="OMEN" left="10" top="10" height="30" right="10" font="bold 16px 'Arial'"/>
+                                <Static id="staDesc" taborder="0" left="10" top="50" text="Controller / Unknown" bottom="10" right="10" verticalAlign="top"/>
+                              </Layout>
+                            </Layouts>
+                          </Div>
+                          <Div id="divAg4" taborder="3" left="690" top="10" width="220" height="150" background="#ddffee" onclick="divAgent_onclick" cursor="pointer">
+                            <Layouts>
+                              <Layout>
+                                <Static id="staTitle" taborder="1" text="SAGE" left="10" top="10" height="30" right="10" font="bold 16px 'Arial'"/>
+                                <Static id="staDesc" taborder="0" left="10" top="50" text="Sentinel / China" bottom="10" right="10" verticalAlign="top"/>
+                              </Layout>
+                            </Layouts>
+                          </Div>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divDetail" taborder="3" text="" left="0" top="250" height="600" right="0">
+                <Layouts>
+                  <Layout>
+                    <Static id="staAgentName" taborder="0" text="AGENT NAME" left="0" top="10" height="50" width="300" font="normal 700 36px/normal &quot;Impact&quot;"/>
+                    <Static id="staAgentRole" taborder="1" text="Role info" left="0" top="60" height="30" width="300" font="14px 'Arial'" color="#777777"/>
+                    <Static id="staSkillLabel" taborder="6" text="SKILLS (Drag to Video)" left="0" top="110" height="20" width="200" font="bold 12px 'Arial'" color="#ff5555"/>
+                    <Button id="btnSkill1" taborder="2" text="Q" left="0" top="140" width="70" height="70" background="#333333" color="white" font="bold 24px 'Arial'" ondrag="btnSkill_ondrag"/>
+                    <Button id="btnSkill2" taborder="3" text="E" left="80" top="140" width="70" height="70" background="#333333" color="white" font="bold 24px 'Arial'" ondrag="btnSkill_ondrag"/>
+                    <Button id="btnSkill3" taborder="4" text="C" left="160" top="140" width="70" height="70" background="#333333" color="white" font="bold 24px 'Arial'" ondrag="btnSkill_ondrag"/>
+                    <Button id="btnSkill4" taborder="5" text="X" left="240" top="140" width="70" height="70" background="#333333" color="white" font="bold 24px 'Arial'" ondrag="btnSkill_ondrag"/>
+                    <Div id="divVideoZone" taborder="7" text="" left="350" top="0" bottom="0" right="0" background="#000000" color="white" border="2px solid #333333">
+                      <Layouts>
+                        <Layout>
+                          <Static id="staPlayText" taborder="0" text="Drag a skill here to play" left="0" top="0" right="0" bottom="0" textAlign="center" verticalAlign="middle" font="bold 20px 'Arial'" color="#aaaaaa"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_move" taborder="0" left="0" top="0" width="70" height="70" visible="false" background="rgba(255,0,0,0.5)" border="1px solid red">
+          <Layouts>
+            <Layout>
+              <Static id="staTitle" taborder="0" text="Q" left="0" top="0" right="0" bottom="0" textAlign="center" verticalAlign="middle" font="bold 20px 'Arial'" color="white"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.1"><![CDATA[/**
+* Valorant Agent & Skill Video Demo
+*/
+
+// 현재 리스트의 위치 인덱스 (슬라이드용)
+this.fvCurrentIdx = 0;
+// 한 번에 이동할 거리 (픽셀) - 요원 카드 너비 + 간격
+this.fvSlideGap = 230; 
+// 최대 인덱스 (요원 수에 따라 제한)
+this.fvMaxIdx = 2; 
+
+/************************************************************************************************
+ * FORM EVENT 영역
+ ************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.resetScroll();
+	// 초기 요원(Raze) 선택 처리
+	this.fnSelectAgent("RAZE", "Duelist / Brazil");
+};
+
+/************************************************************************************************
+ * 1. 상단 요원 리스트 슬라이드 이동 (< > 버튼)
+ ************************************************************************************************/
+this.btn_prev_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.fvCurrentIdx > 0) {
+		this.fvCurrentIdx--;
+		this.fnMoveListAni();
+	}
+};
+
+this.btn_next_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.fvCurrentIdx < this.fvMaxIdx) {
+		this.fvCurrentIdx++;
+		this.fnMoveListAni();
+	}
+};
+
+this.fnMoveListAni = function()
+{
+	// 목록을 담은 Div(divListContent)를 좌우로 움직임
+	var nNewLeft = -(this.fvCurrentIdx * this.fvSlideGap);
+	
+	// 애니메이션 없이 즉시 이동 (부드럽게 하려면 Timer 사용 필요하지만 단순화를 위해)
+	// this.div_container.form.divTopList.form.divListContent.set_left(nNewLeft);
+	
+	// 부드러운 이동을 흉내내고 싶다면 move 메소드 사용 (좌표만 변경)
+	this.div_container.form.divTopList.form.divListContent.move(nNewLeft, 0);
+};
+
+/************************************************************************************************
+ * 2. 요원 선택 (클릭)
+ ************************************************************************************************/
+this.divAgent_onclick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
+{
+	// 클릭한 요원의 정보 가져오기 (Static 텍스트 등)
+	var sName = obj.form.staTitle.text;
+	var sDesc = obj.form.staDesc.text;
+	
+	this.fnSelectAgent(sName, sDesc);
+};
+
+this.fnSelectAgent = function(sName, sDesc)
+{
+	// 1. 하단 정보 갱신
+	var oDetail = this.div_container.form.divDetail.form;
+	oDetail.staAgentName.set_text(sName);
+	oDetail.staAgentRole.set_text(sDesc);
+	
+	// 2. 비디오 영역 초기화
+	oDetail.divVideoZone.form.staPlayText.set_text("Drag a skill here to play");
+	oDetail.divVideoZone.set_background("#000000");
+	
+	// 3. (데모용) 요원 이름에 따라 스킬 목록이 바뀌는 척 하기
+	// 실제로는 Dataset 필터링을 하겠지만, 여기서는 텍스트만 바꿈
+	if(sName == "RAZE") {
+		oDetail.btnSkill1.set_text("Q");
+		oDetail.btnSkill2.set_text("E");
+		oDetail.btnSkill3.set_text("C");
+		oDetail.btnSkill4.set_text("X");
+	} else if (sName == "JETT") {
+		oDetail.btnSkill1.set_text("C");
+		oDetail.btnSkill2.set_text("Q");
+		oDetail.btnSkill3.set_text("E");
+		oDetail.btnSkill4.set_text("X");
+	} else {
+		oDetail.btnSkill1.set_text("S1");
+		oDetail.btnSkill2.set_text("S2");
+		oDetail.btnSkill3.set_text("S3");
+		oDetail.btnSkill4.set_text("Ult");
+	}
+};
+
+/************************************************************************************************
+ * 3. 스킬 드래그 & 드롭 (핵심 기능)
+ ************************************************************************************************/
+
+// [드래그 시작] 스킬 버튼을 잡았을 때
+this.btnSkill_ondrag = function(obj:nexacro.Button,e:nexacro.DragEventInfo)
+{
+	// 드래그 시작 플래그
+	this.fvObjDrag = true;
+	
+	// 어떤 스킬을 잡았는지 정보 담기
+	var sSkillName = obj.text; // Q, E, C, X 등
+	var sAgentName = this.div_container.form.divDetail.form.staAgentName.text;
+	
+	var sData = {
+		type: "SKILL",
+		agent: sAgentName,
+		skill: sSkillName,
+		msg: sAgentName + "'s Skill [" + sSkillName + "]"
+	};
+	
+	e.userdata = sData;
+	
+	// 따라다니는 고스트 이미지(div_move) 세팅
+	this.div_move.form.staTitle.set_text(sSkillName);
+	this.div_move.set_visible(true);
+	
+	return true;
+};
+
+// [드래그 중] 마우스 따라다니기
+this.form_ondragmove = function(obj:nexacro.Form,e:nexacro.DragEventInfo)
+{
+	this.div_move.move(e.clientx + 15, e.clienty + 15);
+};
+
+// [드롭] 비디오 영역에 놓았을 때
+this.form_ondrop = function(obj:nexacro.Form,e:nexacro.DragEventInfo)
+{
+	if (!this.fvObjDrag) return;
+	
+	var sData = e.userdata;
+	var oTarget = e.fromobject;
+	
+	// 드롭된 곳이 비디오 영역(divVideoZone)인지 확인
+	var isVideoZone = false;
+	var oComp = oTarget;
+	while(oComp) {
+		if (oComp.name == "divVideoZone") {
+			isVideoZone = true;
+			break;
+		}
+		if (oComp == this) break;
+		oComp = oComp.parent;
+	}
+	
+	// 비디오 영역에 스킬을 떨어뜨렸다면?
+	if (isVideoZone && sData && sData.type == "SKILL") 
+	{
+		// 비디오 재생 시뮬레이션
+		var oVideoZone = this.div_container.form.divDetail.form.divVideoZone;
+		
+		oVideoZone.form.staPlayText.set_text("▶ Playing Video...\n\n" + sData.msg);
+		oVideoZone.set_background("#222222"); // 재생 중인 느낌 색상 변경
+		
+		// 실제 웹브라우저 컴포넌트라면 this.divWebBrowser.set_url(유튜브링크);
+	}
+	
+	// 초기화
+	this.fvObjDrag = false;
+	this.div_move.set_visible(false);
+};
+
+// 드래그 종료 (허공에 놓음)
+this.form_onlbuttonup = function(obj:nexacro.Form,e:nexacro.MouseEventInfo)
+{
+	this.fvObjDrag = false;
+	this.div_move.set_visible(false);
+};]]></Script>
+  </Form>
+</FDL>

@@ -6,7 +6,7 @@
         <Div id="div_container" taborder="1" text="Div01" left="55" top="0" height="870" right="45">
           <Layouts>
             <Layout>
-              <Div id="divTitle1" taborder="0" left="0" top="30" width="190" height="546" cssclass="div_WF_PortletBox01" ondrag="fnComBtnOnDrag">
+              <Div id="divTitle1" taborder="0" left="0" top="30" width="190" height="546" ondrag="fnComBtnOnDrag" cssclass="div_WF_PortletBox01">
                 <Layouts>
                   <Layout>
                     <Static id="staTitle" taborder="1" text="Faded Denim" left="0" top="31.501831501831504%" height="30" cssclass="sta_WF_PortletTitleD" right="0"/>

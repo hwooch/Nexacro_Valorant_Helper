@@ -3,27 +3,27 @@
   <Form id="valo8001fm" width="2000" height="980" titletext="마이페이지" onload="valo8001fm_onload">
     <Layouts>
       <Layout height="980" width="2000">
-        <Static id="sta_discord_name" taborder="2" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="디스코드 이름" fittocontents="width" textAlign="right" width="218" left="251"/>
+        <Static id="sta_discord_name" taborder="2" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="디스코드 이름" fittocontents="width" textAlign="right" width="218" left="250"/>
         <Static id="sta_nothing" taborder="3" top="84" height="33" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text=" 님의 연동된 라이엇 아이디" fittocontents="width" textAlign="right" width="306" left="sta_discord_name:0"/>
         <Static id="sta_user_name" taborder="0" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" width="184" left="sta_nothing:50"/>
         <Static id="sta_user_tag" taborder="1" top="84" height="33" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="사용자 태그" fittocontents="width" textAlign="right" width="133" left="sta_user_name:0"/>
-        <Static id="sta_save_list" taborder="4" text="내가 저장한 전적 기록" left="251" top="sta_discord_name:40" height="70" background="#31313c" borderRadius="20px 20px 0px 0px" font="normal 25px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 20px" border="0px" width="254"/>
-        <ListView id="list_match_list" taborder="5" left="251" top="sta_save_list:0" height="353" binddataset="ds_list" border="0px none" right="251" background="transparent" oncellclick="list_match_list_oncellclick" onmousemove="list_match_list_onmousemove" bandinitstatus="collapse">
+        <Static id="sta_save_list" taborder="4" text="내가 저장한 전적 기록" left="250" top="sta_discord_name:40" height="70" background="#31313c" borderRadius="20px 20px 0px 0px" font="normal 25px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 20px" border="0px,0px,2px #1f2326" width="254"/>
+        <ListView id="list_match_list" taborder="5" left="250" top="sta_save_list:2" height="353" binddataset="ds_list" border="0px none" right="250" background="transparent" oncellclick="list_match_list_oncellclick" onmousemove="list_match_list_onmousemove" bandinitstatus="collapse">
           <Formats>
             <Format id="default">
               <Band id="body" width="100%" height="150" background="transparent" border="0px none" borderRadius="10px 10px" expandbartype="false">
-                <Cell id="cell_win_background" left="10" top="10" right="0" bottom="0" background="expr:RESULT == '승리' ? '#28344e' : '#59343b'" borderRadius="0px 10px 10px 0px" text=""/>
+                <Cell id="cell_win_background" left="10" top="10" right="0" bottom="0" background="bind:RESULT_COLOR" borderRadius="0px 10px 10px 0px" text=""/>
                 <Cell id="Cell22" left="0" top="10" height="1" right="0" background="#1f2326"/>
                 <Cell id="Cell20" left="20" top="20" width="155" height="35" text="bind:START_TIME" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#7f9eb1"/>
                 <Cell id="cell_result" left="20" top="63" width="155" height="35" text="bind:RESULT" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white"/>
                 <Cell id="Cell24" left="20" width="155" text="bind:PLAY_TIME" height="35" top="106" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#7f9eb1"/>
                 <Cell id="cell_match_agent_icon" left="190" top="20" width="90" height="90" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="imagecontrol"/>
                 <Cell id="Cell26" left="200" width="70" height="25" text="expr:RANK + &quot;등&quot;" background="#57646f" bottom="9" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white" borderRadius="20px"/>
-                <Cell id="Cell27" left="314" top="33" width="32" height="37" text="bind:KILL" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
-                <Cell id="Cell28" left="349" top="33" width="14" height="37" text="/" textAlign="center" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#8f9eb1"/>
-                <Cell id="Cell29" left="367" top="33" width="32" height="37" text="bind:DEATH" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#e84057"/>
-                <Cell id="Cell30" left="402" top="33" width="14" height="37" text="/" textAlign="center" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#8f9eb1"/>
-                <Cell id="Cell31" left="420" top="33" width="32" height="37" text="bind:ASSIST" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
+                <Cell id="Cell27" left="314" top="33" width="33" height="37" text="bind:KILL" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
+                <Cell id="Cell28" left="349" top="33" width="15" height="37" text="/" textAlign="center" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#8f9eb1"/>
+                <Cell id="Cell29" left="367" top="33" width="33" height="37" text="bind:DEATH" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#e84057"/>
+                <Cell id="Cell30" left="402" top="33" width="15" height="37" text="/" textAlign="center" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#8f9eb1"/>
+                <Cell id="Cell31" left="420" top="33" width="33" height="37" text="bind:ASSIST" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
                 <Cell id="Cell32" left="316" top="74" width="135" height="31" text="expr:(( parseInt(KILL) + parseInt(ASSIST) ) / (parseInt(DEATH) == 0 ? 1 : parseInt(DEATH)) ).toFixed(2) + &quot; : 1 평점&quot;" textAlign="center" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" color="#8f9eb1"/>
                 <Cell id="Cell33" left="316" top="104" width="135" height="21" text="bind:TIER" textAlign="center" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1"/>
                 <Cell id="Cell34" left="501" top="28" width="135" height="45" text="bind:MAP" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
@@ -34,7 +34,7 @@
                 <Cell id="Cell39" left="818" top="84" width="125" height="35" text="bind:ACS" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white" textAlign="center"/>
                 <Cell id="Cell40" left="965" top="84" width="105" height="35" text="bind:HS_RATE" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white" textAlign="center"/>
                 <Cell id="Cell41" left="1120" top="84" width="105" height="35" text="bind:ADR" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white" textAlign="center"/>
-                <Cell id="cell_win_color" left="0" top="10" width="10" bottom="0" background="expr:RESULT == '승리' ? '#5383e8' : '#e84057'" borderRadius="10px 0px 0px 10px"/>
+                <Cell id="cell_win_color" left="0" top="10" width="10" bottom="0" background="bind:RESULT_BAR" borderRadius="10px 0px 0px 10px"/>
                 <Cell id="Cell01" left="698" top="43" width="105" height="35" text="K/D" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
                 <Cell id="Cell02" left="818" top="43" width="125" height="35" text="평균 전투 점수" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
                 <Cell id="Cell03" left="1085" top="43" width="175" height="35" text="라운드당 평균 데미지" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
@@ -49,7 +49,8 @@
             </Format>
           </Formats>
         </ListView>
-        <Static id="sta_write_party" taborder="6" text="내가 작성한 파티 구인 글" left="251" top="list_match_list:40" height="70" background="#31313c" borderRadius="20px 20px 0px 0px" font="normal 25px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 20px" border="0px" width="282"/>
+        <Static id="sta_write_party" taborder="6" text="내가 작성한 파티 구인 글" left="250" top="list_match_list:40" height="70" background="#31313c" borderRadius="20px 20px 0px 0px" font="normal 25px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 20px" border="0px" width="282"/>
+        <Static id="sta_space_1" taborder="7" left="250" top="sta_save_list:2" height="328" right="250" visible="false" text="저장한 전적 기록이 없습니다." font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" textAlign="center" color="white" background="#31313c" borderRadius="0px 20px 20px"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -122,9 +123,15 @@ this.fn_resizeMatchList = function()
     var nNewHeight = nTotalCount * nRowHeight;
     if (nNewHeight == 0) { // 값이 없으면 높이 0
 		nNewHeight = 0;
+		this.list_match_list.height = nNewHeight;
+		this.sta_space_1.height = 150;
+		this.sta_space_1.visible = "true";
+	} else {
+		this.sta_space_1.height = nNewHeight;
+		this.list_match_list.height = nNewHeight;
+		this.sta_space_1.visible = "false";
 	}
-    
-    this.list_match_list.height = nNewHeight;
+	
     this.resetScroll();
 };
 
@@ -134,19 +141,22 @@ this.list_match_list_oncellclick = function(obj:nexacro.ListView,e:nexacro.ListV
 {
     if(e.cellid == 'cell_star')
     {
-		this.ds_list_copy.clearData();
+		var sMsgId = "msg.notice.delete_match";	//메세지ID
+		var arrArg = "";			//메세지취환될값 배열[생략가능]
+		var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+		var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
 		
-		var nRow = this.ds_list_copy.addRow();
-		this.ds_list_copy.copyRow(nRow, this.ds_list, e.row);
+		// function 전달
+		this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
+				if (strVal == true) {
+					// 확인 선택
+					this.delete_user_match(e.row);
+				}
+				else {
+					// 취소 선택
+				}
+			});
 		
-		var strsvcid        = "deletematch";
-		var strurl          = "SvcUrl::deletematch.do";
-		var strindatasets   = "in_list=ds_list_copy";
-		var stroutdatasets  = "";
-		var strargument     = "";
-		var strcallbackfunc = "fn_Callback";
-		
-		this.transaction(strsvcid, strurl, strindatasets, stroutdatasets, strargument, strcallbackfunc);
     }
 	if(e.cellid == 'cell_expand')
 	{
@@ -168,11 +178,35 @@ this.list_match_list_oncellclick = function(obj:nexacro.ListView,e:nexacro.ListV
 		var nNewHeight = nTotalCount * nRowHeight + nDetailHeight * count;
 		if (nNewHeight == 0) { // 값이 없으면 높이 0
 			nNewHeight = 0;
+			this.list_match_list.height = nNewHeight;
+			this.sta_space_1.height = 150;
+			this.sta_space_1.visible = "true";
+		} else {
+			this.sta_space_1.height = nNewHeight;
+			this.list_match_list.height = nNewHeight;
+			this.sta_space_1.visible = "false";
 		}
-		
-		this.list_match_list.height = nNewHeight;
 		this.resetScroll();
 	}
+};
+
+
+// 저장한 전적 삭제 함수
+this.delete_user_match = function ( rowNum )
+{
+	this.ds_list_copy.clearData();
+	
+	var nRow = this.ds_list_copy.addRow();
+	this.ds_list_copy.copyRow(nRow, this.ds_list, rowNum);
+	
+	var strsvcid        = "deletematch";
+	var strurl          = "SvcUrl::deletematch.do";
+	var strindatasets   = "in_list=ds_list_copy";
+	var stroutdatasets  = "";
+	var strargument     = "";
+	var strcallbackfunc = "fn_Callback";
+	
+	this.transaction(strsvcid, strurl, strindatasets, stroutdatasets, strargument, strcallbackfunc);
 };
 
 this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListViewMouseEventInfo)
@@ -207,6 +241,8 @@ this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListV
           <Column id="HS_RATE" type="STRING" size="256"/>
           <Column id="ADR" type="STRING" size="256"/>
           <Column id="MATCH_ID" type="STRING" size="256"/>
+          <Column id="RESULT_COLOR" type="STRING" size="256"/>
+          <Column id="RESULT_BAR" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_list_copy">
@@ -231,6 +267,8 @@ this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListV
           <Column id="MATCH_ID" type="STRING" size="256"/>
           <Column id="DISCORD_ID" type="STRING" size="256"/>
           <Column id="USER_NAME" type="STRING" size="256"/>
+          <Column id="RESULT_COLOR" type="STRING" size="256"/>
+          <Column id="RESULT_BAR" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
