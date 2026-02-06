@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="valo9004fm" width="2000" height="980" titletext="미니게임 랭킹" onclose="valo9004fm_onclose" onload="valo9004fm_onload">
+    <Layouts>
+      <Layout height="980" width="2000">
+        <Button id="Button00" taborder="0" text="미니게임 랭킹" left="335" top="380" width="1585" height="582" background="white" color="black" font="normal 25px/normal &quot;이사만루체 Medium&quot;"/>
+        <Static id="Static00" taborder="1" text="미니게임 랭킹" left="316" top="77" width="1269" height="293" color="white" font="normal 30pt/normal &quot;이사만루체 Medium&quot;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+// 로그인 성공 시 호출할 함수
+this.fn_setLoginState = function()
+{
+    // 로그인 여부 재확인
+    if(this.fvApp.gds_login.getRowCount() == 0) return;
+    var sLoginDiscordId = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+	var sLoginRiotId    = this.fvApp.gds_login.getColumn(0, "RIOT_ID");
+	var sLoginRiotTag   = this.fvApp.gds_login.getColumn(0, "RIOT_TAG");
+	
+	this.Static00.text = sLoginRiotId +" #"+ sLoginRiotTag;
+};
+
+// 로그아웃 시 호출할 함수
+this.fn_setLogoutState = function()
+{
+	this.Static00.text = "로그아웃";
+};	
+
+// 글로벌 데이터셋(gds_login) 변경 시
+this.fn_LoginDataChanged = function(obj:nexacro.NormalDataset, e:nexacro.DSRowsetChangeEventInfo)
+{
+    // 1. 로그인이 된 경우 (데이터가 생김)
+    if (obj.getRowCount() > 0) {
+        // 아까 만든 로그인 상태 갱신 함수 호출
+        this.fn_setLoginState(); 
+    }
+    // 2. 로그아웃 된 경우 (데이터가 사라짐)
+    else {
+        // 아까 만든 로그아웃 처리 함수 호출
+        this.fn_setLogoutState();
+    }
+};
+
+this.valo9004fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// 이벤트 핸들러 추가
+	this.fvApp.gds_login.addEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
+	this.fvApp.gds_login.addEventHandler("onload", this.fn_LoginDataChanged, this);
+	
+	// 들어오자마자 현재 로그인 상태인지 확인하여 즉시 반영
+    if (this.fvApp.gds_login.getRowCount() > 0) {
+        this.fn_setLoginState();
+    } else {
+        this.fn_setLogoutState();
+    }
+};
+
+
+// 화면 닫힐 때
+this.valo9004fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
+{
+	// 이벤트 핸들러 제거
+    this.fvApp.gds_login.removeEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
+    this.fvApp.gds_login.removeEventHandler("onload", this.fn_LoginDataChanged, this);
+};]]></Script>
+  </Form>
+</FDL>

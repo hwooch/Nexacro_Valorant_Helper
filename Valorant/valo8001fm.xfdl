@@ -3,10 +3,10 @@
   <Form id="valo8001fm" width="2000" height="980" titletext="마이페이지" onload="valo8001fm_onload">
     <Layouts>
       <Layout height="980" width="2000">
-        <Static id="sta_discord_name" taborder="2" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="디스코드 이름" fittocontents="width" textAlign="right" width="218" left="250"/>
-        <Static id="sta_nothing" taborder="3" top="84" height="33" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text=" 님의 연동된 라이엇 아이디" fittocontents="width" textAlign="right" width="306" left="sta_discord_name:0"/>
-        <Static id="sta_user_name" taborder="0" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" width="184" left="sta_nothing:50"/>
-        <Static id="sta_user_tag" taborder="1" top="84" height="33" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="사용자 태그" fittocontents="width" textAlign="right" width="133" left="sta_user_name:0"/>
+        <Static id="sta_discord_name" taborder="2" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="디스코드 이름" fittocontents="width" textAlign="right" width="218" left="250" verticalAlign="bottom"/>
+        <Static id="sta_nothing" taborder="3" top="84" height="33" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text=" 님의 연동된 라이엇 아이디" fittocontents="width" textAlign="right" width="306" left="sta_discord_name:0" verticalAlign="bottom"/>
+        <Static id="sta_user_name" taborder="0" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" width="184" left="sta_nothing:50" verticalAlign="bottom"/>
+        <Static id="sta_user_tag" taborder="1" top="84" height="33" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="사용자 태그" fittocontents="width" textAlign="right" width="133" left="sta_user_name:10" verticalAlign="bottom"/>
         <Static id="sta_save_list" taborder="4" text="내가 저장한 전적 기록" left="250" top="sta_discord_name:40" height="70" background="#31313c" borderRadius="20px 20px 0px 0px" font="normal 25px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 20px" border="0px,0px,2px #1f2326" width="254"/>
         <ListView id="list_match_list" taborder="5" left="250" top="sta_save_list:2" height="353" binddataset="ds_list" border="0px none" right="250" background="transparent" oncellclick="list_match_list_oncellclick" onmousemove="list_match_list_onmousemove" bandinitstatus="collapse">
           <Formats>
@@ -66,7 +66,7 @@ this.valo8001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	if( username == "연동된 계정이 존재하지 않습니다." ){
 		this.sta_user_tag.text = "";
 	} else {
-		this.sta_user_tag.text = " #" + usertag;
+		this.sta_user_tag.text = "#" + usertag;
 	}
 	
     // 저장된 전적 가져오기
@@ -219,6 +219,7 @@ this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListV
 		this.list_match_list.cursor = "default";
 	}
 };
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_list">

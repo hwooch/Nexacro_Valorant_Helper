@@ -190,10 +190,7 @@ this.fn_LoginDataChanged = function(obj:nexacro.NormalDataset, e:nexacro.DSRowse
 로그인 / 로그아웃 상태 변화 처리
 ================================================================= */
 
-/**
-* [함수 1] 로그인 성공 시 호출할 함수
-* 설명: 로그인 팝업 콜백 등에서 이 함수를 실행하세요.
-*/
+// 로그인 성공 시 호출할 함수
 this.fn_setLoginState = function()
 {
     // 1. 로그인 여부 재확인
@@ -235,8 +232,8 @@ this.fn_setLogoutState = function()
 // 화면 로드시에 이름 입력했던걸 기반으로 전적 검색
 this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	// [추가] gds_login 데이터셋 변경 감지 이벤트 등록
-    // gds_login의 행 개수가 바뀌거나 데이터가 바뀌면 'fn_LoginDataChanged' 함수를 실행해라!
+	// gds_login 데이터셋 변경 감지 이벤트 등록
+    // gds_login의 행 개수가 바뀌거나 데이터가 바뀌면 fn_LoginDataChanged 함수를 실행
     this.fvApp.gds_login.addEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
 	this.fvApp.gds_login.addEventHandler("onload", this.fn_LoginDataChanged, this);
 	
@@ -301,15 +298,7 @@ this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	
 	// 로그인 했을 때만 조회
     if(this.fvApp.gds_login.getRowCount() > 0) {
-        var sLoginDiscordId = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
-        var strSvcID        = "getSavedList";
-        var strURL          = "SvcUrl::selectSavedMatchIds.do"; // 단순히 MATCH_ID만 리턴하는 쿼리 호출
-        var strInDatasets   = "";
-        var strOutDatasets  = "ds_saved_ids=out_saved_ids";      // 결과는 ds_saved_ids에 담음
-        var strArgument     = "discord_id=" + nexacro.wrapQuote(sLoginDiscordId);
-        var strCallbackFunc = "fn_Callback";
-        
-        this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+        this.fn_setLoginState();
     }
 };
 
