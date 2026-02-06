@@ -182,6 +182,9 @@ this.valo9003fm_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
 // 화면 클릭
 this.div_game_zone_onclick = function(obj:nexacro.Div, e:nexacro.ClickEventInfo)
 {
+	// 버튼 누르면 정지
+	if (e.fromreferenceobject.id == "btn_game_start") return;
+
     // 게임 중이 아니면 무시 (시작 버튼이 켜져있을 때)
     if (this.div_game_zone.form.btn_game_start.visible) return;
 	
