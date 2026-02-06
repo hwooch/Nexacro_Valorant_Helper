@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo9002fm" width="2000" height="980" titletext="에임 연습" onclose="valo9002fm_onclose" onload="valo9002fm_onload" ontimer="valo9002fm_ontimer">
+  <Form id="valo9002fm" width="2000" height="980" titletext="에임 연습" onclose="valo9002fm_onclose" onload="valo9002fm_onload" ontimer="valo9002fm_ontimer" onsize="valo9002fm_onsize">
     <Layouts>
       <Layout height="980" width="2000">
         <Static id="sta_game_description" taborder="0" text="에임 연습&#13;&#10;무작위로 등장하는 10개의 공을&#13;&#10;최대한 빨리 클릭하세요 !" left="80" top="47" width="774" height="114" color="white" font="normal 25pt/normal &quot;이사만루체 Medium&quot;"/>
         <Static id="sta_high_score" taborder="2" text="최고 기록 :" top="70" right="80" width="400" height="50" color="#00ff99" font="normal 30pt/normal &quot;이사만루체 Medium&quot;" textAlign="right" visible="false" fittocontents="width"/>
-        <Div id="div_game_zone" taborder="1" left="300" top="sta_game_description:50" background="rgba(128,128,128,0.5)" right="300" bottom="50" borderRadius="20px" border="3px solid gray">
+        <Div id="div_game_zone" taborder="1" left="300" top="sta_game_description:50" background="rgba(128,128,128,0.5)" right="300" bottom="50" borderRadius="20px" border="3px solid gray" minwidth="1300" maxwidth="" minheight="550" maxheight="">
           <Layouts>
             <Layout>
               <Button id="btn_game_start" taborder="0" text="게임 시작" left="600" top="300" height="100" font="normal 25pt/normal &quot;이사만루체 Medium&quot;" color="white" onclick="btn_game_start_onclick" fittocontents="none" background="rgba(255,0,0,0.5)" visible="false" width="200" border="3px solid red" borderRadius="20px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
@@ -13,6 +13,7 @@
           </Layouts>
         </Div>
         <Button id="sta_result" taborder="3" text="진행 시간 : 0.000 초" top="70" height="50" font="normal 30pt/normal &quot;이사만루체 Medium&quot;" color="white" visible="true" fittocontents="width" width="380" left="825"/>
+        <Button id="btn_go_ranking" taborder="4" text="랭킹&#13;&#10;보러가기" left="80" top="sta_game_description:50" height="100" font="normal 20pt/normal &quot;이사만루체 Medium&quot;" color="white" fittocontents="none" background="#31313c" visible="true" width="160" border="3px solid #8e8e8e" borderRadius="20px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave" onclick="btn_go_ranking_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -342,6 +343,15 @@ this.Button_onmouseenter = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
 {
 	this.cursor = "pointer";
 	obj.boxShadow = "0px 0px 10px red";
+	if (obj.id == "btn_go_ranking") {
+		obj.boxShadow = "0px 0px 10px white";
+	} 
+};
+
+this.btn_go_ranking_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	objWorkFrame.formurl = "Valorant::valo9004fm.xfdl";
 };
 ]]></Script>
     <Objects>

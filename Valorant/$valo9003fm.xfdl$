@@ -9,10 +9,11 @@
         <Div id="div_game_zone" taborder="3" left="300" top="sta_game_description:50" background="rgba(128,128,128,0.5)" right="300" bottom="50" borderRadius="20px" border="3px solid gray" text="sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]sdafsdjfasdjkafdjklafd]">
           <Layouts>
             <Layout>
-              <Button id="btn_game_start" taborder="0" text="게임 시작" left="600" top="300" height="100" font="normal 25pt/normal &quot;이사만루체 Medium&quot;" color="white" onclick="btn_game_start_onclick" fittocontents="none" background="rgba(255,0,0,0.5)" visible="false" width="200" border="3px solid red" borderRadius="20px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
+              <Button id="btn_game_start" taborder="0" text="게임 시작" left="600" top="300" height="100" font="normal 25pt/normal &quot;이사만루체 Medium&quot;" color="white" onclick="btn_game_start_onclick" fittocontents="none" background="rgba(255,0,0,0.5)" visible="false" width="200" border="3px solid red" borderRadius="20px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave" cursor="pointer"/>
             </Layout>
           </Layouts>
         </Div>
+        <Button id="btn_go_ranking" taborder="4" text="랭킹&#13;&#10;보러가기" left="80" top="sta_game_description:50" height="100" font="normal 20pt/normal &quot;이사만루체 Medium&quot;" color="white" fittocontents="none" background="#31313c" visible="true" width="160" border="3px solid #8e8e8e" borderRadius="20px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave" onclick="btn_go_ranking_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -347,6 +348,27 @@ this.fn_initStartBtn = function() {
     var nTop  = (nDivHeight - nBtnHeight) / 2;
     objBtn.move(nLeft, nTop, nBtnWidth, nBtnHeight);
     objBtn.visible = true;
+};
+
+this.Button_onmouseleave = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
+{
+	this.cursor = "";
+	obj.boxShadow = "";
+};
+
+this.Button_onmouseenter = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
+{
+	this.cursor = "pointer";
+	obj.boxShadow = "0px 0px 10px red";
+	if (obj.id == "btn_go_ranking") {
+		obj.boxShadow = "0px 0px 10px white";
+	} 
+};
+
+this.btn_go_ranking_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	objWorkFrame.formurl = "Valorant::valo9004fm.xfdl";
 };
 ]]></Script>
     <Objects>
