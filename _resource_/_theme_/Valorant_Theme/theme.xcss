@@ -11150,8 +11150,8 @@
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
-	font : normal 27px/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 20px 0px;
+	font : normal 27px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 20px 0px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : center;
 }
@@ -11217,8 +11217,8 @@
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
-	font : normal 27px/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 15px 0px 55px;
+	font : normal 27px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 15px 0px 55px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : right;
 	box-shadow : 0px 0px 10px #ffffff;
@@ -11299,8 +11299,8 @@
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
-	font : normal 27px/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 15px 0px 55px;
+	font : normal 27px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 15px 0px 55px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : right;
 }
@@ -11314,8 +11314,8 @@
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
-	font : normal 27px/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 20px 0px;
+	font : normal 27px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 20px 0px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : center;
 	box-shadow : 0px 0px 10px #ffffff;
@@ -11347,8 +11347,7 @@
 	background : #1f2326;
 	color : #9e9eb1;
 	border-radius : 20px;
-	font : normal 20pt/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 0px 0px;
+	font : normal 20pt/normal "이사만루체 Medium";
 	box-shadow : 0px 0px 20px #ffffff;
 }
 .Button.rank_paging
@@ -11357,12 +11356,10 @@
 	background : #1f2326;
 	color : #9e9eb1;
 	border-radius : 20px;
-	font : normal 20pt/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 0px 0px;
+	font : normal 20pt/normal "이사만루체 Medium";
 }
 .Button.rank_paging_selected,
 .Button.rank_paging_selected[status=disabled],
-.Button.rank_paging_selected[status=mouseover],
 .Button.rank_paging_selected[status=focused],
 .Button.rank_paging_selected[userstatus=pushed],
 .Button.rank_paging_selected[userstatus=selected]
@@ -11371,12 +11368,22 @@
 	background : #e84057;
 	color : #ffffff;
 	border-radius : 20px;
-	font : normal 20pt/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 0px 0px;
+	font : normal 20pt/normal "이사만루체 Medium";
+	
 	
 
 }
-.Grid.grid_test .body .row .cell[status=focused],
+
+.Button.rank_paging_selected[status=mouseover]
+{
+	cursor : pointer;
+	background : #e84057;
+	color : #ffffff;
+	border-radius : 20px;
+	font : normal 20pt/normal "이사만루체 Medium";
+	box-shadow : 0px 0px 20px #FFFFFF;
+
+}.Grid.grid_test .body .row .cell[status=focused],
 .Grid.grid_test .body .row .cell[status=mouseover],
 .Grid.grid_test .body .row .cell[userstatus=selected]
 {
@@ -11475,8 +11482,8 @@
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
-	font : normal 27px/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 20px 0px;
+	font : normal 27px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 20px 0px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : center;
 }
@@ -11490,8 +11497,8 @@
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
-	font : normal 27px/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 20px 0px;
+	font : normal 27px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 20px 0px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : center;
 	box-shadow : 0px 0px 10px #ffffff;
@@ -11533,8 +11540,8 @@
 	-nexa-border : 2px solid #8e8e8e;
 	color : white;
 	border-radius : 20px;
-	font : normal 27px/normal "AppleSDGothicNeoH00";
-	-nexa-padding : 5px 20px 0px;
+	font : normal 27px/normal "이사만루체 Medium";
+	-nexa-padding : 0px 20px 0px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : center;
 	box-shadow : 0px 0px 10px #ffffff;

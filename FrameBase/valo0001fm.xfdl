@@ -39,6 +39,20 @@ this.btn_common_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 	case "btn_Search" :
 		if(objWorkFrame.formurl != "Valorant::valo1002fm.xfdl"){
 			objWorkFrame.formurl = "Valorant::valo1001fm.xfdl";
+		} else {
+			var sMsgId = "msg.notice.new_search";	//메세지ID
+			var arrArg = "";						//메세지취환될값 배열[생략가능]
+			var sPopId = "";
+			// function 전달
+			this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
+					if (strVal == true) {
+						// 확인 선택
+						objWorkFrame.formurl = "Valorant::valo1001fm.xfdl";
+					}
+					else {
+						// 취소 선택
+					}
+				});
 		}
 		break;
 	case "btn_Ranking" :
