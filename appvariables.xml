@@ -1990,6 +1990,13 @@
           <Col id="MSG_TYPE">C</Col>
           <Col id="MSG_ICON">ERR</Col>
         </Row>
+        <Row>
+          <Col id="MSG_ID">msg.notice.logout</Col>
+          <Col id="MSG_TEXT">로그아웃 하시겠습니까?</Col>
+          <Col id="MSG_TEXT_EN">로그아웃 하시겠습니까?</Col>
+          <Col id="MSG_TYPE">C</Col>
+          <Col id="MSG_ICON">ERR</Col>
+        </Row>
       </Rows>
     </Dataset>
     <Dataset id="gdsMyMenu">

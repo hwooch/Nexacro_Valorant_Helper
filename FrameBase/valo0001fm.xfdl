@@ -129,18 +129,48 @@ this.fv_maxLoop    = 60;   // 최대 반복 횟수 (60초 = 1분)
 // 로그인 버튼 클릭
 this.btn_discord_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	
-	// 기존 데이터셋 비우기
-	this.fvApp.gds_login.clearData();
-	
-	// 기존 세션 지우는 transaction
-	var strSvcID        = "initLogin";
-	var strURL          = "SvcUrl::initLogin.do";
-	var strInDatasets   = "";
-	var strOutDatasets  = "";
-	var strArgument     = "";
-	var strCallbackFunc = "fn_Callback";
-	
-	this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+	if (obj.cssclass == "top_logout") {
+		var sMsgId = "msg.notice.logout";	//메세지ID
+		var arrArg = "";			//메세지취환될값 배열[생략가능]
+		var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+		var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
+		
+		// function 전달
+		this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
+				if (strVal == true) {
+					// 확인 선택
+					this.btn_discord_login.text = "디스코드 로그인"
+					this.btn_discord_login.cssclass = "top_login";
+					this.btn_mypage.visible = false;
+					this.fvApp.gds_login.clearData();
+					
+					// 로그아웃 할 때 마이페이지에 있으면
+					var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+					if (objWorkFrame.formurl == "Valorant::valo8001fm.xfdl") {
+						this.btn_Search.click();
+					}
+					
+					this.resetScroll();
+				}
+				else {
+					// 취소 선택
+				}
+			});
+	}
+	else {
+		// 기존 데이터셋 비우기
+		this.fvApp.gds_login.clearData();
+		
+		// 기존 세션 지우는 transaction
+		var strSvcID        = "initLogin";
+		var strURL          = "SvcUrl::initLogin.do";
+		var strInDatasets   = "";
+		var strOutDatasets  = "";
+		var strArgument     = "";
+		var strCallbackFunc = "fn_Callback";
+		
+		this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+	}
 };
 
 this.fn_Callback = function(svcID, errorCode, errorMsg)
