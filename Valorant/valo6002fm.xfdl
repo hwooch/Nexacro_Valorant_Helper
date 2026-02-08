@@ -58,7 +58,7 @@ this.fn_init = function()
 		objBtn.u_uuid = sUUID;
 		objBtn.opacity = "50%";
         
-        var sBgVal = "url('" + sIcon + "') no-repeat center 20% /contain #4d4d60";
+        var sBgVal = "url('" + sIcon + "') no-repeat center 20% /contain #1f2326";
         objBtn.background = sBgVal;
 		
         // 화면에 추가 및 표시

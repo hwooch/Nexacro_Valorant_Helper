@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo6001fm" width="2000" height="980" titletext="무기" onload="valo6001fm_onload">
+  <Form id="valo6001fm" width="2000" height="980" titletext="무기" onload="valo6001fm_onload" ontimer="valo6001fm_ontimer">
     <Layouts>
       <Layout height="980" width="2000">
         <Button id="btn_reload" taborder="0" text="무기 데이터 새로 받아오기" left="2130" top="490" width="520" height="243" background="yellow" font="normal 30pt/normal &quot;Arial&quot;" onclick="btn_reload_onclick" visible="true"/>
-        <Div id="div_weapon" taborder="1" text="Div00" left="150" top="50" height="140" url="Valorant::valo6002fm.xfdl" formscrollbartype="autoindicator" right="150" borderRadius="10px"/>
+        <Div id="div_weapon" taborder="1" text="Div00" left="230" top="50" height="140" url="Valorant::valo6002fm.xfdl" formscrollbartype="autoindicator" right="230" borderRadius="10px"/>
         <Static id="sta_weapon_name" taborder="2" left="150" top="div_weapon:30" width="120" height="31" color="white" text="무기 이름" fittocontents="width" font="normal 20pt/normal &quot;이사만루체 Medium&quot;"/>
         <Static id="sta_weapon_category" taborder="3" left="sta_weapon_name:30" top="div_weapon:34" width="120" height="23" color="#8e8e8e" text="무기 종류" fittocontents="width" font="normal 15pt/normal &quot;이사만루체 Medium&quot;"/>
         <Static id="sta_weapon_description" taborder="4" left="150" top="sta_weapon_name:20" width="120" height="23" color="#8e8e8e" text="무기 설명" fittocontents="width" font="normal 15pt/normal &quot;이사만루체 Medium&quot;"/>
@@ -276,6 +276,8 @@
         <Button id="btn_hide" taborder="20" left="765" width="50" height="30" top="sta_background:0"/>
         <Button id="btn_normal_1" taborder="21" text="기본 발사" left="btn_normal:38" top="video_weapon:35" height="26" font="normal 17pt/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" right="btn_sub:38" cursor="pointer" visible="false" onclick="btn_normal_1_onclick"/>
         <Button id="btn_hide_1" taborder="22" left="1410" width="50" height="30" top="list_damage:0"/>
+        <Button id="btn_prev" taborder="23" top="90" width="60" height="60" background="#31313c" text="&lt;" border="none" borderRadius="20px" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" onclick="btn_prev_onclick" padding="5px 0px 0px" cursor="pointer" left="150"/>
+        <Button id="btn_next" taborder="24" top="90" width="60" background="#31313c" text="&gt;" border="none" borderRadius="20px" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" onclick="btn_next_onclick" right="150" padding="5px 0px 0px" cursor="pointer" height="60"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -614,6 +616,75 @@ this.switch_english = function (weapon_korea)
 		weaponNameEng = "Stinger";
 		break;
 	default:
+    }
+};
+
+
+
+
+this.fv_targetPos = 0; // 목표 위치
+this.fv_timerId = 8888; // 타이머 ID
+
+this.btn_prev_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    this.fn_startAnimateScroll(-1200); // 1200 만큼 왼쪽으로
+};
+
+this.btn_next_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    this.fn_startAnimateScroll(1200); // 1200 만큼 오른쪽으로
+};
+
+// 애니메이션 시작 세팅 함수
+this.fn_startAnimateScroll = function(nOffset)
+{
+    var objHScroll = this.div_weapon.form.hscrollbar;
+    
+    // 현재 타이머가 돌고 있다면(이미 움직이는 중), 목표지점을 기준으로 더 이동
+    // 멈춰있다면 현재 위치 기준으로 이동
+    var nStartPos = (this.fv_targetPos > -1) ? this.fv_targetPos : objHScroll.pos;
+    
+    // 목표 위치 설정
+    this.fv_targetPos = objHScroll.pos + nOffset;
+    
+    // 최소/최대 범위 체크
+    if (this.fv_targetPos < 0) this.fv_targetPos = 0;
+    if (this.fv_targetPos > objHScroll.max) this.fv_targetPos = objHScroll.max;
+    
+    // 타이머 시작 (10ms 마다 실행 -> 1초에 100번 체크)
+    this.setTimer(this.fv_timerId, 10);
+};
+
+// 부드러운 감속 로직 (ontimer 이벤트에 연결)
+this.valo6001fm_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{
+    if (e.timerid == this.fv_timerId)
+    {
+        var objHScroll = this.div_weapon.form.hscrollbar;
+        var nCurrPos = objHScroll.pos;
+        
+        // 남은 거리 계산
+        var nGap = this.fv_targetPos - nCurrPos;
+        
+        // 1. 거의 다 왔으면(남은 거리가 1픽셀 미만) -> 딱 붙이고 종료
+        if (Math.abs(nGap) < 1.5) 
+        {
+            objHScroll.set_pos(this.fv_targetPos);
+            this.killTimer(this.fv_timerId);
+            this.fv_targetPos = -1; // 목표 초기화
+            return;
+        }
+        
+        // 2. 남은 거리의 15% 만큼만 이동 (이게 부드러움의 핵심!)
+        // 0.15 숫자를 줄이면(0.1) 더 느리고 부드럽게, 키우면(0.3) 빠릿하게 움직임
+        var nMoveAmount = nGap * 0.15; 
+        
+        // 아주 조금 남았을 때 최소 이동량 보정 (안 그러면 영원히 안 닿을 수 있음)
+        if (nMoveAmount > 0 && nMoveAmount < 1) nMoveAmount = 1;
+        if (nMoveAmount < 0 && nMoveAmount > -1) nMoveAmount = -1;
+		
+        // 위치 적용
+        objHScroll.set_pos(nCurrPos + nMoveAmount);
     }
 };]]></Script>
   </Form>

@@ -77,7 +77,7 @@ this.fn_drawButtons = function()
         objBtn.u_uuid = sUUID;
 		objBtn.u_name = sName;
         
-        var sBgVal = "url('" + sIcon + "') no-repeat center top /contain";
+        var sBgVal = "url('" + sIcon + "') no-repeat center top /contain #1f2326";
         objBtn.background = sBgVal;
         objBtn.borderRadius = "10px";
         objBtn.border = "2px solid #8e8e8e";

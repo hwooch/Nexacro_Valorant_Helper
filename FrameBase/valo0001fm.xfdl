@@ -141,6 +141,13 @@ this.fn_Callback = function(svcID, errorCode, errorMsg)
 				this.btn_discord_login.cssclass = "top_login";
 				this.btn_mypage.visible = false;
 				this.fvApp.gds_login.clearData();
+				
+				// 로그아웃 할 때 마이페이지에 있으면
+				var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+				if (objWorkFrame.formurl == "Valorant::valo8001fm.xfdl") {
+					this.btn_Search.click();
+				}
+				
 				this.resetScroll();
 			} else {
 				// 초기화가 성공인데 로그인 버튼을 눌렀을 때

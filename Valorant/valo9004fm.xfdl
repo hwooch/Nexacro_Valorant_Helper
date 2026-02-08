@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="980" width="2000">
         <Button id="btn_speed" taborder="0" text="반응 속도" left="500" top="122" width="132" height="77" onclick="btn_speed_onclick" borderRadius="20px" font="normal 20pt/normal &quot;이사만루체&quot;" cursor="pointer" background="#31313c" border="2px solid #8e8e8e" color="#ffffff" padding="5px 0px 0px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
-        <Button id="btn_tracker" taborder="1" text="에임 연습" left="btn_speed:40" top="122" width="132" height="77" onclick="btn_tracker_onclick" borderRadius="20px" font="normal 20pt/normal &quot;이사만루체&quot;" cursor="pointer" background="#31313c" border="2px solid #8e8e8e" color="#ffffff" padding="5px 0px 0px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
+        <Button id="btn_tracker" taborder="1" text="에임 연습" left="btn_speed:20" top="122" width="132" height="77" onclick="btn_tracker_onclick" borderRadius="20px" font="normal 20pt/normal &quot;이사만루체&quot;" cursor="pointer" background="#31313c" border="2px solid #8e8e8e" color="#ffffff" padding="5px 0px 0px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
         <Grid id="grd_ranking" taborder="2" left="500" top="btn_speed:40" height="500" binddataset="ds_highscore" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px" tabstop="false" right="500" cssclass="grid_test" oncellclick="grd_ranking_oncellclick" onmousemove="grd_ranking_onmousemove" formatid="speed" scrollbartype="none none" scrolltype="none">
           <Formats>
             <Format id="speed">

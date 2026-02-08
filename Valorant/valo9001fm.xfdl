@@ -10,7 +10,7 @@
         <Static id="sta_description_1" taborder="2" left="100" top="100" height="40" textAlign="center" verticalAlign="middle" color="white" text="로그인을 하지 않고 플레이 할 시 기록이 저장되지 않습니다." font="normal 35px/normal &quot;이사만루체 Medium&quot;" right="100"/>
         <Static id="sta_description_2" taborder="3" left="100" top="sta_description_1:15" height="40" textAlign="center" verticalAlign="middle" color="white" text="디스코드 로그인을 한 후 플레이를 하게되면 디스코드 사용자명으로 랭킹에 등록됩니다." font="normal 35px/normal &quot;이사만루체 Medium&quot;" right="100"/>
         <Static id="sta_description_3" taborder="4" left="100" top="sta_description_2:35" height="40" textAlign="center" verticalAlign="middle" color="white" text="&lt;fc v='#eb9c00'&gt;◀&lt;/fc&gt; 현재 로그인이 되어있지 않습니다 &lt;fc v='#eb9c00'&gt;▶&lt;/fc&gt;" font="normal 25px/normal &quot;이사만루체 Medium&quot;" usedecorate="true" right="100"/>
-        <Button id="btn_ranking" taborder="7" text="랭킹" left="btn_speed:150" top="460" height="188" background="rgba(0,255,0,0.2)" color="white" font="normal 25px/normal &quot;이사만루체 Medium&quot;" onclick="btn_ranking_onclick" right="btn_tracking:150" borderRadius="20px" onmouseleave="Button_onmouseleave" onmouseenter="Button_onmouseenter" border="3px solid green"/>
+        <Button id="btn_ranking" taborder="7" text="랭킹" top="460" height="188" background="rgba(0,255,0,0.2)" color="white" font="normal 25px/normal &quot;이사만루체 Medium&quot;" onclick="btn_ranking_onclick" borderRadius="20px" onmouseleave="Button_onmouseleave" onmouseenter="Button_onmouseenter" border="3px solid green" left="btn_speed:150" right="btn_tracking:150"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
