@@ -50,8 +50,8 @@ this.fn_Callback = function(strSvcId, nErrorCode, strErrorMsg)
 	}
 	this.div_map.form.fn_init();
 	// html 연결
-	//this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map.html";
-	this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map.html";
+	this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map.html";
+	//this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map.html";
 };
 
 this.fn_selectedMap = function(sBtnId, sUUID)

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_PopupSub" width="480" height="420" titletext="Form_PopupSub" onload="form_onload" border="1px solid #9c9c9c">
+    <Layouts>
+      <Layout height="420" width="480">
+        <Button id="btn_one" taborder="0" text="default" left="30" top="343" width="70" height="26" onclick="btn_one_onclick" cssclass="btn_WF_FillGray"/>
+        <Button id="btn_obj" taborder="1" text="opener call" left="252" top="343" width="91" height="26" onclick="btn_obj_onclick" cssclass="btn_WF_FillGray"/>
+        <Grid id="grd_data" taborder="2" left="140" top="117" width="310" height="155" autofittype="col" binddataset="ds_child">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="150"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="28" band="head"/>
+                <Row size="28"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Code"/>
+                <Cell col="1" text="Name"/>
+                <Cell col="2" text="Manager"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DEPT_CODE" edittype="normal"/>
+                <Cell col="1" text="bind:DEPT_NAME" edittype="normal"/>
+                <Cell col="2" text="bind:DEPT_EMP" edittype="normal"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static04" taborder="3" text="return data" left="30" top="308" width="250" height="35" cssclass="sta_WF_GuideTitle2"/>
+        <Button id="btn_multi1" taborder="4" text="separator" left="105" top="343" width="84" height="26" onclick="btn_multi1_onclick" cssclass="btn_WF_FillGray"/>
+        <Button id="btn_multi2" taborder="5" text="json" left="194" top="343" width="53" height="26" onclick="btn_multi2_onclick" cssclass="btn_WF_FillGray"/>
+        <Static id="Static01" taborder="6" text="string" left="20" top="55" width="90" height="26" cssclass="sta_WF_GuideLabel"/>
+        <Edit id="edt_string" taborder="7" left="140" top="55" width="130" height="26" text=""/>
+        <Static id="Static02" taborder="8" text="number" left="20" top="86" width="90" height="26" cssclass="sta_WF_GuideLabel"/>
+        <MaskEdit id="msk_number" taborder="9" left="140" top="86" width="130" height="26" format="#,###"/>
+        <Static id="Static03" taborder="10" text="object" left="20" top="117" width="90" height="26" cssclass="sta_WF_GuideLabel"/>
+        <Static id="Static00" taborder="11" text="get parameter" left="20" top="20" width="250" height="35" cssclass="sta_WF_GuideTitle2"/>
+        <Button id="btn_add" taborder="12" left="398" top="91" width="21" height="21" cssclass="btn_WF_Add" onclick="btn_add_onclick"/>
+        <Button id="btn_delete" taborder="13" left="424" top="91" width="21" height="21" cssclass="btn_WF_Delete" onclick="btn_delete_onclick"/>
+        <Button id="btn_close" taborder="14" text="close" left="348" top="343" width="56" height="26" onclick="btn_close_onclick" cssclass="btn_WF_FillRed"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_child"/>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+ 	var objFrame = this.getOwnerFrame();
+//	objFrame.titlebar.closebutton.set_visible(false);
+	objFrame.titlebar.closebutton.visible = false;
+	this.titletext = objFrame.param_title;
+	
+	this.edt_string.value = objFrame.param_string;
+	this.msk_number.value = objFrame.param_number;	
+	this.ds_child.copyData(objFrame.param_object);		
+	
+	
+	if(objFrame.param_title == "Modeless Popup"){
+		this.btn_one.enable = false;
+		this.btn_multi1.enable = false;
+		this.btn_multi2.enable = false;
+	}
+	
+};
+
+
+// return one value
+this.btn_one_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var rtn = this.edt_string.value;
+	this.close(rtn);		
+};
+
+// return multi value 1
+this.btn_multi1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var rtn1 = this.edt_string.value;
+	var rtn2 = this.msk_number.value;
+	this.close(rtn1 + "||" + rtn2);	
+};
+
+// return multi value 2
+this.btn_multi2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objRtn = { rtn1 : this.edt_string.value,
+	               rtn2 : this.msk_number.value }
+	this.close(JSON.stringify(objRtn));		
+};
+
+// return Object -  Parent Function Call
+this.btn_obj_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.opener.fn_return(this.ds_child);
+	this.close();
+};
+
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_child.addRow();
+};
+
+this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_child.deleteRow(this.ds_child.rowposition);
+};
+
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

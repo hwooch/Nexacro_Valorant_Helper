@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Emp" width="1000" height="700" titletext="Employees" onload="Form_onload">
+    <Layouts>
+      <Layout height="700" width="1000" stepcount="0">
+        <Static id="st_title" taborder="0" text="Open Popup Form" left="20" top="0" width="158" height="60" cssclass="sta_WF_GuideTitle1"/>
+        <Static id="Static00" taborder="1" text="Send Parameter" left="20" top="60" width="250" height="35" cssclass="sta_WF_GuideTitle2"/>
+        <Static id="Static01" taborder="2" text="String" left="30" top="95" width="80" height="26" cssclass="sta_WF_GuideLabel"/>
+        <Static id="Static02" taborder="3" text="Number" left="30" top="126" width="80" height="26" cssclass="sta_WF_GuideLabel"/>
+        <Static id="Static03" taborder="4" text="Object" left="30" top="157" width="80" height="26" cssclass="sta_WF_GuideLabel"/>
+        <Edit id="edt_string" taborder="5" left="120" top="95" width="130" height="26" value="Nexacro N24" text="Nexacro N24"/>
+        <Grid id="grd_data" taborder="6" left="120" top="157" width="305" height="170" binddataset="ds_data" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="150"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="28" band="head"/>
+                <Row size="28"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Code"/>
+                <Cell col="1" text="Name"/>
+                <Cell col="2" text="Manager"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DEPT_CODE" edittype="normal"/>
+                <Cell col="1" text="bind:DEPT_NAME" edittype="normal"/>
+                <Cell col="2" text="bind:DEPT_EMP" edittype="normal"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static04" taborder="7" text="Modal Popup" left="515.00" top="60" width="250" height="35" cssclass="sta_WF_GuideTitle2"/>
+        <Button id="btn_modal" taborder="8" text="Execute(basic)" left="515" top="95" width="130" height="26" onclick="btn_modal_onclick" cssclass="btn_WF_FillBlue"/>
+        <Button id="btn_modeless" taborder="9" text="Execute" left="515" top="176" width="130" height="26" onclick="btn_modeless_onclick" cssclass="btn_WF_FillBlue"/>
+        <Static id="Static05" taborder="10" text="Modeless Popup" left="515.00" top="141" width="250" height="35" cssclass="sta_WF_GuideTitle2"/>
+        <Static id="Static06" taborder="11" text="Use PopupDiv" left="515.00" top="222" width="250" height="35" cssclass="sta_WF_GuideTitle2"/>
+        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="false" left="550.00" top="360" width="340" height="286" oncloseup="PopupDiv00_oncloseup" cssclass="pdiv_WF_Area">
+          <Layouts>
+            <Layout>
+              <Button id="btn_close" taborder="0" text="Close" left="240.00" top="237" width="80" height="26" onclick="PopupDiv00_btn_close_onclick" cssclass="btn_WF_FillRed"/>
+              <Grid id="grd_data" taborder="1" left="20.00" top="50" width="300" height="170" binddataset="ds_data" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="70"/>
+                      <Column size="150"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="28" band="head"/>
+                      <Row size="28"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="Code"/>
+                      <Cell col="1" text="Name"/>
+                      <Cell col="2" text="Manager"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:DEPT_CODE"/>
+                      <Cell col="1" text="bind:DEPT_NAME"/>
+                      <Cell col="2" text="bind:DEPT_EMP"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="st_title" taborder="2" left="0" top="0" height="35" cssclass="sta_POP_Title" right="0" text="PopupDiv"/>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+        <Button id="btn_pdiv1" taborder="13" text="Center" left="621" top="257" width="90" height="26" onclick="btn_pdiv1_onclick" cssclass="btn_WF_FillBlue"/>
+        <Button id="btn_pdiv2" taborder="14" text="Component" left="515" top="257" width="100" height="26" onclick="btn_pdiv2_onclick" cssclass="btn_WF_FillBlue"/>
+        <MaskEdit id="msk_number" taborder="15" left="120" top="126" width="130" height="26" value="111000" format="#,###"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_data">
+        <ColumnInfo>
+          <Column id="DEPT_CODE" type="string" size="255"/>
+          <Column id="DEPT_NAME" type="string" size="255"/>
+          <Column id="DEPT_EMP" type="string" size="255"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="DEPT_CODE">10</Col>
+            <Col id="DEPT_NAME">Accounting Team</Col>
+            <Col id="DEPT_EMP">Kate</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CODE">20</Col>
+            <Col id="DEPT_NAME">Finances Team</Col>
+            <Col id="DEPT_EMP">Dennis</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CODE">30</Col>
+            <Col id="DEPT_NAME">Human Resource Team</Col>
+            <Col id="DEPT_EMP">Adam</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CODE">40</Col>
+            <Col id="DEPT_NAME">Support Team</Col>
+            <Col id="DEPT_EMP">Jackson</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_modal_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame("popupModal", 0, 0, 480, 420);
+	objChildFrame.formurl = "EduBasic::Popup/Popup_BaseSub.xfdl";
+ 	objChildFrame.openalign = "center middle";
+ 	objChildFrame.overlaycolor = "RGBA(196,196,196,0.5)";
+	objChildFrame.dragmovetype = "all";
+	objChildFrame.showtitlebar = true;
+	objChildFrame.set_titlebarheight(40);
+
+	var objParam = {param_title : "Modal Popup"
+	              , param_string : this.edt_string.value
+	              , param_number : this.msk_number.value
+				  , param_object : this.ds_data};
+	objChildFrame.showModal(this.getOwnerFrame(), objParam, this, "fn_popupCallback");
+	
+};
+
+this.fn_popupCallback = function(strPopupID, strReturn)
+{
+	if(strReturn == undefined){
+		return;
+	}
+
+	if(strPopupID == "popupModal"){
+	
+		try {
+			var objJson = JSON.parse(strReturn);
+			this.edt_string.value = objJson.rtn1;
+			this.msk_number.value = objJson.rtn2;			
+			
+		} catch (e) {
+			if(strReturn.indexOf("||") > 0){
+				this.edt_string.value = strReturn.split("||")[0];
+				this.msk_number.value = strReturn.split("||")[1];	
+			}
+			else{
+				this.edt_string.value = strReturn;
+			}		
+		}
+	}	
+};
+
+this.fn_return = function(pObj)
+{
+	this.ds_data.copyData(pObj);
+};
+
+this.btn_modeless_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nWidth  = 480;
+	var nHeight = 420;
+	var objApp = nexacro.getApplication();
+	var nLeft = (objApp.mainframe.width  / 2) - Math.round(nWidth  / 2);
+	var nTop  = (objApp.mainframe.height / 2) - Math.round(nHeight / 2) ;		
+
+	nLeft = system.clientToScreenX(this, nLeft);
+	nTop  = system.clientToScreenY(this, nTop);
+
+	var sOpenStyle = "dragmovetype=all"
+				   + " openalign='center middle'"
+				   + " resizable=false"
+				   + "  autosize=true"
+				   + " titletext=Modeless Popup"
+				   + " showtitlebar=false"
+				   + " titlebarheigh=40"
+				   + " showstatusbar=false";
+				   
+
+	var objParam = {param_title : "Modeless Popup"
+	              , param_string : this.edt_string.value
+	              , param_number : this.msk_number.value
+				  , param_object : this.ds_data};
+
+	nexacro.open("popupModeless"
+			   , "EduBasic::Popup/Popup_BaseSub.xfdl"
+			   , this.getOwnerFrame()
+			   , objParam
+			   , sOpenStyle
+			   , nLeft
+			   , nTop	
+			   , nWidth
+			   , nHeight
+			   , this);
+};
+
+this.btn_pdiv1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//center
+	var objApp = nexacro.getApplication();
+	var nLeft = (objApp.mainframe.width  / 2) - Math.round(this.PopupDiv00.width  / 2);
+	var nTop  = (objApp.mainframe.height / 2) - Math.round(this.PopupDiv00.height / 2) ;		
+	this.PopupDiv00.trackPopup(nLeft, nTop);
+};
+
+this.btn_pdiv2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.PopupDiv00.trackPopupByComponent(obj, 0, obj.height);
+};
+
+this.PopupDiv00_btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.PopupDiv00.closePopup();
+};]]></Script>
+  </Form>
+</FDL>

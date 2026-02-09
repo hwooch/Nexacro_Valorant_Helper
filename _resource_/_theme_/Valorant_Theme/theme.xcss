@@ -78,6 +78,25 @@
 	opacity : ;
 }
 
+.MainFrame.valo_popup,
+.ChildFrame.valo_popup,
+.FrameSet.valo_popup,
+.VFrameSet.valo_popup,
+.HFrameSet.valo_popup,
+.TileFrameSet.valo_popup
+{
+	-nexa-border : 0px solid white;
+	-nexa-edge : ;
+	-nexa-rtl-background-image : ;
+	-nexa-rtl-edge-image : ;
+	background : #1f2326;
+	border-radius : 20px;
+	color : ;
+	cursor : ;
+	font : ;
+	opacity : ;
+}
+
 /* Button */
 /* FileDownload */
 /* FileUpload */
@@ -800,222 +819,6 @@
 	word-spacing : ;
 }
 
-
-/* Combo */
-.Combo,.ComboControl
-{
-	background : #ffffff;
-	-nexa-border : 1px solid #d5d5d5;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
-
-.Combo[status=mouseover],.Combo[status=focused],.ComboControl[status=mouseover],.ComboControl[status=focused]
-{
-	-nexa-border : 1px solid #5a86cd;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
-
-.Combo[status=readonly],.ComboControl[status=readonly]
-{
-	background : #efefef;
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
-
-.Combo[status=disabled],.ComboControl[status=disabled]
-{
-	color : #999999;
-	background : #efefef;
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
-
-.Combo .comboedit,.ComboControl .comboedit
-{
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-	/* Same as EditControl */
-}
-
-.Combo .dropbutton,.ComboControl .dropbutton
-{
-	-nexa-padding : 1px 2px 0px 0px;
-	-nexa-icon : URL('theme://images/cmb_WF_Drop.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
-
-.Combo .dropbutton[status=mouseover],.Combo .dropbutton[status=focused],.ComboControl .dropbutton[status=mouseover],.ComboControl .dropbutton[status=focused]
-{
-	-nexa-icon : URL('theme://images/cmb_WF_Drop_O.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
-
-.Combo .dropbutton[userstatus=pushed],.Combo .dropbutton[userstatus=selected],.ComboControl .dropbutton[userstatus=pushed],.ComboControl .dropbutton[userstatus=selected]
-{
-	-nexa-icon : URL('theme://images/cmb_WF_Drop_P.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
-
-.Combo .dropbutton[status=disabled],.ComboControl .dropbutton[status=disabled]
-{
-	opacity : 0.50;
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	word-spacing : ;
-}
-
-.Combo .combolist,.ComboControl .combolist
-{
-	font :  -nexa-define(--MalgunGothic12px);
-	color : #555555;
-	background : #ffffff;
-	-nexa-border : 1px solid #b1b1b1;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
 
 
 .EditControl
@@ -6619,43 +6422,17 @@
 /* TitleBar */
 .TitleBarControl
 {
-	font :  -nexa-define(--BoldMalgunGothic12px);
+	font : normal 12pt/normal "이사만루체 Light";
 	color : #ffffff;
-	background : #003284;
+	background : black;
 	-nexa-padding : 0px 0px 0px 10px;
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	border-radius : ;
-	cursor : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
+	border-radius : 20px 20px 0px 0px;
+	-nexa-border : 2px solid #a1a1ac,2px solid #a1a1ac,0px none;
 }
 
 .TitleBarControl .titleicon
 {
-	-nexa-icon : URL('theme://images/titlebar_icon.png');
 	-nexa-text-padding : 0px 0px 0px 10px;
-	-nexa-border : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-vertical-align : ;
-	border-radius : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .TitleBarControl .minbutton
@@ -6841,7 +6618,7 @@
 	background : ;
 	border-radius : ;
 	box-shadow : ;
-	cursor : ;
+	cursor : pointer;
 	opacity : ;
 }
 
@@ -11544,6 +11321,78 @@
 	-nexa-vertical-align : middle;
 	-nexa-text-align : right;
 	box-shadow : 0px 0px 10px #ffffff;
+}
+
+.Combo.valo_combo_tier
+{
+	background : #4c4c5a;
+	-nexa-border : 0px solid #4c4c5a;
+	-nexa-padding : 0px 0px 0px 5px;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	cursor : pointer;
+}
+.Combo.valo_combo_tier .dropbutton
+{
+	-nexa-padding : 1px 2px 0px 0px;
+	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
+	-nexa-border : 15px solid #4c4c5a;
+	cursor : pointer;
+}
+.Combo.valo_combo_tier .combolist
+{
+	font : normal 15pt/normal "이사만루체 Light";
+	color : white;
+	background : #4c4c5a;
+	-nexa-border : 2px solid #b1b1b1;
+	border-radius : 20px;
+
+}
+.Combo.valo_combo_tier .dropbutton[status=mouseover],
+.Combo.valo_combo_tier .dropbutton[status=focused]
+{
+	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
+	-nexa-border : 15px solid #4c4c5a;
+	cursor : pointer;
+}
+.Combo.valo_combo_tier[status=mouseover]
+{
+	cursor : pointer;
+	box-shadow : 0px 0px 5px #FFFFFF;
+}
+.Combo.valo_combo_tier[status=focused]
+{
+	cursor : pointer;
+}.Combo.valo_combo_tier .comboedit
+{
+	cursor : pointer;
+	
+}
+.Combo.valo_combo_tier .combolist .listboxitem
+{
+	color : white;
+	background : #31313c;
+	cursor : pointer;
+	-nexa-padding : 10px;
+	
+}
+.Combo.valo_combo_tier .combolist .listboxitem[status=mouseover]
+{
+	background : #4c4c5a;
+}
+.Combo.valo_combo_tier .combolist[status=focused],
+.Combo.valo_combo_tier .combolist[status=mouseover]
+{
+	-nexa-border : 2px solid #b1b1b1;
+}
+.Combo.valo_combo_tier .combolist .listboxitem[userstatus=selected]
+{
+	background : #4c4c5a;
+}
+.Button.btn_shadow[status=mouseover]
+{
+	box-shadow : 0px 0px 5px #FFFFFF;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
