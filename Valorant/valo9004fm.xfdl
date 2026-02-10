@@ -58,6 +58,9 @@
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
 
+// 클릭한 상태 저장
+this.clicked_button = "";
+
 this.valo9004fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.gfnFormOnLoad(this);
@@ -66,18 +69,30 @@ this.valo9004fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.btn_speed_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	if (this.clicked_button == obj.id) {
+		return;
+	}
+	
 	this.grd_ranking.formatid = "speed";
     this.btn_tracker.opacity = "50%";
 	this.btn_speed.opacity = "";
     this.fn_searchRanking("SPEED");
+	
+	this.clicked_button = obj.id;
 };
 
 this.btn_tracker_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	if (this.clicked_button == obj.id) {
+		return;
+	}
+	
 	this.grd_ranking.formatid = "tracker";
 	this.btn_tracker.opacity = "";
     this.btn_speed.opacity = "50%";
     this.fn_searchRanking("TRACKER");
+	
+	this.clicked_button = obj.id;
 };
 
 this.fn_searchRanking = function(sGameType)

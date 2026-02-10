@@ -3,13 +3,13 @@
   <Form id="valo7001fm" width="2000" height="980" titletext="파티 구인" onload="valo7001fm_onload" onclose="valo7001fm_onclose">
     <Layouts>
       <Layout height="980" width="2000">
-        <Button id="btn_agent_filter_all" taborder="6" left="100" top="80" width="110" height="60" background="url('theme://images/valo_all.png') no-repeat left top /contain #31313c" text="전체" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_watch" taborder="0" left="btn_agent_filter_all:10" top="80" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') no-repeat left top /contain #31313c" text="감시자" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_enter" taborder="1" left="btn_agent_filter_watch:10" top="80" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/dbe8757e-9e92-4ed4-b39f-9dfc589691d4/displayicon.png') no-repeat left top /contain #31313c" text="타격대" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_info" taborder="2" left="btn_agent_filter_enter:10" top="80" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png') no-repeat left top /contain #31313c" text="척후대" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_smoke" taborder="3" left="btn_agent_filter_info:10" top="80" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat left top /contain #31313c" text="전략가" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
-        <Combo id="combo_tier_filter" taborder="4" left="btn_agent_filter_smoke:20" top="80" width="190" height="60" innerdataset="ds_combo_tier" codecolumn="CODE" datacolumn="DATA" cssclass="valo_combo_tier" index="0" tabstop="false" cursor="pointer" text="티어 전체" value="1" onitemchanged="combo_tier_filter_onitemchanged"/>
-        <Grid id="grd_party" taborder="7" left="150" top="200" height="852" binddataset="gds_party" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px" tabstop="false" cssclass="grid_test" oncellclick="grd_ranking_oncellclick" onmousemove="grd_ranking_onmousemove" scrolltype="none" scrollbartype="none none" width="1700">
+        <Button id="btn_agent_filter_all" taborder="6" left="100" top="40" width="110" height="60" background="url('theme://images/valo_all.png') no-repeat left top /contain #31313c" text="전체" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_watch" taborder="0" left="btn_agent_filter_all:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') no-repeat left top /contain #31313c" text="감시자" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_enter" taborder="1" left="btn_agent_filter_watch:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/dbe8757e-9e92-4ed4-b39f-9dfc589691d4/displayicon.png') no-repeat left top /contain #31313c" text="타격대" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_info" taborder="2" left="btn_agent_filter_enter:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png') no-repeat left top /contain #31313c" text="척후대" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_smoke" taborder="3" left="btn_agent_filter_info:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat left top /contain #31313c" text="전략가" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
+        <Combo id="combo_tier_filter" taborder="4" left="btn_agent_filter_smoke:20" top="40" width="190" height="60" innerdataset="ds_combo_tier" codecolumn="CODE" datacolumn="DATA" cssclass="valo_combo_tier" index="0" tabstop="false" cursor="pointer" text="티어 전체" value="1" onitemchanged="combo_tier_filter_onitemchanged"/>
+        <Grid id="grd_party" taborder="7" left="150" top="130" height="852" binddataset="gds_party" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px 20px 0px 0px" tabstop="false" cssclass="grid_test" oncellclick="grd_party_oncellclick" scrolltype="none" scrollbartype="none none" width="1700">
           <Formats>
             <Format id="default">
               <Columns>
@@ -60,13 +60,13 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_write" taborder="5" top="80" height="60" background="url('theme://images/valo_write.png') no-repeat left top /contain #4c4c5a" text="구인 글 작성하기" textAlign="right" padding="0px 3px 0px 0px" border="10px solid #4c4c5a" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" width="206" onclick="btn_write_onclick" cursor="pointer" cssclass="btn_shadow" left="grd_party:-186"/>
-        <Button id="btn_space_0" taborder="8" left="763" top="grd_party:0" width="120" height="30"/>
-        <Div id="divPage" taborder="9" left="201" right="201" url="Cmm::CmmPaging.xfdl" height="100" text="" background="#31313c" borderRadius="0px 0px 20px 20px" border="2px none black,0px none,0px none" top="1212">
+        <Button id="btn_write" taborder="5" top="40" height="60" background="url('theme://images/valo_write.png') no-repeat left top /contain #4c4c5a" text="구인 글 작성하기" textAlign="right" padding="0px 3px 0px 0px" border="10px solid #4c4c5a" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" width="206" onclick="btn_write_onclick" cursor="pointer" cssclass="btn_shadow" left="grd_party:-186"/>
+        <Div id="divPage" taborder="9" left="150" url="Cmm::CmmPaging.xfdl" height="100" text="" background="#31313c" borderRadius="0px 0px 20px 20px" border="2px none black,0px none,0px none" top="grd_party:0" width="1698">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
+        <Button id="btn_space_0" taborder="8" left="990" top="divPage:0" width="120" height="30"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -130,7 +130,13 @@ this.btn_agent_filter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 		sFilterRole = "전체";
     }
 	sClass = sFilterRole;
-	this.fn_search_party_list(sFilterRole, sTier);
+	//this.fn_search_party_list(sFilterRole, sTier);
+	// ★★★ 중요 변경: 기존 함수 대신 페이징 조회 호출 ★★★
+    // 필터가 바뀌었으니 1페이지부터 다시 보여줘야 함
+    this.fvPage = 0;           // 페이지 번호 0 (1페이지)
+    this.fvRecordsOffset = 0;  // 오프셋 0
+    
+    this.fnSearch(); // <--- 변경된 조건으로 조회 시작!
 };
 
 // 버튼 스타일 통합 관리 함수
@@ -253,6 +259,7 @@ this.valo7001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     var objGrid = this.grd_party;
     var nLeft = (this.getOffsetWidth() - objGrid.getOffsetWidth()) / 2;
     objGrid.left = nLeft;
+	this.divPage.left = nLeft + 1;
 	
 	// 이벤트 핸들러 추가
 	this.fvApp.gds_login.addEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
@@ -316,15 +323,13 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 	// 티어 조회
     if (svcId == "searchTier") {
 		var objEnv = nexacro.getEnvironment();
-		objEnv.usewaitcursor = true;
+		objEnv.usewaitcursor = true;	
 	}
 	if (svcId == "searchParty") {
 		//alert("조회 완료");
 		
 		// 페이징 하자
-		//this.fnPageInit();
-		
-		this.fn_resizePartyList();
+		this.fnPageInit();
 	} if (svcId == "saveParty") {
 		//alert("저장 완료");
 		this.btn_agent_filter_all.click();
@@ -336,7 +341,12 @@ this.combo_tier_filter_onitemchanged = function(obj:nexacro.Combo,e:nexacro.Item
 	if(sTier == "티어 전체"){
 		sTier = "전체";
 	}
-	this.fn_search_party_list(sClass, sTier);
+	//this.fn_search_party_list(sClass, sTier);
+	// ★★★ 중요 변경 ★★★
+    this.fvPage = 0;           
+    this.fvRecordsOffset = 0;  
+    
+    this.fnSearch(); // <--- 변경된 조건으로 조회 시작!
 };
 
 // 그리드 다시 그리기
@@ -347,6 +357,7 @@ this.fn_resizePartyList = function()
     var nRowHeight = 60;
     
     var nTotalCount = this.fvApp.gds_party.getRowCount();
+	
     var nNewHeight = nTotalCount * nRowHeight;
     if (nNewHeight == 0) { // 값이 없으면 높이 0
 		nNewHeight = 0;
@@ -406,7 +417,7 @@ this.fn_getClassImage = function(sClass)
 // 페이징
 
 
-this.fvRecords=0; 			//목록갯수
+this.fvRecords=10; 			//목록갯수
 this.fvPage=0;	 			//페이지번호
 this.fvRecordsOffset=0;		//시작rownum
 this.fvTotalCount=0;		//전체데이터갯수
@@ -425,6 +436,12 @@ this.fnPageInit = function ()
 
 this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	// 1. 안전장치: 페이징 개수 기본값
+    if (this.fvRecords == 0 || this.fvRecords == undefined) {
+        this.fvRecords = 10;
+    }
+	
+	
 	// 조회조건 설정
 	// 데이터를 넘길 경우 데이터셋에 추가해서 넘기는 방식과
 	// 아규먼트를 추가해서 넘기는 방식 모두 사용가능
@@ -433,6 +450,14 @@ this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.ds_search.setColumn(nRow, "records", this.fvRecords);
     this.ds_search.setColumn(nRow, "recordsOffset", this.fvRecordsOffset);
 	
+	// 값이 없으면 "전체"로 처리
+    var sendClass = (sClass == undefined || sClass == "") ? "전체" : sClass;
+    var sendTier  = (sTier == undefined || sTier == "") ? "전체" : sTier;
+    
+    this.ds_search.setColumn(nRow, "party_class", sendClass);
+    this.ds_search.setColumn(nRow, "party_tier", sendTier);
+	
+	
  	var strSvcId    = "paging2";
 	var strSvcUrl   = "selectPartyPaging.do";
 	var inData      = "in_search=ds_search";
@@ -440,6 +465,8 @@ this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var strArg      = "";
 	var callBackFnc = "fn_Callback2";
 	var isAsync   	= true;
+	
+	
 	
 	this.gfnTransaction(strSvcId , 		// transaction을 구분하기 위한 svc id값
 		strSvcUrl , 	// trabsaction을 요청할 주소
@@ -468,6 +495,7 @@ this.fn_Callback2 = function(svcId, errCode, errMsg)
 			
 			// 페이징 네비게이션 그리기
 			this.fnPagingSetting();
+			this.fn_resizePartyList();
 		}
 	}
 };
@@ -494,7 +522,36 @@ this.fnPagingCallback = function(nPage, nRecordsOffset)
     
     this.fnSearch(); // 변경된 페이지 정보로 다시 조회
 };
-]]></Script>
+
+//////////////////////////////////////////////////////////////////////////
+// 그리드 셀 클릭해서 전적 검색이랑 내 글 수정 삭제 신고 할 수 있게 하자 이제
+
+// 그리드에서 닉네임 부분 클릭하면 발생하는 함수
+this.grd_party_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if (e.cell == 1) {
+		var clicked_nickname = this.grd_ranking.getCellPropertyValue( e.row, 1, "text");
+		
+		var sMsgId = "msg.notice.clicked_nickname";	//메세지ID
+		var arrArg = [clicked_nickname];			//메세지취환될값 배열[생략가능]
+		var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+		var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
+		
+		// 변경된 내역을 저장 하시겠습니까?
+		//this.gfnAlert(sMsgId, arrArg, sPopId, sMsgCallback);	
+		
+		// function 전달
+		this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
+				if (strVal == true) {
+					// 확인 선택
+					this.fnSearch_user_match(clicked_nickname);
+				}
+				else {
+					// 취소 선택
+				}
+			});
+	}
+};]]></Script>
     <Objects>
       <Dataset id="ds_combo_tier">
         <ColumnInfo>
@@ -560,6 +617,8 @@ this.fnPagingCallback = function(nPage, nRecordsOffset)
           <Column id="page" type="INT" size="256"/>
           <Column id="recordsOffset" type="INT" size="256"/>
           <Column id="pageCount" type="INT" size="256"/>
+          <Column id="party_class" type="STRING" size="256"/>
+          <Column id="party_tier" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_paging_info">
