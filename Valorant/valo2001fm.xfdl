@@ -30,7 +30,7 @@
               <Band id="body">
                 <Cell text="bind:RANKING" border="0px,1px solid #292932,1px solid black,0px" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
                 <Cell col="1" colspan="2" text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" displaytype="text" textAlign="left" cssclass="grid_test1"/>
-                <Cell col="3" textAlign="right" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,0px,1px solid black,1px solid #292932" imagestretch="fixaspectratio" padding="0px 0px 0px 120px" displaytype="imagecontrol" text="bind:TIER_ICON"/>
+                <Cell col="3" textAlign="right" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,0px,1px solid black,1px solid #292932" imagestretch="fixaspectratio" padding="3px 0px 3px 120px" displaytype="imagecontrol" text="bind:TIER_ICON"/>
                 <Cell col="4" border="0px,1px solid #292932,1px solid black,0px" text="bind:TIER" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
                 <Cell col="5" text="bind:RANKED_RATING" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
                 <Cell col="6" text="bind:WINS" border="0px,0px,1px solid black,1px solid #292932" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>

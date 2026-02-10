@@ -7,7 +7,7 @@
         <Edit id="edit_user_name" taborder="1" left="20" top="sta_user_name:20" height="58" text="" background="#282830" border="2px solid #515163" color="#505061" enable="false" borderRadius="10px" font="normal 13pt/normal &quot;이사만루체 Light&quot;" right="20" textAlign="left" padding="0px 0px 0px 10px" cursor="default"/>
         <Button id="btn_agent_filter_all" taborder="8" left="20" top="208" width="48" height="47" background="url('theme://images/valo_all.png') no-repeat center center /contain #4e4e5f" borderRadius="10px" border="5px solid #4e4e5f" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
         <Static id="sta_memo" taborder="2" text="메모" left="22" top="btn_agent_filter_all:50" width="37" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
-        <Edit id="edit_memo" taborder="3" left="20" top="sta_memo:20" height="118" text="" background="#282830" border="2px solid #515163" color="#505061" enable="true" borderRadius="10px" font="normal 13pt/normal &quot;이사만루체 Light&quot;" right="20" textAlign="left" padding="0px 0px 0px 10px" autoselect="true" tabstop="false" maxlength="100" displaynulltext="예시) 함께 할 듀오 파트너를 찾고있어요." onchanged="edit_memo_onchanged" oninput="edit_memo_oninput" onkillfocus="edit_memo_onkillfocus" onsetfocus="edit_memo_onsetfocus"/>
+        <Edit id="edit_memo" taborder="3" left="20" top="sta_memo:20" height="118" text="" background="#282830" border="2px solid #515163" color="#7b7b93" enable="true" borderRadius="10px" font="normal 13pt/normal &quot;이사만루체 Light&quot;" right="20" textAlign="left" padding="0px 0px 0px 10px" autoselect="true" tabstop="false" maxlength="100" displaynulltext="예시) 함께 할 듀오 파트너를 찾고있어요." onchanged="edit_memo_onchanged" oninput="edit_memo_oninput" onkillfocus="edit_memo_onkillfocus" onsetfocus="edit_memo_onsetfocus"/>
         <Button id="btn_focus" taborder="4" left="20" width="0" height="0" bottom="5"/>
         <Button id="btnOk" taborder="5" text="등록" width="90" height="50" bottom="30" onclick="btnOk_onclick" uWord="popup.ok" cssclass="btn_WF_FillRed" left="125"/>
         <Button id="btnCancle" taborder="6" text="취소" width="90" height="50" bottom="30" onclick="btnCancle_onclick" uWord="popup.ok" right="125" cssclass="btn_WF_FillGray"/>
@@ -63,7 +63,7 @@ this.btnCancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.edit_memo_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
 {
 	if(this.edit_memo.text.length == 0){
-		this.edit_memo.color = "#505061";
+		this.edit_memo.color = "#7b7b93";
 		this.edit_memo.value = null;
 	}
 };
@@ -73,7 +73,7 @@ this.edit_memo_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
 {
 	this.edit_memo.color = "white";
 	if(this.edit_memo.text.length == 0){
-		this.edit_memo.color = "#505061";
+		this.edit_memo.color = "#7b7b93";
 		this.edit_memo.value = null;
 	}
 };

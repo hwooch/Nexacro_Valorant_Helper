@@ -1844,18 +1844,6 @@
 .GridCellControl .cellprogressbar
 {
 	font :  -nexa-define(--MalgunGothic12px);
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	letter-spacing : ;
-	opacity : ;
 }
 
 /* celltextarea (Same as TextAreaControl) */
@@ -11393,6 +11381,35 @@
 .Button.btn_shadow[status=mouseover]
 {
 	box-shadow : 0px 0px 5px #FFFFFF;
+}
+.Grid.grid_test .body .row .cell .cellbutton
+{
+	background : transparent;
+	-nexa-border : 0px solid red;
+	color : white;
+}
+.Grid.grid_test .body .row .cell .cellbutton[status=focused],
+.Grid.grid_test .body .row .cell .cellbutton[status=mouseover]
+{
+	cursor : pointer;
+	background : transparent;
+	-nexa-border : 0px solid red;
+	color : white;
+}
+.Grid.grid_test .body .row .cell .cellprogressbar
+{
+	-nexa-border : 0px solid red;
+	background : #e84057;
+	border-radius : 10px;
+}
+.Grid.grid_test .body .row .cell .cellprogressbar .progressbaritem
+{
+	background : #5383e8;
+}
+.Grid.grid_test .body .row .cell .cellprogressbar .progressbartext
+{
+	font : normal 14px/normal "이사만루체 Light";
+	color : transparent;	
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>

@@ -162,6 +162,40 @@
         <Button id="btn_space_2" taborder="21" left="0" top="630" background="#1f2326" bottom="0" right="0"/>
         <Static id="sta_hide_screen" taborder="17" left="34" top="190" background="#31313c" textAlign="center" verticalAlign="middle" color="white" font="normal 50pt/normal &quot;AppleSDGothicNeoH00&quot;" borderRadius="20px" right="34" bottom="20" text=""/>
         <Button id="btn_new_search_2" taborder="22" top="div_user_status:80" text="다른 플레이어&#13;&#10;검색하기" borderRadius="20px" border="5px solid #f74451" color="#f74451" font="normal 20pt/normal &quot;이사만루체 Medium&quot;" cursor="pointer" onclick="div_recent_history_btn_new_search_onclick" cssclass="btn_new_search" height="100" left="850" visible="false" right="850"/>
+        <Grid id="Grid00" taborder="23" left="130" top="1290" width="1743" height="656" binddataset="ds_tier">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="TIER_NAME"/>
+                <Cell col="1" text="RR"/>
+                <Cell col="2" text="TIER_ICON"/>
+                <Cell col="3" text="SEASON_WINS"/>
+                <Cell col="4" text="SEASON_GAMES"/>
+                <Cell col="5" text="SEASON_WIN_RATE"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:TIER_NAME"/>
+                <Cell col="1" text="bind:RR"/>
+                <Cell col="2" text="bind:TIER_ICON"/>
+                <Cell col="3" text="bind:SEASON_WINS"/>
+                <Cell col="4" text="bind:SEASON_GAMES"/>
+                <Cell col="5" text="bind:SEASON_WIN_RATE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
