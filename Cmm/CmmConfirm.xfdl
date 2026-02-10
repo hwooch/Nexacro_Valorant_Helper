@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="CmmConfirm" width="560" height="320" titletext="확인창" onload="form_onload">
+  <Form id="CmmConfirm" width="560" height="320" titletext="확인창" onload="form_onload" border="2px solid #a1a1ac" borderRadius="20px">
     <Layouts>
       <Layout height="320" width="560">
         <Static id="staIcon" taborder="0" left="15" top="40" width="50" height="50"/>

@@ -43,7 +43,7 @@
                 <Cell col="12" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>
+                <Cell text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px" cursor="pointer"/>
                 <Cell col="1" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" displaytype="imagecontrol" imagestretch="fixaspectratio" text="expr:USER_MIC == 'on' ? 'theme://images/valo_mic_on_green.png' : 'theme://images/valo_mic_off_gray.png'" padding="10px"/>
                 <Cell col="2" text="expr:comp.parent.fn_getClassImage(USER_CLASS)" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,0px,1px solid black,1px solid #292932" displaytype="imagecontrol" imagestretch="fixaspectratio" padding="10px 0px 10px 10px"/>
                 <Cell col="3" text="bind:USER_CLASS" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black,0px"/>
@@ -67,6 +67,7 @@
           </Layouts>
         </Div>
         <Button id="btn_space_0" taborder="8" left="990" top="divPage:0" width="120" height="30"/>
+        <PopupMenu id="popup_menu" left="1665" top="1097" width="145" height="163" onmenuclick="popup_menu_onmenuclick" innerdataset="ds_menu" idcolumn="id" levelcolumn="level" captioncolumn="caption" cssclass="test"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -200,11 +201,11 @@ this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	// 디스코드 아이디 값이 null이나 undefined인지 먼저 확인
 	if (check_discord_id == null || check_discord_id == undefined || check_discord_id == "") {
-		alert("디스코드 ID가 없습니다.");
+		this.gfnAlert("msg.notice.login4", "", "nodata"); //////////////////
 		return; // 더 이상 진행하지 않고 종료
 	} else {
 		if (check_riot_id == "연동된 계정이 존재하지 않습니다.") {
-			alert("연동된 계정이 존재하지 않습니다.");
+			this.gfnAlert("msg.notice.party1", "", "nodata"); //////////////////
 			return; // 더 이상 진행하지 않고 종료
 		} else {
 			var objChildFrame = new ChildFrame("popupModal", 0, 0, 480, 420);
@@ -526,11 +527,14 @@ this.fnPagingCallback = function(nPage, nRecordsOffset)
 //////////////////////////////////////////////////////////////////////////
 // 그리드 셀 클릭해서 전적 검색이랑 내 글 수정 삭제 신고 할 수 있게 하자 이제
 
+// 현재 클릭한 행(Row)을 저장할 변수 (메뉴 클릭 시 사용하기 위함)
+this.fv_clickedRow = -1;
+
 // 그리드에서 닉네임 부분 클릭하면 발생하는 함수
 this.grd_party_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	if (e.cell == 1) {
-		var clicked_nickname = this.grd_ranking.getCellPropertyValue( e.row, 1, "text");
+	if (e.cell == 0) {
+		var clicked_nickname = this.grd_party.getCellPropertyValue( e.row, 0, "text");
 		
 		var sMsgId = "msg.notice.clicked_nickname";	//메세지ID
 		var arrArg = [clicked_nickname];			//메세지취환될값 배열[생략가능]
@@ -551,7 +555,94 @@ this.grd_party_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 				}
 			});
 	}
-};]]></Script>
+	if (e.cell == 6) {
+		var objChildFrame = new ChildFrame("popupModal", 0, 0, 480, 420);
+		objChildFrame.formurl = "Popup::valo3001pu.xfdl";
+		objChildFrame.openalign = "center middle";
+		objChildFrame.overlaycolor = "RGBA(0,0,0,0.4)";
+		objChildFrame.dragmovetype = "all";
+		objChildFrame.showtitlebar = false;
+		objChildFrame.set_titlebarheight(40);
+		objChildFrame.cssclass = "valo_popup";
+		
+		objChildFrame.showModal(this.getOwnerFrame(),{a:this.fvApp.gds_party.getColumn(e.row, "USER_MEMO")},  this, "fn_popupCallback");
+	}
+	if (e.cell == 12) {
+		// 1. 현재 클릭한 행 인덱스 저장 (삭제/수정할 때 어떤 글인지 알아야 하니까)
+        this.fv_clickedRow = e.row;
+		
+        // 2. (옵션) 작성자 본인이면 '신고' 숨기고, 남이면 '수정/삭제' 숨기기
+        // 로그인된 ID와 게시글 작성자 ID 비교
+        var sLoginId = this.fvApp.gds_login.getColumn(0, "DISCORD_ID"); 
+        var sWriterId = this.fvApp.gds_party.getColumn(e.row, "DISCORD_ID");
+        
+        // 필터링 예시 (데이터셋 필터링으로 메뉴 항목 조절)
+        if (sLoginId == sWriterId) {
+            // 내 글이면: 수정, 삭제만 표시
+            this.ds_menu.filter("id != 'REP'"); 
+        } else {
+            // 남의 글이면: 신고만 표시
+            this.ds_menu.filter("id == 'REP'");
+        }
+		this.popup_menu.trackPopupByComponent(obj, e.clientx, e.clienty);
+	}
+};
+
+
+// 전적 검색 함수
+this.fnSearch_user_match = function (clicked_nickname)
+{
+	var devide = clicked_nickname.split(" #");
+	
+	var sName = devide[0]; // 닉네임 String
+    var sTag  = devide[1]; // 태그   String
+	
+	this.fvApp.setVariable("gv_Recent_Search_Name", sName);
+	this.fvApp.setVariable("gv_Recent_Search_Tag", sTag);
+	
+	var objTopFrame = this.fvApp.mainframe.VFrameSet00.TopFrame.form;
+	
+	if (objTopFrame.btn_Search) {
+		objTopFrame.btn_Search.click();
+		var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+		objWorkFrame.formurl = "Valorant::valo1002fm.xfdl";
+	}
+};
+this.popup_menu_onmenuclick = function(obj:nexacro.PopupMenu,e:nexacro.MenuClickEventInfo)
+{
+	// 선택한 메뉴의 ID (MOD, DEL, REP)
+    var sId = e.id;
+    
+    // 아까 저장해둔 행 인덱스
+    var nRow = this.fv_clickedRow;
+    
+    // 게시글 번호 가져오기
+    var sBoardNo = this.fvApp.gds_party.getColumn(nRow, "BOARD_NO");
+    
+    switch(sId) 
+    {
+	case "MOD": // 수정
+		this.alert("수정 기능 실행! (게시글번호: " + sBoardNo + ")");
+		// 수정 팝업 열기 로직...
+		break;
+		
+	case "DEL": // 삭제
+		// 삭제 확인 받기
+		var bCheck = this.confirm("정말로 이 글을 삭제하시겠습니까?");
+		if(bCheck) {
+			// 트랜잭션 호출 (삭제 로직)
+			// this.fn_deletePost(sBoardNo);
+			this.alert("삭제되었습니다.");
+		}
+		break;
+		
+	case "REP": // 신고
+		this.alert("신고 팝업 열기 (대상: " + sBoardNo + ")");
+		// 신고 팝업 로직...
+		break;
+    }
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_combo_tier">
         <ColumnInfo>
@@ -625,6 +716,30 @@ this.grd_party_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
         <ColumnInfo>
           <Column id="totalCount" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_menu">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="caption" type="STRING" size="256"/>
+          <Column id="level" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="level">0</Col>
+            <Col id="caption">수정</Col>
+            <Col id="id">MOD</Col>
+          </Row>
+          <Row>
+            <Col id="level">0</Col>
+            <Col id="caption">삭제</Col>
+            <Col id="id">DEL</Col>
+          </Row>
+          <Row>
+            <Col id="level">0</Col>
+            <Col id="caption">신고</Col>
+            <Col id="id">REP</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
   </Form>

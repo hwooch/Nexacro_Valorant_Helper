@@ -1997,6 +1997,13 @@
           <Col id="MSG_TYPE">C</Col>
           <Col id="MSG_ICON">ERR</Col>
         </Row>
+        <Row>
+          <Col id="MSG_ID">msg.notice.party1</Col>
+          <Col id="MSG_TEXT">연동된 계정이 존재하지 않습니다.</Col>
+          <Col id="MSG_TEXT_EN">연동된 계정이 존재하지 않습니다.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">ERR</Col>
+        </Row>
       </Rows>
     </Dataset>
     <Dataset id="gdsMyMenu">

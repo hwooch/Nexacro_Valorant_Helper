@@ -5,20 +5,20 @@
       <Layout height="600" width="500">
         <Static id="sta_user_name" taborder="0" text="플레이어 이름" left="22" top="20" width="116" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
         <Edit id="edit_user_name" taborder="1" left="20" top="sta_user_name:20" height="58" text="" background="#282830" border="2px solid #515163" color="#505061" enable="false" borderRadius="10px" font="normal 13pt/normal &quot;이사만루체 Light&quot;" right="20" textAlign="left" padding="0px 0px 0px 10px" cursor="default"/>
-        <Button id="btn_agent_filter_all" taborder="8" left="20" top="208" width="48" height="47" background="url('theme://images/valo_all.png') no-repeat center center /contain #4e4e5f" borderRadius="10px" border="5px solid #4e4e5f" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
+        <Button id="btn_agent_filter_all" taborder="7" left="20" top="208" width="48" height="47" background="url('theme://images/valo_all.png') no-repeat center center /contain #4e4e5f" borderRadius="10px" border="5px solid #4e4e5f" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
         <Static id="sta_memo" taborder="2" text="메모" left="22" top="btn_agent_filter_all:50" width="37" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
-        <Edit id="edit_memo" taborder="3" left="20" top="sta_memo:20" height="118" text="" background="#282830" border="2px solid #515163" color="#7b7b93" enable="true" borderRadius="10px" font="normal 13pt/normal &quot;이사만루체 Light&quot;" right="20" textAlign="left" padding="0px 0px 0px 10px" autoselect="true" tabstop="false" maxlength="100" displaynulltext="예시) 함께 할 듀오 파트너를 찾고있어요." onchanged="edit_memo_onchanged" oninput="edit_memo_oninput" onkillfocus="edit_memo_onkillfocus" onsetfocus="edit_memo_onsetfocus"/>
-        <Button id="btn_focus" taborder="4" left="20" width="0" height="0" bottom="5"/>
-        <Button id="btnOk" taborder="5" text="등록" width="90" height="50" bottom="30" onclick="btnOk_onclick" uWord="popup.ok" cssclass="btn_WF_FillRed" left="125"/>
-        <Button id="btnCancle" taborder="6" text="취소" width="90" height="50" bottom="30" onclick="btnCancle_onclick" uWord="popup.ok" right="125" cssclass="btn_WF_FillGray"/>
-        <Static id="sta_class" taborder="7" text="선호 클래스" left="22" top="edit_user_name:50" width="97" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
-        <Button id="btn_agent_filter_watch" taborder="9" left="btn_agent_filter_all:3" top="208" width="48" height="47" background="url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
-        <Static id="sta_mic" taborder="10" text="마이크 여부" top="edit_user_name:50" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;" right="22" width="97"/>
-        <Button id="btn_agent_filter_enter" taborder="11" left="btn_agent_filter_watch:3" top="208" width="48" height="47" background="url('https://media.valorant-api.com/agents/roles/dbe8757e-9e92-4ed4-b39f-9dfc589691d4/displayicon.png') no-repeat center center /contain #4e4e5f" borderRadius="10px" border="5px solid #4e4e5f" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
-        <Button id="btn_agent_filter_info" taborder="13" left="btn_agent_filter_enter:3" top="208" width="48" height="47" background="url('https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
-        <Button id="btn_agent_filter_smoke" taborder="12" left="btn_agent_filter_info:3" top="208" width="48" height="47" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
-        <Button id="btn_mic_off" taborder="15" top="208" width="48" height="47" background="url('theme://images/valo_mic_off.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" right="20" cursor="pointer" onclick="Button_mic_onclick" onmouseleave="Button_mic_onmouseleave" onmouseenter="Button_mic_onmouseenter"/>
-        <Button id="btn_mic_on" taborder="14" top="208" width="48" height="47" background="url('theme://images/valo_mic_on.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" right="btn_mic_off:3" cursor="pointer" onmouseenter="Button_mic_onmouseenter" onmouseleave="Button_mic_onmouseleave" onclick="Button_mic_onclick"/>
+        <Button id="btn_focus" taborder="3" left="20" width="0" height="0" bottom="5"/>
+        <Button id="btnOk" taborder="4" text="등록" width="90" height="50" bottom="30" onclick="btnOk_onclick" uWord="popup.ok" cssclass="btn_WF_FillRed" left="125"/>
+        <Button id="btnCancle" taborder="5" text="취소" width="90" height="50" bottom="30" onclick="btnCancle_onclick" uWord="popup.ok" right="125" cssclass="btn_WF_FillGray"/>
+        <Static id="sta_class" taborder="6" text="선호 클래스" left="22" top="edit_user_name:50" width="97" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
+        <Button id="btn_agent_filter_watch" taborder="8" left="btn_agent_filter_all:3" top="208" width="48" height="47" background="url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
+        <Static id="sta_mic" taborder="9" text="마이크 여부" top="edit_user_name:50" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;" right="22" width="97"/>
+        <Button id="btn_agent_filter_enter" taborder="10" left="btn_agent_filter_watch:3" top="208" width="48" height="47" background="url('https://media.valorant-api.com/agents/roles/dbe8757e-9e92-4ed4-b39f-9dfc589691d4/displayicon.png') no-repeat center center /contain #4e4e5f" borderRadius="10px" border="5px solid #4e4e5f" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
+        <Button id="btn_agent_filter_info" taborder="12" left="btn_agent_filter_enter:3" top="208" width="48" height="47" background="url('https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
+        <Button id="btn_agent_filter_smoke" taborder="11" left="btn_agent_filter_info:3" top="208" width="48" height="47" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
+        <Button id="btn_mic_off" taborder="14" top="208" width="48" height="47" background="url('theme://images/valo_mic_off.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" right="20" cursor="pointer" onclick="Button_mic_onclick" onmouseleave="Button_mic_onmouseleave" onmouseenter="Button_mic_onmouseenter"/>
+        <Button id="btn_mic_on" taborder="13" top="208" width="48" height="47" background="url('theme://images/valo_mic_on.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" right="btn_mic_off:3" cursor="pointer" onmouseenter="Button_mic_onmouseenter" onmouseleave="Button_mic_onmouseleave" onclick="Button_mic_onclick"/>
+        <TextArea id="txt_memo" taborder="15" left="20" top="sta_memo:20" height="118" wordWrap="char" autoselect="true" enable="true" tabstop="false" maxlength="100" background="#282830" border="2px solid #515163" borderRadius="10px" color="#7b7b93" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="10px 0px 0px 10px" textAlign="left" right="20" onchanged="txt_memo_onchanged" oninput="txt_memo_oninput" onkillfocus="txt_memo_onkillfocus" onsetfocus="txt_memo_onsetfocus" displaynulltext="예시) 함께 할 듀오 파트너를 찾고있어요."/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -44,7 +44,7 @@ this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var user_name = this.edit_user_name.text.split("#")[0];
 	var user_tag  = this.edit_user_name.text.split("#")[1];
-	var user_memo = this.edit_memo.text;
+	var user_memo = this.txt_memo.text;
 	if (user_memo.length < 1) {
 		user_memo = "";
 	}
@@ -56,25 +56,33 @@ this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 취소 버튼 온클릭
 this.btnCancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.close(false);
+	this.close(null);
 };
 
 // 메모 입력할때 색상 조절
-this.edit_memo_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+this.txt_memo_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
 {
-	if(this.edit_memo.text.length == 0){
-		this.edit_memo.color = "#7b7b93";
-		this.edit_memo.value = null;
+	if (this.txt_memo.text == null || this.txt_memo.text == undefined || this.txt_memo.text == "") {
+		this.txt_memo.color = "#7b7b93";
+		//this.txt_memo.text = null;
+	}
+	if (this.txt_memo.value == null || this.txt_memo.value == undefined || this.txt_memo.value == "") {
+		this.txt_memo.color = "#7b7b93";
+		this.txt_memo.value = null;
 	}
 };
 
 // 메모 입력할때 색상 조절
-this.edit_memo_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
+this.txt_memo_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
 {
-	this.edit_memo.color = "white";
-	if(this.edit_memo.text.length == 0){
-		this.edit_memo.color = "#7b7b93";
-		this.edit_memo.value = null;
+	this.txt_memo.color = "white";
+	if (this.txt_memo.text == null || this.txt_memo.text == undefined || this.txt_memo.text == "") {
+		this.txt_memo.color = "#7b7b93";
+		//this.txt_memo.text = null;
+	}
+	if (this.txt_memo.value == null || this.txt_memo.value == undefined || this.txt_memo.value == "") {
+		this.txt_memo.color = "#7b7b93";
+		this.txt_memo.value = null;
 	}
 };
 
@@ -91,14 +99,28 @@ this.valo2001pu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.btn_mic_off.click();
 };
 
-this.edit_memo_onkillfocus = function(obj:nexacro.Edit,e:nexacro.KillFocusEventInfo)
+this.txt_memo_onkillfocus = function(obj:nexacro.Edit,e:nexacro.KillFocusEventInfo)
 {
-	this.edit_memo.border = "2px solid #515163";
+	this.txt_memo.border = "2px solid #515163";
+	// 2. 현재 값 가져오기
+    var sVal = obj.value;
+
+    // 3. 값이 비어있거나("") 공백만 있다면 null로 강제 변경
+    // (.text 속성은 건드리지 말고 value만 설정하세요!)
+    if (sVal == null || sVal == undefined || String(sVal).trim() == "") 
+    {
+        obj.set_value(null); // 이렇게 해야 displaynulltext가 나타납니다.
+        
+        // ★ 중요: oninput에서 색상을 white로 바꿨기 때문에, 
+        // placeholder 색상이 잘 보이게 하려면 색상을 다시 원래대로 돌려야 할 수 있습니다.
+        // (CSS에서 nulltext 색상을 따로 지정안했다면 컴포넌트 color를 따라가서 안보일 수 있음)
+        // obj.set_color("#7b7b93"); 
+    }
 };
 
-this.edit_memo_onsetfocus = function(obj:nexacro.Edit,e:nexacro.SetFocusEventInfo)
+this.txt_memo_onsetfocus = function(obj:nexacro.Edit,e:nexacro.SetFocusEventInfo)
 {
-	this.edit_memo.border = "2px solid white";
+	this.txt_memo.border = "2px solid white";
 };
 
 this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -285,7 +307,6 @@ this.fn_setMicStyle = function(obj, status)
 		obj.background = "url('theme://images/valo_mic_on.png') no-repeat center center /contain " + sMicColor;
 		break;
     }
-};
-]]></Script>
+};]]></Script>
   </Form>
 </FDL>

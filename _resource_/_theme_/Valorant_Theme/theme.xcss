@@ -11411,6 +11411,35 @@
 	font : normal 14px/normal "이사만루체 Light";
 	color : transparent;	
 }
+.PopupMenu.test
+{
+	background : #f74451;
+	color : white;
+	font : normal 16pt/normal "이사만루체 Light";
+	-nexa-border : 1px solid red;
+	box-shadow : 0px 0px 20px #000000;
+	border-radius : 10px;
+}
+.PopupMenu.test[status=mouseover]
+{
+	cursor : pointer;
+	background : #f74451;
+	color : white;
+	box-shadow : 0px 0px 20px #000000;
+}
+.PopupMenu.test .popupmenuitem
+{
+	cursor : pointer;
+	background : #f74451;
+	color : white;
+	-nexa-border : 1px solid red;
+}
+.PopupMenu.test .popupmenuitem[status=mouseover],
+.PopupMenu.test .popupmenuitem[status=focused]
+{
+	background : #f85d67;
+	color : white;
+}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>
