@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="valo7002fm" width="2000" height="980" titletext="신고 목록 확인" onload="valo7002fm_onload" onclose="valo7002fm_onclose" color="white">
+    <Layouts>
+      <Layout height="980" mobileorientation="landscape" width="2000">
+        <Button id="btn_refuse" taborder="1" text="거절" top="40" width="110" height="60" background="#4d4d60" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;" onclick="btn_refuse_onclick" cssclass="btn_shadow" borderRadius="20px" right="100" cursor="pointer"/>
+        <Button id="btn_accept" taborder="0" text="수락" top="40" height="60" background="#4d4d60" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;" onclick="btn_accept_onclick" cssclass="btn_shadow" borderRadius="20px" right="btn_refuse:30" width="110" cursor="pointer"/>
+        <Static id="sta_description" taborder="5" text="접수된 신고 내역" left="150" top="140" width="188" height="31" font="normal 20pt/normal &quot;이사만루체 Light&quot;"/>
+        <Grid id="grd_report" taborder="2" left="150" top="sta_description:30" height="582" binddataset="gds_report" autofittype="col" border="1px solid #1f2326" background="#31313c" borderRadius="20px" tabstop="false" cssclass="grid_test" scrolltype="none" scrollbartype="none none" width="1700" font="normal 30pt/normal &quot;이사만루체 Medium&quot;" nodatatext="신고 내역이 존재하지 않습니다." extendsizetype="row">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="372"/>
+                <Column size="372"/>
+                <Column size="372"/>
+                <Column size="372"/>
+                <Column size="170"/>
+              </Columns>
+              <Rows>
+                <Row size="60" band="head"/>
+                <Row size="60"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="신고자 닉네임" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px solid #cacaca,1px solid #4d4d60,1px solid black,0px solid #cacaca"/>
+                <Cell col="1" text="신고 이유" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="2" text="신고 대상자 닉네임" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px,1px solid #4d4d60,1px solid black"/>
+                <Cell col="3" text="작성된 메모" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px,0px,1px solid black"/>
+                <Cell col="4" text="신고 시간" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black,1px solid #4d4d60"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:REPORTER_RIOT_NAME +&quot; #&quot;+ REPORTER_RIOT_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>
+                <Cell col="1" text="bind:REPORT_REASON" textAlign="center" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" wordWrap="char" displaytype="text"/>
+                <Cell col="2" text="expr:WRITER_RIOT_NAME +&quot; #&quot;+ WRITER_RIOT_TAG" border="0px,1px solid #292932,1px solid black" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>
+                <Cell col="3" text="bind:WRITER_MEMO" textAlign="center" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" wordWrap="char"/>
+                <Cell col="4" text="bind:REPORT_TIME" border="0px,0px,1px solid black,1px solid #292932" textAlign="center" font="normal 11pt/normal &quot;이사만루체 Light&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_back" taborder="3" left="100" top="40" width="110" height="60" background="#4d4d60" text="돌아가기" textAlign="center" padding="0px px 0px 0px" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" cssclass="btn_shadow" onclick="btn_back_onclick" cursor="pointer"/>
+        <Button id="btn_space_0" taborder="4" left="990" top="grd_report:0" width="120" height="30"/>
+        <Static id="sta_description_1" taborder="6" text="처리할 신고 내역을 클릭 후 버튼을 통해 처리하세요." left="sta_description:40" top="140" width="575" height="31" font="normal 18pt/normal &quot;이사만루체 Light&quot;" color="#c6c6d1"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+
+// 이벤트 핸들러 추가해서 로그아웃되면 페이지에서 쫒겨나야됨
+
+this.valo7002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// 이벤트 핸들러 추가
+	this.fvApp.gds_login.addEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
+	this.fvApp.gds_login.addEventHandler("onload", this.fn_LoginDataChanged, this);
+	
+	
+	// 신고 내역 조회
+	this.fn_search_report();
+	
+	
+	// 그리드 화면 가운데 좌표 계산
+    var objGrid = this.grd_report;
+    var nLeft = (this.getOffsetWidth() - objGrid.getOffsetWidth()) / 2;
+    objGrid.left = nLeft;
+};
+
+// 신고 내역 전체 불러오기
+this.fn_search_report = function()
+{
+    var strSvcId    = "selectReportList";
+    var strSvcUrl   = "SvcUrl::selectReportList.do";
+    var inData      = "";
+    var outData     = "gds_report=out_report";
+    var strArg      = "";
+    var callBackFnc = "fn_Callback";
+    
+    this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
+};
+
+// 그리드에서 선택한 row의 BOARD_NUM 값 구하기
+this.fn_getBoardNo = function() {
+	var nRow = this.fvApp.gds_report.rowposition; // 혹은 바인딩된 그리드 이름
+	if(nRow < 0) return null;
+	return this.fvApp.gds_report.getColumn(nRow, "BOARD_NO");
+};
+
+// 신고 수락
+this.btn_accept_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sBoardNo = this.fn_getBoardNo();
+	if(!sBoardNo) {
+		this.gfnAlert("msg.notice.report_require", "", "nodata"); //////////////////
+		return;
+	}
+    
+	var sMsgId = "msg.notice.report_warning_accept";	//메세지ID
+	var arrArg = "";			//메세지취환될값 배열[생략가능]
+	var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+	var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
+	
+	// function 전달
+	this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
+			if (strVal == true) {
+				// 확인 선택
+				var strSvcId    = "acceptReport";
+				var strSvcUrl   = "SvcUrl::acceptReport.do";
+				var inData      = "";
+				var outData     = "";
+				var strArg      = "boardNo=" + nexacro.wrapQuote(sBoardNo);
+				var callBackFnc = "fn_Callback";
+				
+				this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
+			}
+		});
+};
+
+// 신고 거절
+this.btn_refuse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sBoardNo = this.fn_getBoardNo();
+	if(!sBoardNo) {
+		this.gfnAlert("msg.notice.report_require", "", "nodata"); //////////////////
+		return;
+	}
+	
+	var sMsgId = "msg.notice.report_warning_refuse";	//메세지ID
+	var arrArg = "";			//메세지취환될값 배열[생략가능]
+	var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+	var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
+	
+	// function 전달
+	this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
+			if (strVal == true) {
+				// 확인 선택
+				var strSvcId    = "refuseReport";
+				var strSvcUrl   = "SvcUrl::refuseReport.do";
+				var inData      = "";
+				var outData     = "";
+				var strArg      = "boardNo=" + nexacro.wrapQuote(sBoardNo);
+				var callBackFnc = "fn_Callback";
+				
+				this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
+			}
+		});
+};
+
+
+// 콜백
+this.fn_Callback = function(svcID, errorCode, errorMsg)
+{
+    if(errorCode < 0) {
+        alert("에러 발생: " + errorMsg);
+        return;
+    }
+    
+    if(svcID == "selectReportList") {
+        // 조회 성공 시
+		this.fn_resizePartyList();
+    }
+	switch(svcID) {
+	case "refuseReport":
+		alert("신고가 거절되었습니다. (신고 내역 삭제 완료)");
+		this.fn_search_report(); // 목록 재조회
+		break;
+		
+	case "acceptReport":
+		alert("신고가 수락되었습니다. (게시글 및 신고 내역 삭제 완료)");
+		this.fn_search_report(); // 목록 재조회
+		break;
+	}
+};
+
+this.btn_back_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	objWorkFrame.formurl = "Valorant::valo7001fm.xfdl";
+};
+
+this.valo7002fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
+{
+	// 이벤트 핸들러 제거
+    this.fvApp.gds_login.removeEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
+    this.fvApp.gds_login.removeEventHandler("onload", this.fn_LoginDataChanged, this);
+};
+
+
+// 글로벌 데이터셋(gds_login) 변경 시
+this.fn_LoginDataChanged = function(obj:nexacro.NormalDataset, e:nexacro.DSRowsetChangeEventInfo)
+{
+    // 1. 로그인이 된 경우 (데이터가 생김)
+    if (obj.getRowCount() > 0) {
+    }
+    // 2. 로그아웃 된 경우 (데이터가 사라짐)
+    else {
+		var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+		objWorkFrame.formurl = "Valorant::valo7001fm.xfdl";
+		this.fvApp.gds_login.clearData();
+    }
+};
+
+this.fn_resizePartyList = function()
+{
+    var objGrid = this.grd_report;
+    var objDs   = this.fvApp.gds_report;
+
+    // ★★★ [설정] 비교할 컬럼 인덱스 2개 설정 ★★★
+    var nColIdx1 = 1; // 첫 번째 (REPORT_REASON)
+    var nColIdx2 = 3; // 두 번째 (비교할 다른 컬럼)
+
+    // [설정값]
+    var nMinHeight = 40;
+    var nPaddingY  = 20; // 상하 여백
+    var nPaddingX  = 20; // 좌우 여백
+
+    // 1. 데이터 확인
+    var nRowCount = objDs.getRowCount();
+    if (nRowCount == 0) {
+        objGrid.set_height(400);
+        return;
+    }
+
+    objGrid.set_enableredraw(false);
+
+    // -------------------------------------------------------
+    // [준비 1] 1번 컬럼 정보 (너비, 폰트, 바인딩된 ID) 가져오기
+    // -------------------------------------------------------
+    var nColWidth1  = objGrid.getRealColSize(nColIdx1);
+    var nLimitWidth1 = nColWidth1 - nPaddingX;
+    var sFont1      = this.fn_getCleanFont(objGrid, nColIdx1); // 폰트 정제 함수 분리
+    var sColID1     = objGrid.getCellProperty("body", nColIdx1, "text").replace("bind:", ""); // 바인딩된 컬럼명 자동추출
+
+    // -------------------------------------------------------
+    // [준비 2] 3번 컬럼 정보 (너비, 폰트, 바인딩된 ID) 가져오기
+    // -------------------------------------------------------
+    var nColWidth2  = objGrid.getRealColSize(nColIdx2);
+    var nLimitWidth2 = nColWidth2 - nPaddingX;
+    var sFont2      = this.fn_getCleanFont(objGrid, nColIdx2);
+    var sColID2     = objGrid.getCellProperty("body", nColIdx2, "text").replace("bind:", "");
+
+
+    var nTotalGridHeight = 0; 
+
+    // 2. 반복문 시작
+    for(var i=0; i < nRowCount; i++)
+    {
+        var nDsRow = objGrid.getDatasetRow(i); 
+        
+        // --- 1번 컬럼 높이 계산 ---
+        var sText1 = objDs.getColumn(nDsRow, sColID1);
+        var nHeight1 = 0;
+        if (!this.value_isNull(sText1)) {
+             var objSize1 = nexacro.getTextSize(sText1, sFont1, nLimitWidth1, "char");
+             nHeight1 = objSize1.ny;
+        }
+
+        // --- 3번 컬럼 높이 계산 ---
+        var sText2 = objDs.getColumn(nDsRow, sColID2);
+        var nHeight2 = 0;
+        if (!this.value_isNull(sText2)) {
+             var objSize2 = nexacro.getTextSize(sText2, sFont2, nLimitWidth2, "char");
+             nHeight2 = objSize2.ny;
+        }
+
+        // ★★★ [핵심] 둘 중 더 큰 높이 선택 ★★★
+        var nMaxContentHeight = Math.max(nHeight1, nHeight2);
+        
+        // 여백 더하기
+        var nFinalRowHeight = nMaxContentHeight + nPaddingY;
+
+        // 최소 높이 보정
+        if(nFinalRowHeight < nMinHeight) nFinalRowHeight = nMinHeight;
+
+        // 적용
+        objGrid.setRealRowSize(i, nFinalRowHeight);
+        nTotalGridHeight += nFinalRowHeight;
+    }
+
+    // 3. 헤더 및 전체 높이 마무리
+    var nHeaderHeight = objGrid.getRealRowSize(-1);
+    if (nHeaderHeight < 0) nHeaderHeight = 60; 
+    
+    nTotalGridHeight += nHeaderHeight + 1; // 보더값 보정
+    
+    objGrid.set_height(nTotalGridHeight);
+    objGrid.set_enableredraw(true);
+    this.resetScroll();
+};
+
+// [보조 함수] 폰트 정보 가져와서 깨끗하게 만드는 함수 (중복 제거용)
+this.fn_getCleanFont = function(objGrid, nIdx)
+{
+    var vFont = objGrid.getCellProperty("body", nIdx, "font");
+    var sFont = "12px 'Malgun Gothic'"; // 기본값
+    
+    if (vFont) {
+        var sTempFont = vFont.toString();
+        sFont = sTempFont.replace(/normal/g, "").replace(/\//g, "").trim();
+        if(sFont.length < 3) sFont = "13pt 'Malgun Gothic'";
+    }
+    return sFont;
+};
+
+//ull 체크 함수
+this.value_isNull = function(sValue)
+{
+    if (new String(sValue).valueOf() == "undefined") return true;
+    if (sValue == null) return true;
+    
+    var v_ChkStr = new String(sValue);
+    if (v_ChkStr == null) return true;
+    if (v_ChkStr.toString().length == 0 ) return true;
+    return false;
+};]]></Script>
+  </Form>
+</FDL>

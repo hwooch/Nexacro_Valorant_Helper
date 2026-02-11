@@ -252,7 +252,8 @@ this.fn_finishGame = function()
     
     this.sta_result.text = "";
     var nTracker = (nAvg / 1000).toFixed(3);
-    var sMsgId = "msg.notice.game_result2";	//메세지ID
+    
+	var sMsgId = "msg.notice.game_result2";	//메세지ID
 	var arrArg = [nTracker];			//메세지취환될값 배열[생략가능]
 	var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
 	var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요

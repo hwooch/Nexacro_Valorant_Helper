@@ -11419,6 +11419,7 @@
 	-nexa-border : 1px solid red;
 	box-shadow : 0px 0px 20px #000000;
 	border-radius : 10px;
+	-nexa-padding : 0px 0px 0px 0px;
 }
 .PopupMenu.test[status=mouseover]
 {
@@ -11426,6 +11427,7 @@
 	background : #f74451;
 	color : white;
 	box-shadow : 0px 0px 20px #000000;
+	-nexa-padding : 0px 0px 0px 0px;
 }
 .PopupMenu.test .popupmenuitem
 {
@@ -11433,12 +11435,14 @@
 	background : #f74451;
 	color : white;
 	-nexa-border : 1px solid red;
+	-nexa-padding : 0px 0px 0px 0px;
 }
 .PopupMenu.test .popupmenuitem[status=mouseover],
 .PopupMenu.test .popupmenuitem[status=focused]
 {
 	background : #f85d67;
 	color : white;
+	-nexa-padding : 0px 0px 0px 0px;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>

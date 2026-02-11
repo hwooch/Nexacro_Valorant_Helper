@@ -2004,6 +2004,55 @@
           <Col id="MSG_TYPE">A</Col>
           <Col id="MSG_ICON">ERR</Col>
         </Row>
+        <Row>
+          <Col id="MSG_ID">msg.notice.complete</Col>
+          <Col id="MSG_TEXT">글이 {0}되었습니다.</Col>
+          <Col id="MSG_TEXT_EN">글이 {0}되었습니다.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">ERR</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.notice.one_more</Col>
+          <Col id="MSG_TEXT">정말 삭제하시겠습니까?</Col>
+          <Col id="MSG_TEXT_EN">정말 삭제하시겠습니까?</Col>
+          <Col id="MSG_TYPE">C</Col>
+          <Col id="MSG_ICON">ERR</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.notice.require_reason</Col>
+          <Col id="MSG_TEXT">신고 사유를 작성해주세요.</Col>
+          <Col id="MSG_TEXT_EN">신고 사유를 작성해주세요.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">ERR</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.notice.complete_report</Col>
+          <Col id="MSG_TEXT">신고가 접수되었습니다.</Col>
+          <Col id="MSG_TEXT_EN">신고가 접수되었습니다.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">ERR</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.notice.report_require</Col>
+          <Col id="MSG_TEXT">처리할 내역을 선택해주세요.</Col>
+          <Col id="MSG_TEXT_EN">처리할 내역을 선택해주세요.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">ERR</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_TEXT">신고를 [수락] 하여 게시글을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.</Col>
+          <Col id="MSG_TEXT_EN">신고를 [수락] 하여 게시글을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.</Col>
+          <Col id="MSG_TYPE">C</Col>
+          <Col id="MSG_ICON">ERR</Col>
+          <Col id="MSG_ID">msg.notice.report_warning_accept</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.notice.report_warning_refuse</Col>
+          <Col id="MSG_TEXT">신고를 [거절] 하시겠습니까?\n해당 게시글의 신고 내역이 모두 삭제됩니다.</Col>
+          <Col id="MSG_TEXT_EN">신고를 [거절] 하시겠습니까?\n해당 게시글의 신고 내역이 모두 삭제됩니다.</Col>
+          <Col id="MSG_TYPE">C</Col>
+          <Col id="MSG_ICON">ERR</Col>
+        </Row>
       </Rows>
     </Dataset>
     <Dataset id="gdsMyMenu">
@@ -3209,6 +3258,20 @@
         <Column id="GAMES" type="STRING" size="256"/>
         <Column id="WIN_RATES" type="STRING" size="256"/>
         <Column id="WRITE_TIME" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gds_report">
+      <ColumnInfo>
+        <Column id="BOARD_NO" type="STRING" size="256"/>
+        <Column id="REPORT_REASON" type="STRING" size="256"/>
+        <Column id="REPORTER_RIOT_NAME" type="STRING" size="256"/>
+        <Column id="REPORTER_RIOT_TAG" type="STRING" size="256"/>
+        <Column id="REPORTER_DISCORD_ID" type="STRING" size="256"/>
+        <Column id="REPORT_TIME" type="STRING" size="256"/>
+        <Column id="WRITER_RIOT_NAME" type="STRING" size="256"/>
+        <Column id="WRITER_RIOT_TAG" type="STRING" size="256"/>
+        <Column id="WRITER_DISCORD_ID" type="STRING" size="256"/>
+        <Column id="WRITER_MEMO" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
   </Datasets>

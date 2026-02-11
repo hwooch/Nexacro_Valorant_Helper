@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="valo4001pu" width="500" height="290" titletext="신고 사유 작성" background="#202027" borderRadius="0px 0px 20px 20px" border="2px solid #a1a1ac" onclick="valo2001pu_onclick" onload="valo2001pu_onload">
+    <Layouts>
+      <Layout height="290" width="500">
+        <Static id="sta_memo" taborder="0" text="신고 사유" left="22" top="20" width="79" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
+        <Button id="btn_focus" taborder="1" left="20" width="0" height="0" bottom="5"/>
+        <Button id="btnOk" taborder="2" text="신고" width="90" height="50" bottom="30" onclick="btnOk_onclick" uWord="popup.ok" cssclass="btn_WF_FillRed" left="125"/>
+        <Button id="btnCancle" taborder="3" text="취소" width="90" height="50" bottom="30" onclick="btnCancle_onclick" uWord="popup.ok" right="125" cssclass="btn_WF_FillGray"/>
+        <TextArea id="txt_memo" taborder="4" left="20" top="sta_memo:20" height="118" wordWrap="char" autoselect="true" enable="true" tabstop="false" maxlength="100" background="#282830" border="2px solid #515163" borderRadius="10px" color="#7b7b93" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="10px 0px 0px 10px" textAlign="left" right="20" onchanged="txt_memo_onchanged" oninput="txt_memo_oninput" onkillfocus="txt_memo_onkillfocus" onsetfocus="txt_memo_onsetfocus" displaynulltext="예시) 글에 욕설이 포함되어 있어요."/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+var user_full_name = "";
+var user_id = "";
+var sNumber = "";
+
+// 화면 클릭하면 안보이는 버튼에 focus
+this.valo2001pu_onclick = function(obj:nexacro.Form,e:nexacro.ClickEventInfo)
+{
+	this.btn_focus.setFocus();
+};
+
+// 등록 버튼 온클릭
+this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var user_name = user_full_name.split("#")[0];
+	var user_tag  = user_full_name.split("#")[1];
+	var user_memo = this.txt_memo.value;
+	
+	// 신고 사유 작성안하면 안됨
+	if (user_memo == null || user_memo == undefined || user_memo == "") {
+		// 내용이 없을 때 경고창 띄우기
+		this.gfnAlert("msg.notice.require_reason", "", "nodata"); 
+	} else {
+		// 내용이 있을 때 부모창으로 값 전달하며 닫기
+		this.close(user_name + "||" + user_tag + "||" + user_memo + "||" + user_id + "||" + sNumber);
+	}
+};
+
+// 취소 버튼 온클릭
+this.btnCancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close(null);
+};
+
+// 메모 입력한 후 색상 조절
+this.txt_memo_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	if (this.txt_memo.text == null || this.txt_memo.text == undefined || this.txt_memo.text == "" || this.txt_memo.text.trim().length < 1) {
+		this.txt_memo.color = "#7b7b93";
+	}
+};
+
+// 메모 입력할때 색상 조절
+this.txt_memo_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
+{
+ 	this.txt_memo.color = "white";
+};
+
+// form 온로드 되었을때 값 전달받는거
+this.valo2001pu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// 부모창에서 넘겨준 파라미터 받기
+    var pFrame = this.getOwnerFrame();
+	
+	var sContents = pFrame.paramContents;
+	var sIcon = pFrame.paramMsgIcon;
+	
+	sNumber = pFrame.paramNumber;
+	
+	user_full_name = this.fvApp.gds_login.getColumn(0, "RIOT_ID") + "#" + this.fvApp.gds_login.getColumn(0, "RIOT_TAG");
+	user_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+};
+
+this.txt_memo_onkillfocus = function(obj:nexacro.Edit,e:nexacro.KillFocusEventInfo)
+{
+	this.txt_memo.border = "2px solid #515163";
+	// 현재 값 가져오기
+    var sVal = obj.value;
+    if (sVal == null || sVal == undefined || String(sVal).trim() == "") 
+    {
+		obj.value = "";
+        obj.value = null;
+    }
+};
+
+this.txt_memo_onsetfocus = function(obj:nexacro.Edit,e:nexacro.SetFocusEventInfo)
+{
+	this.txt_memo.border = "2px solid white";
+};
+]]></Script>
+  </Form>
+</FDL>

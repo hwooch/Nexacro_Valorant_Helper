@@ -64,11 +64,6 @@ this.txt_memo_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
 {
 	if (this.txt_memo.text == null || this.txt_memo.text == undefined || this.txt_memo.text == "") {
 		this.txt_memo.color = "#7b7b93";
-		//this.txt_memo.text = null;
-	}
-	if (this.txt_memo.value == null || this.txt_memo.value == undefined || this.txt_memo.value == "") {
-		this.txt_memo.color = "#7b7b93";
-		this.txt_memo.value = null;
 	}
 };
 
@@ -76,45 +71,88 @@ this.txt_memo_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
 this.txt_memo_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
 {
 	this.txt_memo.color = "white";
-	if (this.txt_memo.text == null || this.txt_memo.text == undefined || this.txt_memo.text == "") {
-		this.txt_memo.color = "#7b7b93";
-		//this.txt_memo.text = null;
-	}
-	if (this.txt_memo.value == null || this.txt_memo.value == undefined || this.txt_memo.value == "") {
-		this.txt_memo.color = "#7b7b93";
-		this.txt_memo.value = null;
-	}
 };
 
 // form 온로드 되었을때 값 전달받는거
 this.valo2001pu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	var sContents = this.getOwnerFrame().paramContents;
-	var sIcon = this.getOwnerFrame().paramMsgIcon;
+	// 1. 부모창에서 넘겨준 파라미터 받기
+    var pFrame = this.getOwnerFrame();
 	
-	this.edit_user_name.value = this.fvApp.gds_login.getColumn(0, "RIOT_ID") + "#" +
-	this.fvApp.gds_login.getColumn(0, "RIOT_TAG");
+	var sContents = pFrame.paramContents;
+	var sIcon = pFrame.paramMsgIcon;
 	
-	this.btn_agent_filter_all.click();
-	this.btn_mic_off.click();
+	// 수정 모드인지 확인
+    if (pFrame.paramMode == "modify") {
+        
+        // 부모에서 넘겨준 작성자 이름/태그 사용
+        this.edit_user_name.value = pFrame.paramName + "#" + pFrame.paramTag;
+        
+        // 메모 설정
+        var sMemo = pFrame.paramMemo;
+        this.txt_memo.value = sMemo;
+        
+        // 메모가 있으면 글자색 흰색으로, 없으면 회색 처리
+        if (sMemo && sMemo != "") {
+            this.txt_memo.color = "white";
+        } else {
+            this.txt_memo.color = "#7b7b93";
+        }
+        
+        // 클래스 자동 클릭
+        var sClass = pFrame.paramClass;
+        
+        switch(sClass) {
+			case "감시자" : 
+				this.btn_agent_filter_watch.click();
+				break;
+			case "전략가" : 
+				this.btn_agent_filter_smoke.click();
+				break;
+			case "타격대" : 
+				this.btn_agent_filter_enter.click();
+				break;
+			case "척후대" :
+				this.btn_agent_filter_info.click();
+				break;
+			default :
+				this.btn_agent_filter_all.click();
+				break;
+        }
+        
+        // 마이크 버튼 자동 클릭
+        var sMic = pFrame.paramMic; // "on" 또는 "off"
+        
+        if (sMic == "on") {
+            this.btn_mic_on.click();
+        } else {
+            this.btn_mic_off.click();
+        }
+        
+        // 등록 버튼 글씨를 '수정'으로 바꾸고 싶다면
+        this.btnOk.text = "수정";
+        
+    }
+	else {
+		this.edit_user_name.value = this.fvApp.gds_login.getColumn(0, "RIOT_ID") + "#" +
+		this.fvApp.gds_login.getColumn(0, "RIOT_TAG");
+		
+		this.btn_agent_filter_all.click();
+		this.btn_mic_off.click();
+		this.btnOk.text = "등록";
+	}
 };
 
 this.txt_memo_onkillfocus = function(obj:nexacro.Edit,e:nexacro.KillFocusEventInfo)
 {
 	this.txt_memo.border = "2px solid #515163";
-	// 2. 현재 값 가져오기
+	
     var sVal = obj.value;
-
-    // 3. 값이 비어있거나("") 공백만 있다면 null로 강제 변경
-    // (.text 속성은 건드리지 말고 value만 설정하세요!)
+	
     if (sVal == null || sVal == undefined || String(sVal).trim() == "") 
     {
-        obj.set_value(null); // 이렇게 해야 displaynulltext가 나타납니다.
-        
-        // ★ 중요: oninput에서 색상을 white로 바꿨기 때문에, 
-        // placeholder 색상이 잘 보이게 하려면 색상을 다시 원래대로 돌려야 할 수 있습니다.
-        // (CSS에서 nulltext 색상을 따로 지정안했다면 컴포넌트 color를 따라가서 안보일 수 있음)
-        // obj.set_color("#7b7b93"); 
+		obj.value = "";
+        obj.value = null;
     }
 };
 

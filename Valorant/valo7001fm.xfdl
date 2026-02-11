@@ -9,7 +9,7 @@
         <Button id="btn_agent_filter_info" taborder="2" left="btn_agent_filter_enter:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png') no-repeat left top /contain #31313c" text="척후대" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
         <Button id="btn_agent_filter_smoke" taborder="3" left="btn_agent_filter_info:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat left top /contain #31313c" text="전략가" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
         <Combo id="combo_tier_filter" taborder="4" left="btn_agent_filter_smoke:20" top="40" width="190" height="60" innerdataset="ds_combo_tier" codecolumn="CODE" datacolumn="DATA" cssclass="valo_combo_tier" index="0" tabstop="false" cursor="pointer" text="티어 전체" value="1" onitemchanged="combo_tier_filter_onitemchanged"/>
-        <Grid id="grd_party" taborder="7" left="150" top="130" height="852" binddataset="gds_party" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px 20px 0px 0px" tabstop="false" cssclass="grid_test" oncellclick="grd_party_oncellclick" scrolltype="none" scrollbartype="none none" width="1700">
+        <Grid id="grd_party" taborder="7" left="150" top="130" height="852" binddataset="gds_party" autofittype="col" border="1px solid #1f2326" background="#31313c" borderRadius="20px 20px 0px 0px" tabstop="false" cssclass="grid_test" oncellclick="grd_party_oncellclick" scrolltype="none" scrollbartype="none none" width="1700" nodatatext="작성된 글이 존재하지 않습니다." font="normal 30pt/normal &quot;이사만루체 Medium&quot;" color="white">
           <Formats>
             <Format id="default">
               <Columns>
@@ -49,7 +49,7 @@
                 <Cell col="3" text="bind:USER_CLASS" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black,0px"/>
                 <Cell col="4" textAlign="right" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,0px,1px solid black,1px solid #292932" imagestretch="fixaspectratio" displaytype="imagecontrol" text="bind:TIER_ICON" padding="3px 0px 3px 10px"/>
                 <Cell col="5" border="0px,1px solid #292932,1px solid black,0px" text="bind:TIER" font="normal 13pt/normal &quot;이사만루체 Light&quot;"/>
-                <Cell col="6" text="expr:String(USER_MEMO).length &gt; 20 ? String(USER_MEMO).substr(0, 20) + &quot;. . . &quot; : USER_MEMO" textAlign="center" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
+                <Cell col="6" text="expr:String(USER_MEMO).length &gt; 20 ? String(USER_MEMO).substr(0, 20) + &quot;. . . &quot; : USER_MEMO" textAlign="center" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" cursor="pointer"/>
                 <Cell col="7" text="expr:&quot; &quot;+WINS+&quot;승&quot;" border="0px,0px,1px solid black,1px solid #292932" textAlign="center" font="normal 11pt/normal &quot;이사만루체 Light&quot;"/>
                 <Cell col="8" border="0px,0px,1px solid black" font="normal 15pt/normal &quot;이사만루체 Light&quot;" displaytype="progressbarcontrol" progressbarsmooth="true" padding="10px" color="purple" expr="expr:GAMES == 0 ? 0 : (parseInt(WINS) / parseInt(GAMES)) * 100"/>
                 <Cell col="9" text="expr:GAMES-WINS+&quot;패 &quot;" border="0px,1px solid #292932,1px solid black,0px" textAlign="center" font="normal 11pt/normal &quot;이사만루체 Light&quot;"/>
@@ -68,6 +68,7 @@
         </Div>
         <Button id="btn_space_0" taborder="8" left="990" top="divPage:0" width="120" height="30"/>
         <PopupMenu id="popup_menu" left="1665" top="1097" width="145" height="163" onmenuclick="popup_menu_onmenuclick" innerdataset="ds_menu" idcolumn="id" levelcolumn="level" captioncolumn="caption" cssclass="test"/>
+        <Button id="btn_report" taborder="10" top="40" height="60" background="#4c4c5a" text="신고 목록 확인" textAlign="center" border="10px solid #4c4c5a" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" cursor="pointer" cssclass="btn_shadow" visible="false" tabstop="false" right="btn_write:30" width="157" onclick="btn_report_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -208,6 +209,8 @@ this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			this.gfnAlert("msg.notice.party1", "", "nodata"); //////////////////
 			return; // 더 이상 진행하지 않고 종료
 		} else {
+			this.fv_currentBoardNo = "";
+			
 			var objChildFrame = new ChildFrame("popupModal", 0, 0, 480, 420);
 			objChildFrame.formurl = "Popup::valo2001pu.xfdl";
 			objChildFrame.openalign = "center middle";
@@ -235,7 +238,13 @@ this.fn_popupCallback = function(strPopupID, strReturn)
 		var Party_class = strReturn.split("||")[3];
 		var Party_mic   = strReturn.split("||")[4];
 		var Party_discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
-		var Party_board_num = "new_write";
+		var Party_board_num;
+        
+        if (this.fv_currentBoardNo == "" || this.fv_currentBoardNo == null) {
+            Party_board_num = "new_write"; // 신규 등록
+        } else {
+            Party_board_num = this.fv_currentBoardNo; // DB에서 이 번호로 UPDATE
+        }
 		
 		// 글 저장 transaction
 		var strSvcID        = "saveParty";
@@ -250,11 +259,58 @@ this.fn_popupCallback = function(strPopupID, strReturn)
 		
 		this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
 	}
+	if ( strPopupID == "popupModal3" ) {
+		var Party_name   = strReturn.split("||")[0]; // 신고한 유저 닉네임
+		var Party_tag    = strReturn.split("||")[1]; // 신고한 유저 태그
+		var Party_memo   = strReturn.split("||")[2]; // 신고 내용
+		var Party_id     = strReturn.split("||")[3]; // 신고한 유저 디스코드 ID
+		var Party_number = strReturn.split("||")[4]; // 신고한 글 번호
+		
+		this.ds_report_save.clearData();
+		var nRow = this.ds_report_save.addRow();
+		
+		this.ds_report_save.setColumn(nRow, "REPORTER_RIOT_NAME",   Party_name); // 신고자 이름
+		this.ds_report_save.setColumn(nRow, "REPORTER_RIOT_TAG",    Party_tag); // 신고자 태그
+		this.ds_report_save.setColumn(nRow, "REPORT_REASON", Party_memo); // 신고 이유
+		this.ds_report_save.setColumn(nRow, "REPORTER_DISCORD_ID",  Party_id); // 신고자 discord id
+		this.ds_report_save.setColumn(nRow, "BOARD_NO",    Party_number); // 신고한 글 번호
+
+		var wRiotName = this.fvApp.gds_party.lookup("BOARD_NO", Party_number, "USER_NAME");
+		var wRiotTag = this.fvApp.gds_party.lookup("BOARD_NO", Party_number, "USER_TAG");
+		var wDiscordId = this.fvApp.gds_party.lookup("BOARD_NO", Party_number, "DISCORD_ID");
+		var wUserMemo = this.fvApp.gds_party.lookup("BOARD_NO", Party_number, "USER_MEMO");
+
+		this.ds_report_save.setColumn(nRow, "WRITER_RIOT_NAME",    wRiotName); // 신고당한사람 이름
+		this.ds_report_save.setColumn(nRow, "WRITER_RIOT_TAG", wRiotTag); // 신고당한사람 태그
+		this.ds_report_save.setColumn(nRow, "WRITER_DISCORD_ID",  wDiscordId); // 신고당한사람 디코아이디
+		this.ds_report_save.setColumn(nRow, "WRITER_MEMO",    wUserMemo); // 신고당한사람 메모
+
+		var strSvcId    = "saveReport";
+		var strSvcUrl   = "SvcUrl::saveReport.do";
+		var inData      = "in_report_save=ds_report_save";
+		var outData     = "";
+		var strArg      = "";
+		var callBackFnc = "fn_Callback";
+		
+		this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
+		
+		
+		trace (Party_name + " // " + Party_tag + " // " + Party_memo +  " // " + Party_id + " // " + Party_number);
+		
+		// 얘를 어디 gds 데이터셋에 받아놓고 관리자만 볼수있는 화면에서
+		// 신고 글만 모아놓은걸 확인하고 삭제할수있는걸 만들어야될듯
+	}
 };
 
 this.valo7001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.gfnFormOnLoad(this);
+	
+	if ( this.fvApp.gds_login.getColumn(0, "PERMISSION") == "1" ) {
+		this.btn_report.visible = "true";
+	} else {
+		this.btn_report.visible = "false";
+	}
 	
     // 그리드 화면 가운데 좌표 계산
     var objGrid = this.grd_party;
@@ -289,10 +345,21 @@ this.fn_LoginDataChanged = function(obj:nexacro.NormalDataset, e:nexacro.DSRowse
 {
     // 1. 로그인이 된 경우 (데이터가 생김)
     if (obj.getRowCount() > 0) {
+		if ( this.fvApp.gds_login.getColumn(0, "PERMISSION") == "1" ) {
+			this.btn_report.visible = "true";
+		} else {
+			this.btn_report.visible = "false";
+		}
 		this.fn_transaction();
     }
     // 2. 로그아웃 된 경우 (데이터가 사라짐)
     else {
+		if ( this.fvApp.gds_login.getColumn(0, "PERMISSION") == "1" ) {
+			this.btn_report.visible = "true";
+		} else {
+			this.btn_report.visible = "false";
+		}
+		this.fvApp.gds_login.clearData();
 		this.ds_tier.clearData();
     }
 };
@@ -327,13 +394,27 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 		objEnv.usewaitcursor = true;	
 	}
 	if (svcId == "searchParty") {
-		//alert("조회 완료");
-		
-		// 페이징 하자
+		// 페이징
 		this.fnPageInit();
-	} if (svcId == "saveParty") {
-		//alert("저장 완료");
+	}
+	
+	if (svcId == "saveParty") {
+        if (this.fv_currentBoardNo != "") {
+            this.gfnAlert("msg.notice.complete", ["수정"], "nodata"); //////////////////
+        } else {
+			this.gfnAlert("msg.notice.complete", ["등록"], "nodata"); //////////////////
+        }
+        this.fv_currentBoardNo = ""; // 초기화
 		this.btn_agent_filter_all.click();
+    }
+    
+    if (svcId == "deleteParty") {
+        this.gfnAlert("msg.notice.complete", ["삭제"], "nodata"); //////////////////
+        this.btn_agent_filter_all.click();
+    }
+	
+	if (svcId == "saveReport") {
+		this.gfnAlert("msg.notice.complete_report", "", "nodata"); //////////////////
 	}
 }
 this.combo_tier_filter_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
@@ -353,7 +434,6 @@ this.combo_tier_filter_onitemchanged = function(obj:nexacro.Combo,e:nexacro.Item
 // 그리드 다시 그리기
 this.fn_resizePartyList = function()
 {
-	
 	this.fvApp.gds_party.rowposition = "-1";
     var nRowHeight = 60;
     
@@ -361,9 +441,9 @@ this.fn_resizePartyList = function()
 	
     var nNewHeight = nTotalCount * nRowHeight;
     if (nNewHeight == 0) { // 값이 없으면 높이 0
-		nNewHeight = 0;
+		nNewHeight = 400;
 	}
-    
+	
     this.grd_party.height = nNewHeight + 60 + 1;
 	this.resetScroll();
 };
@@ -496,8 +576,8 @@ this.fn_Callback2 = function(svcId, errCode, errMsg)
 			
 			// 페이징 네비게이션 그리기
 			this.fnPagingSetting();
-			this.fn_resizePartyList();
 		}
+		this.fn_resizePartyList();
 	}
 };
 
@@ -525,8 +605,6 @@ this.fnPagingCallback = function(nPage, nRecordsOffset)
 };
 
 //////////////////////////////////////////////////////////////////////////
-// 그리드 셀 클릭해서 전적 검색이랑 내 글 수정 삭제 신고 할 수 있게 하자 이제
-
 // 현재 클릭한 행(Row)을 저장할 변수 (메뉴 클릭 시 사용하기 위함)
 this.fv_clickedRow = -1;
 
@@ -556,7 +634,7 @@ this.grd_party_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 			});
 	}
 	if (e.cell == 6) {
-		var objChildFrame = new ChildFrame("popupModal", 0, 0, 480, 420);
+		var objChildFrame = new ChildFrame("popupModal_check", 0, 0, 480, 420);
 		objChildFrame.formurl = "Popup::valo3001pu.xfdl";
 		objChildFrame.openalign = "center middle";
 		objChildFrame.overlaycolor = "RGBA(0,0,0,0.4)";
@@ -568,21 +646,28 @@ this.grd_party_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 		objChildFrame.showModal(this.getOwnerFrame(),{a:this.fvApp.gds_party.getColumn(e.row, "USER_MEMO")},  this, "fn_popupCallback");
 	}
 	if (e.cell == 12) {
-		// 1. 현재 클릭한 행 인덱스 저장 (삭제/수정할 때 어떤 글인지 알아야 하니까)
+		// 현재 클릭한 행 인덱스 저장 (삭제/수정할 때 어떤 글인지 알아야 하니까)
         this.fv_clickedRow = e.row;
 		
-        // 2. (옵션) 작성자 본인이면 '신고' 숨기고, 남이면 '수정/삭제' 숨기기
+        // 작성자 본인이면 '신고' 숨기고, 남이면 '수정/삭제' 숨기기
         // 로그인된 ID와 게시글 작성자 ID 비교
         var sLoginId = this.fvApp.gds_login.getColumn(0, "DISCORD_ID"); 
         var sWriterId = this.fvApp.gds_party.getColumn(e.row, "DISCORD_ID");
-        
-        // 필터링 예시 (데이터셋 필터링으로 메뉴 항목 조절)
+		var sPermission = this.fvApp.gds_login.getColumn(0, "PERMISSION");
+		
+        // 데이터셋 필터링
         if (sLoginId == sWriterId) {
             // 내 글이면: 수정, 삭제만 표시
-            this.ds_menu.filter("id != 'REP'"); 
+            this.ds_menu.filter("id != 'REP'");
         } else {
-            // 남의 글이면: 신고만 표시
-            this.ds_menu.filter("id == 'REP'");
+			// 운영자면 남의 글도 삭제만 표시
+			if ( sPermission == 1 ) {
+				this.ds_menu.filter("id == 'DEL'");
+			}
+			// 남의 글이면: 신고만 표시
+			else {
+				this.ds_menu.filter("id == 'REP'");
+			}
         }
 		this.popup_menu.trackPopupByComponent(obj, e.clientx, e.clienty);
 	}
@@ -608,6 +693,9 @@ this.fnSearch_user_match = function (clicked_nickname)
 		objWorkFrame.formurl = "Valorant::valo1002fm.xfdl";
 	}
 };
+
+// 현재 작업 중인 게시글 번호 (비어있으면 신규 등록, 값이 있으면 수정)
+this.fv_currentBoardNo = "";
 this.popup_menu_onmenuclick = function(obj:nexacro.PopupMenu,e:nexacro.MenuClickEventInfo)
 {
 	// 선택한 메뉴의 ID (MOD, DEL, REP)
@@ -622,25 +710,107 @@ this.popup_menu_onmenuclick = function(obj:nexacro.PopupMenu,e:nexacro.MenuClick
     switch(sId) 
     {
 	case "MOD": // 수정
-		this.alert("수정 기능 실행! (게시글번호: " + sBoardNo + ")");
-		// 수정 팝업 열기 로직...
-		break;
+		this.fv_currentBoardNo = sBoardNo;
+        
+        // 현재 그리드에 있는 데이터를 꺼냄 (팝업에 넘겨주기 위해)
+        var sPopupName  = this.fvApp.gds_party.getColumn(nRow, "USER_NAME");
+        var sPopupTag   = this.fvApp.gds_party.getColumn(nRow, "USER_TAG");
+		var sPopupMemo  = this.fvApp.gds_party.getColumn(nRow, "USER_MEMO");
+        var sPopupClass = this.fvApp.gds_party.getColumn(nRow, "USER_CLASS");
+		var sPopupMic   = this.fvApp.gds_party.getColumn(nRow, "USER_MIC");
+        
+        
+        // 팝업으로 보낼 데이터
+        var oArg = {
+            paramMode  : "modify",
+            paramName  : sPopupName,
+			paramTag   : sPopupTag,
+            paramMemo  : sPopupMemo,
+            paramClass : sPopupClass,
+			paramMic   : sPopupMic
+        };
+        
+        // 팝업 열기
+        var objChildFrame = new ChildFrame("popupModal", 0, 0, 480, 420);
+        objChildFrame.formurl = "Popup::valo2001pu.xfdl";
+        objChildFrame.openalign = "center middle";
+        objChildFrame.overlaycolor = "RGBA(0,0,0,0.4)";
+        objChildFrame.dragmovetype = "all";
+        objChildFrame.showtitlebar = true;
+        objChildFrame.set_titlebarheight(40);
+        objChildFrame.cssclass = "valo_popup";
+        
+        // oArg를 두 번째 인자로 넘김
+        objChildFrame.showModal(this.getOwnerFrame(), oArg, this, "fn_popupCallback");
+        break;
 		
 	case "DEL": // 삭제
-		// 삭제 확인 받기
-		var bCheck = this.confirm("정말로 이 글을 삭제하시겠습니까?");
-		if(bCheck) {
-			// 트랜잭션 호출 (삭제 로직)
-			// this.fn_deletePost(sBoardNo);
-			this.alert("삭제되었습니다.");
-		}
+		
+		// 삭제 확인 받기	
+		var sMsgId = "msg.notice.one_more";	//메세지ID
+		var arrArg = "";			//메세지취환될값 배열[생략가능]
+		var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+		var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
+		
+		// function 전달
+		this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
+				if (strVal == true) {
+					// 확인 선택
+					this.fn_deleteParty(sBoardNo);
+				}
+				else {
+					// 취소 선택
+				}
+			});
 		break;
 		
 	case "REP": // 신고
-		this.alert("신고 팝업 열기 (대상: " + sBoardNo + ")");
-		// 신고 팝업 로직...
+		var check_discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+		var check_riot_id = this.fvApp.gds_login.getColumn(0, "RIOT_ID");
+		
+		if (check_discord_id == null || check_discord_id == undefined || check_discord_id == "") {
+			this.gfnAlert("msg.notice.login4", "", "nodata"); //////////////////
+		}
+		else {
+			var objChildFrame = new ChildFrame("popupModal3", 0, 0, 480, 420);
+			objChildFrame.formurl = "Popup::valo4001pu.xfdl";
+			objChildFrame.openalign = "center middle";
+			objChildFrame.overlaycolor = "RGBA(0,0,0,0.4)";
+			objChildFrame.dragmovetype = "all";
+			objChildFrame.showtitlebar = true;
+			objChildFrame.set_titlebarheight(40);
+			objChildFrame.cssclass = "valo_popup";
+			
+			// 팝업으로 보낼 데이터
+			var oArg = {
+				// 신고할 글 번호
+				paramNumber  : sBoardNo
+			};
+			
+			objChildFrame.showModal(this.getOwnerFrame(), oArg, this, "fn_popupCallback");
+		}
 		break;
     }
+};
+
+// 글 내꺼면 삭제
+this.fn_deleteParty = function(boardNo)
+{
+    var strSvcID    = "deleteParty";
+    var strURL      = "SvcUrl::deleteParty.do";
+    var strInDatasets  = "";
+    var strOutDatasets = "";
+    // 삭제할 글 번호만 보내면 됨
+    var strArgument = "vBoardNo=" + nexacro.wrapQuote(boardNo);
+    var strCallbackFunc = "fn_Callback";
+	
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+};
+
+this.btn_report_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	objWorkFrame.formurl = "Valorant::valo7002fm.xfdl";
 };
 ]]></Script>
     <Objects>
@@ -726,20 +896,34 @@ this.popup_menu_onmenuclick = function(obj:nexacro.PopupMenu,e:nexacro.MenuClick
         <Rows>
           <Row>
             <Col id="level">0</Col>
-            <Col id="caption">수정</Col>
+            <Col id="caption">  수정</Col>
             <Col id="id">MOD</Col>
           </Row>
           <Row>
             <Col id="level">0</Col>
-            <Col id="caption">삭제</Col>
+            <Col id="caption">  삭제</Col>
             <Col id="id">DEL</Col>
           </Row>
           <Row>
             <Col id="level">0</Col>
-            <Col id="caption">신고</Col>
+            <Col id="caption">  신고</Col>
             <Col id="id">REP</Col>
           </Row>
         </Rows>
+      </Dataset>
+      <Dataset id="ds_report_save">
+        <ColumnInfo>
+          <Column id="BOARD_NO" type="STRING" size="256"/>
+          <Column id="REPORT_REASON" type="STRING" size="256"/>
+          <Column id="REPORTER_RIOT_NAME" type="STRING" size="256"/>
+          <Column id="REPORTER_RIOT_TAG" type="STRING" size="256"/>
+          <Column id="REPORTER_DISCORD_ID" type="STRING" size="256"/>
+          <Column id="REPORT_TIME" type="STRING" size="256"/>
+          <Column id="WRITER_RIOT_NAME" type="STRING" size="256"/>
+          <Column id="WRITER_RIOT_TAG" type="STRING" size="256"/>
+          <Column id="WRITER_DISCORD_ID" type="STRING" size="256"/>
+          <Column id="WRITER_MEMO" type="STRING" size="256"/>
+        </ColumnInfo>
       </Dataset>
     </Objects>
   </Form>
