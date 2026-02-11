@@ -29,9 +29,9 @@
               </Band>
               <Band id="body">
                 <Cell text="expr:REPORTER_RIOT_NAME +&quot; #&quot;+ REPORTER_RIOT_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>
-                <Cell col="1" text="bind:REPORT_REASON" textAlign="center" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" wordWrap="char" displaytype="text"/>
+                <Cell col="1" text="bind:REPORT_REASON" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" wordWrap="char" displaytype="text" padding="15px"/>
                 <Cell col="2" text="expr:WRITER_RIOT_NAME +&quot; #&quot;+ WRITER_RIOT_TAG" border="0px,1px solid #292932,1px solid black" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>
-                <Cell col="3" text="bind:WRITER_MEMO" textAlign="center" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" wordWrap="char"/>
+                <Cell col="3" text="bind:WRITER_MEMO" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" wordWrap="char" padding="15px"/>
                 <Cell col="4" text="bind:REPORT_TIME" border="0px,0px,1px solid black,1px solid #292932" textAlign="center" font="normal 11pt/normal &quot;이사만루체 Light&quot;"/>
               </Band>
             </Format>
@@ -202,14 +202,15 @@ this.fn_resizePartyList = function()
 {
     var objGrid = this.grd_report;
     var objDs   = this.fvApp.gds_report;
+	
+	this.fvApp.gds_report.rowposition = "-1";
 
-    // ★★★ [설정] 비교할 컬럼 인덱스 2개 설정 ★★★
     var nColIdx1 = 1; // 첫 번째 (REPORT_REASON)
     var nColIdx2 = 3; // 두 번째 (비교할 다른 컬럼)
 
     // [설정값]
     var nMinHeight = 40;
-    var nPaddingY  = 20; // 상하 여백
+    var nPaddingY  = 50; // 상하 여백
     var nPaddingX  = 20; // 좌우 여백
 
     // 1. 데이터 확인
@@ -221,17 +222,13 @@ this.fn_resizePartyList = function()
 
     objGrid.set_enableredraw(false);
 
-    // -------------------------------------------------------
-    // [준비 1] 1번 컬럼 정보 (너비, 폰트, 바인딩된 ID) 가져오기
-    // -------------------------------------------------------
+    // 1번 컬럼 정보  가져오기
     var nColWidth1  = objGrid.getRealColSize(nColIdx1);
     var nLimitWidth1 = nColWidth1 - nPaddingX;
-    var sFont1      = this.fn_getCleanFont(objGrid, nColIdx1); // 폰트 정제 함수 분리
-    var sColID1     = objGrid.getCellProperty("body", nColIdx1, "text").replace("bind:", ""); // 바인딩된 컬럼명 자동추출
+    var sFont1      = this.fn_getCleanFont(objGrid, nColIdx1); 
+    var sColID1     = objGrid.getCellProperty("body", nColIdx1, "text").replace("bind:", "");
 
-    // -------------------------------------------------------
-    // [준비 2] 3번 컬럼 정보 (너비, 폰트, 바인딩된 ID) 가져오기
-    // -------------------------------------------------------
+    //  3번 컬럼 정보 가져오기
     var nColWidth2  = objGrid.getRealColSize(nColIdx2);
     var nLimitWidth2 = nColWidth2 - nPaddingX;
     var sFont2      = this.fn_getCleanFont(objGrid, nColIdx2);
@@ -261,7 +258,7 @@ this.fn_resizePartyList = function()
              nHeight2 = objSize2.ny;
         }
 
-        // ★★★ [핵심] 둘 중 더 큰 높이 선택 ★★★
+        // 둘 중 더 큰 높이 선택
         var nMaxContentHeight = Math.max(nHeight1, nHeight2);
         
         // 여백 더하기
@@ -286,7 +283,7 @@ this.fn_resizePartyList = function()
     this.resetScroll();
 };
 
-// [보조 함수] 폰트 정보 가져와서 깨끗하게 만드는 함수 (중복 제거용)
+// 폰트 정보 얻는 함수
 this.fn_getCleanFont = function(objGrid, nIdx)
 {
     var vFont = objGrid.getCellProperty("body", nIdx, "font");
@@ -300,7 +297,7 @@ this.fn_getCleanFont = function(objGrid, nIdx)
     return sFont;
 };
 
-//ull 체크 함수
+// null 체크 함수
 this.value_isNull = function(sValue)
 {
     if (new String(sValue).valueOf() == "undefined") return true;
