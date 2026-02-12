@@ -88,7 +88,7 @@ this.btn_agent_filter_onmouseenter = function(obj:nexacro.Button,e:nexacro.Mouse
 
 this.btn_agent_filter_onmouseleave = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
 {
-	//  현재 선택된 버튼이라면, 마우스가 나가도 'normal'(어둠)로 바꾸지 않음!
+	//  현재 선택된 버튼이라면, 마우스가 나가도 normal로 바꾸지 않음
     if (this.fv_selectedFilterBtn == obj) {
         this.fn_setFilterStyle(obj, "selected"); // 그림자만 빼고 밝은 상태 유지
     } else {
@@ -132,13 +132,12 @@ this.btn_agent_filter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 		sFilterRole = "전체";
     }
 	sClass = sFilterRole;
-	//this.fn_search_party_list(sFilterRole, sTier);
-	// ★★★ 중요 변경: 기존 함수 대신 페이징 조회 호출 ★★★
-    // 필터가 바뀌었으니 1페이지부터 다시 보여줘야 함
-    this.fvPage = 0;           // 페이지 번호 0 (1페이지)
-    this.fvRecordsOffset = 0;  // 오프셋 0
+	
+	// 글 조회를 페이징으로
+    this.fvPage = 0;
+    this.fvRecordsOffset = 0;
     
-    this.fnSearch(); // <--- 변경된 조건으로 조회 시작!
+    this.fnSearch();
 };
 
 // 버튼 스타일 통합 관리 함수
@@ -293,12 +292,6 @@ this.fn_popupCallback = function(strPopupID, strReturn)
 		var callBackFnc = "fn_Callback";
 		
 		this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
-		
-		
-		trace (Party_name + " // " + Party_tag + " // " + Party_memo +  " // " + Party_id + " // " + Party_number);
-		
-		// 얘를 어디 gds 데이터셋에 받아놓고 관리자만 볼수있는 화면에서
-		// 신고 글만 모아놓은걸 확인하고 삭제할수있는걸 만들어야될듯
 	}
 };
 
@@ -423,12 +416,12 @@ this.combo_tier_filter_onitemchanged = function(obj:nexacro.Combo,e:nexacro.Item
 	if(sTier == "티어 전체"){
 		sTier = "전체";
 	}
-	//this.fn_search_party_list(sClass, sTier);
-	// ★★★ 중요 변경 ★★★
+	
+	// 글 조회를 페이징으로
     this.fvPage = 0;           
     this.fvRecordsOffset = 0;  
     
-    this.fnSearch(); // <--- 변경된 조건으로 조회 시작!
+    this.fnSearch();
 };
 
 // 그리드 다시 그리기
@@ -446,20 +439,6 @@ this.fn_resizePartyList = function()
 	
     this.grd_party.height = nNewHeight + 60 + 1;
 	this.resetScroll();
-};
-
-this.fn_search_party_list = function (user_class ,user_tier)
-{	
-	// 글 조회 transaction
-	var strSvcID        = "searchParty";
-	var strURL          = "SvcUrl::searchParty.do";
-	var strInDatasets   = "";
-	var strOutDatasets  = "gds_party=out_party";
-	var strArgument     = "vParty_class=" + nexacro.wrapQuote(user_class) + 
-	" vParty_tier=" + nexacro.wrapQuote(user_tier);
-	var strCallbackFunc = "fn_Callback";
-	
-	this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
 };
 
 // 직업군에 따라 이미지 경로를 반환하는 함수
@@ -517,7 +496,7 @@ this.fnPageInit = function ()
 
 this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	// 1. 안전장치: 페이징 개수 기본값
+	// 페이징 개수 기본값
     if (this.fvRecords == 0 || this.fvRecords == undefined) {
         this.fvRecords = 10;
     }
@@ -618,10 +597,7 @@ this.grd_party_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 		var arrArg = [clicked_nickname];			//메세지취환될값 배열[생략가능]
 		var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
 		var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
-		
-		// 변경된 내역을 저장 하시겠습니까?
-		//this.gfnAlert(sMsgId, arrArg, sPopId, sMsgCallback);	
-		
+
 		// function 전달
 		this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
 				if (strVal == true) {

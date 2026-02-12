@@ -154,8 +154,8 @@ this.fn_startRound = function()
     this.div_game_zone.form.sta_msg.color = "white";
     this.div_game_zone.form.sta_msg.font = "normal 24pt/normal '이사만루체 Medium'";
     
-    // 랜덤 시간 계산 (3000ms ~ 8000ms)
-    var nRandomTime = Math.floor(Math.random() * 5000) + 3000;
+    // 랜덤 시간 계산 (3000ms ~ 6000ms)
+    var nRandomTime = Math.floor(Math.random() * 3000) + 3000;
     
     // 타이머 시작 (ID: 99)
     this.setTimer(99, nRandomTime);

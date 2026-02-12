@@ -11444,7 +11444,42 @@
 	color : white;
 	-nexa-padding : 0px 0px 0px 0px;
 }
-]]></CSSData>
+.Button.toggle_collapse
+{
+	cursor : pointer;
+	background : url('theme://images/valo_arrow_down.png') no-repeat center center /contain #242429;
+	-nexa-border : 2px solid #8e8e8e;
+	border-radius : 20px;
+}
+.Button.toggle_expand
+{
+	cursor : pointer;
+	background : url('theme://images/valo_arrow_up.png') no-repeat center center /contain #242429;
+	-nexa-border : 2px solid #8e8e8e;
+	border-radius : 20px;
+}
+.Button.toggle_collapse[status=mouseover],
+.Button.toggle_collapse[userstatus=pushed],
+.Button.toggle_collapse[userstatus=selected]
+{
+	cursor : pointer;
+	background : url('theme://images/valo_arrow_down_red.png') no-repeat center center /contain #242429;
+	-nexa-border : 2px solid #8e8e8e;
+	border-radius : 20px;
+	box-shadow : 0px 0px 10px #ffffff;
+	
+}
+.Button.toggle_expand[status=mouseover],
+.Button.toggle_expand[userstatus=pushed],
+.Button.toggle_expand[userstatus=selected]
+{
+	cursor : pointer;
+	background : url('theme://images/valo_arrow_up_red.png') no-repeat center center /contain #242429;
+	-nexa-border : 2px solid #8e8e8e;
+	border-radius : 20px;
+	box-shadow : 0px 0px 10px #ffffff;
+	
+}]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>
   <CSSData type="mobile_small"><![CDATA[]]></CSSData>
