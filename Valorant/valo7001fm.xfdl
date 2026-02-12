@@ -3,11 +3,11 @@
   <Form id="valo7001fm" width="2000" height="980" titletext="파티 구인" onload="valo7001fm_onload" onclose="valo7001fm_onclose">
     <Layouts>
       <Layout height="980" width="2000">
-        <Button id="btn_agent_filter_all" taborder="6" left="100" top="40" width="110" height="60" background="url('theme://images/valo_all.png') no-repeat left top /contain #31313c" text="전체" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_watch" taborder="0" left="btn_agent_filter_all:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') no-repeat left top /contain #31313c" text="감시자" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_enter" taborder="1" left="btn_agent_filter_watch:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/dbe8757e-9e92-4ed4-b39f-9dfc589691d4/displayicon.png') no-repeat left top /contain #31313c" text="타격대" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_info" taborder="2" left="btn_agent_filter_enter:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png') no-repeat left top /contain #31313c" text="척후대" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_smoke" taborder="3" left="btn_agent_filter_info:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat left top /contain #31313c" text="전략가" textAlign="right" padding="0px px 0px 0px" border="15px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="50%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_all" taborder="6" left="100" top="40" width="110" height="60" background="url('theme://images/valo_all.png') no-repeat left top /contain #6e6e86" text="전체" textAlign="right" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_watch" taborder="0" left="btn_agent_filter_all:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') no-repeat left top /contain #6e6e86" text="감시자" textAlign="right" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_enter" taborder="1" left="btn_agent_filter_watch:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/dbe8757e-9e92-4ed4-b39f-9dfc589691d4/displayicon.png') no-repeat left top /contain #6e6e86" text="타격대" textAlign="right" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_info" taborder="2" left="btn_agent_filter_enter:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png') no-repeat left top /contain #6e6e86" text="척후대" textAlign="right" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_smoke" taborder="3" left="btn_agent_filter_info:10" top="40" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat left top /contain #6e6e86" text="전략가" textAlign="right" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
         <Combo id="combo_tier_filter" taborder="4" left="btn_agent_filter_smoke:20" top="40" width="190" height="60" innerdataset="ds_combo_tier" codecolumn="CODE" datacolumn="DATA" cssclass="valo_combo_tier" index="0" tabstop="false" cursor="pointer" text="티어 전체" value="1" onitemchanged="combo_tier_filter_onitemchanged"/>
         <Grid id="grd_party" taborder="7" left="150" top="130" height="852" binddataset="gds_party" autofittype="col" border="1px solid #1f2326" background="#31313c" borderRadius="20px 20px 0px 0px" tabstop="false" cssclass="grid_test" oncellclick="grd_party_oncellclick" scrolltype="none" scrollbartype="none none" width="1700" nodatatext="작성된 글이 존재하지 않습니다." font="normal 30pt/normal &quot;이사만루체 Medium&quot;" color="white">
           <Formats>
@@ -32,15 +32,15 @@
                 <Row size="60"/>
               </Rows>
               <Band id="head">
-                <Cell text="플레이어" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="1" text="마이크" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="2" colspan="2" text="선호 클래스" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="4" colspan="2" text="티어" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="6" text="메모" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="7" colspan="3" text="승/패" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="10" text="승률" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="11" text="등록일시" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="12" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell text="플레이어" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="1" text="마이크" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="2" colspan="2" text="선호 클래스" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="4" colspan="2" text="티어" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="6" text="메모" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="7" colspan="3" text="승/패" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="10" text="승률" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="11" text="등록일시" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="12" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
               </Band>
               <Band id="body">
                 <Cell text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px" cursor="pointer"/>
@@ -60,15 +60,15 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_write" taborder="5" top="40" height="60" background="url('theme://images/valo_write.png') no-repeat left top /contain #4c4c5a" text="구인 글 작성하기" textAlign="right" padding="0px 3px 0px 0px" border="10px solid #4c4c5a" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" width="206" onclick="btn_write_onclick" cursor="pointer" cssclass="btn_shadow" left="grd_party:-186"/>
-        <Div id="divPage" taborder="9" left="150" url="Cmm::CmmPaging.xfdl" height="100" text="" background="#31313c" borderRadius="0px 0px 20px 20px" border="2px none black,0px none,0px none" top="grd_party:0" width="1698">
+        <Button id="btn_write" taborder="5" top="40" height="60" background="url('theme://images/valo_write.png') no-repeat left top /contain #31313c" text="구인 글 작성하기" textAlign="right" padding="0px 3px 0px 0px" border="10px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" width="206" onclick="btn_write_onclick" cursor="pointer" cssclass="btn_shadow" left="grd_party:-186"/>
+        <Div id="divPage" taborder="9" left="150" url="Cmm::CmmPaging.xfdl" height="100" text="" background="#56566b" borderRadius="0px 0px 20px 20px" border="2px none black,0px none,0px none" top="grd_party:0" width="1700">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
         <Button id="btn_space_0" taborder="8" left="990" top="divPage:0" width="120" height="30"/>
         <PopupMenu id="popup_menu" left="1665" top="1097" width="145" height="163" onmenuclick="popup_menu_onmenuclick" innerdataset="ds_menu" idcolumn="id" levelcolumn="level" captioncolumn="caption" cssclass="test"/>
-        <Button id="btn_report" taborder="10" top="40" height="60" background="#4c4c5a" text="신고 목록 확인" textAlign="center" border="10px solid #4c4c5a" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" cursor="pointer" cssclass="btn_shadow" visible="false" tabstop="false" right="btn_write:30" width="157" onclick="btn_report_onclick"/>
+        <Button id="btn_report" taborder="10" top="40" height="60" background="#31313c" text="신고 목록 확인" textAlign="center" border="10px solid #31313c" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" cursor="pointer" cssclass="btn_shadow" visible="false" tabstop="false" right="btn_write:30" width="157" onclick="btn_report_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -154,8 +154,8 @@ this.fn_setFilterStyle = function(obj, status)
     // 선택되었거나 마우스가 올라갔을 때 (밝은 상태)
     if (status == "selected" || status == "hover") {
         obj.opacity = "";
-        obj.border = "15px solid #4c4c5a";
-        sColor = "#4c4c5a";
+        obj.border = "15px solid #31313c";
+        sColor = "#31313c";
         
         if (status == "hover") {
 			obj.cursor = "pointer";
@@ -167,9 +167,9 @@ this.fn_setFilterStyle = function(obj, status)
     } 
     // 평소 상태 (어두운 상태)
     else {
-        obj.opacity = "50%";
-        obj.border = "15px solid #31313c";
-        sColor = "#31313c";
+        obj.opacity = "70%";
+        obj.border = "15px solid #6e6e86";
+        sColor = "#6e6e86";
         obj.cursor = "pointer";
         obj.boxShadow = "";
     }
@@ -273,17 +273,17 @@ this.fn_popupCallback = function(strPopupID, strReturn)
 		this.ds_report_save.setColumn(nRow, "REPORT_REASON", Party_memo); // 신고 이유
 		this.ds_report_save.setColumn(nRow, "REPORTER_DISCORD_ID",  Party_id); // 신고자 discord id
 		this.ds_report_save.setColumn(nRow, "BOARD_NO",    Party_number); // 신고한 글 번호
-
+		
 		var wRiotName = this.fvApp.gds_party.lookup("BOARD_NO", Party_number, "USER_NAME");
 		var wRiotTag = this.fvApp.gds_party.lookup("BOARD_NO", Party_number, "USER_TAG");
 		var wDiscordId = this.fvApp.gds_party.lookup("BOARD_NO", Party_number, "DISCORD_ID");
 		var wUserMemo = this.fvApp.gds_party.lookup("BOARD_NO", Party_number, "USER_MEMO");
-
+		
 		this.ds_report_save.setColumn(nRow, "WRITER_RIOT_NAME",    wRiotName); // 신고당한사람 이름
 		this.ds_report_save.setColumn(nRow, "WRITER_RIOT_TAG", wRiotTag); // 신고당한사람 태그
 		this.ds_report_save.setColumn(nRow, "WRITER_DISCORD_ID",  wDiscordId); // 신고당한사람 디코아이디
 		this.ds_report_save.setColumn(nRow, "WRITER_MEMO",    wUserMemo); // 신고당한사람 메모
-
+		
 		var strSvcId    = "saveReport";
 		var strSvcUrl   = "SvcUrl::saveReport.do";
 		var inData      = "in_report_save=ds_report_save";
@@ -309,7 +309,7 @@ this.valo7001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     var objGrid = this.grd_party;
     var nLeft = (this.getOffsetWidth() - objGrid.getOffsetWidth()) / 2;
     objGrid.left = nLeft;
-	this.divPage.left = nLeft + 1;
+	this.divPage.left = nLeft;
 	
 	// 이벤트 핸들러 추가
 	this.fvApp.gds_login.addEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
@@ -384,7 +384,7 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 	// 티어 조회
     if (svcId == "searchTier") {
 		var objEnv = nexacro.getEnvironment();
-		objEnv.usewaitcursor = true;	
+		objEnv.usewaitcursor = true;
 	}
 	if (svcId == "searchParty") {
 		// 페이징
@@ -597,7 +597,7 @@ this.grd_party_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 		var arrArg = [clicked_nickname];			//메세지취환될값 배열[생략가능]
 		var sPopId = sMsgId;						//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
 		var sMsgCallback = "fnMsgCallback";			//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
-
+		
 		// function 전달
 		this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
 				if (strVal == true) {
@@ -632,9 +632,8 @@ this.grd_party_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 		var sPermission = this.fvApp.gds_login.getColumn(0, "PERMISSION");
 		
         // 데이터셋 필터링
-        if (sLoginId == sWriterId) {
-            // 내 글이면: 수정, 삭제만 표시
-            this.ds_menu.filter("id != 'REP'");
+        if (sLoginId == sWriterId) {	
+			this.ds_menu.filter("id != 'REP'");			
         } else {
 			// 운영자면 남의 글도 삭제만 표시
 			if ( sPermission == 1 ) {
@@ -686,6 +685,13 @@ this.popup_menu_onmenuclick = function(obj:nexacro.PopupMenu,e:nexacro.MenuClick
     switch(sId) 
     {
 	case "MOD": // 수정
+		var check_link_riot = this.fvApp.gds_login.getColumn(0, "RIOT_ID");
+		if (check_link_riot == "연동된 계정이 존재하지 않습니다.") {
+			this.gfnAlert("msg.notice.rewrite", "", "nodata"); //////////////////
+			break;
+		}
+		
+		
 		this.fv_currentBoardNo = sBoardNo;
         
         // 현재 그리드에 있는 데이터를 꺼냄 (팝업에 넘겨주기 위해)

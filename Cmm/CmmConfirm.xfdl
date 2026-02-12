@@ -5,7 +5,7 @@
       <Layout height="320" width="560">
         <Static id="staIcon" taborder="0" left="15" top="40" width="50" height="50"/>
         <Button id="btnOk" taborder="1" text="확인" width="90" height="50" bottom="20" onclick="btnOk_onclick" uWord="popup.ok" right="140" cssclass="btn_WF_FillRed"/>
-        <Static id="txtMsgContent" taborder="2" text="Static00" left="30" top="30" background="#393946" borderRadius="10px" textAlign="center" verticalAlign="middle" padding="5px 0px 0px" bottom="90" right="30" color="white" font="normal 18pt/normal &quot;이사만루체 Medium&quot;"/>
+        <Static id="txtMsgContent" taborder="2" text="Static00" left="30" top="30" background="#6d6d6d" borderRadius="10px" textAlign="center" verticalAlign="middle" padding="5px 0px 0px" bottom="90" right="30" color="white" font="normal 18pt/normal &quot;이사만루체 Medium&quot;"/>
         <Button id="btnCancle" taborder="3" text="취소" width="90" height="50" bottom="20" onclick="btnCancle_onclick" uWord="popup.ok" right="30" cssclass="btn_WF_FillGray"/>
       </Layout>
     </Layouts>

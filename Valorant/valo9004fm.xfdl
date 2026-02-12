@@ -18,9 +18,9 @@
                 <Row size="40"/>
               </Rows>
               <Band id="head">
-                <Cell text="랭킹" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="1" text="플레이어 - &lt;fc v='#cecece'&gt;&lt;fs v='16'&gt;디스코드 사용자 이름&lt;/fs&gt;&lt;/fc&gt;" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black" displaytype="decoratetext"/>
-                <Cell col="2" text="평균 반응속도" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell text="랭킹" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
+                <Cell col="1" text="플레이어 - &lt;fc v='#cecece'&gt;&lt;fs v='16'&gt;디스코드 사용자 이름&lt;/fs&gt;&lt;/fc&gt;" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black" displaytype="decoratetext"/>
+                <Cell col="2" text="평균 반응속도" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
               </Band>
               <Band id="body">
                 <Cell border="0px,1px solid #292932,1px solid black,0px" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" text="bind:RANKING"/>

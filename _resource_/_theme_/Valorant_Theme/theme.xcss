@@ -21,7 +21,7 @@
 {
 	font :  normal 12px/normal "이사만루체 Medium";
 	color : #555555;
-	background : #1f2326;
+	background : #969696;
 	-nexa-border : 0px none;
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
@@ -4188,11 +4188,11 @@
 
 .Static.top_logo
 {
-	background : #1f2326;
-	-nexa-border : 4px solid #f74451;
+	background : #242429;
+	-nexa-border : 6px solid #f74451;
 	border-radius : 20px;
 	color : #f74451;
-	font : 32px/normal "Black Han Sans";
+	font : 34px/normal "Black Han Sans";
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 	-nexa-padding : 5px 0px 0px;
@@ -10901,10 +10901,10 @@
 .Button.top_menu
 {
 	cursor : pointer;
-	background : #31313c;
-	-nexa-border : 2px solid #8e8e8e,2px solid #8e8e8e,0px;
+	background : #75758e;
+	-nexa-border : 2px solid #cccccc,2px solid #cccccc,0px;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
-	color : #8e8e8e;
+	color : #cccccc;
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 }
@@ -10922,11 +10922,11 @@
 }
 .Static.top_logo[status=mouseover]
 {
-	background : #1f2326;
-	-nexa-border : 4px solid #f74451;
+	background : #242429;
+	-nexa-border : 6px solid #f74451;
 	border-radius : 20px;
 	color : #f74451;
-	font : 32px/normal "Black Han Sans";
+	font : 34px/normal "Black Han Sans";
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 	box-shadow : 0px 0px 20px #f74451;
@@ -10936,10 +10936,10 @@
 .Button.top_menu_remove
 {
 	cursor : pointer;
-	background : #31313c;
-	-nexa-border : 2px solid #8e8e8e,2px solid #8e8e8e,0px;
+	background : #75758e;
+	-nexa-border : 2px solid #cccccc,2px solid #cccccc,0px;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
-	color : #8e8e8e;
+	color : #cccccc;
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 }
@@ -11109,8 +11109,9 @@
 .Button.rank_paging[status=mouseover]
 {
 	cursor : pointer;
-	background : #1f2326;
-	color : #9e9eb1;
+	/*background : #1f2326;*/
+	background : #969696;
+	color : white;
 	border-radius : 20px;
 	font : normal 20pt/normal "이사만루체 Medium";
 	box-shadow : 0px 0px 20px #ffffff;
@@ -11118,8 +11119,9 @@
 .Button.rank_paging
 {
 	cursor : pointer;
-	background : #1f2326;
-	color : #9e9eb1;
+	/*background : #1f2326;*/
+	background : #969696;
+	color : white;
 	border-radius : 20px;
 	font : normal 20pt/normal "이사만루체 Medium";
 }
@@ -11158,9 +11160,9 @@
 }
 .Grid.grid_test .body .row .cell
 {
-	background : #31313c;
+	background : #56566b;
 	color : white;
-	-nexa-background-odd : #393946;
+	-nexa-background-odd : #63637c;
 	
 }
 .Grid .body .row .cell.grid_test1
@@ -11313,8 +11315,8 @@
 
 .Combo.valo_combo_tier
 {
-	background : #4c4c5a;
-	-nexa-border : 0px solid #4c4c5a;
+	background : #31313c;
+	-nexa-border : 0px solid #31313c;
 	-nexa-padding : 0px 0px 0px 5px;
 	color : white;
 	border-radius : 20px;
@@ -11325,7 +11327,7 @@
 {
 	-nexa-padding : 1px 2px 0px 0px;
 	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
-	-nexa-border : 15px solid #4c4c5a;
+	-nexa-border : 15px solid #31313c;
 	cursor : pointer;
 }
 .Combo.valo_combo_tier .combolist
@@ -11341,7 +11343,7 @@
 .Combo.valo_combo_tier .dropbutton[status=focused]
 {
 	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
-	-nexa-border : 15px solid #4c4c5a;
+	-nexa-border : 15px solid #31313c;
 	cursor : pointer;
 }
 .Combo.valo_combo_tier[status=mouseover]
@@ -11367,7 +11369,7 @@
 }
 .Combo.valo_combo_tier .combolist .listboxitem[status=mouseover]
 {
-	background : #4c4c5a;
+	background : #75758e;
 }
 .Combo.valo_combo_tier .combolist[status=focused],
 .Combo.valo_combo_tier .combolist[status=mouseover]
@@ -11376,7 +11378,7 @@
 }
 .Combo.valo_combo_tier .combolist .listboxitem[userstatus=selected]
 {
-	background : #4c4c5a;
+	background : #75758e;
 }
 .Button.btn_shadow[status=mouseover]
 {

@@ -69,7 +69,7 @@
           </Formats>
         </ListView>
         <Static id="sta_devide_1" taborder="11" left="1190" top="sta_statistics_1:-2" height="2" background="#1f2326" right="150"/>
-        <Static id="sta_devide_0" taborder="9" top="sta_statistics:-2" width="660" height="2" background="#1f2326" right="150"/>
+        <Static id="sta_devide_0" taborder="9" top="sta_statistics:-2" height="2" background="#1f2326" left="1190" right="150"/>
         <Static id="sta_statistics_2" taborder="12" text="거리별 피해량" left="1190" top="list_statistics:0" height="50" background="#282830" font="normal 16px/normal &quot;AppleSDGothicNeoEB00&quot;" color="#9b9baa" padding="0px 0px 0px 20px" border="0px" right="150"/>
         <ListView id="list_damage" taborder="15" left="1190" top="sta_statistics_2:-2" height="300" binddataset="ds_view_damage" background="#1f2326" border="0px none" right="150" borderRadius="0px 0px 20px 20px" formatid="default">
           <Formats>
@@ -102,7 +102,7 @@
           </Formats>
         </ListView>
         <Static id="sta_devide_3" taborder="13" left="1190" top="sta_statistics_2:-2" height="2" background="#1f2326" right="150"/>
-        <Static id="sta_devide_2" taborder="14" top="list_statistics:-2" width="660" height="2" background="#1f2326" right="150"/>
+        <Static id="sta_devide_2" taborder="14" top="list_statistics:-2" height="2" background="#1f2326" right="150" left="1190"/>
         <Static id="sta_background" taborder="16" left="150" top="sta_weapon_description:30" height="755" background="#31313c" borderRadius="20px" font="20px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 0px 0px 20px" border="0px" right="list_statistics:50" text=""/>
         <VideoPlayer id="video_weapon" taborder="6" left="169" top="sta_weapon_description:45" height="539" autoplay="true" repeat="true" tabstop="false" showcontrolbar="true" right="list_statistics:69" onplaystatuschanged="video_weapon_onplaystatuschanged"/>
         <Button id="btn_normal" taborder="18" text="기본 발사" top="video_weapon:35" height="26" font="normal 17pt/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" right="video_weapon:-390" onclick="btn_normal_onclick" cursor="pointer" width="86"/>

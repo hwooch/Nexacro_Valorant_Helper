@@ -4,13 +4,12 @@
     <Layouts>
       <Layout height="980" width="2000">
         <Button id="btn_refresh_ranking" taborder="0" text="랭킹 새로고침" left="200" top="40" width="220" height="90" onclick="btn_refresh_ranking_onclick" tabstop="false" cssclass="rank_refresh"/>
-        <Grid id="grd_ranking" taborder="6" left="200" top="btn_refresh_ranking:40" height="852" binddataset="ds_ranking" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px 20px 0px 0px" tabstop="false" right="200" cssclass="grid_test" oncellclick="grd_ranking_oncellclick" onmousemove="grd_ranking_onmousemove">
+        <Grid id="grd_ranking" taborder="6" left="200" top="btn_refresh_ranking:37" height="452" binddataset="ds_ranking" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px 20px 0px 0px" tabstop="false" right="200" cssclass="grid_test" oncellclick="grd_ranking_oncellclick" onmousemove="grd_ranking_onmousemove">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="150"/>
+                <Column size="230"/>
                 <Column size="67"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -21,25 +20,25 @@
                 <Row size="40"/>
               </Rows>
               <Band id="head">
-                <Cell text="랭킹" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="1" colspan="2" text="플레이어" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="3" colspan="2" text="티어" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="5" text="포인트" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="6" text="승리 횟수" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell text="랭킹" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="1" background="#85859d" border="0px none,0px none,1px solid black" text="플레이어" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white"/>
+                <Cell col="2" colspan="2" text="티어" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="4" text="포인트" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell col="5" text="승리 횟수" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:RANKING" border="0px,1px solid #292932,1px solid black,0px" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
-                <Cell col="1" colspan="2" text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" displaytype="text" textAlign="left" cssclass="grid_test1"/>
-                <Cell col="3" textAlign="right" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,0px,1px solid black,1px solid #292932" imagestretch="fixaspectratio" padding="3px 0px 3px 120px" displaytype="imagecontrol" text="bind:TIER_ICON"/>
-                <Cell col="4" border="0px,1px solid #292932,1px solid black,0px" text="bind:TIER" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
-                <Cell col="5" text="bind:RANKED_RATING" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
-                <Cell col="6" text="bind:WINS" border="0px,0px,1px solid black,1px solid #292932" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
+                <Cell col="1" text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" border="0px,1px solid #292932,1px solid black" font="normal 15pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 10px"/>
+                <Cell col="2" textAlign="right" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,0px,1px solid black,1px solid #292932" imagestretch="fixaspectratio" padding="3px 0px 3px 120px" displaytype="imagecontrol" text="bind:TIER_ICON"/>
+                <Cell col="3" border="0px,1px solid #292932,1px solid black,0px" text="bind:TIER" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
+                <Cell col="4" text="bind:RANKED_RATING" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
+                <Cell col="5" text="bind:WINS" border="0px,0px,1px solid black,1px solid #292932" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Static id="sta_space" taborder="5" left="201" top="grd_ranking:-2" height="2" right="201" background="black"/>
-        <Div id="divPage" taborder="3" left="201" right="201" url="Cmm::CmmPaging.xfdl" height="100" text="" background="#31313c" borderRadius="0px 0px 20px 20px" border="2px none black,0px none,0px none" top="sta_space:0">
+        <Div id="divPage" taborder="3" left="200" right="200" url="Cmm::CmmPaging.xfdl" height="100" text="" background="#56566b" borderRadius="0px 0px 20px 20px" border="2px none black,0px none,0px none" top="sta_space:-1">
           <Layouts>
             <Layout/>
           </Layouts>
@@ -47,7 +46,7 @@
         <Static id="sta_last_update" taborder="1" text="랭킹 불러오는 중..." left="btn_refresh_ranking:20" top="40" width="620" height="90" color="white" borderRadius="20px" font="normal 18pt/normal &quot;이사만루체 Medium&quot;" textAlign="left"/>
         <Button id="Button00" taborder="2" left="0" top="0" width="0" height="0"/>
         <Button id="btn_space" taborder="4" left="201" top="divPage:0" height="30" right="201"/>
-        <Static id="sta_description" taborder="7" text="상위 1000명의 랭킹 정보를 제공합니다.&#13;&#10;닉네임을 클릭하면 해당 유저의 전적을 검색합니다." top="40" width="620" height="90" color="white" borderRadius="20px" font="normal 18pt/normal &quot;이사만루체 Medium&quot;" textAlign="right" right="200"/>
+        <Static id="sta_description" taborder="7" text="상위 1,000명의 랭킹 정보를 제공합니다.&#13;&#10;닉네임을 클릭하면 해당 유저의 전적을 검색합니다." top="40" width="620" height="90" color="white" borderRadius="20px" font="normal 18pt/normal &quot;이사만루체 Medium&quot;" textAlign="right" right="200"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -139,7 +138,7 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 
 this.fnPageInit = function ()
 {
-	this.fvRecords = 20; 							 //목록갯수
+	this.fvRecords = 10; 							 //목록갯수
 	this.fvPage = 0;	 							 //페이지번호
 	this.fvRecordsOffset = 0;					     //시작rownum
 	this.fvPageCount = 10;							 //실제표출페이지갯수

@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="320" width="560">
         <Static id="staIcon" taborder="0" left="15" top="40" width="50" height="50"/>
-        <Static id="txtMsgContent" taborder="1" text="Static00" left="30" top="30" background="#393946" borderRadius="10px" textAlign="center" verticalAlign="middle" padding="5px 0px 0px" bottom="90" right="30" color="white" font="normal 18pt/normal &quot;이사만루체 Medium&quot;"/>
+        <Static id="txtMsgContent" taborder="1" text="Static00" left="30" top="30" background="#6d6d6d" borderRadius="10px" textAlign="center" verticalAlign="middle" padding="5px 0px 0px" bottom="90" right="30" color="white" font="normal 18pt/normal &quot;이사만루체 Medium&quot;"/>
         <Button id="btnOk" taborder="2" text="확인" cssclass="btn_WF_FillRed" right="30" bottom="20" width="90" height="50" onclick="btnOk_onclick"/>
       </Layout>
     </Layouts>

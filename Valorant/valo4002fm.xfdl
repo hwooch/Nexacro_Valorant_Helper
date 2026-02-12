@@ -3,7 +3,7 @@
   <Form id="valo4002fm" width="2500" height="180" titletext="맵 종류" borderRadius="10px">
     <Layouts>
       <Layout height="180" mobileorientation="landscape" width="2500">
-        <Static id="sta_background" taborder="0" left="0" top="0" background="#31313c" width="2500" height="180" text="" borderRadius="10px"/>
+        <Static id="sta_background" taborder="0" left="0" top="0" background="#6e6e86" width="2500" height="180" text="" borderRadius="10px"/>
         <Button id="test_button" taborder="1" left="80" top="260" width="228" height="130" background="url('https://media.valorant-api.com/maps/1c18ab1f-420d-0d8b-71d0-77ad3c439115/listviewicontall.png') no-repeat center top /contain red" borderRadius="10px" color="white" textAlign="left" verticalAlign="bottom" font="normal 18pt/normal &quot;이사만루체 Medium&quot;" padding="0px 0px 0px 5px" visible="false" border="2px solid white"/>
       </Layout>
     </Layouts>
@@ -63,7 +63,7 @@ this.fn_init = function()
         objBtn.background = sBgVal;
 		objBtn.borderRadius = "10px";
 		objBtn.border = "2px solid #8e8e8e";
-		objBtn.opacity = "50%";
+		objBtn.opacity = "70%";
 		
         // 화면에 추가 및 표시
         this.addChild(sBtnId, objBtn);
@@ -81,7 +81,7 @@ this.fn_init = function()
         objSta.textAlign = "center";       // 가운데 정렬
         objSta.verticalAlign = "top";      // 상단 정렬
         objSta.font = "normal 16pt/normal '이사만루체 Light'";
-		objSta.opacity = "50%";
+		objSta.opacity = "70%";
         
         this.addChild(sStaId, objSta);
         objSta.show();
@@ -203,7 +203,7 @@ this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
         
         // 테두리 색깔 되돌리기
         objPrevBtn.border = "2px solid #8e8e8e";
-		objPrevBtn.opacity = "50%";
+		objPrevBtn.opacity = "70%";
 		
 		// 이전 텍스트 찾기
         var sPrevStaId = this.fv_sSelectedBtnId.replace("btn_map_", "sta_map_name_");
@@ -211,7 +211,7 @@ this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
         // 이전 텍스트 투명도 50%로 되돌리기
         if (objPrevSta) {
-            objPrevSta.opacity = "50%";
+            objPrevSta.opacity = "70%";
         }
     }
     

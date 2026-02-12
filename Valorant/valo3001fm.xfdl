@@ -12,11 +12,15 @@
             <Layout/>
           </Layouts>
         </Div>
-        <Button id="btn_reload" taborder="3" text="스킨 최신데이터 리로드" left="2105" top="170" width="410" height="105" background="white" onclick="Button00_onclick" visible="false" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;"/>
+        <Button id="btn_reload" taborder="3" text="스킨 최신데이터 리로드" left="2105" top="170" width="410" height="105" background="white" visible="false" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" onclick="btn_reload_onclick"/>
         <Button id="btn_space1" taborder="12" left="855" top="div_skin_list:0" width="0" height="30"/>
+        <Button id="btn_SendDM" taborder="7" text="dm전송" left="2115" top="334" width="110" height="92" background="white" onclick="btnSendDM_onclick" visible="false"/>
+        <Button id="btn_DeleteDM" taborder="8" text="dm삭제" left="2115" top="504" width="110" height="92" background="white" onclick="btn_DeleteDM_onclick" visible="false"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[// 현재 선택한 값
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+// 현재 선택한 값
 this.fv_selectedWeapon = "all";
 this.fv_selectedTier   = "all";
 
@@ -25,9 +29,9 @@ this.valo3001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.fn_getDBData(); // DB 조회 우선
 };
 
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btn_reload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-    this.fn_getNewData(); 
+	this.fn_getNewData(); 
 };
 
 this.fn_getNewData = function() {
@@ -271,9 +275,9 @@ this.fn_drawTierList = function()
         // 왼쪽여백(10) + 아이콘(36) + 간격(10) + 텍스트너비(nTextWidth) + 오른쪽여백(15)
         var nDynamicBtnW = 10 + 36 + 10 + nTextWidth + 15;
 		
-// 		// 왼쪽여백(10) + 아이콘(40) + 간격(10) + 텍스트너비(nTextWidth) + 오른쪽여백(15)
-//         var nDynamicBtnW = 10 + 40 + 10 + nTextWidth + 15;
-// 		
+		// 		// 왼쪽여백(10) + 아이콘(40) + 간격(10) + 텍스트너비(nTextWidth) + 오른쪽여백(15)
+		//         var nDynamicBtnW = 10 + 40 + 10 + nTextWidth + 15;
+		// 		
         // 줄바꿈 로직
         if ((nLeft + nDynamicBtnW) > nMaxWidth) {
             nLeft = nStartX;
@@ -446,7 +450,7 @@ this.fn_drawSkinList = function()
         var objDiv = new nexacro.Div();
 		objDiv.init(sDivId, nLeft, nTop, nCardW, nCardH, null, null);
         
-        objDiv.background = "#2a2e35";    
+        objDiv.background = "#727272";    
         objDiv.borderRadius = "10px";
         var sBorderColor = sTierColor ? sTierColor.substr(0, 7) : "#444444"; 
         objDiv.border = "0px none, 0px none, 5px solid " + sBorderColor + ", 0px none";
@@ -522,7 +526,81 @@ this.fn_drawSkinList = function()
     pDiv.resetScroll();
 	
 	this.resetScroll();
-};]]></Script>
+};
+
+
+
+
+this.btnSendDM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    // 보낼 메세지 내용
+    var sMsg = "안녕하세요! 넥사크로에서 보낸 메세지입니다.\n줄바꿈도 됩니다.";
+	var sEncodedMsg = encodeURI(sMsg);
+	
+	var discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+    alert("보낼 ID: " + discord_id);
+    var strSvcID        = "sendDM";
+    var strURL          = "SvcUrl::sendDiscordDm.do";
+    var strInDatasets   = "";
+    var strOutDatasets  = "";
+    var strArgument     = "discord_id=" + nexacro.wrapQuote(discord_id)+" msg=" + nexacro.wrapQuote(sEncodedMsg);
+    var strCallbackFunc = "fnCallback";
+    
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+};
+
+
+this.btnSendDM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    // 보낼 메세지 내용
+    var sMsg = "안녕하세요! 넥사크로에서 보낸 메세지입니다.\n줄바꿈도 됩니다.";
+	var sEncodedMsg = encodeURI(sMsg);
+	
+	var discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+    var strSvcID        = "sendDM";
+    var strURL          = "SvcUrl::sendDiscordDm.do";
+    var strInDatasets   = "";
+    var strOutDatasets  = "";
+    var strArgument     = "discord_id=" + nexacro.wrapQuote(discord_id)+" msg=" + nexacro.wrapQuote(sEncodedMsg);
+    var strCallbackFunc = "fnCallback";
+    
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+};
+
+
+this.fnCallback = function(svcID, errorCode, errorMsg)
+{
+    if(svcID == "sendDM") {
+        if(errorCode == 0) {
+            trace("메세지 전송 성공!");
+        } else {
+            // 403 에러가 뜨면 유저가 '서버 멤버가 보내는 DM 허용 안함'을 켜둔 상태임
+            trace("전송 실패: " + errorMsg);
+        }
+    }
+	if(svcID == "cleanDiscordDm") {
+        if(errorCode == 0) {
+            trace("메세지 삭제 성공!");
+        } else {
+            // 403 에러가 뜨면 유저가 '서버 멤버가 보내는 DM 허용 안함'을 켜둔 상태임
+            trace("전송 실패: " + errorMsg);
+        }
+    }
+};
+this.btn_DeleteDM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	var discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+    var strSvcID        = "cleanDiscordDm";
+    var strURL          = "SvcUrl::cleanDiscordDm.do";
+    var strInDatasets   = "";
+    var strOutDatasets  = "";
+    var strArgument     = "discord_id=" + nexacro.wrapQuote(discord_id);
+    var strCallbackFunc = "fnCallback";
+    
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_weapon">
         <ColumnInfo>
