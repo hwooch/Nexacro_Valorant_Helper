@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ENV version="2.1">
-  <Environment themeid="theme::Valorant_Theme" datatyperule="2.0" networksecurelevel="all" filesecurelevel="all" icon="url('theme::Valorant_Theme/images/valo_icon.ico')">
+  <Environment themeid="theme::Valorant_Theme_white" datatyperule="2.0" networksecurelevel="all" filesecurelevel="all" icon="url('theme::Valorant_Theme_white/images/valo_icon.ico')">
     <ScreenDefinition>
-      <Screen id="Desktop_screen" type="desktop" themeid="theme::Valorant_Theme" scrollbartype="none auto"/>
+      <Screen id="Desktop_screen" type="desktop" themeid="theme::Valorant_Theme_white" scrollbartype="none auto" icon="url('theme::Valorant_Theme_white/images/valo_icon.ico')"/>
     </ScreenDefinition>
     <Variables>
       <Variable id="evRunMode" initval="S"/>
