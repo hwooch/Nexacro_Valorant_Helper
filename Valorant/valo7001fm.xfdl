@@ -32,15 +32,15 @@
                 <Row size="60"/>
               </Rows>
               <Band id="head">
-                <Cell text="플레이어" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="1" text="마이크" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="2" colspan="2" text="선호 클래스" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="4" colspan="2" text="티어" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="6" text="메모" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="7" colspan="3" text="승/패" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="10" text="승률" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="11" text="등록일시" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="12" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell text="플레이어"/>
+                <Cell col="1" text="마이크" background="#85859d"/>
+                <Cell col="2" colspan="2" text="선호 클래스"/>
+                <Cell col="4" colspan="2" text="티어" background="#85859d"/>
+                <Cell col="6" text="메모"/>
+                <Cell col="7" colspan="3" text="승/패" background="#85859d"/>
+                <Cell col="10" text="승률"/>
+                <Cell col="11" text="등록일시" background="#85859d"/>
+                <Cell col="12"/>
               </Band>
               <Band id="body">
                 <Cell text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px" cursor="pointer"/>

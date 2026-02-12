@@ -4,9 +4,9 @@
     <Layouts>
       <Layout height="980" width="2000">
         <Static id="sta_discord_name" taborder="2" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="디스코드 이름" fittocontents="width" textAlign="right" width="218" left="250" verticalAlign="bottom"/>
-        <Static id="sta_nothing" taborder="3" top="84" height="33" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="white" text=" 님의 연동된 라이엇 아이디" fittocontents="width" textAlign="right" width="306" left="sta_discord_name:0" verticalAlign="bottom" opacity="90%"/>
+        <Static id="sta_nothing" taborder="3" top="84" height="33" text=" 님의 연동된 라이엇 아이디" fittocontents="width" width="306" left="sta_discord_name:0" cssclass="sta_nothing"/>
         <Static id="sta_user_name" taborder="0" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" width="184" left="sta_nothing:50" verticalAlign="bottom"/>
-        <Static id="sta_user_tag" taborder="1" top="84" height="33" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="white" text="사용자 태그" fittocontents="width" textAlign="right" width="133" left="sta_user_name:10" verticalAlign="bottom" opacity="90%"/>
+        <Static id="sta_user_tag" taborder="1" top="84" height="33" text="사용자 태그" fittocontents="width" width="133" left="sta_user_name:10" cssclass="sta_nothing"/>
         <Static id="sta_save_list" taborder="4" text="내가 저장한 전적 기록" left="250" top="sta_discord_name:40" height="70" background="#31313c" borderRadius="20px 20px 0px 0px" font="normal 25px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 20px" border="0px,0px,2px #1f2326" width="254"/>
         <ListView id="list_match_list" taborder="5" left="250" top="sta_save_list:0" height="353" binddataset="ds_list" border="0px none" right="250" background="transparent" oncellclick="list_match_list_oncellclick" onmousemove="list_match_list_onmousemove" bandinitstatus="collapse">
           <Formats>
@@ -71,15 +71,15 @@
                 <Row size="60"/>
               </Rows>
               <Band id="head">
-                <Cell text="플레이어" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="1" text="마이크" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="2" colspan="2" text="선호 클래스" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="4" colspan="2" text="티어" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="6" text="메모" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="7" colspan="3" text="승/패" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="10" text="승률" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="11" text="등록일시" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="12" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell text="플레이어"/>
+                <Cell col="1" text="마이크" background="#85859d"/>
+                <Cell col="2" colspan="2" text="선호 클래스"/>
+                <Cell col="4" colspan="2" text="티어" background="#85859d"/>
+                <Cell col="6" text="메모"/>
+                <Cell col="7" colspan="3" text="승/패" background="#85859d"/>
+                <Cell col="10" text="승률"/>
+                <Cell col="11" text="등록일시" background="#85859d"/>
+                <Cell col="12"/>
               </Band>
               <Band id="body">
                 <Cell text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>

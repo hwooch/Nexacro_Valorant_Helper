@@ -5,7 +5,7 @@
       <Layout height="980" width="2000">
         <Static id="sta_game_description" taborder="0" text="무작위로 등장하는 10개의 공을&#13;&#10;최대한 빨리 클릭하세요 !" left="80" top="47" width="774" height="114" color="white" font="normal 25pt/normal &quot;이사만루체 Medium&quot;"/>
         <Static id="sta_high_score" taborder="2" text="최고 기록 :" top="70" right="80" width="400" height="50" color="#00ff99" font="normal 30pt/normal &quot;이사만루체 Medium&quot;" textAlign="right" visible="false" fittocontents="width"/>
-        <Div id="div_game_zone" taborder="1" left="300" top="sta_game_description:50" background="RGBA(40,40,40,0.50)" right="300" bottom="50" borderRadius="20px" border="3px solid gray" minwidth="1300" maxwidth="" minheight="550" maxheight="">
+        <Div id="div_game_zone" taborder="1" left="300" top="sta_game_description:50" right="300" bottom="50" minwidth="1300" maxwidth="" minheight="550" maxheight="" cssclass="div_game_zone">
           <Layouts>
             <Layout>
               <Button id="btn_game_start" taborder="0" text="게임 시작" left="600" top="300" height="100" font="normal 25pt/normal &quot;이사만루체 Medium&quot;" color="white" onclick="btn_game_start_onclick" fittocontents="none" background="rgba(255,0,0,0.5)" visible="false" width="200" border="3px solid red" borderRadius="20px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>

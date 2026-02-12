@@ -119,12 +119,12 @@
                 <Row size="45"/>
               </Rows>
               <Band id="head">
-                <Cell text="연사 속도" textAlign="center" verticalAlign="middle" border="0px solid #31313c" font="normal 18px/normal &quot;이사만루체 Medium&quot;"/>
-                <Cell col="1" text="이동 속도 배율" textAlign="center" verticalAlign="middle" border="0px solid #31313c" font="normal 18px/normal &quot;이사만루체 Medium&quot;"/>
-                <Cell col="2" text="첫 사격 정확도" textAlign="center" verticalAlign="middle" border="0px solid #31313c" font="normal 18px/normal &quot;이사만루체 Medium&quot;"/>
+                <Cell text="연사 속도" font="normal 18px/normal &quot;이사만루체 Medium&quot;"/>
+                <Cell col="1" text="이동 속도 배율" font="normal 18px/normal &quot;이사만루체 Medium&quot;" background="#85859d"/>
+                <Cell col="2" text="첫 사격 정확도" font="normal 18px/normal &quot;이사만루체 Medium&quot;"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:Math.round(FIRE_RATE  * 100) / 100 + &quot; 발/초&quot;" textAlign="center" verticalAlign="middle" border="0px solid #31313c" font="normal 18px/normal &quot;이사만루체 Medium&quot;"/>
+                <Cell text="expr:Math.round(FIRE_RATE  * 100) / 100 + &quot; 발/초&quot;" textAlign="center" verticalAlign="middle" font="normal 18px/normal &quot;이사만루체 Medium&quot;" border="0px solid #31313c"/>
                 <Cell col="1" text="expr:Math.round(RUN_SPEED * 100) / 100 + &quot;x&quot;" textAlign="center" verticalAlign="middle" border="0px solid #31313c" font="normal 18px/normal &quot;이사만루체 Medium&quot;"/>
                 <Cell col="2" text="expr:Math.round(FIRST_ACCURACY * 100) / 100" textAlign="center" verticalAlign="middle" border="0px solid #31313c" font="normal 18px/normal &quot;이사만루체 Medium&quot;"/>
               </Band>

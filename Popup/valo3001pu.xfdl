@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo3001pu" width="500" height="290" titletext="메모 확인하기" borderRadius="20px" border="2px solid #a1a1ac" onclick="valo3001pu_onclick" onload="valo3001pu_onload" color="white">
+  <Form id="valo3001pu" width="500" height="290" titletext="메모 확인하기" borderRadius="20px" border="2px solid #a1a1ac" onclick="valo3001pu_onclick" onload="valo3001pu_onload" color="white" cssclass="form_popup">
     <Layouts>
       <Layout height="290" width="500">
         <Static id="sta_memo" taborder="0" text="메모" left="22" top="20" width="37" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
         <Button id="btn_focus" taborder="1" left="20" width="0" height="0" bottom="5"/>
         <Button id="btnOk" taborder="2" text="확인" width="90" height="50" bottom="30" onclick="btnOk_onclick" uWord="popup.ok" cssclass="btn_WF_FillRed" left="205"/>
-        <TextArea id="txt_memo" taborder="3" left="20" top="sta_memo:20" height="118" wordWrap="char" autoselect="true" enable="false" tabstop="false" maxlength="100" borderRadius="10px" color="#515163" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="10px 0px 0px 10px" textAlign="left" right="20" displaynulltext="메모가 존재하지 않습니다." background="#6d6d6d" border="0px solid white"/>
+        <TextArea id="txt_memo" taborder="3" left="20" top="sta_memo:20" height="118" autoselect="true" enable="false" tabstop="false" maxlength="100" color="white" right="20" cssclass="txt_memo" displaynulltext="메모가 존재하지 않습니다."/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -33,14 +33,9 @@ this.valo3001pu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     {
 		this.txt_memo.value = "";
         this.txt_memo.value = null;
-		this.txt_memo.border = "0px solid #515163";
-		this.txt_memo.color = "white";
     } else {
 		this.txt_memo.value = this.parent.a;
-		this.txt_memo.border = "0px solid white";
-		this.txt_memo.color = "white";
 	}
-	
 };
 ]]></Script>
   </Form>

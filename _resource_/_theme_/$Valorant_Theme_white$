@@ -22,6 +22,21 @@
 	word-spacing : ;
 }
 
+.Form.form_popup
+{
+	font :  normal 12px/normal "이사만루체 Medium";
+	color : #555555;
+	background : #969696;
+	-nexa-border : 0px none;
+	-nexa-edge : ;
+	-nexa-rtl-background-image : ;
+	-nexa-rtl-edge-image : ;
+	border-radius : ;
+	cursor : ;
+	letter-spacing : ;
+	opacity : ;
+	word-spacing : ;
+}
 .Form[userstatus=contents]
 {
 	background : transparent;
@@ -4209,27 +4224,34 @@
 
 
 /* TextArea */
-.TextArea,.TextAreaControl
+.TextArea
 {
 	background : #ffffff;
 	-nexa-border : 1px solid #d5d5d5;
 	-nexa-padding : 9px 9px 9px 9px;
-	-nexa-edge : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-word-wrap : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
-
+.TextAreaControl
+{
+	background : #000000;
+	-nexa-border : 1px solid #d5d5d5;
+	-nexa-padding : 9px 9px 9px 9px;
+}/* TextArea */
+.TextArea.txt_memo,
+.TextArea.txt_memo[status=disabled],
+.TextArea.txt_memo[status=mouseover],
+.TextArea.txt_memo[status=focused],
+.TextArea.txt_memo[status=readonly],
+.TextArea.txt_memo[userstatus=nulltext]
+{
+	background : #6d6d6d;
+	-nexa-border : 0px solid white;
+	-nexa-padding : 10px 0px 0px 10px;
+	border-radius : 10px;
+	font : normal 13pt/normal "이사만루체 Light";
+	-nexa-word-wrap : char;
+	-nexa-text-align : left;
+	color : white;
+}
 .TextArea[status=mouseover],.TextArea[status=focused],.TextAreaControl[status=mouseover],.TextAreaControl[status=focused]
 {
 	-nexa-border : 1px solid #5a86cd;
@@ -4276,21 +4298,6 @@
 {
 	color : #999999;
 	background : #efefef;
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-word-wrap : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 
@@ -10815,6 +10822,12 @@
 	box-shadow : 0px 2px 5px rgba(0,0,0,0.2);
 	-nexa-border : 0px none;
 }
+.Div.div_game_zone
+{
+	border-radius : 20px;
+	-nexa-border : 3px solid gray;
+	background : rgba(40,40,40,0.5);
+}
 .Div.skins_weapon[status=disabled]
 {
 	-nexa-border : ;
@@ -10872,6 +10885,14 @@
 	-nexa-vertical-align : middle;
 	-nexa-padding : 0px 0px 0px 5px; /* 아이콘과 글자 사이 간격 */
 	cursor : pointer;
+}
+.Static.sta_nothing
+{
+	font : normal 22pt/normal "AppleSDGothicNeoB00";
+	color : white;
+	opacity : 90%;
+	-nexa-text-align : right;
+	-nexa-vertical-align : bottom;
 }
 .Button.top_menu[status=mouseover],
 .Button.top_menu[status=focused],
@@ -11197,6 +11218,21 @@
 {
 	background : url('theme://images/img_Error.png') no-repeat center center;
 }
+.Static.sta_background
+{
+	background : #6e6e86;
+}
+.Static.sta_background_img
+{
+	opacity : 100%;
+	border-radius : 20px;
+}
+.Static.sta_map_description
+{
+	font : normal 23pt/normal "이사만루체 Medium";
+	color : white;
+	opacity : 95%;
+}
 .Button.btn_WF_FillRed[status=mouseover],
 .Button.btn_WF_FillRed[userstatus=pushed],
 .Button.btn_WF_FillRed[userstatus=selected]
@@ -11479,4 +11515,26 @@
 	-nexa-padding : 5px 0px 0px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : center;
+}
+.Static.sta_border
+{
+	background : #606060;
+}.Button.btn_space,
+.Button.btn_space[status=disabled],
+.Button.btn_space[status=mouseover],
+.Button.btn_space[status=focused],
+.Button.btn_space[userstatus=pushed],
+.Button.btn_space[userstatus=selected]
+{
+	background : #969696;
+}
+.Grid.grid_test .head .row .cell
+{
+	color : white;
+	-nexa-border : 0px none,0px none,1px solid black;
+	font : normal 24px/normal "이사만루체 Light";
+	background : #9b9baf;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+	-nexa-background-odd : #85859d;
 }

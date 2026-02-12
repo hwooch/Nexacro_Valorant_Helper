@@ -3,7 +3,7 @@
   <Form id="valo6002fm" width="2500" height="140" titletext="무기 카테고리">
     <Layouts>
       <Layout height="140" width="2500">
-        <Static id="sta_background" taborder="0" left="0" top="0" background="#31313c" width="2500" height="140"/>
+        <Static id="sta_background" taborder="0" left="0" top="0" width="2500" height="140" cssclass="sta_background"/>
         <Button id="btn_weapon_1" taborder="1" text="오퍼레이터" left="5" top="200" width="220" height="100" background="url('https://media.valorant-api.com/weapons/a03b24d3-4319-996d-0f8c-94bbfba1dfc7/displayicon.png') no-repeat center 20% /contain #4d4d60" color="white" verticalAlign="bottom" borderRadius="20px" textAlign="left" padding="0px 0px 5px 10px" border="1px solid #8e8e8e" font="normal 14pt/normal &quot;AppleSDGothicNeoEB00&quot;" visible="false"/>
       </Layout>
     </Layouts>

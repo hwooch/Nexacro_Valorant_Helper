@@ -21,11 +21,11 @@
                 <Row size="60"/>
               </Rows>
               <Band id="head">
-                <Cell text="신고자 닉네임" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px solid #cacaca,1px solid #4d4d60,1px solid black,0px solid #cacaca"/>
-                <Cell col="1" text="신고 이유" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="2" text="신고 대상자 닉네임" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px,1px solid #4d4d60,1px solid black"/>
-                <Cell col="3" text="작성된 메모" background="#4d4d60" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px,0px,1px solid black"/>
-                <Cell col="4" text="신고 시간" background="#63637c" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black,1px solid #4d4d60"/>
+                <Cell text="신고자 닉네임"/>
+                <Cell col="1" text="신고 이유" background="#85859d"/>
+                <Cell col="2" text="신고 대상자 닉네임"/>
+                <Cell col="3" text="작성된 메모" background="#85859d" border="0px,0px,1px solid black"/>
+                <Cell col="4" text="신고 시간"/>
               </Band>
               <Band id="body">
                 <Cell text="expr:REPORTER_RIOT_NAME +&quot; #&quot;+ REPORTER_RIOT_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>

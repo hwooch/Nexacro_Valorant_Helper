@@ -155,7 +155,7 @@
           </Formats>
         </ListView>
         <Button id="btn_space_1" taborder="20" left="1010" top="list_match_list:0" width="400" height="20"/>
-        <Button id="btn_space_2" taborder="21" left="0" top="630" background="#969696" bottom="0" right="0"/>
+        <Button id="btn_space_2" taborder="21" left="0" top="630" bottom="0" right="0" cssclass="btn_space"/>
         <Static id="sta_hide_screen" taborder="17" left="34" top="190" background="#31313c" textAlign="center" verticalAlign="middle" color="white" font="normal 50pt/normal &quot;AppleSDGothicNeoH00&quot;" borderRadius="20px" right="34" bottom="20" text=""/>
         <Button id="btn_new_search_2" taborder="22" top="div_user_status:80" text="다른 플레이어&#13;&#10;검색하기" borderRadius="20px" border="5px solid #f74451" color="#f74451" font="normal 20pt/normal &quot;이사만루체 Medium&quot;" cursor="pointer" onclick="div_recent_history_btn_new_search_onclick" cssclass="btn_new_search" height="100" left="850" visible="false" right="850"/>
       </Layout>
@@ -731,14 +731,7 @@ this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListV
 	else{
 		this.list_match_list.cursor = "default";
 	}
-};
-
-
-this.sta_hide_screen_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
-};
-]]></Script>
+};]]></Script>
     <Objects>
       <Dataset id="ds_tier">
         <ColumnInfo>
