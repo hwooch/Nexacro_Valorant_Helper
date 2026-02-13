@@ -3,7 +3,7 @@
   <Form id="valo5002fm" width="3000" height="148" titletext="요원 목록">
     <Layouts>
       <Layout height="148" width="3000">
-        <Static id="sta_background" taborder="0" left="0" top="0" width="3000" height="148" text="" borderRadius="20px" cssclass="sta_background"/>
+        <Static id="sta_background" taborder="0" left="0" top="0" width="3000" height="148" text="" cssclass="sta_background"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();

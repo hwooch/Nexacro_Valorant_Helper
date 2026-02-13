@@ -994,6 +994,13 @@
 	opacity : ;
 	word-spacing : ;
 }
+.Grid.grid_test
+{
+	background : #31313c;
+	-nexa-border : 1px solid #1f2326;
+	color : white;
+	font : normal 30pt/normal "이사만루체 Medium";
+}
 
 /* head */
 .Grid .head .row .cell
@@ -4267,6 +4274,11 @@
 .Static.sta_background_img
 {
 	opacity : 20%;
+	border-radius : 20px;
+}
+.Static.sta_background
+{
+	background : #31313c;
 	border-radius : 20px;
 }
 .Static.sta_map_description
@@ -10900,6 +10912,12 @@
 	-nexa-border : 3px solid gray;
 	background : rgba(128,128,128,0.5);
 }
+.Div.div_page
+{
+	border-radius : 0px 0px 20px 20px;
+	-nexa-border : 2px none black,0px none,0px none;
+	background : #31313c;
+}
 .Div.skins_weapon[status=disabled]
 {
 	-nexa-border : ;
@@ -10965,7 +10983,7 @@
 {
 	cursor : pointer;
 	background : #31313c;
-	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
+	-nexa-border : 2px solid red;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -10976,7 +10994,7 @@
 {
 	cursor : pointer;
 	background : #31313c;
-	-nexa-border : 2px solid #8e8e8e,2px solid #8e8e8e,0px;
+	-nexa-border : 2px solid #8e8e8e;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #8e8e8e;
 	font : 22px/normal "이사만루체 Medium";
@@ -11011,7 +11029,7 @@
 {
 	cursor : pointer;
 	background : #31313c;
-	-nexa-border : 2px solid #8e8e8e,2px solid #8e8e8e,0px;
+	-nexa-border : 2px solid red;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #8e8e8e;
 	font : 22px/normal "이사만루체 Medium";
@@ -11024,7 +11042,7 @@
 {
 	cursor : pointer;
 	background : #31313c;
-	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
+	-nexa-border : 2px solid red;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -11040,7 +11058,7 @@
 {
 	cursor : pointer;
 	background : #31313c;
-	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
+	-nexa-border : 2px solid purple;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -11065,13 +11083,11 @@
 .Button.top_menu_selected,
 .Button.top_menu_selected[status=disabled],
 .Button.top_menu_selected[status=mouseover],
-.Button.top_menu_selected[status=focused],
-.Button.top_menu_selected[userstatus=pushed],
-.Button.top_menu_selected[userstatus=selected]
+.Button.top_menu_selected[status=focused]
 {
 	cursor : pointer;
 	background : #31313c;
-	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
+	-nexa-border : 2px solid red;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -11246,16 +11262,6 @@
 	-nexa-background-odd : #393946;
 	
 }
-.Grid.grid_test .head .row .cell
-{
-	color : white;
-	-nexa-border : 0px none,0px none,1px solid black;
-	font : normal 24px/normal "이사만루체 Light";
-	background : #63637c;
-	-nexa-vertical-align : middle;
-	-nexa-text-align : center;
-	-nexa-background-odd : #4d4d60;
-}
 .Grid .body .row .cell.grid_test1
 {
 	background : #31313c;
@@ -11314,6 +11320,34 @@
 	border-radius : 10px;
 	font : normal 18pt/normal "이사만루체 Medium";
 	cursor : pointer;
+}
+.Button.btn_agent_filter_all
+{
+	-nexa-border : 15px solid #6e6e86;
+	background : #6e6e86;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	opacity : 70%;
+}
+.Button.btn_agent_filter
+{
+	-nexa-border : 15px solid #31313c;
+	background : #31313c;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	opacity : 50%;
+	-nexa-text-align : right;
+}
+.Button.btn_skill
+{
+	-nexa-border : 10px solid #31313c;
+	background : #31313c;
+	color : white;
+	border-radius : 20px;
+	font : normal 16px/normal "이사만루체 Light";
+	-nexa-vertical-align : bottom;
 }
 .Button.btn_WF_FillGray[userstatus=pushed],
 .Button.btn_WF_FillGray[userstatus=selected],
@@ -11503,6 +11537,14 @@
 {
 	font : normal 14px/normal "이사만루체 Light";
 	color : transparent;	
+}
+.Grid.grid_test .head .row .cell
+{
+	color : white;
+	-nexa-border : 0px none,0px none,1px solid black;
+	font : normal 24px/normal "이사만루체 Light";
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
 }
 .PopupMenu.test
 {

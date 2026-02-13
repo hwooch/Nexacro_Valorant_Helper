@@ -3281,6 +3281,16 @@
         <Column id="WRITER_MEMO" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
+    <Dataset id="gds_theme">
+      <ColumnInfo>
+        <Column id="COLOR" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="COLOR">black</Col>
+        </Row>
+      </Rows>
+    </Dataset>
   </Datasets>
   <Variables>
     <Variable id="gv_var1" initval="App Variable Value1"/>

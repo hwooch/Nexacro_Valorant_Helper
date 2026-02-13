@@ -947,16 +947,14 @@
 {
 	background : #ffffff;
 	-nexa-border : 2px solid #125dae, 1px solid #b7b1b2, 1px solid #b7b1b2, 1px solid #b7b1b2;
-	-nexa-edge : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	border-radius : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
+}
+
+.Grid.grid_test
+{
+	background : #56566b;
+	-nexa-border : 1px solid #1f2326;
+	color : white;
+	font : normal 30pt/normal "이사만루체 Medium";
 }
 
 /* head */
@@ -10828,6 +10826,12 @@
 	-nexa-border : 3px solid gray;
 	background : rgba(40,40,40,0.5);
 }
+.Div.div_page
+{
+	border-radius : 0px 0px 20px 20px;
+	-nexa-border : 2px none black,0px none,0px none;
+	background : #56566b;
+}
 .Div.skins_weapon[status=disabled]
 {
 	-nexa-border : ;
@@ -11051,6 +11055,34 @@
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 }
+.Button.btn_agent_filter_all
+{
+	-nexa-border : 15px solid #6e6e86;
+	background : #6e6e86;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	opacity : 70%;
+}
+.Button.btn_agent_filter
+{
+	-nexa-border : 15px solid #6e6e86;
+	background : #6e6e86;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	opacity : 70%;
+	-nexa-text-align : right;
+}
+.Button.btn_skill
+{
+	-nexa-border : 10px solid #6e6e86;
+	background : #6e6e86;
+	color : white;
+	border-radius : 20px;
+	font : normal 16px/normal "이사만루체 Light";
+	-nexa-vertical-align : bottom;
+}
 .Button.Search_Btn[status=mouseover],
 .Button.Search_Btn[status=focused],
 .Button.Search_Btn[userstatus=pushed],
@@ -11221,6 +11253,7 @@
 .Static.sta_background
 {
 	background : #6e6e86;
+	border-radius : 20px;
 }
 .Static.sta_background_img
 {
@@ -11438,6 +11471,14 @@
 	font : normal 14px/normal "이사만루체 Light";
 	color : transparent;	
 }
+.Grid.grid_test .head .row .cell
+{
+	color : white;
+	-nexa-border : 0px none,0px none,1px solid black;
+	font : normal 24px/normal "이사만루체 Light";
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+}
 .PopupMenu.test
 {
 	background : #f74451;
@@ -11527,14 +11568,4 @@
 .Button.btn_space[userstatus=selected]
 {
 	background : #969696;
-}
-.Grid.grid_test .head .row .cell
-{
-	color : white;
-	-nexa-border : 0px none,0px none,1px solid black;
-	font : normal 24px/normal "이사만루체 Light";
-	background : #9b9baf;
-	-nexa-vertical-align : middle;
-	-nexa-text-align : center;
-	-nexa-background-odd : #85859d;
 }

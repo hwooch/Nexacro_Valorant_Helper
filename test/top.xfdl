@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="top" width="480" height="64" onload="top_onload" onlayoutchanged="top_onlayoutchanged">
+    <Layouts>
+      <Layout height="64" width="480" screenid="Desktop_screen">
+        <Static id="Static01" taborder="7" left="0" top="0" cssclass="sta_MWF_topBg" right="0" bottom="0"/>
+        <Static id="Static00" taborder="0" left="28.33%" top="8" height="50" cssclass="sta_TF_logo" visible="true" onclick="Static00_onclick" cursor="pointer" right="30%"/>
+        <Button id="btnLanguage" taborder="1" top="20" width="40" height="40" cssclass="btn_TF_function03" onclick="btnLanguage_onclick" left="1113" visible="false"/>
+        <Button id="btnTheme" taborder="2" top="20" width="40" height="40" cssclass="btn_TF_function02Dark" text="" onclick="btnTheme_onclick" left="1163" visible="false"/>
+        <Button id="btnMegaMenu" taborder="3" top="20" width="40" height="40" cssclass="btn_TF_function01" onclick="btnMegaMenu_onclick" left="1213" visible="false"/>
+        <Button id="btnBack" taborder="4" left="2" top="2" width="50" height="60" cssclass="btn_MTF_prevBtn" visible="false" onclick="btnBack_onclick" text=""/>
+        <Button id="btnMobileMenu" taborder="5" top="2" width="60" height="60" right="2" cssclass="btn_MTF_menuBtn" visible="true" text="" onclick="btnMobileMenu_onclick"/>
+        <Static id="stcTitle" taborder="6" left="62" top="2" width="208" height="60" cssclass="sta_MTF_title" visible="false" fittocontents="width" text=""/>
+      </Layout>
+      <Layout height="80" width="1263" name="large" screenid="Desktop_screen">
+        <Static id="Static00" visible="true" left="0.00" top="15" width="200" height="50"/>
+        <Button id="btnLanguage" visible="true" left="1163" top="20" width="40" height="40"/>
+        <Button id="btnTheme" left="1113" top="20" width="40" height="40" visible="true"/>
+        <Button id="btnMegaMenu" visible="true" left="1213" top="20" width="40" height="40"/>
+        <Button id="btnBack" visible="false"/>
+        <Static id="stcTitle" visible="false" left="62" top="2" width="208" height="60"/>
+        <Button id="btnMobileMenu" visible="false" top="8" width="60" height="60" right="2"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.buttonNames = [];
+
+this.top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	nexacro._OnceCallbackTimer.callonce(this, function() { 
+		this.createMenuButton();
+	
+		this.btnTheme.cssclass = nexacro.getApplication().themeMode=="L"?"btn_TF_function02Dark":"btn_TF_function02";		
+		this.btnLanguage.cssclass = nexacro.getApplication().langCode=="en"?"btn_TF_function03":"btn_TF_function03ENG";
+		
+		//v24에서 Android/iOS 모두 웹뷰방식으로 일원화되면서 모바일도 History 적용함. //20231219 milpaso
+		//if (system.navigatorname.indexOf("nexacro") == -1) {
+		if ((this.getCurrentLayoutID()=="default"? true:false) || system.navigatorname.indexOf("nexacro") == -1) {
+			let hash = MyHistory.getLocationHash();
+			const p = this.parent.parent;
+			p["onChangeHistory"].call(p, hash);
+		}else{
+		    //NRE에서(모바일 포함) 메인 로드를 위해 일시적으로 추가함
+			this.parent.parent.openMain();
+		}
+	}, 10);
+};
+
+this.btnLanguage_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	const app = nexacro.getApplication();
+	let langCode = app.langCode=="en"?"ko":"en";
+	
+	app["changeLanguage"].call(app, langCode);
+};
+
+this.btnTheme_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	const app = nexacro.getApplication();
+	let themeMode = app.themeMode=="L"?"D":"L";
+	const rootForm = app.mainframe.childframe.form;
+	
+	app.themeMode = themeMode;
+	
+	nexacro.loadStyle("xcssrc::demo_"+themeMode+".xcss");
+	//trace("[테마 변경] xcssrc::demo_"+themeMode+".xcss");
+	
+	obj.cssclass = app.themeMode=="L"?"btn_TF_function02Dark":"btn_TF_function02";
+	
+	/** 
+		다국어,메가메뉴 css가 안바껴 reload해야하지만 초기화로 대체처리
+	**/
+	this.btnLanguage.cssclass = "";
+	this.btnLanguage.cssclass = app.langCode=="en"?"btn_TF_function03":"btn_TF_function03ENG";
+	
+	this.btnMegaMenu.cssclass = "";
+	this.btnMegaMenu.cssclass = "btn_TF_function01";
+	
+	//메인 롤링이미지 변경(배경색 다른 gif)
+// 	if(rootForm.divWork.url == "frame::main.xfdl")
+// 	{
+// 		rootForm.divWork.form.div_rolling.form.mainImgDis();
+// 	}
+	
+	if (system.navigatorname.indexOf("nexacro") == -1) {
+		gtag('event', 'Button Click', {
+			'event_category': "Change Theme",
+			'event_label': 'Change Theme',
+			'value': themeMode=="L"?"Light":"Dark"
+		});
+	}
+	
+};
+
+this.btnMegaMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	const p = this.parent.parent;
+	p["showMegaMenu"].call(p);
+	
+	if (system.navigatorname.indexOf("nexacro") == -1) {
+		gtag('event', 'Button Click', {
+			'event_category': "Mega Menu",
+			'event_label': 'Mega Menu'
+		});
+	}
+};
+
+this.createMenuButton = function()
+{
+	let left=280;
+	let top=15;
+	let width=140;
+	let height=50;
+	let gap=5;
+	const app=nexacro.getApplication();
+	
+	app.gdsMenu.filter("level==0");
+	
+	for (let i=0, len=app.gdsMenu.rowcount; i<len; i++) {
+		let menuId = app.gdsMenu.getColumn(i, "id");
+		let id = "btnMenu_"+menuId;
+		let button = new Button(id, left, top, width, height, null, null);
+
+		button.cssclass = "btn_TF_topNav";
+		button.text = app.gdsMenu.getColumn(i, "caption");
+		//button.set_visible(this.getCurrentLayoutID()=="large"?true:false);
+		button.visible = (this.getCurrentLayoutID()=="default"? true:false)?false:true;
+		button.menuId = menuId;
+		button.addEventHandler("onclick", this.btnMenu_onclick, this);
+		this.addChild(id, button);
+		button.show();
+		
+		left += width + gap;
+		this.buttonNames.push(id);
+	}
+	
+	app.gdsMenu.filter("");
+};
+
+this.btnMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+ 	const p = this.parent.parent;
+	let menuId = obj.menuId;
+	let menuNm = obj.text;
+	p["showSubMenu"].call(p, menuId, menuNm, e.clientx==-1?false:true);
+	
+	if (system.navigatorname.indexOf("nexacro") == -1) {
+		gtag('event', 'Button Click', {
+			'event_category': "Sub Menu",
+			'event_label': 'Sub Menu',
+			'value': menuNm
+		});
+	}
+};
+
+this.btnBack_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//v24에서 Android/iOS 모두 웹뷰방식으로 일원화되면서 모바일도 History 적용함. //20231219 milpaso
+	//if (system.navigatorname.indexOf("nexacro") == -1) {
+	if ((this.getCurrentLayoutID()=="default"? true:false) || system.navigatorname.indexOf("nexacro") == -1) {
+		MyHistory.back();
+	}
+};
+
+this.btnMobileMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.openPopup("mobilemenu", "frame::mobilemenu.xfdl", null, "showtitlebar=false autosize=false openstatus=maximize", "popupCallback");
+	
+	if (system.navigatorname.indexOf("nexacro") == -1) {
+		gtag('event', 'Button Click', {
+			'event_category': "Mobile Menu",
+			'event_label': 'Mobile Menu' 
+		});
+	}
+};
+
+this.popupCallback = function(id, variant)
+{
+	if (id == "mobilemenu") {
+		this.openMenu(variant);
+	}
+};
+
+this.top_onlayoutchanged = function(obj:nexacro.Form,e:nexacro.LayoutChangeEventInfo)
+{
+	const pThis = this
+	let layout = e.newlayout;
+	this.buttonNames.forEach(function(buttonName) {
+		pThis.components[buttonName].set_visible((this.getCurrentLayoutID()=="default"? true:false)?false:true);
+	});
+};
+
+this.setMenuTitle = function(v)
+{
+	this.stcTitle.text = v;
+	this.stcTitle.visible = true;
+	this.btnBack.visible = true;
+	this.Static00.visible = false;
+	this.resetScroll();
+};
+
+this.setMainTitle = function()
+{
+	this.stcTitle.visible = false;
+	this.btnBack.visible = false;
+	this.Static00.visible = true;
+};
+
+this.Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	const p = this.parent.parent;
+	p.vscrollbar.set_pos(0);
+	
+	this.openMain();
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -4,24 +4,24 @@
     <Layouts>
       <Layout height="980" width="2000">
         <Button id="btn_reload" taborder="0" text="요원 리로드" left="2475" top="560" width="485" height="210" background="pink" font="normal 50pt/normal &quot;Arial&quot;" visible="false" onclick="btn_reload_onclick"/>
-        <Div id="div_agent" taborder="1" left="100" top="30" height="150" url="Valorant::valo5002fm.xfdl" formscrollbartype="autoindicator" right="100" borderRadius="10px" text="Div00">
+        <Div id="div_agent" taborder="1" left="100" top="30" height="150" url="Valorant::valo5002fm.xfdl" formscrollbartype="autoindicator" right="100" borderRadius="20px" text="Div00">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Button id="btn_agent_filter_all" taborder="3" left="100" top="div_agent:20" width="72" height="60" background="#6e6e86" text="전체" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_watch" taborder="2" left="btn_agent_filter_all:20" top="div_agent:20" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') no-repeat left top /contain #6e6e86" text="감시자" textAlign="right" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_enter" taborder="4" left="btn_agent_filter_watch:20" top="div_agent:20" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/dbe8757e-9e92-4ed4-b39f-9dfc589691d4/displayicon.png') no-repeat left top /contain #6e6e86" text="타격대" textAlign="right" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_info" taborder="5" left="btn_agent_filter_enter:20" top="div_agent:20" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png') no-repeat left top /contain #6e6e86" text="척후대" textAlign="right" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
-        <Button id="btn_agent_filter_smoke" taborder="6" left="btn_agent_filter_info:20" top="div_agent:20" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat left top /contain #6e6e86" text="전략가" textAlign="right" padding="0px px 0px 0px" border="15px solid #6e6e86" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" opacity="70%" onclick="btn_agent_filter_onclick"/>
+        <Button id="btn_agent_filter_all" taborder="3" left="100" top="div_agent:20" width="72" height="60" text="전체" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" onclick="btn_agent_filter_onclick" cssclass="btn_agent_filter_all"/>
+        <Button id="btn_agent_filter" taborder="2" left="btn_agent_filter_all:20" top="div_agent:20" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') no-repeat left top /contain #6e6e86" text="감시자" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" onclick="btn_agent_filter_onclick" cssclass="btn_agent_filter"/>
+        <Button id="btn_agent_filter_enter" taborder="4" left="btn_agent_filter:20" top="div_agent:20" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/dbe8757e-9e92-4ed4-b39f-9dfc589691d4/displayicon.png') no-repeat left top /contain #6e6e86" text="타격대" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" onclick="btn_agent_filter_onclick" cssclass="btn_agent_filter"/>
+        <Button id="btn_agent_filter_info" taborder="5" left="btn_agent_filter_enter:20" top="div_agent:20" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png') no-repeat left top /contain #6e6e86" text="척후대" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" onclick="btn_agent_filter_onclick" cssclass="btn_agent_filter"/>
+        <Button id="btn_agent_filter_smoke" taborder="6" left="btn_agent_filter_info:20" top="div_agent:20" width="130" height="60" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat left top /contain #6e6e86" text="전략가" onmouseenter="btn_agent_filter_onmouseenter" onmouseleave="btn_agent_filter_onmouseleave" onclick="btn_agent_filter_onclick" cssclass="btn_agent_filter"/>
         <Button id="btn_next" taborder="8" top="div_agent:20" width="60" height="60" background="#31313c" text="&gt;" border="none" borderRadius="20px" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" onclick="btn_next_onclick" right="100" padding="5px 0px 0px" cursor="pointer"/>
         <Button id="btn_prev" taborder="7" top="div_agent:20" width="60" height="60" background="#31313c" text="&lt;" border="none" borderRadius="20px" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" onclick="btn_prev_onclick" right="btn_next:20" padding="5px 0px 0px" cursor="pointer"/>
-        <Button id="btn_skill_0" taborder="9" left="100" top="btn_agent_filter_all:20" width="180" height="210" color="white" ondrag="btn_skill_ondrag" font="normal 16px/normal &quot;이사만루체 Light&quot;" borderRadius="20px" background="#6e6e86"/>
+        <Button id="btn_skill_0" taborder="9" left="100" top="btn_agent_filter_all:20" width="180" height="210" ondrag="btn_skill_ondrag" cssclass="btn_skill"/>
         <VideoPlayer id="VideoPlayer_skill" taborder="10" top="btn_next:20" width="896" height="504" border="0px solid red" autoplay="true" repeat="true" showcontrolbar="true" right="100" onplaystatuschanged="VideoPlayer_skill_onplaystatuschanged"/>
         <Static id="sta_drop_zone" taborder="11" text="스킬 영상을 재생하려면&#13;&#10;여기에 드래그 하세요" top="btn_prev:20" width="896" height="504" background="#31313c" right="100" verticalAlign="middle" textAlign="center" font="normal 30pt/normal &quot;이사만루체 Medium&quot;" color="white" borderRadius="20px"/>
-        <Button id="btn_skill_1" taborder="13" left="btn_skill_0:17" top="280" width="180" height="210" color="white" ondrag="btn_skill_ondrag" font="normal 16px/normal &quot;이사만루체 Light&quot;" borderRadius="20px" background="#6e6e86"/>
-        <Button id="btn_skill_2" taborder="14" left="btn_skill_1:17" top="280" width="180" height="210" color="white" ondrag="btn_skill_ondrag" font="normal 16px/normal &quot;이사만루체 Light&quot;" borderRadius="20px" background="#6e6e86"/>
-        <Button id="btn_skill_3" taborder="15" left="btn_skill_2:18" top="280" width="180" height="210" color="white" ondrag="btn_skill_ondrag" font="normal 16px/normal &quot;이사만루체 Light&quot;" borderRadius="20px" background="#6e6e86" wordWrap="char"/>
+        <Button id="btn_skill_1" taborder="13" left="btn_skill_0:17" top="280" width="180" height="210" ondrag="btn_skill_ondrag" cssclass="btn_skill"/>
+        <Button id="btn_skill_2" taborder="14" left="btn_skill_1:17" top="280" width="180" height="210" ondrag="btn_skill_ondrag" cssclass="btn_skill"/>
+        <Button id="btn_skill_3" taborder="15" left="btn_skill_2:18" top="280" width="180" height="210" ondrag="btn_skill_ondrag" wordWrap="char" cssclass="btn_skill"/>
         <Static id="sta_char_name" taborder="16" top="div_agent:30" color="white" font="normal 20px/normal &quot;이사만루체 Light&quot;" textAlign="left" verticalAlign="bottom" right="530" width="466" height="50"/>
         <Div id="div_move" taborder="12" text="Div00" left="2040" top="10" width="180" height="210" background="rgba(255,0,0,0.5)" visible="false" border="1px solid red" color="white" fittocontents="none">
           <Layouts>
@@ -147,9 +147,8 @@ this.fn_selectedAgent = function(sBtnId, sUUID, sName)
 		
         // 버튼 아이콘 및 텍스트
         objBtn.text = sName;
-		objBtn.verticalAlign = "bottom";
+
         objBtn.background = "url('" + sIconUrl + "') no-repeat center top /contain #6e6e86";
-		objBtn.border = "10px solid #6e6e86";
 		
 		
 		

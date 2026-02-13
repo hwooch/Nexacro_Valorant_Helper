@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="980" width="2000">
         <Button id="btn_refresh_ranking" taborder="0" text="랭킹 새로고침" left="200" top="40" width="220" height="90" onclick="btn_refresh_ranking_onclick" tabstop="false" cssclass="rank_refresh"/>
-        <Grid id="grd_ranking" taborder="6" left="200" top="btn_refresh_ranking:37" height="452" binddataset="ds_ranking" autofittype="col" border="1px solid #1f2326" background="transparent" borderRadius="20px 20px 0px 0px" tabstop="false" right="200" cssclass="grid_test" oncellclick="grd_ranking_oncellclick" onmousemove="grd_ranking_onmousemove">
+        <Grid id="grd_ranking" taborder="6" left="200" top="btn_refresh_ranking:37" height="452" binddataset="ds_ranking" autofittype="col" borderRadius="20px 20px 0px 0px" tabstop="false" right="200" cssclass="grid_test" oncellclick="grd_ranking_oncellclick" onmousemove="grd_ranking_onmousemove">
           <Formats>
             <Format id="default">
               <Columns>
@@ -20,11 +20,11 @@
                 <Row size="40"/>
               </Rows>
               <Band id="head">
-                <Cell text="랭킹" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="1" background="#85859d" border="0px none,0px none,1px solid black" text="플레이어" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white"/>
-                <Cell col="2" colspan="2" text="티어" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="4" text="포인트" background="#85859d" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
-                <Cell col="5" text="승리 횟수" background="#9b9baf" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell text="랭킹"/>
+                <Cell col="1" text="플레이어"/>
+                <Cell col="2" colspan="2" text="티어"/>
+                <Cell col="4" text="포인트"/>
+                <Cell col="5" text="승리 횟수"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:RANKING" border="0px,1px solid #292932,1px solid black,0px" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
@@ -38,7 +38,7 @@
           </Formats>
         </Grid>
         <Static id="sta_space" taborder="5" left="201" top="grd_ranking:-2" height="2" right="201" background="black"/>
-        <Div id="divPage" taborder="3" left="200" right="200" url="Cmm::CmmPaging.xfdl" height="100" text="" background="#56566b" borderRadius="0px 0px 20px 20px" border="2px none black,0px none,0px none" top="sta_space:-1">
+        <Div id="divPage" taborder="3" left="200" right="200" url="Cmm::CmmPaging.xfdl" height="100" text="" top="sta_space:-1" cssclass="div_page">
           <Layouts>
             <Layout/>
           </Layouts>
@@ -86,9 +86,45 @@ this.fvPageCount=0; 		//실제표출페이지갯수
 
 this.valo2001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	//this.gfnFormOnLoad(this);
-	
 	this.fnPageInit();
+	
+	// 테마 변경 이벤트 핸들러 추가
+    this.fvApp.gds_theme.addEventHandler("oncolumnchanged", this.fn_change_theme, this);
+    
+    // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
+    this.fn_setThemeCss();
+};
+
+this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
+{
+    // 데이터셋이 변경되었을 때 CSS 적용 함수 호출
+    this.fn_setThemeCss();
+};
+
+// 실제 CSS를 변경하는 로직
+this.fn_setThemeCss = function()
+{
+    // 현재 데이터셋에 설정된 값 가져오기
+    var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
+    
+    // 값에 따라 스타일 적용
+    if (sThemeColor == "white") {
+        nexacro.loadStyle("xcssrc::theme_white.xcss");
+		this.grd_ranking.setCellProperty( "head", 0, "background", "#9b9baf" );
+		this.grd_ranking.setCellProperty( "head", 1, "background", "#85859d" );
+		this.grd_ranking.setCellProperty( "head", 2, "background", "#9b9baf" );
+		this.grd_ranking.setCellProperty( "head", 3, "background", "#85859d" );
+		this.grd_ranking.setCellProperty( "head", 4, "background", "#9b9baf" );
+    } else {
+        nexacro.loadStyle("xcssrc::theme_black.xcss");
+		this.grd_ranking.setCellProperty( "head", 0, "background", "#63637c" );
+		this.grd_ranking.setCellProperty( "head", 1, "background", "#4d4d60" );
+		this.grd_ranking.setCellProperty( "head", 2, "background", "#63637c" );
+		this.grd_ranking.setCellProperty( "head", 3, "background", "#4d4d60" );
+		this.grd_ranking.setCellProperty( "head", 4, "background", "#63637c" );
+    }
+    
+    this.resetScroll();
 };
 
 this.btn_refresh_ranking_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -199,8 +235,8 @@ this.fnSearch_user_match = function (clicked_nickname)
 {
 	var devide = clicked_nickname.split(" #");
 	
-	var sName = devide[0]; // 닉네임 String
-    var sTag  = devide[1]; // 태그   String
+	var sName = devide[0]; // 닉네임
+    var sTag  = devide[1]; // 태그
 	
 	this.fvApp.setVariable("gv_Recent_Search_Name", sName);
 	this.fvApp.setVariable("gv_Recent_Search_Tag", sTag);

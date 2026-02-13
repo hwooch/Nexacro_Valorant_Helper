@@ -3,7 +3,7 @@
   <Form id="valo4002fm" width="2500" height="180" titletext="맵 종류" borderRadius="10px">
     <Layouts>
       <Layout height="180" mobileorientation="landscape" width="2500">
-        <Static id="sta_background" taborder="0" left="0" top="0" background="#6e6e86" width="2500" height="180" text="" borderRadius="10px"/>
+        <Static id="sta_background" taborder="0" left="0" top="0" width="2500" height="180" text="" cssclass="sta_background"/>
         <Button id="test_button" taborder="1" left="80" top="260" width="228" height="130" background="url('https://media.valorant-api.com/maps/1c18ab1f-420d-0d8b-71d0-77ad3c439115/listviewicontall.png') no-repeat center top /contain red" borderRadius="10px" color="white" textAlign="left" verticalAlign="bottom" font="normal 18pt/normal &quot;이사만루체 Medium&quot;" padding="0px 0px 0px 5px" visible="false" border="2px solid white"/>
       </Layout>
     </Layouts>

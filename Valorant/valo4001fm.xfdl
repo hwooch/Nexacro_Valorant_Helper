@@ -3,14 +3,14 @@
   <Form id="valo4001fm" width="2000" height="980" titletext="맵" onload="valo4001fm_onload" ontimer="valo4001fm_ontimer">
     <Layouts>
       <Layout height="980" width="2000">
-        <Div id="div_map" taborder="2" left="190" top="40" height="180" url="Valorant::valo4002fm.xfdl" formscrollbartype="autoindicator" right="190" borderRadius="10px" text="Div00"/>
-        <Static id="sta_background" taborder="6" left="100" top="div_map:40" height="800" background="#31313c" borderRadius="20px" right="100" text=""/>
-        <Static id="sta_background_img" taborder="7" left="100" top="div_map:40" height="800" background="none" borderRadius="20px" right="100" opacity="100%" cssclass="sta_background_img"/>
+        <Div id="div_map" taborder="2" left="190" top="40" height="180" url="Valorant::valo4002fm.xfdl" formscrollbartype="autoindicator" right="190" borderRadius="20px" text="Div00"/>
+        <Static id="sta_background" taborder="6" left="100" top="div_map:40" height="800" right="100" text="" cssclass="sta_background"/>
+        <Static id="sta_background_img" taborder="7" left="100" top="div_map:40" height="800" right="100" opacity="100%" cssclass="sta_background_img"/>
         <WebView id="webView_map" taborder="0" top="div_map:60" height="750" width="750" left="200" onusernotify="webView_map_onusernotify"/>
         <Button id="btn_reload" taborder="1" text="맵 정보 리로드" left="2144" top="264" width="296" height="336" background="yellow" onclick="btn_reload_onclick" font="normal 30pt/normal &quot;Arial&quot;" visible="false"/>
         <Button id="btn_space" taborder="3" left="696" top="sta_background:0" width="144" height="30"/>
         <Static id="sta_map_name" taborder="4" left="1050" top="div_map:120" width="244" height="61" font="normal 40pt/normal &quot;이사만루체 Medium&quot;" color="white"/>
-        <Static id="sta_map_description" taborder="5" left="1050" top="sta_map_name:40" height="406" right="200" color="white" text="" fittocontents="both" opacity="95%"/>
+        <Static id="sta_map_description" taborder="5" left="1050" top="sta_map_name:40" height="406" right="200" text="" fittocontents="both" cssclass="sta_map_description"/>
         <Button id="btn_next" taborder="8" top="100" width="60" background="#31313c" text="&gt;" border="none" borderRadius="20px" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" onclick="btn_next_onclick" right="100" padding="5px 0px 0px" cursor="pointer" height="60"/>
         <Button id="btn_prev" taborder="9" top="100" width="60" height="60" background="#31313c" text="&lt;" border="none" borderRadius="20px" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" onclick="btn_prev_onclick" padding="5px 0px 0px" cursor="pointer" left="100"/>
       </Layout>
@@ -50,8 +50,8 @@ this.fn_Callback = function(strSvcId, nErrorCode, strErrorMsg)
 	}
 	this.div_map.form.fn_init();
 	// html 연결
-	this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map.html";
-	//this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map.html";
+	this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map_white.html";
+	//this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map_white.html";
 };
 
 this.fn_selectedMap = function(sBtnId, sUUID)
