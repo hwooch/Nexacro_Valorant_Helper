@@ -21,7 +21,7 @@
 {
 	font :  normal 12px/normal "이사만루체 Medium";
 	color : #555555;
-	background : #969696;
+	background : #aaaaaa;
 	-nexa-border : 0px none;
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
@@ -10901,7 +10901,23 @@
 	-nexa-padding : 0px 0px 0px 5px; /* 아이콘과 글자 사이 간격 */
 	cursor : pointer;
 }
-.Static.sta_nothing
+.Static.sta_drop_zone
+{
+	color : white;
+	background : #6e6e86;
+	border-radius : 20px;
+	font : normal 30pt/normal "이사만루체 Medium";
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+	
+}.Static.sta_map_name
+{
+	color : #ffffff;
+	font : normal 16pt/normal "이사만루체 Light";
+	-nexa-text-align : center;
+	-nexa-vertical-align : top;
+	opacity : 50%;
+}.Static.sta_nothing
 {
 	font : normal 22pt/normal "AppleSDGothicNeoB00";
 	color : white;
@@ -10915,8 +10931,8 @@
 .Button.top_menu[userstatus=selected]
 {
 	cursor : pointer;
-	background : #31313c;
-	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
+	background : #505062;
+	-nexa-border : 2px solid white,2px solid white,2px solid #505062;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -10927,7 +10943,7 @@
 {
 	cursor : pointer;
 	background : #75758e;
-	-nexa-border : 2px solid #cccccc,2px solid #cccccc,0px;
+	-nexa-border : 2px solid #cccccc;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #cccccc;
 	font : 22px/normal "이사만루체 Medium";
@@ -10962,7 +10978,7 @@
 {
 	cursor : pointer;
 	background : #75758e;
-	-nexa-border : 2px solid #cccccc,2px solid #cccccc,0px;
+	-nexa-border : 2px solid #cccccc;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #cccccc;
 	font : 22px/normal "이사만루체 Medium";
@@ -10974,8 +10990,8 @@
 .Button.top_menu_remove[userstatus=selected]
 {
 	cursor : pointer;
-	background : #31313c;
-	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
+	background : #505062;
+	-nexa-border : 2px solid white,2px solid white,2px solid #505062;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -10990,8 +11006,8 @@
 .Button.top_menu_autoclick[userstatus=selected]
 {
 	cursor : pointer;
-	background : #31313c;
-	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
+	background : #505062;
+	-nexa-border : 2px solid white,2px solid white,2px solid #505062;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -11021,8 +11037,8 @@
 .Button.top_menu_selected[userstatus=selected]
 {
 	cursor : pointer;
-	background : #31313c;
-	-nexa-border : 2px solid #ffffff, 2px solid #ffffff, 0px;
+	background : #505062;
+	-nexa-border : 2px solid white,2px solid white,2px solid #505062;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -11065,6 +11081,41 @@
 	background : #ff4654;
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
+}
+.Button.btn_agent_filter_all
+{
+	-nexa-border : 15px solid #6e6e86;
+	background : #6e6e86;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	-nexa-text-align : center;
+	cursor : pointer;
+}
+.Button.btn_map
+{
+	border-radius : 10px;
+	-nexa-border : 2px solid #8e8e8e;
+	cursor : pointer;
+	opacity : 80%;
+}.Button.btn_agent_filter
+{
+	-nexa-border : 15px solid #6e6e86;
+	background : #6e6e86;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	-nexa-text-align : right;
+	cursor : pointer;
+}
+.Button.btn_skill
+{
+	-nexa-border : 10px solid #6e6e86;
+	background : #6e6e86;
+	color : white;
+	border-radius : 20px;
+	font : normal 16px/normal "이사만루체 Light";
+	-nexa-vertical-align : bottom;
 }
 .Button.Search_Btn[status=mouseover],
 .Button.Search_Btn[status=focused],
@@ -11243,12 +11294,33 @@
 	opacity : 100%;
 	border-radius : 20px;
 }
+.Button.btn_next
+{
+	cursor : pointer;
+	font : normal 30pt/normal "AppleSDGothicNeoH00";
+	border-radius : 20px;
+	color : white;
+	background : #6e6e86;
+	-nexa-padding : 3px 0px 0px;
+}
+.Button.btn_next[status=mouseover]
+{
+	box-shadow : 0px 0px 5px #ffffff;
+	
+}
 .Static.sta_map_description
 {
 	font : normal 23pt/normal "이사만루체 Medium";
 	color : white;
 	opacity : 95%;
 }
+.Static.sta_weapon_description
+{
+	color : white;
+	opacity : 90%;
+	font : normal 15pt/normal "이사만루체 Medium";
+}
+
 .Button.btn_WF_FillRed[status=mouseover],
 .Button.btn_WF_FillRed[userstatus=pushed],
 .Button.btn_WF_FillRed[userstatus=selected]
@@ -11454,6 +11526,14 @@
 	font : normal 14px/normal "이사만루체 Light";
 	color : transparent;	
 }
+.Grid.grid_test .head .row .cell
+{
+	color : white;
+	-nexa-border : 0px none,0px none,1px solid black;
+	font : normal 24px/normal "이사만루체 Light";
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+}
 .PopupMenu.test
 {
 	background : #f74451;
@@ -11534,7 +11614,7 @@
 }
 .Static.sta_border
 {
-	background : #606060;
+	background : #cccccc;
 }.Button.btn_space,
 .Button.btn_space[status=disabled],
 .Button.btn_space[status=mouseover],
@@ -11544,15 +11624,25 @@
 {
 	background : #969696;
 }
-.Grid.grid_test .head .row .cell
+.Button.btn_agent_filter_all[status=mouseover]
 {
+	-nexa-border : 15px solid #31313c;
+	background : #31313c;
 	color : white;
-	-nexa-border : 0px none,0px none,1px solid black;
-	font : normal 24px/normal "이사만루체 Light";
-	background : #9b9baf;
-	-nexa-vertical-align : middle;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
 	-nexa-text-align : center;
-	-nexa-background-odd : #85859d;
+	cursor : pointer;
+}
+.Button.btn_agent_filter[status=mouseover]
+{
+	-nexa-border : 15px solid #31313c;
+	background : #31313c;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	-nexa-text-align : right;
+	cursor : pointer;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>

@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo1001fm" width="2000" titletext="전적 검색" border="none" background="url('theme://images/Valo_Match_search_background.png') no-repeat left top /100% 100% #101823" height="980" scrollbartype="none auto" onclick="valo1001fm_onclick">
+  <Form id="valo1001fm" width="2000" titletext="전적 검색" border="none" background="url('theme::Valorant_Theme_black/images/Valo_Match_search_background.png') no-repeat left top /100% 100%" height="980" scrollbartype="none auto" onclick="valo1001fm_onclick" onload="valo1001fm_onload" onclose="valo1001fm_onclose">
     <Layouts>
       <Layout height="980" width="2000">
         <Edit id="etd_Player_Search" taborder="1" left="58.30%" top="56.43%" width="476" height="60" text="" displaynulltext="플레이어 이름 + #태그" cssclass="Search_Edit" tabstop="false" onkeydown="Player_Search_onimeaction"/>
         <Button id="btn_Player_Search" taborder="0" text="검색" left="etd_Player_Search:2.73%" top="56.43%" width="66" height="60" cssclass="Search_Btn" tabstop="false" onclick="Player_Search_onimeaction"/>
         <Button id="btn_focus" taborder="2" left="0" top="0" width="0" height="0" background="transparent"/>
-        <Button id="Button00" taborder="3" text="Button00" left="166" top="38" width="272" height="313" onclick="Button00_onclick" background="red"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -91,6 +90,43 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	obj.background = "url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') repeat left top red";
 };
-]]></Script>
+
+this.valo1001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+		// 테마 변경 이벤트 핸들러 추가
+    this.fvApp.gds_theme.addEventHandler("oncolumnchanged", this.fn_change_theme, this);
+    
+    // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
+    this.fn_setThemeCss();
+};
+
+this.valo1001fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
+{
+		// 테마 이벤트 핸들러 제거
+    this.fvApp.gds_theme.removeEventHandler("oncolumnchanged", this.fn_change_theme, this);
+};
+this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
+{
+    // 데이터셋이 변경되었을 때 CSS 적용 함수 호출
+    this.fn_setThemeCss();
+};
+
+// 실제 CSS를 변경하는 로직
+this.fn_setThemeCss = function()
+{
+    // 현재 데이터셋에 설정된 값 가져오기
+    var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
+    
+    // 값에 따라 스타일 적용
+    if (sThemeColor == "white") {
+        nexacro.loadStyle("xcssrc::theme_white.xcss");
+this.background = "url('theme::Valorant_Theme_white/images/Valo_Match_search_background.png') no-repeat left top /100% 100%";
+    } else {
+        nexacro.loadStyle("xcssrc::theme_black.xcss");
+this.background = "url('theme::Valorant_Theme_black/images/Valo_Match_search_background.png') no-repeat left top /100% 100%";
+    }
+    
+    this.resetScroll();
+};]]></Script>
   </Form>
 </FDL>

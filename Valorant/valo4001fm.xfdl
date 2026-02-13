@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo4001fm" width="2000" height="980" titletext="맵" onload="valo4001fm_onload" ontimer="valo4001fm_ontimer">
+  <Form id="valo4001fm" width="2000" height="980" titletext="맵" onload="valo4001fm_onload" ontimer="valo4001fm_ontimer" onclose="valo4001fm_onclose">
     <Layouts>
       <Layout height="980" width="2000">
         <Div id="div_map" taborder="2" left="190" top="40" height="180" url="Valorant::valo4002fm.xfdl" formscrollbartype="autoindicator" right="190" borderRadius="20px" text="Div00"/>
         <Static id="sta_background" taborder="6" left="100" top="div_map:40" height="800" right="100" text="" cssclass="sta_background"/>
-        <Static id="sta_background_img" taborder="7" left="100" top="div_map:40" height="800" right="100" opacity="100%" cssclass="sta_background_img"/>
+        <Static id="sta_background_img" taborder="7" left="100" top="div_map:40" height="800" right="100" cssclass="sta_background_img"/>
         <WebView id="webView_map" taborder="0" top="div_map:60" height="750" width="750" left="200" onusernotify="webView_map_onusernotify"/>
         <Button id="btn_reload" taborder="1" text="맵 정보 리로드" left="2144" top="264" width="296" height="336" background="yellow" onclick="btn_reload_onclick" font="normal 30pt/normal &quot;Arial&quot;" visible="false"/>
         <Button id="btn_space" taborder="3" left="696" top="sta_background:0" width="144" height="30"/>
         <Static id="sta_map_name" taborder="4" left="1050" top="div_map:120" width="244" height="61" font="normal 40pt/normal &quot;이사만루체 Medium&quot;" color="white"/>
         <Static id="sta_map_description" taborder="5" left="1050" top="sta_map_name:40" height="406" right="200" text="" fittocontents="both" cssclass="sta_map_description"/>
-        <Button id="btn_next" taborder="8" top="100" width="60" background="#31313c" text="&gt;" border="none" borderRadius="20px" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" onclick="btn_next_onclick" right="100" padding="5px 0px 0px" cursor="pointer" height="60"/>
-        <Button id="btn_prev" taborder="9" top="100" width="60" height="60" background="#31313c" text="&lt;" border="none" borderRadius="20px" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" onclick="btn_prev_onclick" padding="5px 0px 0px" cursor="pointer" left="100"/>
+        <Button id="btn_next" taborder="8" top="100" width="60" text="&gt;" onclick="btn_next_onclick" right="100" height="60" cssclass="btn_next"/>
+        <Button id="btn_prev" taborder="9" top="100" width="60" height="60" text="&lt;" onclick="btn_prev_onclick" left="100" cssclass="btn_next"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -28,6 +28,44 @@ this.valo4001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     var strCallbackFunc = "fn_Callback";
     
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
+	
+	// 테마 변경 이벤트 핸들러 추가
+    this.fvApp.gds_theme.addEventHandler("oncolumnchanged", this.fn_change_theme, this);
+    
+    // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
+    this.fn_setThemeCss();
+};
+
+this.valo4001fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
+{
+	// 테마 이벤트 핸들러 제거
+    this.fvApp.gds_theme.removeEventHandler("oncolumnchanged", this.fn_change_theme, this);
+};
+
+this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
+{
+    // 데이터셋이 변경되었을 때 CSS 적용 함수 호출
+    this.fn_setThemeCss();
+};
+
+// 실제 CSS를 변경하는 로직
+this.fn_setThemeCss = function()
+{
+    // 현재 데이터셋에 설정된 테마 값 가져오기
+    var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
+    
+    if (sThemeColor == "white") {
+        nexacro.loadStyle("xcssrc::theme_white.xcss");
+		// html 연결
+		this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map_white.html";
+		//this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map_white.html";
+    } else {
+        nexacro.loadStyle("xcssrc::theme_black.xcss");
+		// html 연결
+		this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map_black.html";
+		//this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map_black.html";
+    }
+    this.resetScroll();
 };
 
 this.btn_reload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -49,9 +87,8 @@ this.fn_Callback = function(strSvcId, nErrorCode, strErrorMsg)
 		return;
 	}
 	this.div_map.form.fn_init();
-	// html 연결
-	this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map_white.html";
-	//this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map_white.html";
+
+	this.fn_setThemeCss();
 };
 
 this.fn_selectedMap = function(sBtnId, sUUID)
@@ -78,6 +115,7 @@ this.fn_selectedMap = function(sBtnId, sUUID)
 	this.sta_map_name.text = sDisplayName;
 	this.sta_map_description.text = sResult;
 	this.sta_background_img.background = "url('"+sDisplayIcon+"') no-repeat center center /auto";
+	this.sta_background_img.cssclass = "sta_background_img";
 	this.resetScroll();
 }
 
@@ -160,7 +198,9 @@ this.valo4001fm_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
         // 위치 적용
         objHScroll.set_pos(nCurrPos + nMoveAmount);
     }
-};]]></Script>
+};
+
+]]></Script>
     <Objects>
       <Dataset id="ds_map">
         <ColumnInfo>

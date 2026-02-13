@@ -1,19 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo4002fm" width="2500" height="180" titletext="맵 종류" borderRadius="10px">
+  <Form id="valo4002fm" width="2500" height="180" titletext="맵 종류" borderRadius="10px" onload="valo4002fm_onload">
     <Layouts>
       <Layout height="180" mobileorientation="landscape" width="2500">
         <Static id="sta_background" taborder="0" left="0" top="0" width="2500" height="180" text="" cssclass="sta_background"/>
         <Button id="test_button" taborder="1" left="80" top="260" width="228" height="130" background="url('https://media.valorant-api.com/maps/1c18ab1f-420d-0d8b-71d0-77ad3c439115/listviewicontall.png') no-repeat center top /contain red" borderRadius="10px" color="white" textAlign="left" verticalAlign="bottom" font="normal 18pt/normal &quot;이사만루체 Medium&quot;" padding="0px 0px 0px 5px" visible="false" border="2px solid white"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[// 트랜잭션 끝나고 데이터셋 받아옴, 버튼 동적생성
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+this.valo4002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_setThemeCss();
+};
+
+// 실제 CSS를 변경하는 로직
+this.fn_setThemeCss = function()
+{
+    // 현재 데이터셋에 설정된 값 가져오기
+    var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
+    
+    // 값에 따라 스타일 적용
+    if (sThemeColor == "white") {
+        nexacro.loadStyle("xcssrc::theme_white.xcss");
+    } else {
+        nexacro.loadStyle("xcssrc::theme_black.xcss");
+    }
+    
+    this.resetScroll();
+};
+
+
+// 트랜잭션 끝나고 데이터셋 받아옴, 버튼 동적생성
 this.fn_init = function()
 {
     // 부모 데이터셋 가져오기
    	this.ds_copy_map.copyData(this.parent.parent.ds_map);
 	var objDs = this.ds_copy_map;
-
+	
     // 기존에 생성된 버튼이 있다면 삭제 (초기화)
     // "btn_weapon_" 으로 시작하는 컴포넌트들을 찾아서 제거
     var arrComps = this.components;
@@ -29,7 +53,7 @@ this.fn_init = function()
             objComp = null;
         }
     }
-
+	
     // 버튼 관련 설정
     var nLeft   = 20;   // 시작 Left 좌표
     var nTop    = 10;   // 시작 Top 좌표
@@ -61,9 +85,7 @@ this.fn_init = function()
         
         var sBgVal = "url('" + sIcon + "') no-repeat center top /contain";
         objBtn.background = sBgVal;
-		objBtn.borderRadius = "10px";
-		objBtn.border = "2px solid #8e8e8e";
-		objBtn.opacity = "70%";
+		objBtn.cssclass = "btn_map";
 		
         // 화면에 추가 및 표시
         this.addChild(sBtnId, objBtn);
@@ -77,11 +99,7 @@ this.fn_init = function()
         objSta.init(sStaId, nLeft, nTop + nHeight + nStaGap, nWidth, nStaHeight);
         
         objSta.text = sName;
-        objSta.color = "#ffffff";          // 흰색 텍스트
-        objSta.textAlign = "center";       // 가운데 정렬
-        objSta.verticalAlign = "top";      // 상단 정렬
-        objSta.font = "normal 16pt/normal '이사만루체 Light'";
-		objSta.opacity = "70%";
+		objSta.cssclass = "sta_map_name";
         
         this.addChild(sStaId, objSta);
         objSta.show();
@@ -192,10 +210,6 @@ this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
         return;
     }
 	
-	// 이미 선택된 버튼을 또 누른 거라면, 클릭 이벤트를 실행 X
-	if (this.fv_sSelectedBtnId == obj.id) {
-        return;
-    }
     // 이전에 선택된 버튼이 있다면
     if (this.fv_sSelectedBtnId != "")
     {
@@ -203,31 +217,42 @@ this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
         
         // 테두리 색깔 되돌리기
         objPrevBtn.border = "2px solid #8e8e8e";
-		objPrevBtn.opacity = "70%";
+		var sTheme = this.fvApp.gds_theme.getColumn(0, "COLOR");
+		
+		if (sTheme == "white") {
+			objPrevBtn.opacity = "80%";
+		} else {
+			objPrevBtn.opacity = "60%";
+		}
 		
 		// 이전 텍스트 찾기
         var sPrevStaId = this.fv_sSelectedBtnId.replace("btn_map_", "sta_map_name_");
         var objPrevSta = this.components[sPrevStaId];
-
+		
         // 이전 텍스트 투명도 50%로 되돌리기
         if (objPrevSta) {
-            objPrevSta.opacity = "70%";
+			if (sTheme == "white") {
+				objPrevSta.opacity = "80%";
+			} else {
+				objPrevSta.opacity = "60%";
+			}
+			
         }
     }
     
     // 테두리 색깔 흰색
     obj.border = "2px solid white";
-	obj.opacity = "";
-
+	obj.opacity = "100%";
+	
 	// 현재 텍스트 찾기
     var sCurrStaId = obj.id.replace("btn_map_", "sta_map_name_");
     var objCurrSta = this.components[sCurrStaId];
-
+	
     // 현재 텍스트 투명도 100%로 설정
     if (objCurrSta) {
         objCurrSta.opacity = "100%";
     }
-
+	
     // 현재 버튼 ID를 변수에 저장
     this.fv_sSelectedBtnId = obj.id;
 	
@@ -237,6 +262,7 @@ this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
     var sMapUUID = obj.u_uuid;
 	
 	this.parent.parent.fn_selectedMap(sBtnId, sMapUUID);
+	this.resetScroll();
 };
 this.Button_onmouseenter = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -248,7 +274,9 @@ this.Button_onmouseleave = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
     this.parent.cursor = "default";
 	obj.boxShadow = "";
-};]]></Script>
+};
+
+]]></Script>
     <Objects>
       <Dataset id="ds_copy_map"/>
     </Objects>

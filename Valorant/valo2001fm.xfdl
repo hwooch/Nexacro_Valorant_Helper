@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo2001fm" width="2000" height="980" titletext="랭킹" onload="valo2001fm_onload">
+  <Form id="valo2001fm" width="2000" height="980" titletext="랭킹" onload="valo2001fm_onload" onclose="valo2001fm_onclose">
     <Layouts>
       <Layout height="980" width="2000">
         <Button id="btn_refresh_ranking" taborder="0" text="랭킹 새로고침" left="200" top="40" width="220" height="90" onclick="btn_refresh_ranking_onclick" tabstop="false" cssclass="rank_refresh"/>
@@ -93,6 +93,11 @@ this.valo2001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     
     // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
     this.fn_setThemeCss();
+};
+this.valo2001fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
+{
+	// 테마 이벤트 핸들러 제거
+    this.fvApp.gds_theme.removeEventHandler("oncolumnchanged", this.fn_change_theme, this);
 };
 
 this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
@@ -290,6 +295,8 @@ this.grd_ranking_onmousemove = function(obj:nexacro.Grid,e:nexacro.GridMouseEven
 	if( e.row == -1 ) {
 		this.grd_ranking.cursor = "auto";
 	}
-};]]></Script>
+};
+
+]]></Script>
   </Form>
 </FDL>
