@@ -4256,6 +4256,11 @@
 	opacity : 30%;
 	border-radius : 20px;
 }
+.Static.sta_background_sub
+{
+	background : #282830;
+	color : #9b9baa;
+}
 .Static.sta_background
 {
 	background : #31313c;
@@ -4279,6 +4284,10 @@
 .Static.sta_border
 {
 	background : #8e8e8e;
+}
+.Static.sta_border2
+{
+	background : #1f2326;
 }/* TextArea */
 .TextArea,.TextAreaControl
 {
@@ -6769,7 +6778,10 @@
 	opacity : ;
 	word-spacing : ;
 }
-.ListView[status=mouseover],
+.ListView.list_statistics
+{
+	background : #31313c;
+}.ListView[status=mouseover],
 .ListView[status=focused]
 {
 	-nexa-border : 0px none;

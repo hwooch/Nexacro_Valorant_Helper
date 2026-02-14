@@ -10,7 +10,7 @@
 {
 	font :  normal 12px/normal "이사만루체 Medium";
 	color : #555555;
-	background : #aaaaaa;
+	background : #1f2326;
 	-nexa-border : 0px none;
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
@@ -21,12 +21,11 @@
 	opacity : ;
 	word-spacing : ;
 }
-
 .Form.form_popup
 {
 	font :  normal 12px/normal "이사만루체 Medium";
 	color : #555555;
-	background : #969696;
+	background : #202027;
 	-nexa-border : 0px none;
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
@@ -134,26 +133,6 @@
 {
 	background : transparent;
 	-nexa-border : 0px none;
-	-nexa-edge : ;
-	-nexa-icon : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .FileUpload
@@ -925,7 +904,33 @@
 	opacity : ;
 	word-spacing : ;
 }
-.Calendar[userstatus=invalidtext],.CalendarControl[userstatus=invalidtext],.MaskEdit[userstatus=invalidtext],.MaskEditControl[userstatus=invalidtext],.Spin[userstatus=invalidtext],.SpinControl[userstatus=invalidtext]
+/* TextArea */
+.TextArea.txt_memo,
+.TextArea.txt_memo[status=disabled],
+.TextArea.txt_memo[status=mouseover],
+.TextArea.txt_memo[status=focused],
+.TextArea.txt_memo[status=readonly]
+{
+	background : #282830;
+	-nexa-border : 2px solid white;
+	-nexa-padding : 10px 0px 0px 10px;
+	border-radius : 10px;
+	font : normal 13pt/normal "이사만루체 Light";
+	-nexa-word-wrap : char;
+	-nexa-text-align : left;
+	color : white;
+}
+.TextArea.txt_memo[userstatus=nulltext]
+{
+	background : #282830;
+	-nexa-border : 2px solid #515163;
+	-nexa-padding : 10px 0px 0px 10px;
+	border-radius : 10px;
+	font : normal 13pt/normal "이사만루체 Light";
+	-nexa-word-wrap : char;
+	-nexa-text-align : left;
+	color : #515163;
+}.Calendar[userstatus=invalidtext],.CalendarControl[userstatus=invalidtext],.MaskEdit[userstatus=invalidtext],.MaskEditControl[userstatus=invalidtext],.Spin[userstatus=invalidtext],.SpinControl[userstatus=invalidtext]
 {
 	color : #999999;
 	-nexa-border : ;
@@ -947,11 +952,20 @@
 {
 	background : #ffffff;
 	-nexa-border : 2px solid #125dae, 1px solid #b7b1b2, 1px solid #b7b1b2, 1px solid #b7b1b2;
+	-nexa-edge : ;
+	-nexa-rtl-background-image : ;
+	-nexa-rtl-edge-image : ;
+	border-radius : ;
+	color : ;
+	cursor : ;
+	font : ;
+	letter-spacing : ;
+	opacity : ;
+	word-spacing : ;
 }
-
 .Grid.grid_test
 {
-	background : #56566b;
+	background : #31313c;
 	-nexa-border : 1px solid #1f2326;
 	color : white;
 	font : normal 30pt/normal "이사만루체 Medium";
@@ -4190,7 +4204,7 @@
 
 .Static.top_logo
 {
-	background : #242429;
+	background : #1f2326;
 	-nexa-border : 6px solid #f74451;
 	border-radius : 20px;
 	color : #f74451;
@@ -4219,37 +4233,72 @@
 	opacity : ;
 	word-spacing : ;
 }
-
-
-/* TextArea */
-.TextArea
+.Static.sta_nothing
+{
+	font : normal 22pt/normal "AppleSDGothicNeoB00";
+	color : #bbbbc7;
+	-nexa-text-align : right;
+	-nexa-vertical-align : bottom;
+}
+.Static.sta_background_img
+{
+	opacity : 30%;
+	border-radius : 20px;
+}
+.Static.sta_background_sub
+{
+	background : #282830;
+	color : #9b9baa;
+}
+.Static.sta_background
+{
+	background : #31313c;
+	border-radius : 20px;
+}
+.Static.sta_map_description
+{
+	font : normal 23pt/normal "이사만루체 Medium";
+	color : #cdcdd0;
+}
+.Static.sta_alert
+{
+	background : #393946;
+	border-radius : 10px;
+	color : white;
+	font : normal 18pt/normal "이사만루체 Medium";
+	-nexa-padding : 5px 0px 0px;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : center;
+}
+.Static.sta_border
+{
+	background : #8e8e8e;
+}
+.Static.sta_border2
+{
+	background : #1f2326;
+}/* TextArea */
+.TextArea,.TextAreaControl
 {
 	background : #ffffff;
 	-nexa-border : 1px solid #d5d5d5;
 	-nexa-padding : 9px 9px 9px 9px;
+	-nexa-edge : ;
+	-nexa-rtl-background-image : ;
+	-nexa-rtl-edge-image : ;
+	-nexa-text-align : ;
+	-nexa-text-decoration : ;
+	-nexa-word-wrap : ;
+	border-radius : ;
+	box-shadow : ;
+	color : ;
+	cursor : ;
+	font : ;
+	letter-spacing : ;
+	opacity : ;
+	word-spacing : ;
 }
-.TextAreaControl
-{
-	background : #000000;
-	-nexa-border : 1px solid #d5d5d5;
-	-nexa-padding : 9px 9px 9px 9px;
-}/* TextArea */
-.TextArea.txt_memo,
-.TextArea.txt_memo[status=disabled],
-.TextArea.txt_memo[status=mouseover],
-.TextArea.txt_memo[status=focused],
-.TextArea.txt_memo[status=readonly],
-.TextArea.txt_memo[userstatus=nulltext]
-{
-	background : #6d6d6d;
-	-nexa-border : 0px solid white;
-	-nexa-padding : 10px 0px 0px 10px;
-	border-radius : 10px;
-	font : normal 13pt/normal "이사만루체 Light";
-	-nexa-word-wrap : char;
-	-nexa-text-align : left;
-	color : white;
-}
+
 .TextArea[status=mouseover],.TextArea[status=focused],.TextAreaControl[status=mouseover],.TextAreaControl[status=focused]
 {
 	-nexa-border : 1px solid #5a86cd;
@@ -4296,6 +4345,21 @@
 {
 	color : #999999;
 	background : #efefef;
+	-nexa-border : ;
+	-nexa-edge : ;
+	-nexa-padding : ;
+	-nexa-rtl-background-image : ;
+	-nexa-rtl-edge-image : ;
+	-nexa-text-align : ;
+	-nexa-text-decoration : ;
+	-nexa-word-wrap : ;
+	border-radius : ;
+	box-shadow : ;
+	cursor : ;
+	font : ;
+	letter-spacing : ;
+	opacity : ;
+	word-spacing : ;
 }
 
 
@@ -6703,7 +6767,10 @@
 	opacity : ;
 	word-spacing : ;
 }
-.ListView[status=mouseover],
+.ListView.list_statistics
+{
+	background : #31313c;
+}.ListView[status=mouseover],
 .ListView[status=focused]
 {
 	-nexa-border : 0px none;
@@ -6833,10 +6900,7 @@
 	opacity : ;
 	word-spacing : ;
 }
-.ListView.list_statistics
-{
-	background : #6e6e86;
-}.ListView .body .cell[status=mouseover], .ListView .detail .cell[status=mouseover]
+.ListView .body .cell[status=mouseover], .ListView .detail .cell[status=mouseover]
 {
 	-nexa-border : 0px none;
 	-nexa-edge : ;
@@ -10827,13 +10891,13 @@
 {
 	border-radius : 20px;
 	-nexa-border : 3px solid gray;
-	background : rgba(40,40,40,0.5);
+	background : rgba(128,128,128,0.5);
 }
 .Div.div_page
 {
 	border-radius : 0px 0px 20px 20px;
 	-nexa-border : 2px none black,0px none,0px none;
-	background : #56566b;
+	background : #31313c;
 }
 .Div.skins_weapon[status=disabled]
 {
@@ -10893,10 +10957,18 @@
 	-nexa-padding : 0px 0px 0px 5px; /* 아이콘과 글자 사이 간격 */
 	cursor : pointer;
 }
+
+
+.Static.sta_weapon_description
+{
+	color : #8e8e8e;
+	font : normal 15pt/normal "이사만루체 Medium";
+}
+
 .Static.sta_drop_zone
 {
 	color : white;
-	background : #6e6e86;
+	background : #31313c;
 	border-radius : 20px;
 	font : normal 30pt/normal "이사만루체 Medium";
 	-nexa-vertical-align : middle;
@@ -10908,23 +10980,15 @@
 	font : normal 16pt/normal "이사만루체 Light";
 	-nexa-text-align : center;
 	-nexa-vertical-align : top;
-	opacity : 50%;
-}.Static.sta_nothing
-{
-	font : normal 22pt/normal "AppleSDGothicNeoB00";
-	color : white;
-	opacity : 90%;
-	-nexa-text-align : right;
-	-nexa-vertical-align : bottom;
-}
-.Button.top_menu[status=mouseover],
+	opacity : 70%;
+}.Button.top_menu[status=mouseover],
 .Button.top_menu[status=focused],
 .Button.top_menu[userstatus=pushed],
 .Button.top_menu[userstatus=selected]
 {
 	cursor : pointer;
-	background : #505062;
-	-nexa-border : 2px solid white,2px solid white,2px solid #505062;
+	background : #1f2326;
+	-nexa-border : 2px solid white,2px solid white,2px solid #1f2326;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -10934,10 +10998,10 @@
 .Button.top_menu
 {
 	cursor : pointer;
-	background : #75758e;
-	-nexa-border : 2px solid #cccccc;
+	background : #31313c;
+	-nexa-border : 2px solid #8e8e8e;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
-	color : #cccccc;
+	color : #8e8e8e;
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 }
@@ -10955,7 +11019,7 @@
 }
 .Static.top_logo[status=mouseover]
 {
-	background : #242429;
+	background : #1f2326;
 	-nexa-border : 6px solid #f74451;
 	border-radius : 20px;
 	color : #f74451;
@@ -10969,10 +11033,10 @@
 .Button.top_menu_remove
 {
 	cursor : pointer;
-	background : #75758e;
-	-nexa-border : 2px solid #cccccc;
+	background : #31313c;
+	-nexa-border : 2px solid #8e8e8e;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
-	color : #cccccc;
+	color : #8e8e8e;
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 }
@@ -10982,8 +11046,8 @@
 .Button.top_menu_remove[userstatus=selected]
 {
 	cursor : pointer;
-	background : #505062;
-	-nexa-border : 2px solid white,2px solid white,2px solid #505062;
+	background : #1f2326;
+	-nexa-border : 2px solid white,2px solid white,2px solid #1f2326;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -10998,10 +11062,10 @@
 .Button.top_menu_autoclick[userstatus=selected]
 {
 	cursor : pointer;
-	background : #505062;
-	-nexa-border : 2px solid white,2px solid white,2px solid #505062;
+	background : #1f2326;
+	-nexa-border : 2px solid white,2px solid white,2px solid #1f2326;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
-	color : #ffffff;
+	color : white;
 	font : 22px/normal "이사만루체 Medium";
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-padding : 5px 0px 0px;
@@ -11024,13 +11088,11 @@
 .Button.top_menu_selected,
 .Button.top_menu_selected[status=disabled],
 .Button.top_menu_selected[status=mouseover],
-.Button.top_menu_selected[status=focused],
-.Button.top_menu_selected[userstatus=pushed],
-.Button.top_menu_selected[userstatus=selected]
+.Button.top_menu_selected[status=focused]
 {
 	cursor : pointer;
-	background : #505062;
-	-nexa-border : 2px solid white,2px solid white,2px solid #505062;
+	background : #1f2326;
+	-nexa-border : 2px solid white,2px solid white,2px solid #1f2326;
 	border-radius : 20px 20px 0px 0px / 20px 20px 0px 0px;
 	color : #ffffff;
 	font : 22px/normal "이사만루체 Medium";
@@ -11074,40 +11136,23 @@
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 }
-.Button.btn_agent_filter_all
+.Button.btn_next
 {
-	-nexa-border : 15px solid #6e6e86;
-	background : #6e6e86;
-	color : white;
-	border-radius : 20px;
-	font : normal 15pt/normal "이사만루체 Light";
-	-nexa-text-align : center;
 	cursor : pointer;
+	font : normal 30pt/normal "AppleSDGothicNeoH00";
+	border-radius : 20px;
+	color : white;
+	background : #31313c;
+	-nexa-padding : 3px 0px 0px;
 }
-.Button.btn_map
+.Button.btn_space,
+.Button.btn_space[status=disabled],
+.Button.btn_space[status=mouseover],
+.Button.btn_space[status=focused],
+.Button.btn_space[userstatus=pushed],
+.Button.btn_space[userstatus=selected]
 {
-	border-radius : 10px;
-	-nexa-border : 2px solid #8e8e8e;
-	cursor : pointer;
-	opacity : 80%;
-}.Button.btn_agent_filter
-{
-	-nexa-border : 15px solid #6e6e86;
-	background : #6e6e86;
-	color : white;
-	border-radius : 20px;
-	font : normal 15pt/normal "이사만루체 Light";
-	-nexa-text-align : right;
-	cursor : pointer;
-}
-.Button.btn_skill
-{
-	-nexa-border : 10px solid #6e6e86;
-	background : #6e6e86;
-	color : white;
-	border-radius : 20px;
-	font : normal 16px/normal "이사만루체 Light";
-	-nexa-vertical-align : bottom;
+	background : #1f2326;
 }
 .Button.Search_Btn[status=mouseover],
 .Button.Search_Btn[status=focused],
@@ -11157,7 +11202,7 @@
 {
 	font : normal 25pt/normal "이사만루체";
 	cursor : pointer;
-	background : #505062;
+	background : #31313c;
 	-nexa-border : 2px solid #8e8e8e;
 	color : #ffffff;
 	-nexa-padding : 5px 0px 0px;
@@ -11166,7 +11211,7 @@
 .Button.rank_refresh[status=mouseover]
 {
 	cursor : pointer;
-	background : #505062;
+	background : #31313c;
 	-nexa-border : 2px solid #ffffff;
 	border-radius : 20px;
 	color : #ffffff;
@@ -11177,9 +11222,8 @@
 .Button.rank_paging[status=mouseover]
 {
 	cursor : pointer;
-	/*background : #1f2326;*/
-	background : #969696;
-	color : white;
+	background : #1f2326;
+	color : #9e9eb1;
 	border-radius : 20px;
 	font : normal 20pt/normal "이사만루체 Medium";
 	box-shadow : 0px 0px 20px #ffffff;
@@ -11187,9 +11231,8 @@
 .Button.rank_paging
 {
 	cursor : pointer;
-	/*background : #1f2326;*/
-	background : #969696;
-	color : white;
+	background : #1f2326;
+	color : #9e9eb1;
 	border-radius : 20px;
 	font : normal 20pt/normal "이사만루체 Medium";
 }
@@ -11228,9 +11271,9 @@
 }
 .Grid.grid_test .body .row .cell
 {
-	background : #56566b;
+	background : #31313c;
 	color : white;
-	-nexa-background-odd : #63637c;
+	-nexa-background-odd : #393946;
 	
 }
 .Grid .body .row .cell.grid_test1
@@ -11250,7 +11293,14 @@
 	cursor : pointer;
 }
 
-.Button.btn_WF_FillYellow[status=focused],
+
+.Button.btn_map
+{
+	border-radius : 10px;
+	-nexa-border : 2px solid #8e8e8e;
+	cursor : pointer;
+	opacity : 60%;
+}.Button.btn_WF_FillYellow[status=focused],
 .Button.btn_WF_FillYellow[userstatus=pushed],
 .Button.btn_WF_FillYellow[userstatus=selected]
 {
@@ -11276,48 +11326,6 @@
 {
 	background : url('theme://images/img_Error.png') no-repeat center center;
 }
-.Static.sta_background
-{
-	background : #6e6e86;
-	border-radius : 20px;
-}
-.Static.sta_background_sub
-{
-	background : #8b8ba0;
-	color : white;
-}
-.Static.sta_background_img
-{
-	opacity : 85%;
-	border-radius : 20px;
-}
-.Button.btn_next
-{
-	cursor : pointer;
-	font : normal 30pt/normal "AppleSDGothicNeoH00";
-	border-radius : 20px;
-	color : white;
-	background : #6e6e86;
-	-nexa-padding : 3px 0px 0px;
-}
-.Button.btn_next[status=mouseover]
-{
-	box-shadow : 0px 0px 5px #ffffff;
-	
-}
-.Static.sta_map_description
-{
-	font : normal 23pt/normal "이사만루체 Medium";
-	color : white;
-	opacity : 95%;
-}
-.Static.sta_weapon_description
-{
-	color : white;
-	opacity : 90%;
-	font : normal 15pt/normal "이사만루체 Medium";
-}
-
 .Button.btn_WF_FillRed[status=mouseover],
 .Button.btn_WF_FillRed[userstatus=pushed],
 .Button.btn_WF_FillRed[userstatus=selected]
@@ -11333,6 +11341,45 @@
 	border-radius : 10px;
 	font : normal 18pt/normal "이사만루체 Medium";
 	cursor : pointer;
+}
+.Button.btn_agent_filter_all
+{
+	-nexa-border : 15px solid #31313c;
+	background : #31313c;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	cursor : pointer;
+	-nexa-text-align : center;
+}
+.Button.btn_agent_filter
+{
+	-nexa-border : 15px solid #31313c;
+	background : #31313c;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	-nexa-text-align : right;
+	cursor : pointer;
+}
+.Button.btn_agent_filter[status=mouseover]
+{
+	-nexa-border : 15px solid #535368;
+	background : #535368;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	-nexa-text-align : right;
+	box-shadow : 0px 0px 5px #FFFFFF;
+	cursor : pointer;
+}.Button.btn_skill
+{
+	-nexa-border : 10px solid #31313c;
+	background : #31313c;
+	color : white;
+	border-radius : 20px;
+	font : normal 16px/normal "이사만루체 Light";
+	-nexa-vertical-align : bottom;
 }
 .Button.btn_WF_FillGray[userstatus=pushed],
 .Button.btn_WF_FillGray[userstatus=selected],
@@ -11425,8 +11472,8 @@
 
 .Combo.valo_combo_tier
 {
-	background : #31313c;
-	-nexa-border : 0px solid #31313c;
+	background : #4c4c5a;
+	-nexa-border : 0px solid #4c4c5a;
 	-nexa-padding : 0px 0px 0px 5px;
 	color : white;
 	border-radius : 20px;
@@ -11437,7 +11484,7 @@
 {
 	-nexa-padding : 1px 2px 0px 0px;
 	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
-	-nexa-border : 15px solid #31313c;
+	-nexa-border : 15px solid #4c4c5a;
 	cursor : pointer;
 }
 .Combo.valo_combo_tier .combolist
@@ -11453,7 +11500,7 @@
 .Combo.valo_combo_tier .dropbutton[status=focused]
 {
 	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
-	-nexa-border : 15px solid #31313c;
+	-nexa-border : 15px solid #4c4c5a;
 	cursor : pointer;
 }
 .Combo.valo_combo_tier[status=mouseover]
@@ -11479,7 +11526,7 @@
 }
 .Combo.valo_combo_tier .combolist .listboxitem[status=mouseover]
 {
-	background : #75758e;
+	background : #4c4c5a;
 }
 .Combo.valo_combo_tier .combolist[status=focused],
 .Combo.valo_combo_tier .combolist[status=mouseover]
@@ -11488,7 +11535,7 @@
 }
 .Combo.valo_combo_tier .combolist .listboxitem[userstatus=selected]
 {
-	background : #75758e;
+	background : #4c4c5a;
 }
 .Button.btn_shadow[status=mouseover]
 {
@@ -11599,49 +11646,19 @@
 	border-radius : 20px;
 	box-shadow : 0px 0px 10px #ffffff;
 	
-}.Static.sta_alert
+}.Button.btn_next[status=mouseover]
 {
-	background : #6d6d6d;
-	border-radius : 10px;
-	color : white;
-	font : normal 18pt/normal "이사만루체 Medium";
-	-nexa-padding : 5px 0px 0px;
-	-nexa-vertical-align : middle;
-	-nexa-text-align : center;
-}
-.Static.sta_border
-{
-	background : #cccccc;
-}
-.Static.sta_border2
-{
-	background : #cccccc;
-}.Button.btn_space,
-.Button.btn_space[status=disabled],
-.Button.btn_space[status=mouseover],
-.Button.btn_space[status=focused],
-.Button.btn_space[userstatus=pushed],
-.Button.btn_space[userstatus=selected]
-{
-	background : #969696;
+	box-shadow : 0px 0px 5px #FFFFFF;
+	
 }
 .Button.btn_agent_filter_all[status=mouseover]
 {
-	-nexa-border : 15px solid #31313c;
-	background : #31313c;
+	-nexa-border : 15px solid #535368;
+	background : #535368;
 	color : white;
 	border-radius : 20px;
 	font : normal 15pt/normal "이사만루체 Light";
+	cursor : pointer;
+	box-shadow : 0px 0px 5px #FFFFFF;
 	-nexa-text-align : center;
-	cursor : pointer;
-}
-.Button.btn_agent_filter[status=mouseover]
-{
-	-nexa-border : 15px solid #31313c;
-	background : #31313c;
-	color : white;
-	border-radius : 20px;
-	font : normal 15pt/normal "이사만루체 Light";
-	-nexa-text-align : right;
-	cursor : pointer;
 }

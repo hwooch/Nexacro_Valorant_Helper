@@ -4,25 +4,7 @@
     <Layouts>
       <Layout width="2000" height="980" screenid="Desktop_screen"/>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[// var flag = false;
-// this.WebView00_onloadcompleted = function(obj:nexacro.WebView,e:nexacro.WebLoadCompEventInfo)
-// {
-// // 	if (flag == false){
-// // 			this.WebView00.reload();
-// // 			flag = true;
-// // 	}
-// };
-// 
-// 
-// this.WebBrowser00_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
-// {
-// // 		if (flag == false){
-// // 			this.WebView00.reload();
-// // 			flag = true;
-// // 	}
-// };
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-this.fvApp = nexacro.getApplication();
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
 
 this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {

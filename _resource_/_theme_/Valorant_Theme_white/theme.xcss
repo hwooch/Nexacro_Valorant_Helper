@@ -6844,7 +6844,10 @@
 	opacity : ;
 	word-spacing : ;
 }
-.ListView .body .cell[status=mouseover], .ListView .detail .cell[status=mouseover]
+.ListView.list_statistics
+{
+	background : #6e6e86;
+}.ListView .body .cell[status=mouseover], .ListView .detail .cell[status=mouseover]
 {
 	-nexa-border : 0px none;
 	-nexa-edge : ;
@@ -11289,9 +11292,14 @@
 	background : #6e6e86;
 	border-radius : 20px;
 }
+.Static.sta_background_sub
+{
+	background : #8b8ba0;
+	color : white;
+}
 .Static.sta_background_img
 {
-	opacity : 100%;
+	opacity : 85%;
 	border-radius : 20px;
 }
 .Button.btn_next
@@ -11613,6 +11621,10 @@
 	-nexa-text-align : center;
 }
 .Static.sta_border
+{
+	background : #cccccc;
+}
+.Static.sta_border2
 {
 	background : #cccccc;
 }.Button.btn_space,

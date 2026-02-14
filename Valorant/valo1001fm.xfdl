@@ -23,12 +23,12 @@ this.Player_Search_onimeaction = function(obj:nexacro.Edit,e:nexacro.KeyEventInf
 	
 	// 엔터가 눌렸거나 검색 버튼이 눌렸을 때
 	if (obj.id == "btn_Player_Search"){
-	
+		
 		// 유효성 검사
 		var check_result = this.check_edit_value();
 		if (check_result){
-				objWorkFrame.formurl = "Valorant::valo1002fm.xfdl";
-			}
+			objWorkFrame.formurl = "Valorant::valo1002fm.xfdl";
+		}
 	}
     else {
 		if (e.keycode == 13) {
@@ -70,7 +70,7 @@ this.check_edit_value = function ()
 		this.gfnAlert("msg.notice.nickname3", "", "nodata"); //////////////////
         return 0;
     }
-
+	
     // 태그 검사
     // 규칙: 3~5자, 공백 절대 불가
     var tagReg = /^\S{3,5}$/; 
@@ -86,14 +86,10 @@ this.check_edit_value = function ()
 	return 1;
 	
 };
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	obj.background = "url('https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png') repeat left top red";
-};
 
 this.valo1001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-		// 테마 변경 이벤트 핸들러 추가
+	// 테마 변경 이벤트 핸들러 추가
     this.fvApp.gds_theme.addEventHandler("oncolumnchanged", this.fn_change_theme, this);
     
     // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
@@ -102,7 +98,7 @@ this.valo1001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.valo1001fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 {
-		// 테마 이벤트 핸들러 제거
+	// 테마 이벤트 핸들러 제거
     this.fvApp.gds_theme.removeEventHandler("oncolumnchanged", this.fn_change_theme, this);
 };
 this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
@@ -120,10 +116,10 @@ this.fn_setThemeCss = function()
     // 값에 따라 스타일 적용
     if (sThemeColor == "white") {
         nexacro.loadStyle("xcssrc::theme_white.xcss");
-this.background = "url('theme::Valorant_Theme_white/images/Valo_Match_search_background.png') no-repeat left top /100% 100%";
+		this.background = "url('theme::Valorant_Theme_white/images/Valo_Match_search_background.png') no-repeat left top /100% 100%";
     } else {
         nexacro.loadStyle("xcssrc::theme_black.xcss");
-this.background = "url('theme::Valorant_Theme_black/images/Valo_Match_search_background.png') no-repeat left top /100% 100%";
+		this.background = "url('theme::Valorant_Theme_black/images/Valo_Match_search_background.png') no-repeat left top /100% 100%";
     }
     
     this.resetScroll();

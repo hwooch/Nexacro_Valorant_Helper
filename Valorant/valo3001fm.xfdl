@@ -26,19 +26,21 @@ this.fv_selectedTier   = "all";
 
 this.valo3001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {    
-    this.fn_getDBData(); // DB 조회 우선
-	
-	// 테마 변경 이벤트 핸들러 추가
-    this.fvApp.gds_theme.addEventHandler("oncolumnchanged", this.fn_change_theme, this);
+    this.fn_getDBData(); // DB 에서 스킨 정보 얻어오기
     
+    // 테마 변경 이벤트 핸들러 추가
+    this.fvApp.gds_theme.addEventHandler("oncolumnchanged", this.fn_change_theme, this);
+     
     // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
     this.fn_setThemeCss();
 };
+
 this.valo3001fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 {
-	// 테마 이벤트 핸들러 제거
+    // 테마 이벤트 핸들러 제거
     this.fvApp.gds_theme.removeEventHandler("oncolumnchanged", this.fn_change_theme, this);
 };
+
 this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
 {
     // 데이터셋이 변경되었을 때 CSS 적용 함수 호출
@@ -48,38 +50,75 @@ this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChange
 // 실제 CSS를 변경하는 로직
 this.fn_setThemeCss = function()
 {
-	// 현재 데이터셋에 설정된 테마 값 가져오기
+    // 현재 데이터셋에 설정된 테마 값 가져오기
     var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
-    var sCardBgColor = ""; // 변경할 스킨 배경색 변수
     
+    var sSkinBgColor = "";   // 스킨 카드 배경색
+    var sButtonBgColor = ""; // 버튼 배경색 (무기, 티어)
+     
     if (sThemeColor == "white") {
         nexacro.loadStyle("xcssrc::theme_white.xcss");
-        sCardBgColor = "#727272"; // 흰색 테마일 때 스킨 배경색
+        sSkinBgColor = "#727272";   // 흰색 테마일 때 스킨 배경
+        sButtonBgColor = "#727272"; // 흰색 테마일 때 버튼 배경
     } else {
         nexacro.loadStyle("xcssrc::theme_black.xcss");
-        sCardBgColor = "#2a2e35"; // 검은색 테마일 때 스킨 배경색
+        sSkinBgColor = "#31313c";   // 검은색 테마일 때 스킨 배경
+        sButtonBgColor = "#31313c"; // 검은색 테마일 때 버튼 배경
     }
-    
-	
-    var pDiv = this.div_skin_list.form;
-    var comps = pDiv.components;
-    
-    // 4. 반복문을 돌면서 이름이 "div_skin_item_"으로 시작하는 Div만 색상 변경
-    for(var i = 0; i < comps.length; i++)
+     
+    // 스킨 리스트 색상 변경
+    var pDivSkin = this.div_skin_list.form;
+    var compsSkin = pDivSkin.components;
+     
+    for(var i = 0; i < compsSkin.length; i++)
     {
-        var comp = comps[i];
+        var comp = compsSkin[i];
         if (comp.name.indexOf("div_skin_item_") > -1) 
         {
-            comp.set_background(sCardBgColor);
+            comp.background = sSkinBgColor;
         }
     }
     
+    // 무기 리스트 색상 변경 (선택된 항목 제외)
+    var pDivWeapon = this.div_weapon.form;
+    var compsWeapon = pDivWeapon.components;
+    
+    for(var i = 0; i < compsWeapon.length; i++)
+    {
+        var comp = compsWeapon[i];
+        // 무기 버튼인 경우
+        if (comp.name.indexOf("div_weapon_item_") > -1)
+        {
+            // 현재 선택된 무기가 아닐 때만 배경색 변경
+            if (comp.u_uuid != this.fv_selectedWeapon) {
+                comp.background = sButtonBgColor;
+            }
+        }
+    }
+
+    // 티어 리스트 색상 변경 (선택된 항목 제외)
+    var pDivTier = this.div_tier.form;
+    var compsTier = pDivTier.components;
+    
+    for(var i = 0; i < compsTier.length; i++)
+    {
+        var comp = compsTier[i];
+        // 티어 버튼인 경우 (div_tier_item_all 포함)
+        if (comp.name.indexOf("div_tier_item_") > -1)
+        {
+            // 현재 선택된 티어(빨간색)가 아닐 때만 배경색 변경
+            if (comp.u_uuid != this.fv_selectedTier) {
+                comp.background = sButtonBgColor;
+            }
+        }
+    }
+     
     this.resetScroll();
 };
 
 this.btn_reload_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.fn_getNewData(); 
+    this.fn_getNewData(); 
 };
 
 this.fn_getNewData = function() {
@@ -89,7 +128,7 @@ this.fn_getNewData = function() {
     var strOutDatasets  = "ds_weapon=out_weapon ds_tier=out_tier ds_skin=out_skin";
     var strArgument     = "";
     var strCallbackFunc = "fn_Callback";
-    
+     
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
 };
 
@@ -100,7 +139,7 @@ this.fn_getDBData = function() {
     var strOutDatasets  = "ds_weapon=out_weapon ds_tier=out_tier ds_skin=out_skin";
     var strArgument     = "";
     var strCallbackFunc = "fn_Callback";
-    
+     
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
 };
 
@@ -109,15 +148,15 @@ this.fn_Callback = function(svcID, errCode, errMsg) {
         alert("데이터 로드 실패: " + errMsg);
         return;
     }
-	
-	this.fv_selectedWeapon = this.ds_weapon.getColumn(0, "UUID");
-	
+    
+    this.fv_selectedWeapon = this.ds_weapon.getColumn(0, "UUID");
+    
     if (svcID == "searchNewSkin" || svcID == "searchDBskin") {
         this.fn_drawTierList();
         this.fn_drawWeaponList();
         this.fn_drawSkinList();
-		
-		this.resetScroll();
+        
+        this.resetScroll();
     }
 };
 
@@ -144,111 +183,118 @@ this.fn_drawWeaponList = function()
 {
     var pDiv    = this.div_weapon.form;
     var ds      = this.ds_weapon;
-    
-	// 컴포넌트 초기화
+     
+    // 컴포넌트 초기화
     this.fn_clearComps(pDiv);
     
+    // 현재 테마에 따른 기본 배경색 설정
+    var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
+    var sButtonBgColor = (sThemeColor == "white") ? "#727272" : "#31313c";
+     
     // 배치 설정
     var nStartX = 10;
     var nStartY = 10;
     var nLeft   = nStartX;
     var nTop    = nStartY;
-    
+     
     var nBtnH   = 50;  // 버튼 높이
     var nGapX   = 15;  // 버튼 간 가로 간격
     var nGapY   = 15;  // 버튼 간 세로 간격
-    
+     
     // 부모 Div 크기 (줄바꿈 계산용)
     var nContainerWidth = this.div_weapon.getOffsetWidth();
     // 스크롤바 영역 고려하여 여유공간 20px 뺌
     var nMaxWidth = nContainerWidth - 20;
-	
+    
     for (var i = 0; i < ds.getRowCount(); i++) 
     {
         var sUuid = ds.getColumn(i, "UUID");
         var sName = ds.getColumn(i, "NAME");
         var sIcon = ds.getColumn(i, "ICON");
-        
+         
         // 텍스트 너비 계산
         var sFont = "normal 12pt/normal '이사만루체 Medium'";
         var objSize = nexacro.getTextSize(sName, sFont); // 텍스트 사이즈 객체 반환
         var nTextWidth = objSize.nx; // 텍스트의 실제 너비
-        
+         
         // 왼쪽여백(10) + 아이콘(90) + 간격(10) + 텍스트너비(nTextWidth) + 오른쪽여백(10)
         var nDynamicBtnW = 10 + 90 + 10 + nTextWidth + 10;
-		
+        
         // 줄바꿈 로직
         if ((nLeft + nDynamicBtnW) > nMaxWidth) {
-            nLeft = nStartX;          		// 왼쪽 초기화
-            nTop  = nTop + nBtnH + nGapY; 	// 아래로 이동
+            nLeft = nStartX;              
+            nTop  = nTop + nBtnH + nGapY;     
         }
-        
+         
         // 무기 버튼역할하는 Div 생성
         var sDivId = "div_weapon_item_" + i;
         var objDiv = new nexacro.Div(); 
         objDiv.init( sDivId, nLeft, nTop, nDynamicBtnW, nBtnH, null, null );
-        
+         
         var isSelected = (this.fv_selectedWeapon == sUuid);
         objDiv.border = isSelected ? "2px solid #ffffff" : "2px solid #8e8e8e";
-        objDiv.background = isSelected ? "#ff4655" : "#31313c";
-        objDiv.borderRadius = "20px";
         
+        // 선택되면 빨간색, 아니면 테마 색상
+        objDiv.background = isSelected ? "#ff4655" : sButtonBgColor;
+        
+        objDiv.borderRadius = "20px";
+         
         objDiv.addEventHandler("onclick", this.fn_itemOnClick, this);
-		objDiv.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
-		objDiv.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
-		
-		objDiv.cursor = "pointer";
+        objDiv.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
+        objDiv.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
+        
+        objDiv.cursor = "pointer";
         objDiv.u_uuid = sUuid;
         objDiv.u_type = "WEAPON"; 
-		
+        
         pDiv.addChild(sDivId, objDiv);
         objDiv.show();
-		
+        
         // 무기 아이콘 생성
         var sImgId = "img_weapon_" + i;
         var objImg = new nexacro.ImageViewer();
         objImg.init( sImgId, 10, 5, 90, 38, null, null );
-        
+         
         objImg.image = sIcon;
         objImg.stretch = "fixaspectratio";
         objImg.border = "0px none";
         objImg.background = "transparent";
-		objImg.addEventHandler("onclick", this.fn_itemOnClick, this);
-		objImg.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
-		objImg.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
-		
-		objImg.cursor = "pointer";
-		
+        objImg.addEventHandler("onclick", this.fn_itemOnClick, this);
+        objImg.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
+        objImg.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
+        
+        objImg.cursor = "pointer";
+        
         objDiv.addChild(sImgId, objImg);
         objImg.show();
-		
+        
         // 무기 텍스트 생성
         var sStaId = "sta_weapon_name_" + i;
         var objSta = new nexacro.Static();
-        
+         
         objSta.init( sStaId, 105, 3, nTextWidth + 5, 38, null, null );
-        
+         
         objSta.text = sName;
         objSta.font = sFont;
         objSta.color = "#ffffff";
-		objSta.addEventHandler("onclick", this.fn_itemOnClick, this);
-		objSta.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
-		objSta.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
-		
-		objSta.cursor = "pointer";
-		
+        objSta.addEventHandler("onclick", this.fn_itemOnClick, this);
+        objSta.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
+        objSta.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
+        
+        objSta.cursor = "pointer";
+        
         objDiv.addChild(sStaId, objSta);
         objSta.show();
-		
+        
         nLeft = nLeft + nDynamicBtnW + nGapX;
     }
-	
+    
     var nTotalHeight = nTop + nBtnH + 10;
     this.div_weapon.height = nTotalHeight;
-	
+    
     this.sta_tier.top = this.div_weapon.getOffsetBottom() + 10;
     this.div_tier.top = this.sta_tier.getOffsetBottom();
-	
+    
     pDiv.resetScroll();
 };
 
@@ -256,144 +302,150 @@ this.fn_drawWeaponList = function()
 this.fn_drawTierList = function()
 {
     var pDiv    = this.div_tier.form; 
-    var ds      = this.ds_tier;      
-    
+    var ds      = this.ds_tier;       
+     
     this.fn_clearComps(pDiv);
     
+    // 현재 테마에 따른 기본 배경색 설정
+    var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
+    var sButtonBgColor = (sThemeColor == "white") ? "#727272" : "#31313c";
+     
     var nStartX = 10;
     var nStartY = 10;
     var nLeft   = nStartX;
     var nTop    = nStartY;
-    
+     
     var nBtnW   = 140; // 티어 버튼 너비
     var nBtnH   = 50;  // 티어 버튼 높이
     var nGapX   = 15;
     var nGapY   = 15;
-	
-	
+    
+    
     // 부모 Div 크기
     var nContainerWidth = this.div_weapon.getOffsetWidth();
     var nMaxWidth = nContainerWidth - 20;
-	
-	var sFont = "normal 12pt/normal '이사만루체 Medium'";
+    
+    var sFont = "normal 12pt/normal '이사만루체 Medium'";
     var objSize = nexacro.getTextSize("전체", sFont); // 텍스트 사이즈 객체 반환
     var nTextWidth = objSize.nx; // 텍스트의 실제 너비
-	
+    
     // 왼쪽여백(30) + 텍스트너비(nTextWidth) + 오른쪽여백(30)
     var nDynamicBtnW = 30 + nTextWidth + 30;
-	
+    
     // 전체 버튼
     var sAllDivId = "div_tier_item_all";
     var objAllDiv = new nexacro.Div();
-	objAllDiv.init(sAllDivId, nLeft, nTop, nDynamicBtnW, nBtnH, null, null);
-	
-	var sUuid = "all";
-	var isSelected = (this.fv_selectedTier == sUuid);
-	
+    objAllDiv.init(sAllDivId, nLeft, nTop, nDynamicBtnW, nBtnH, null, null);
+    
+    var sUuid = "all";
+    var isSelected = (this.fv_selectedTier == sUuid);
+    
     objAllDiv.border = isSelected ? "2px solid #ffffff" : "2px solid #8e8e8e";
-    objAllDiv.background = isSelected ? "#ff4655" : "#31313c"; 
+    
+    // 선택되면 빨간색, 아니면 테마 색상
+    objAllDiv.background = isSelected ? "#ff4655" : sButtonBgColor; 
+    
     objAllDiv.borderRadius = "20px";
-	objAllDiv.text = "전체";
-	objAllDiv.color = this.fv_selectedTier == "all" ? "#ffffff" : "#ffffff";
-	objAllDiv.font = "normal 12pt/normal '이사만루체 Medium'";
-	
+    objAllDiv.text = "전체";
+    objAllDiv.color = this.fv_selectedTier == "all" ? "#ffffff" : "#ffffff";
+    objAllDiv.font = "normal 12pt/normal '이사만루체 Medium'";
+    
     objAllDiv.addEventHandler("onclick", this.fn_itemOnClick, this);
-	objAllDiv.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
-	objAllDiv.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
-	
-	objAllDiv.cursor = "pointer";
+    objAllDiv.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
+    objAllDiv.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
+    
+    objAllDiv.cursor = "pointer";
     objAllDiv.u_uuid = "all";
     objAllDiv.u_type = "TIER";
     pDiv.addChild(sAllDivId, objAllDiv);
     objAllDiv.show();
-    
+     
     nLeft = nLeft + nDynamicBtnW + nGapX;
-	
+    
     for (var i = 0; i < ds.getRowCount(); i++) 
     {
         var sUuid = ds.getColumn(i, "UUID");
         var sName = ds.getColumn(i, "NAME").slice(0, -4);
         var sIcon = ds.getColumn(i, "ICON");
-        
+         
         // 텍스트 너비 계산
         var sFont = "normal 12pt/normal '이사만루체 Medium'";
         var objSize = nexacro.getTextSize(sName, sFont); // 텍스트 사이즈 객체 반환
         var nTextWidth = objSize.nx; // 텍스트의 실제 너비
-        
+         
         // 왼쪽여백(10) + 아이콘(36) + 간격(10) + 텍스트너비(nTextWidth) + 오른쪽여백(15)
         var nDynamicBtnW = 10 + 36 + 10 + nTextWidth + 15;
-		
-		// 		// 왼쪽여백(10) + 아이콘(40) + 간격(10) + 텍스트너비(nTextWidth) + 오른쪽여백(15)
-		//         var nDynamicBtnW = 10 + 40 + 10 + nTextWidth + 15;
-		// 		
+        
         // 줄바꿈 로직
         if ((nLeft + nDynamicBtnW) > nMaxWidth) {
             nLeft = nStartX;
             nTop  = nTop + nBtnH + nGapY;
         }
-        
+         
         var sDivId = "div_tier_item_" + i;
         var objDiv = new nexacro.Div();
         objDiv.init( sDivId, nLeft, nTop, nDynamicBtnW, nBtnH, null, null );
-		
+        
         var isSelected = (this.fv_selectedTier == sUuid);
-        
+         
         objDiv.border = isSelected ? "2px solid #ffffff" : "2px solid #8e8e8e";
-		objDiv.background = isSelected ? "#ff4655" : "#31313c";
-		objDiv.borderRadius = "20px";
-        objDiv.addEventHandler("onclick", this.fn_itemOnClick, this);
-		objDiv.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
-		objDiv.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
-		
-		objDiv.cursor = "pointer";
         
+        // 선택되면 빨간색, 아니면 테마 색상
+        objDiv.background = isSelected ? "#ff4655" : sButtonBgColor;
+        
+        objDiv.borderRadius = "20px";
+        objDiv.addEventHandler("onclick", this.fn_itemOnClick, this);
+        objDiv.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
+        objDiv.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
+        
+        objDiv.cursor = "pointer";
+         
         objDiv.u_uuid = sUuid; 
         objDiv.u_type = "TIER";
-		
+        
         pDiv.addChild(sDivId, objDiv);
         objDiv.show();
-		
+        
         // 티어 아이콘
         var sImgId = "img_tier_" + i;
         var objImg = new nexacro.ImageViewer();
-		//objImg.init(sImgId, 10, 4, 40, 40, null, null);
-		objImg.init(sImgId, 10, 4, 36, 36, null, null);
-		
+        objImg.init(sImgId, 10, 4, 36, 36, null, null);
+        
         objImg.image = sIcon;
         objImg.stretch = "fixaspectratio";
         objImg.border = "0px none"; 
         objImg.background = "transparent";
-		
-		objImg.addEventHandler("onclick", this.fn_itemOnClick, this);
-		objImg.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
-		objImg.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
-		objImg.cursor = "pointer";
-		
+        
+        objImg.addEventHandler("onclick", this.fn_itemOnClick, this);
+        objImg.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
+        objImg.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
+        objImg.cursor = "pointer";
+        
         objDiv.addChild(sImgId, objImg);
         objImg.show();
-		
+        
         // 티어 이름
         var sStaId = "sta_tier_name_" + i;
         var objSta = new nexacro.Static();
-		objSta.init(sStaId, 60, 3, nTextWidth, 40, null, null);
-		
+        objSta.init(sStaId, 60, 3, nTextWidth, 40, null, null);
+        
         objSta.text = sName;
         objSta.font = sFont;
         objSta.color = "#ffffff";
-		
-		objSta.addEventHandler("onclick", this.fn_itemOnClick, this);
-		objSta.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
-		objSta.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
-		objSta.cursor = "pointer";
-		
+        
+        objSta.addEventHandler("onclick", this.fn_itemOnClick, this);
+        objSta.addEventHandler("onmouseenter", this.fn_itemOnMouseEnter, this);
+        objSta.addEventHandler("onmouseleave", this.fn_itemOnMouseLeave, this);
+        objSta.cursor = "pointer";
+        
         objDiv.addChild(sStaId, objSta);
         objSta.show();
-		
+        
         nLeft = nLeft + nDynamicBtnW + nGapX;
     }
     var nTotalHeight = nTop + nBtnH + 10;
     this.div_tier.height = nTotalHeight;
-	
+    
     pDiv.resetScroll();
 };
 
@@ -402,17 +454,17 @@ this.fn_itemOnClick = function(obj, e)
 {
     // 일단 클릭된 컴포넌트를 타겟으로 잡음
     var targetObj = obj;
-    
+     
     // 만약 클릭된 컴포넌트에 'u_uuid' 값이 없다면? (이미지나 스태틱을 누른 경우)
     // -> 바로 위 부모(parent)인 Div를 타겟으로 변경함
     if (targetObj.u_uuid == undefined || targetObj.u_uuid == null || targetObj.u_uuid == "undefined") {
         targetObj = obj.parent.parent;
     }
-	
+    
     // 이제 targetObj는 무조건 데이터를 가진 Div가 됨
     var sType = targetObj.u_type; 
     var sUuid = targetObj.u_uuid;
-    
+     
     if (sType == "WEAPON") {
         this.fv_selectedWeapon = sUuid;
         this.fn_drawWeaponList(); 
@@ -420,54 +472,54 @@ this.fn_itemOnClick = function(obj, e)
         this.fv_selectedTier = sUuid;
         this.fn_drawTierList();
     }
-    
+     
     this.fn_drawSkinList();
 };
 
 // 마우스롤 올렸을 때
 this.fn_itemOnMouseEnter = function(obj, e){
-	var targetObj = obj;
-    
+    var targetObj = obj;
+     
     if (targetObj.u_uuid == undefined || targetObj.u_uuid == null || targetObj.u_uuid == "undefined") {
         targetObj = obj.parent.parent;
     }
-	targetObj.boxShadow = "0px 0px 10px #ffffff";
+    targetObj.boxShadow = "0px 0px 10px #ffffff";
 }
 
 // 마우스롤 내렸을 때
 this.fn_itemOnMouseLeave = function(obj, e){
     var targetObj = obj;
-    
+     
     if (targetObj.u_uuid == undefined || targetObj.u_uuid == null || targetObj.u_uuid == "undefined") {
         targetObj = obj.parent.parent;
     }
-	targetObj.boxShadow = "";
+    targetObj.boxShadow = "";
 }
 
 // 스킨 목록 div 그리기
 this.fn_drawSkinList = function()
 {
-	this.div_skin_list.top = this.div_tier.getOffsetBottom() + 20;
+    this.div_skin_list.top = this.div_tier.getOffsetBottom() + 20;
     var pDiv    = this.div_skin_list.form; 
     var ds      = this.ds_skin;
-    
+     
     this.fn_clearComps(pDiv);
     
     var nStartX = 15;  
     var nStartY = 15;  
     var nLeft   = nStartX;
     var nTop    = nStartY;
-    
+     
     var nCardW  = 240; 
     var nCardH  = 220; 
     var nGapX   = 15;  
     var nGapY   = 20;  
-    
+     
     var nContainerWidth = this.div_skin_list.getOffsetWidth(); 
     var nMaxWidth = nContainerWidth - 20; 
-	
+    
     var nDrawCount = 0;
-	
+    
     for (var i = 0; i < ds.getRowCount(); i++) 
     {
         var sUuid      = ds.getColumn(i, "UUID");
@@ -477,7 +529,7 @@ this.fn_drawSkinList = function()
         var sIcon      = ds.getColumn(i, "ICON");
         var sTierIcon  = ds.getColumn(i, "TIER_ICON");
         var sTierColor = ds.getColumn(i, "TIER_COLOR");
-        
+         
         // 필터링
         if (this.fv_selectedWeapon != "all" && this.fv_selectedWeapon != sWeaponUuid) {
             continue;
@@ -485,92 +537,90 @@ this.fn_drawSkinList = function()
         if (this.fv_selectedTier != "all" && this.fv_selectedTier != sTierUuid) {
             continue;
         }
-		
+        
         nDrawCount++; 
-		
+        
         // 줄바꿈 로직
         if ((nLeft + nCardW) > nMaxWidth) {
-            nLeft = nStartX;           
+            nLeft = nStartX;            
             nTop  = nTop + nCardH + nGapY; 
         }
-		
+        
         var sDivId = "div_skin_item_" + i;
         var objDiv = new nexacro.Div();
-		objDiv.init(sDivId, nLeft, nTop, nCardW, nCardH, null, null);
+        objDiv.init(sDivId, nLeft, nTop, nCardW, nCardH, null, null);
+         
+        // 현재 데이터셋에 설정된 값 가져오기
+        var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
         
-		// 현재 데이터셋에 설정된 값 가져오기
-		var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
-		
-		// 값에 따라 스타일 적용
-		if (sThemeColor == "white") {
-			nexacro.loadStyle("xcssrc::theme_white.xcss");
-			objDiv.background = "#727272";
-		} else {
-			nexacro.loadStyle("xcssrc::theme_black.xcss");
-			objDiv.background = "#2a2e35";
-		}
-		
+        // 값에 따라 스타일 적용
+        if (sThemeColor == "white") {
+            nexacro.loadStyle("xcssrc::theme_white.xcss");
+            objDiv.background = "#727272";
+        } else {
+            nexacro.loadStyle("xcssrc::theme_black.xcss");
+            objDiv.background = "#31313c";
+        }
+        
         objDiv.borderRadius = "10px";
         var sBorderColor = sTierColor ? sTierColor.substr(0, 7) : "#444444"; 
         objDiv.border = "0px none, 0px none, 5px solid " + sBorderColor + ", 0px none";
-        
+         
         pDiv.addChild(sDivId, objDiv);
         objDiv.show();
-		
+        
         // 스킨 이미지
         var sImgId = "img_skin_" + i;
         var objImg = new nexacro.ImageViewer();
-		objImg.init(sImgId, 10, 20, null, 110, 10, null);
-		
+        objImg.init(sImgId, 10, 20, null, 110, 10, null);
+        
         objImg.image = sIcon;
         objImg.stretch = "fixaspectratio";
         objImg.border = "0px none";
         objImg.background = "transparent";
-		
+        
         objDiv.addChild(sImgId, objImg);
         objImg.show();
-		
+        
         // 스킨 이름
         var sStaId = "sta_skin_name_" + i;
         var objSta = new nexacro.Static();
-		objSta.init(sStaId, 10, null, null, 25, 10, 50);
-		//objSta.init(sStaId, 10, 135, null, 25, 10, null);
-		
+        objSta.init(sStaId, 10, null, null, 25, 10, 50);
+        
         objSta.text = sName;
         objSta.color = "#ffffff";
         objSta.font = "normal 14pt/normal '이사만루체 Light'";
         objSta.textAlign = "center";
         objSta.wordWrap = "none";
-		
+        
         objDiv.addChild(sStaId, objSta);
         objSta.show();
-		
+        
         // 티어 아이콘
         if (sTierIcon) {
             var sTierId = "img_skin_tier_" + i;
             var nIconSize = 25;
             var nIconLeft = (nCardW - nIconSize) / 2;
-            
+             
             var objTier = new nexacro.ImageViewer();
-			//objTier.init(sTierId, nIconLeft, 165, nIconSize, nIconSize, null, null);
-			objTier.init(sTierId, nIconLeft, null, nIconSize, nIconSize, null, 15);
-			
+            objTier.init(sTierId, nIconLeft, null, nIconSize, nIconSize, null, 15);
+            
             objTier.image = sTierIcon;
             objTier.stretch = "fixaspectratio";
             objTier.border = "0px none";
             objTier.background = "transparent";
-            
+             
             objDiv.addChild(sTierId, objTier);
             objTier.show();
         }
-		
+        
         nLeft = nLeft + nCardW + nGapX;
     }
-	
+    
     if (nDrawCount == 0) {
         var objNoData = new nexacro.Static();
-		objNoData.init("sta_no_data", 0, 50, null, 100, 0, null);
-		
+        objNoData.init("sta_no_data", 0, 50, null, 100, 0, null);
+        
         objNoData.text = "조건에 맞는 스킨이 없습니다.";
         objNoData.textAlign = "center";
         objNoData.color = "#ffffff";
@@ -578,51 +628,29 @@ this.fn_drawSkinList = function()
         pDiv.addChild("sta_no_data", objNoData);
         objNoData.show();
     }
-    
-	var nTotalHeight = nTop + nCardH + 10;
+     
+    var nTotalHeight = nTop + nCardH + 10;
     this.div_skin_list.height = nTotalHeight;
-	
+    
     pDiv.resetScroll();
-	
-	this.resetScroll();
+    
+    this.resetScroll();
 };
-
-
-
 
 this.btnSendDM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
     // 보낼 메세지 내용
-    var sMsg = "안녕하세요! 넥사크로에서 보낸 메세지입니다.\n줄바꿈도 됩니다.";
-	var sEncodedMsg = encodeURI(sMsg);
-	
-	var discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
-    alert("보낼 ID: " + discord_id);
+    var sMsg = "디코 메세지 테스트용";
+    var sEncodedMsg = encodeURI(sMsg);
+    
+    var discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
     var strSvcID        = "sendDM";
     var strURL          = "SvcUrl::sendDiscordDm.do";
     var strInDatasets   = "";
     var strOutDatasets  = "";
     var strArgument     = "discord_id=" + nexacro.wrapQuote(discord_id)+" msg=" + nexacro.wrapQuote(sEncodedMsg);
     var strCallbackFunc = "fnCallback";
-    
-    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
-};
-
-
-this.btnSendDM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-    // 보낼 메세지 내용
-    var sMsg = "안녕하세요! 넥사크로에서 보낸 메세지입니다.\n줄바꿈도 됩니다.";
-	var sEncodedMsg = encodeURI(sMsg);
-	
-	var discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
-    var strSvcID        = "sendDM";
-    var strURL          = "SvcUrl::sendDiscordDm.do";
-    var strInDatasets   = "";
-    var strOutDatasets  = "";
-    var strArgument     = "discord_id=" + nexacro.wrapQuote(discord_id)+" msg=" + nexacro.wrapQuote(sEncodedMsg);
-    var strCallbackFunc = "fnCallback";
-    
+     
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
 };
 
@@ -633,34 +661,30 @@ this.fnCallback = function(svcID, errorCode, errorMsg)
         if(errorCode == 0) {
             trace("메세지 전송 성공!");
         } else {
-            // 403 에러가 뜨면 유저가 '서버 멤버가 보내는 DM 허용 안함'을 켜둔 상태임
             trace("전송 실패: " + errorMsg);
         }
     }
-	if(svcID == "cleanDiscordDm") {
+    if(svcID == "cleanDiscordDm") {
         if(errorCode == 0) {
             trace("메세지 삭제 성공!");
         } else {
-            // 403 에러가 뜨면 유저가 '서버 멤버가 보내는 DM 허용 안함'을 켜둔 상태임
             trace("전송 실패: " + errorMsg);
         }
     }
 };
+
 this.btn_DeleteDM_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
-	var discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
+    var discord_id = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
     var strSvcID        = "cleanDiscordDm";
     var strURL          = "SvcUrl::cleanDiscordDm.do";
     var strInDatasets   = "";
     var strOutDatasets  = "";
     var strArgument     = "discord_id=" + nexacro.wrapQuote(discord_id);
     var strCallbackFunc = "fnCallback";
-    
+     
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
-};
-
-]]></Script>
+};]]></Script>
     <Objects>
       <Dataset id="ds_weapon">
         <ColumnInfo>
