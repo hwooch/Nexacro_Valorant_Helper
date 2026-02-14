@@ -278,8 +278,8 @@ this.fn_startDiscordLogin = function()
     this.fv_loopCount = 0;
 	
     var client_id = "1455113535951474731";
-    //var redirect_uri = encodeURIComponent("http://localhost:8088/edupack_egov/callback.do");
-	var redirect_uri = encodeURIComponent("http://172.10.14.135:8088/edupack_egov/callback.do");
+    var redirect_uri = encodeURIComponent("http://localhost:8088/edupack_egov/callback.do");
+	//var redirect_uri = encodeURIComponent("http://172.10.14.135:8088/edupack_egov/callback.do");
     //var scope = encodeURIComponent("identify connections");
 	var scope = encodeURIComponent("identify connections guilds.join");
     

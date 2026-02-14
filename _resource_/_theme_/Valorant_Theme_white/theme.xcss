@@ -11165,7 +11165,7 @@
 {
 	font : normal 25pt/normal "이사만루체";
 	cursor : pointer;
-	background : #31313c;
+	background : #505062;
 	-nexa-border : 2px solid #8e8e8e;
 	color : #ffffff;
 	-nexa-padding : 5px 0px 0px;
@@ -11174,7 +11174,7 @@
 .Button.rank_refresh[status=mouseover]
 {
 	cursor : pointer;
-	background : #31313c;
+	background : #505062;
 	-nexa-border : 2px solid #ffffff;
 	border-radius : 20px;
 	color : #ffffff;

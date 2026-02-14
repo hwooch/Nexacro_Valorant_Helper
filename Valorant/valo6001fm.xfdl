@@ -569,8 +569,8 @@ this.btn_normal_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.grd_ranking.formatid = "origin";
 	
 	this.switch_english(selected_weapon_name);
-	//this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
-	this.video_weapon.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
+	this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
+	//this.video_weapon.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
 	this.video_weapon.play();
 	this.video_weapon.repeat = true;
 	
@@ -593,8 +593,8 @@ this.btn_sub_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.grd_ranking.formatid = "switch_zoom";
 		break;
 	}
-	//this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Right" + ".mp4";
-	this.video_weapon.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Right" + ".mp4";
+	this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Right" + ".mp4";
+	//this.video_weapon.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Right" + ".mp4";
 	this.video_weapon.play();
 	
 	this.fn_setThemeCss();
@@ -603,8 +603,8 @@ this.btn_sub_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_normal_1_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {		
 	this.switch_english(selected_weapon_name);
-	//this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
-	this.video_weapon.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
+	this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
+	//this.video_weapon.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
 	this.video_weapon.play();
 	
 	this.fn_setThemeCss();
