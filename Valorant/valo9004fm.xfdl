@@ -19,7 +19,7 @@
               </Rows>
               <Band id="head">
                 <Cell text="랭킹"/>
-                <Cell col="1" text="플레이어 - &lt;fc v='#cecece'&gt;&lt;fs v='16'&gt;디스코드 사용자 이름&lt;/fs&gt;&lt;/fc&gt;" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black" displaytype="decoratetext"/>
+                <Cell col="1" text="플레이어 - &lt;fc v='#cecece'&gt;&lt;fs v='16'&gt;디스코드 사용자 이름&lt;/fs&gt;&lt;/fc&gt;" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" displaytype="decoratetext"/>
                 <Cell col="2" text="평균 반응속도"/>
               </Band>
               <Band id="body">
@@ -39,9 +39,9 @@
                 <Row size="40"/>
               </Rows>
               <Band id="head">
-                <Cell text="랭킹" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,1px solid #4d4d60,1px solid black,0px none"/>
-                <Cell col="1" text="플레이어 - &lt;fc v='#cecece'&gt;&lt;fs v='16'&gt;디스코드 사용자 이름&lt;/fs&gt;&lt;/fc&gt;" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black" displaytype="decoratetext"/>
-                <Cell col="2" text="진행 시간" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" border="0px none,0px none,1px solid black"/>
+                <Cell text="랭킹" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white"/>
+                <Cell col="1" text="플레이어 - &lt;fc v='#cecece'&gt;&lt;fs v='16'&gt;디스코드 사용자 이름&lt;/fs&gt;&lt;/fc&gt;" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white" displaytype="decoratetext"/>
+                <Cell col="2" text="진행 시간" font="normal 24px/normal &quot;이사만루체 Light&quot;" color="white"/>
               </Band>
               <Band id="body">
                 <Cell border="0px,1px solid #292932,1px solid black,0px" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" text="bind:RANKING"/>
@@ -127,6 +127,7 @@ this.btn_speed_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
     // 데이터 조회 및 그리드 포맷 변경
     this.grd_ranking.formatid = "speed";
     this.fn_searchRanking("SPEED");
+	this.fn_setThemeCss();
     
     // [수정] 스타일 적용 (함수 호출로 변경)
     this.fn_setButtonStyle(this.btn_speed,   "selected"); // 나(Speed)는 선택됨
@@ -145,6 +146,7 @@ this.btn_tracker_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
     // 데이터 조회 및 그리드 포맷 변경
     this.grd_ranking.formatid = "tracker";
     this.fn_searchRanking("TRACKER");
+	this.fn_setThemeCss();
     
     // [수정] 스타일 적용 (함수 호출로 변경)
     this.fn_setButtonStyle(this.btn_tracker, "selected"); // 나(Tracker)는 선택됨
@@ -214,26 +216,27 @@ this.edt_search_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
 // 그리드 높이 동적 조절 함수
 this.fn_resizeGrid = function()
 {
-    // 그리드 선택 없애기
-    this.ds_highscore.rowposition = "-1";
-    var nRowCount = this.ds_highscore.getRowCount();
-    
-    // 높이 계산 ( (데이터행 + 헤더행) * 40px )
-    // 만약 데이터가 0건이면 헤더만 보이게 됨 (40px)
-    var nHeight = (nRowCount + 1) * 40;
-    nHeight = nHeight + 11; // 테두리1픽셀 + 헤더 10픽셀 더 큰거
-    this.grd_ranking.height = nHeight;
-    
-     // 데이터 없음 메시지 처리
+	// 그리드 선택 없애기
+	this.ds_highscore.rowposition = "-1";
+	var nRowCount = this.ds_highscore.getRowCount();
+	
+	// 높이 계산 ( (데이터행 + 헤더행) * 40px )
+	// 만약 데이터가 0건이면 헤더만 보이게 됨 (40px)
+	var nHeight = (nRowCount + 1) * 40;
+	nHeight = nHeight + 11; // 테두리1픽셀 + 헤더 10픽셀 더 큰거
+	this.grd_ranking.height = nHeight;
+	
+	 // 데이터 없음 메시지 처리
     if (nRowCount == 0) {
         this.grd_ranking.nodatatext("검색 결과가 없습니다.");
-        this.grd_ranking.height = 200;
+		this.grd_ranking.height = 200;
     } else {
         this.grd_ranking.nodatatext(""); 
     }
-    
-    this.resetScroll();
+	
+	this.resetScroll();
 };
+
 
 this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
 {
