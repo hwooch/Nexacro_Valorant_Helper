@@ -5,7 +5,7 @@
       <Layout height="980" mobileorientation="landscape" width="2000">
         <Button id="btn_refuse" taborder="1" text="거절" top="40" width="110" height="60" background="#4d4d60" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;" onclick="btn_refuse_onclick" cssclass="btn_shadow" borderRadius="20px" right="100" cursor="pointer"/>
         <Button id="btn_accept" taborder="0" text="수락" top="40" height="60" background="#4d4d60" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;" onclick="btn_accept_onclick" cssclass="btn_shadow" borderRadius="20px" right="btn_refuse:30" width="110" cursor="pointer"/>
-        <Static id="sta_description" taborder="5" text="접수된 신고 내역" left="150" top="140" width="188" height="31" font="normal 20pt/normal &quot;이사만루체 Light&quot;"/>
+        <Static id="sta_description" taborder="5" text="접수된 신고 내역" left="150" top="140" width="188" height="31" font="normal 20pt/normal &quot;이사만루체 Medium&quot;"/>
         <Grid id="grd_report" taborder="2" left="150" top="sta_description:30" height="582" binddataset="gds_report" autofittype="col" border="1px solid #1f2326" background="#31313c" borderRadius="20px" tabstop="false" cssclass="grid_test" scrolltype="none" scrollbartype="none none" width="1700" font="normal 30pt/normal &quot;이사만루체 Medium&quot;" nodatatext="신고 내역이 존재하지 않습니다." extendsizetype="row">
           <Formats>
             <Format id="default">
@@ -39,7 +39,7 @@
         </Grid>
         <Button id="btn_back" taborder="3" left="100" top="40" width="110" height="60" background="#4d4d60" text="돌아가기" textAlign="center" padding="0px px 0px 0px" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" cssclass="btn_shadow" onclick="btn_back_onclick" cursor="pointer"/>
         <Button id="btn_space_0" taborder="4" left="990" top="grd_report:0" width="120" height="30"/>
-        <Static id="sta_description_1" taborder="6" text="처리할 신고 내역을 클릭 후 버튼을 통해 처리하세요." left="sta_description:40" top="140" width="575" height="31" font="normal 18pt/normal &quot;이사만루체 Light&quot;" color="#c6c6d1"/>
+        <Static id="sta_description_1" taborder="6" text="처리할 신고 내역을 클릭 후 버튼을 통해 처리하세요." left="sta_description:40" top="140" width="575" height="31" cssclass="sta_weapon_description"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -62,6 +62,12 @@ this.valo7002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     var objGrid = this.grd_report;
     var nLeft = (this.getOffsetWidth() - objGrid.getOffsetWidth()) / 2;
     objGrid.left = nLeft;
+	
+	// 테마 변경 이벤트 핸들러 추가
+    this.fvApp.gds_theme.addEventHandler("oncolumnchanged", this.fn_change_theme, this);
+    
+    // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
+    this.fn_setThemeCss();
 };
 
 // 신고 내역 전체 불러오기
@@ -181,6 +187,44 @@ this.valo7002fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 	// 이벤트 핸들러 제거
     this.fvApp.gds_login.removeEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
     this.fvApp.gds_login.removeEventHandler("onload", this.fn_LoginDataChanged, this);
+	
+	// 테마 이벤트 핸들러 제거
+    this.fvApp.gds_theme.removeEventHandler("oncolumnchanged", this.fn_change_theme, this);
+};
+
+this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
+{
+    // 데이터셋이 변경되었을 때 CSS 적용 함수 호출
+    this.fn_setThemeCss();
+};
+
+
+// [수정] 실제 CSS를 변경하는 로직 (그리드 헤더 + 버튼 스타일 강제 리로딩)
+this.fn_setThemeCss = function()
+{
+    // 현재 데이터셋에 설정된 값 가져오기
+    var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
+    
+    // 값에 따라 스타일 적용
+    if (sThemeColor == "white") {
+        nexacro.loadStyle("xcssrc::theme_white.xcss");
+        this.grd_report.setCellProperty( "head", 0, "background", "#9b9baf" );
+        this.grd_report.setCellProperty( "head", 1, "background", "#85859d" );
+        this.grd_report.setCellProperty( "head", 2, "background", "#9b9baf" );
+        this.grd_report.setCellProperty( "head", 3, "background", "#85859d" );
+        this.grd_report.setCellProperty( "head", 4, "background", "#9b9baf" );
+        
+    } else {
+        nexacro.loadStyle("xcssrc::theme_black.xcss");
+        this.grd_report.setCellProperty( "head", 0, "background", "#63637c" );
+        this.grd_report.setCellProperty( "head", 1, "background", "#4d4d60" );
+        this.grd_report.setCellProperty( "head", 2, "background", "#63637c" );
+        this.grd_report.setCellProperty( "head", 3, "background", "#4d4d60" );
+        this.grd_report.setCellProperty( "head", 4, "background", "#63637c" );
+    }
+    
+    
+    this.resetScroll();
 };
 
 
@@ -204,39 +248,39 @@ this.fn_resizePartyList = function()
     var objDs   = this.fvApp.gds_report;
 	
 	this.fvApp.gds_report.rowposition = "-1";
-
+	
     var nColIdx1 = 1; // 첫 번째 (REPORT_REASON)
     var nColIdx2 = 3; // 두 번째 (비교할 다른 컬럼)
-
+	
     // [설정값]
     var nMinHeight = 40;
     var nPaddingY  = 50; // 상하 여백
     var nPaddingX  = 20; // 좌우 여백
-
+	
     // 1. 데이터 확인
     var nRowCount = objDs.getRowCount();
     if (nRowCount == 0) {
         objGrid.set_height(400);
         return;
     }
-
+	
     objGrid.set_enableredraw(false);
-
+	
     // 1번 컬럼 정보  가져오기
     var nColWidth1  = objGrid.getRealColSize(nColIdx1);
     var nLimitWidth1 = nColWidth1 - nPaddingX;
     var sFont1      = this.fn_getCleanFont(objGrid, nColIdx1); 
     var sColID1     = objGrid.getCellProperty("body", nColIdx1, "text").replace("bind:", "");
-
+	
     //  3번 컬럼 정보 가져오기
     var nColWidth2  = objGrid.getRealColSize(nColIdx2);
     var nLimitWidth2 = nColWidth2 - nPaddingX;
     var sFont2      = this.fn_getCleanFont(objGrid, nColIdx2);
     var sColID2     = objGrid.getCellProperty("body", nColIdx2, "text").replace("bind:", "");
-
-
+	
+	
     var nTotalGridHeight = 0; 
-
+	
     // 2. 반복문 시작
     for(var i=0; i < nRowCount; i++)
     {
@@ -246,32 +290,32 @@ this.fn_resizePartyList = function()
         var sText1 = objDs.getColumn(nDsRow, sColID1);
         var nHeight1 = 0;
         if (!this.value_isNull(sText1)) {
-             var objSize1 = nexacro.getTextSize(sText1, sFont1, nLimitWidth1, "char");
-             nHeight1 = objSize1.ny;
+			var objSize1 = nexacro.getTextSize(sText1, sFont1, nLimitWidth1, "char");
+			nHeight1 = objSize1.ny;
         }
-
+		
         // --- 3번 컬럼 높이 계산 ---
         var sText2 = objDs.getColumn(nDsRow, sColID2);
         var nHeight2 = 0;
         if (!this.value_isNull(sText2)) {
-             var objSize2 = nexacro.getTextSize(sText2, sFont2, nLimitWidth2, "char");
-             nHeight2 = objSize2.ny;
+			var objSize2 = nexacro.getTextSize(sText2, sFont2, nLimitWidth2, "char");
+			nHeight2 = objSize2.ny;
         }
-
+		
         // 둘 중 더 큰 높이 선택
         var nMaxContentHeight = Math.max(nHeight1, nHeight2);
         
         // 여백 더하기
         var nFinalRowHeight = nMaxContentHeight + nPaddingY;
-
+		
         // 최소 높이 보정
         if(nFinalRowHeight < nMinHeight) nFinalRowHeight = nMinHeight;
-
+		
         // 적용
         objGrid.setRealRowSize(i, nFinalRowHeight);
         nTotalGridHeight += nFinalRowHeight;
     }
-
+	
     // 3. 헤더 및 전체 높이 마무리
     var nHeaderHeight = objGrid.getRealRowSize(-1);
     if (nHeaderHeight < 0) nHeaderHeight = 60; 

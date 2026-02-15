@@ -6,7 +6,7 @@
         <VFrameSet id="VFrameSet00" separatesize="100,*" border="0px" background="#1f2326">
           <Frames>
             <ChildFrame id="TopFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::valo0001fm.xfdl" dragmovetype="none" border="0px" background="#1f2326"/>
-            <ChildFrame id="WorkFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::valo0051fm.xfdl" dragmovetype="none" border="0px" background="#1f2326"/>
+            <ChildFrame id="WorkFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::valo0051fm.xfdl" dragmovetype="none" border="0px"/>
           </Frames>
         </VFrameSet>
       </MainFrame>

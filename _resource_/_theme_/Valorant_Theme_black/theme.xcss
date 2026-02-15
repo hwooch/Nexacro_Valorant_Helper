@@ -11483,8 +11483,8 @@
 
 .Combo.valo_combo_tier
 {
-	background : #4c4c5a;
-	-nexa-border : 0px solid #4c4c5a;
+	background : #6e6e86;
+	-nexa-border : 0px solid #6e6e86;
 	-nexa-padding : 0px 0px 0px 5px;
 	color : white;
 	border-radius : 20px;
@@ -11495,7 +11495,7 @@
 {
 	-nexa-padding : 1px 2px 0px 0px;
 	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
-	-nexa-border : 15px solid #4c4c5a;
+	-nexa-border : 15px solid #6e6e86;
 	cursor : pointer;
 }
 .Combo.valo_combo_tier .combolist
@@ -11511,7 +11511,7 @@
 .Combo.valo_combo_tier .dropbutton[status=focused]
 {
 	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
-	-nexa-border : 15px solid #4c4c5a;
+	-nexa-border : 15px solid #6e6e86;
 	cursor : pointer;
 }
 .Combo.valo_combo_tier[status=mouseover]
@@ -11537,7 +11537,7 @@
 }
 .Combo.valo_combo_tier .combolist .listboxitem[status=mouseover]
 {
-	background : #4c4c5a;
+	background : #6e6e86;
 }
 .Combo.valo_combo_tier .combolist[status=focused],
 .Combo.valo_combo_tier .combolist[status=mouseover]
@@ -11546,7 +11546,7 @@
 }
 .Combo.valo_combo_tier .combolist .listboxitem[userstatus=selected]
 {
-	background : #4c4c5a;
+	background : #6e6e86;
 }
 .Button.btn_shadow[status=mouseover]
 {

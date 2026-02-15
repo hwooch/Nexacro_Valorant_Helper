@@ -11339,7 +11339,7 @@
 }
 .Button.btn_WF_FillGray
 {
-	background : #393946;
+	background : #6d6d6d;
 	color : white;
 	border-radius : 10px;
 	font : normal 18pt/normal "이사만루체 Medium";
@@ -11349,7 +11349,7 @@
 .Button.btn_WF_FillGray[userstatus=selected],
 .Button.btn_WF_FillGray[status=mouseover]
 {
-	background : #2d2d38;
+	background : #4c4c4c;
 	color : #ffffff;
 	cursor : pointer;
 }
