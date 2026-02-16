@@ -38,14 +38,18 @@
 	color : #555555;
 	background : #202027;
 	-nexa-border : 0px none;
-	-nexa-edge : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	border-radius : ;
-	cursor : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
+}
+.Form.form_popup_report
+{
+	background : #202027;
+	-nexa-border : 2px solid #a1a1ac;
+	border-radius : 0px 0px 20px 20px;
+}
+.Form.form_popup_write
+{
+	background : #202027;
+	-nexa-border : 2px solid #a1a1ac;
+	border-radius : 0px 0px 20px 20px;
 }
 .Form[userstatus=contents]
 {
@@ -84,7 +88,7 @@
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
 	-nexa-rtl-edge-image : ;
-	background : ;
+	background : #1f2326;
 	border-radius : ;
 	color : ;
 	cursor : ;
@@ -11121,6 +11125,17 @@
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 0px 0px 0px 10px;
 	background : #ff4654;
+}
+.Edit.edit_user_name,
+.Edit.edit_user_name[status=disabled]
+{
+	-nexa-border : 2px solid #515163;
+	background : #282830;
+	border-radius : 10px;
+	color : #505061;
+	font : normal 13pt/normal "이사만루체 Light";
+	-nexa-padding : 0px 0px 0px 10px;
+	-nexa-text-align : left;
 }
 .Edit.Search_Edit[status=mouseover],
 .Edit.Search_Edit[status=focused]

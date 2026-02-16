@@ -72,13 +72,13 @@
               </Rows>
               <Band id="head">
                 <Cell text="플레이어"/>
-                <Cell col="1" text="마이크" background="#85859d"/>
+                <Cell col="1" text="마이크"/>
                 <Cell col="2" colspan="2" text="선호 클래스"/>
-                <Cell col="4" colspan="2" text="티어" background="#85859d"/>
+                <Cell col="4" colspan="2" text="티어"/>
                 <Cell col="6" text="메모"/>
-                <Cell col="7" colspan="3" text="승/패" background="#85859d"/>
+                <Cell col="7" colspan="3" text="승/패"/>
                 <Cell col="10" text="승률"/>
-                <Cell col="11" text="등록일시" background="#85859d"/>
+                <Cell col="11" text="등록일시"/>
                 <Cell col="12"/>
               </Band>
               <Band id="body">
@@ -157,6 +157,14 @@ this.valo8001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	
 	// 티어 가져오기
 	this.fn_transaction();
+	
+	// 테마 변경 이벤트 핸들러 추가
+    this.fvApp.gds_theme.addEventHandler("oncolumnchanged", this.fn_change_theme, this);
+    
+    // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
+    this.fn_setThemeCss();
+	
+	this.resetScroll();
 };
 
 // 트랜잭션 콜백
@@ -348,6 +356,52 @@ this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListV
 this.valo8001fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 {
 	this.fvApp.gds_party.filter("");
+	
+	// 테마 이벤트 핸들러 제거
+    this.fvApp.gds_theme.removeEventHandler("oncolumnchanged", this.fn_change_theme, this);
+};
+
+
+this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
+{
+    // 데이터셋이 변경되었을 때 CSS 적용 함수 호출
+    this.fn_setThemeCss();
+};
+
+
+// [수정] 실제 CSS를 변경하는 로직 (그리드 헤더 + 버튼 스타일 강제 리로딩)
+this.fn_setThemeCss = function()
+{
+    // 현재 데이터셋에 설정된 값 가져오기
+    var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
+    
+    // 값에 따라 스타일 적용
+    if (sThemeColor == "white") {
+        nexacro.loadStyle("xcssrc::theme_white.xcss");
+        this.grd_party.setCellProperty( "head", 0, "background", "#9b9baf" );
+        this.grd_party.setCellProperty( "head", 1, "background", "#85859d" );
+        this.grd_party.setCellProperty( "head", 2, "background", "#9b9baf" );
+        this.grd_party.setCellProperty( "head", 3, "background", "#85859d" );
+        this.grd_party.setCellProperty( "head", 4, "background", "#9b9baf" );
+        this.grd_party.setCellProperty( "head", 5, "background", "#85859d" );
+        this.grd_party.setCellProperty( "head", 6, "background", "#9b9baf" );
+        this.grd_party.setCellProperty( "head", 7, "background", "#85859d" );
+        this.grd_party.setCellProperty( "head", 8, "background", "#9b9baf" );
+        
+    } else {
+        nexacro.loadStyle("xcssrc::theme_black.xcss");
+        this.grd_party.setCellProperty( "head", 0, "background", "#63637c" );
+        this.grd_party.setCellProperty( "head", 1, "background", "#4d4d60" );
+        this.grd_party.setCellProperty( "head", 2, "background", "#63637c" );
+        this.grd_party.setCellProperty( "head", 3, "background", "#4d4d60" );
+        this.grd_party.setCellProperty( "head", 4, "background", "#63637c" );
+        this.grd_party.setCellProperty( "head", 5, "background", "#4d4d60" );
+        this.grd_party.setCellProperty( "head", 6, "background", "#63637c" );
+        this.grd_party.setCellProperty( "head", 7, "background", "#4d4d60" );
+        this.grd_party.setCellProperty( "head", 8, "background", "#63637c" );
+    }
+    
+    this.resetScroll();
 };
 
 //////////////////////////////////////////////////////////////////////////

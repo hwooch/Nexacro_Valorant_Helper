@@ -85,7 +85,7 @@
 	-nexa-edge : ;
 	-nexa-rtl-background-image : ;
 	-nexa-rtl-edge-image : ;
-	background : ;
+	background : #aaaaaa;
 	border-radius : ;
 	color : ;
 	cursor : ;
@@ -4261,6 +4261,29 @@
 	-nexa-text-align : left;
 	color : white;
 }
+.Form.form_popup_report
+{
+	background : #969696;
+	-nexa-border : 2px solid #ffffff;
+	border-radius : 0px 0px 20px 20px;
+}
+.Form.form_popup_write
+{
+	background : #969696;
+	-nexa-border : 2px solid #ffffff;
+	border-radius : 0px 0px 20px 20px;
+}
+.Edit.edit_user_name,
+.Edit.edit_user_name[status=disabled]
+{
+	-nexa-border : 2px solid #ffffff;
+	background : #6d6d6d;
+	border-radius : 10px;
+	color : #ffffff;
+	font : normal 13pt/normal "이사만루체 Light";
+	-nexa-padding : 0px 0px 0px 10px;
+	-nexa-text-align : left;
+}
 .TextArea[status=mouseover],.TextArea[status=focused],.TextAreaControl[status=mouseover],.TextAreaControl[status=focused]
 {
 	-nexa-border : 1px solid #5a86cd;
@@ -6417,10 +6440,10 @@
 {
 	font : normal 12pt/normal "이사만루체 Light";
 	color : #ffffff;
-	background : black;
+	background : #6d6d6d;
 	-nexa-padding : 0px 0px 0px 10px;
 	border-radius : 20px 20px 0px 0px;
-	-nexa-border : 2px solid #a1a1ac,2px solid #a1a1ac,0px none;
+	-nexa-border : 2px solid #ffffff,2px solid #ffffff,0px none;
 }
 
 .TitleBarControl .titleicon
@@ -6431,205 +6454,62 @@
 .TitleBarControl .minbutton
 {
 	-nexa-icon : URL('theme://images/btn_TF_Min.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .minbutton[status=mouseover]
 {
 	-nexa-icon : URL('theme://images/btn_TF_Min_O.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .minbutton[status=disabled]
 {
 	-nexa-icon : URL('theme://images/btn_TF_Min_D.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .normalbutton
 {
 	-nexa-icon : URL('theme://images/btn_TF_Normal.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .normalbutton[status=mouseover]
 {
 	-nexa-icon : URL('theme://images/btn_TF_Normal_O.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .normalbutton[status=disabled]
 {
 	-nexa-icon : URL('theme://images/btn_TF_Normal_D.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .maxbutton
 {
 	-nexa-icon : URL('theme://images/btn_TF_Max.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .maxbutton[status=mouseover]
 {
 	-nexa-icon : URL('theme://images/btn_TF_Max_O.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .maxbutton[status=disabled]
 {
 	-nexa-icon : URL('theme://images/btn_TF_Max_D.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .closebutton
 {
 	-nexa-icon : URL('theme://images/btn_TF_Close.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 .TitleBarControl .closebutton[status=mouseover]
 {
 	-nexa-icon : URL('theme://images/btn_TF_Close_O.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
 	cursor : pointer;
-	opacity : ;
 }
 
 .TitleBarControl .closebutton[status=disabled]
 {
 	-nexa-icon : URL('theme://images/btn_TF_Close_D.png');
-	-nexa-border : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-vertical-align : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	opacity : ;
 }
 
 

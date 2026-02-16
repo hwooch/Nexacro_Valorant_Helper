@@ -39,7 +39,7 @@
                 <Cell col="6" text="메모"/>
                 <Cell col="7" colspan="3" text="승/패"/>
                 <Cell col="10" text="승률"/>
-                <Cell col="11" text="등록일시"/>
+                <Cell col="11" text="등록 or 수정 시간" font="normal 20px/normal &quot;이사만루체 Light&quot;"/>
                 <Cell col="12"/>
               </Band>
               <Band id="body">
@@ -853,7 +853,7 @@ this.popup_menu_onmenuclick = function(obj:nexacro.PopupMenu,e:nexacro.MenuClick
         }
         else {
             var objChildFrame = new ChildFrame("popupModal3", 0, 0, 480, 420);
-            objChildFrame.formurl = "Popup::valo4001pu.xfdl";
+            objChildFrame.formurl = "Popup::valo1001pu.xfdl";
             objChildFrame.openalign = "center middle";
             objChildFrame.overlaycolor = "RGBA(0,0,0,0.4)";
             objChildFrame.dragmovetype = "all";

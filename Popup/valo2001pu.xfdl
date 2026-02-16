@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="valo2001pu" width="500" height="600" titletext="구인 글 작성하기" background="#202027" borderRadius="0px 0px 20px 20px" border="2px solid #a1a1ac" onclick="valo2001pu_onclick" onload="valo2001pu_onload">
+  <Form id="valo2001pu" width="500" height="600" titletext="구인 글 작성하기" onclick="valo2001pu_onclick" onload="valo2001pu_onload" cssclass="form_popup_write" onclose="valo2001pu_onclose">
     <Layouts>
       <Layout height="600" width="500">
         <Static id="sta_user_name" taborder="0" text="플레이어 이름" left="22" top="20" width="116" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
-        <Edit id="edit_user_name" taborder="1" left="20" top="sta_user_name:20" height="58" text="" background="#282830" border="2px solid #515163" color="#505061" enable="false" borderRadius="10px" font="normal 13pt/normal &quot;이사만루체 Light&quot;" right="20" textAlign="left" padding="0px 0px 0px 10px" cursor="default"/>
+        <Edit id="edit_user_name" taborder="1" left="20" top="sta_user_name:20" height="58" text="" enable="false" right="20" cssclass="edit_user_name"/>
         <Button id="btn_agent_filter_all" taborder="7" left="20" top="208" width="48" height="47" background="url('theme://images/valo_all.png') no-repeat center center /contain #4e4e5f" borderRadius="10px" border="5px solid #4e4e5f" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
         <Static id="sta_memo" taborder="2" text="메모" left="22" top="btn_agent_filter_all:50" width="37" height="23" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;"/>
         <Button id="btn_focus" taborder="3" left="20" width="0" height="0" bottom="5"/>
@@ -18,7 +18,7 @@
         <Button id="btn_agent_filter_smoke" taborder="11" left="btn_agent_filter_info:3" top="208" width="48" height="47" background="url('https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" cursor="pointer" onclick="Button_onclick" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave"/>
         <Button id="btn_mic_off" taborder="14" top="208" width="48" height="47" background="url('theme://images/valo_mic_off.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" right="20" cursor="pointer" onclick="Button_mic_onclick" onmouseleave="Button_mic_onmouseleave" onmouseenter="Button_mic_onmouseenter"/>
         <Button id="btn_mic_on" taborder="13" top="208" width="48" height="47" background="url('theme://images/valo_mic_on.png') no-repeat center center /contain #4e4e5f" border="5px solid #4e4e5f" borderRadius="10px" right="btn_mic_off:3" cursor="pointer" onmouseenter="Button_mic_onmouseenter" onmouseleave="Button_mic_onmouseleave" onclick="Button_mic_onclick"/>
-        <TextArea id="txt_memo" taborder="15" left="20" top="sta_memo:20" height="118" wordWrap="char" autoselect="true" enable="true" tabstop="false" maxlength="100" background="#282830" border="2px solid #515163" borderRadius="10px" color="#7b7b93" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="10px 0px 0px 10px" textAlign="left" right="20" onchanged="txt_memo_onchanged" oninput="txt_memo_oninput" onkillfocus="txt_memo_onkillfocus" onsetfocus="txt_memo_onsetfocus" displaynulltext="예시) 함께 할 듀오 파트너를 찾고있어요."/>
+        <TextArea id="txt_memo" taborder="15" left="20" top="sta_memo:20" height="118" autoselect="true" enable="true" tabstop="false" maxlength="100" right="20" onchanged="txt_memo_onchanged" oninput="txt_memo_oninput" onkillfocus="txt_memo_onkillfocus" onsetfocus="txt_memo_onsetfocus" displaynulltext="예시) 함께 할 듀오 파트너를 찾고있어요." cssclass="txt_memo"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -76,6 +76,13 @@ this.txt_memo_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
 // form 온로드 되었을때 값 전달받는거
 this.valo2001pu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	// 테마 변경 이벤트 핸들러 추가
+    this.fvApp.gds_theme.addEventHandler("oncolumnchanged", this.fn_change_theme, this);
+    
+    // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
+    this.fn_setThemeCss();
+	
+	
 	// 1. 부모창에서 넘겨준 파라미터 받기
     var pFrame = this.getOwnerFrame();
 	
@@ -92,13 +99,16 @@ this.valo2001pu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
         var sMemo = pFrame.paramMemo;
         this.txt_memo.value = sMemo;
         
-        // 메모가 있으면 글자색 흰색으로, 없으면 회색 처리
-        if (sMemo && sMemo != "") {
-            this.txt_memo.color = "white";
-        } else {
-            this.txt_memo.color = "#7b7b93";
-        }
+//         // 메모가 있으면 글자색 흰색으로, 없으면 회색 처리
+//         if (sMemo && sMemo != "") {
+//             this.txt_memo.color = "white";
+//         } else {
+//             this.txt_memo.color = "#7b7b93";
+//         }
         
+		this.txt_memo.setFocus();
+		this.btn_focus.setFocus();
+		
         // 클래스 자동 클릭
         var sClass = pFrame.paramClass;
         
@@ -143,9 +153,59 @@ this.valo2001pu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	}
 };
 
+this.valo2001pu_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
+{
+	// 테마 이벤트 핸들러 제거
+    this.fvApp.gds_theme.removeEventHandler("oncolumnchanged", this.fn_change_theme, this);
+};
+this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChangeEventInfo)
+{
+    // 데이터셋이 변경되었을 때 CSS 적용 함수 호출
+    this.fn_setThemeCss();
+};
+
+// 실제 CSS를 변경하는 로직
+this.fn_setThemeCss = function()
+{
+    // 현재 데이터셋에 설정된 테마 값 가져오기
+    var sThemeColor = this.fvApp.gds_theme.getColumn(0, "COLOR");
+    
+    if (sThemeColor == "white") {
+        nexacro.loadStyle("xcssrc::theme_white.xcss");
+    } else {
+        nexacro.loadStyle("xcssrc::theme_black.xcss");
+    }
+	
+	
+	// [중요] 여기가 있어야 최초 로드시 버튼 색깔이 칠해집니다.
+    // 1. 클래스 버튼 색상 리셋
+    var arrBtns = [this.btn_agent_filter_all, this.btn_agent_filter_watch, this.btn_agent_filter_smoke, this.btn_agent_filter_enter, this.btn_agent_filter_info];
+    for (var i=0; i<arrBtns.length; i++) {
+        // 현재 선택된 버튼이면 selected, 아니면 normal 스타일 적용
+        if (this.fv_selectedFilterBtn == arrBtns[i]) {
+            this.fn_setFilterStyle(arrBtns[i], "selected");
+        } else {
+            this.fn_setFilterStyle(arrBtns[i], "normal");
+        }
+    }
+    
+    // 2. 마이크 버튼 색상 리셋
+    var arrMic = [this.btn_mic_on, this.btn_mic_off];
+    for (var i=0; i<arrMic.length; i++) {
+        if (this.fv_selectedMicBtn == arrMic[i]) {
+            this.fn_setMicStyle(arrMic[i], "selected");
+        } else {
+            this.fn_setMicStyle(arrMic[i], "normal");
+        }
+    }
+	
+	
+    this.resetScroll();
+};
+
 this.txt_memo_onkillfocus = function(obj:nexacro.Edit,e:nexacro.KillFocusEventInfo)
 {
-	this.txt_memo.border = "2px solid #515163";
+	//this.txt_memo.border = "2px solid #515163";
 	
     var sVal = obj.value;
 	
@@ -158,7 +218,7 @@ this.txt_memo_onkillfocus = function(obj:nexacro.Edit,e:nexacro.KillFocusEventIn
 
 this.txt_memo_onsetfocus = function(obj:nexacro.Edit,e:nexacro.SetFocusEventInfo)
 {
-	this.txt_memo.border = "2px solid white";
+	//this.txt_memo.border = "2px solid white";
 };
 
 this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -220,11 +280,11 @@ this.fn_setFilterStyle = function(obj, status)
     var btn_agent_smoke = "https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png";
     var btn_agent_info  = "https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png";
 	
+	var sTheme = this.fvApp.gds_theme.getColumn(0, "COLOR");
     var sColor = "";
     
     // 선택되었거나 마우스가 올라갔을 때 (밝은 상태)
     if (status == "selected" || status == "hover") {
-        obj.opacity = "";
         obj.border = "5px solid #00bba3";
         sColor = "#00bba3";
         
@@ -238,12 +298,18 @@ this.fn_setFilterStyle = function(obj, status)
     } 
     // 평소 상태 (어두운 상태)
     else {
-        //obj.opacity = "50%";
-        obj.border = "5px solid #4e4e5f";
-        sColor = "#4e4e5f";
+        if (sTheme == "white") {
+            sColor = "#6d6d6d"; 
+        } 
+        else {
+            sColor = "#4e4e5f";
+        }
+        
         obj.cursor = "pointer";
         obj.boxShadow = "";
     }
+	// 테두리 적용
+    obj.border = "5px solid " + sColor;
 	
     // 배경 이미지 설정
     switch(obj.id) {
@@ -311,11 +377,11 @@ this.Button_mic_onmouseleave = function(obj:nexacro.Button,e:nexacro.MouseEventI
 // status: "normal" (평소/어둠), "selected" (클릭/밝음), "hover" (마우스올림/밝음)
 this.fn_setMicStyle = function(obj, status)
 {
+	var sTheme = this.fvApp.gds_theme.getColumn(0, "COLOR");
     var sMicColor = "";
     
     // 선택되었거나 마우스가 올라갔을 때 (밝은 상태)
     if (status == "selected" || status == "hover") {
-        obj.opacity = "";
         obj.border = "5px solid #00bba3";
         sMicColor = "#00bba3";
         
@@ -329,12 +395,20 @@ this.fn_setMicStyle = function(obj, status)
     } 
     // 평소 상태 (어두운 상태)
     else {
-        //obj.opacity = "50%";
-        obj.border = "5px solid #4e4e5f";
-        sMicColor = "#4e4e5f";
+        // White 테마 -> #75758e
+        if (sTheme == "white") {
+            sMicColor = "#6d6d6d";
+        } 
+        // Black 테마 -> #4e4e5f
+        else {
+            sMicColor = "#4e4e5f";
+        }
+        
         obj.cursor = "pointer";
         obj.boxShadow = "";
     }
+	// 테두리 적용
+    obj.border = "5px solid " + sMicColor;
 	
     // 배경 이미지 설정
     switch(obj.id) {
