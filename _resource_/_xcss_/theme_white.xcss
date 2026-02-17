@@ -4249,11 +4249,21 @@
 .TextArea.txt_memo[status=disabled],
 .TextArea.txt_memo[status=mouseover],
 .TextArea.txt_memo[status=focused],
-.TextArea.txt_memo[status=readonly],
+.TextArea.txt_memo[status=readonly]
+{
+	background : #6d6d6d;
+	-nexa-border : 2px solid white;
+	-nexa-padding : 10px 0px 0px 10px;
+	border-radius : 10px;
+	font : normal 13pt/normal "이사만루체 Light";
+	-nexa-word-wrap : char;
+	-nexa-text-align : left;
+	color : white;
+}
 .TextArea.txt_memo[userstatus=nulltext]
 {
 	background : #6d6d6d;
-	-nexa-border : 0px solid white;
+	-nexa-border : 0px solid #515163;
 	-nexa-padding : 10px 0px 0px 10px;
 	border-radius : 10px;
 	font : normal 13pt/normal "이사만루체 Light";
@@ -10932,38 +10942,44 @@
 .Edit.Search_Edit[status=disabled],
 .Edit.Search_Edit[userstatus=nulltext]
 {
-	cursor : TEXT("auto","pointer");
-	-nexa-border : 2px solid #101823;
+	cursor : pointer;
+	-nexa-border : 2px solid #000000;
 	border-radius : 20px;
-	color : white;
+	color : black;
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 0px 0px 0px 10px;
-	background : #ff4654;
+	background : #ffffff;
 }
 .Edit.Search_Edit[status=mouseover],
 .Edit.Search_Edit[status=focused]
 {
-	cursor : TEXT("auto","pointer");
-	-nexa-border : 2px solid #101823;
+	cursor : pointer;
+	-nexa-border : 2px solid #000000;
 	border-radius : 20px;
-	color : white;
+	color : black;
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 0px 0px 0px 10px;
-	background : #ff4654;
+	background : #ffffff;
 	box-shadow : 0px 0px 20px #ffffff;
 }
 .Button.Search_Btn,
 .Button.Search_Btn[status=disabled]
 {
-	cursor : TEXT("auto","pointer");
-	-nexa-border : 2px solid #101823;
+	cursor : pointer;
+	-nexa-border : 2px solid #000000;
 	border-radius : 20px;
-	color : white;
+	color : black;
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 0px 0px 0px;
-	background : #ff4654;
+	background : #ffffff;
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
+}
+.Button.btn_switch_theme
+{
+	cursor : pointer;
+	-nexa-border : 5px solid #aaaaaa;
+	background : url('theme://images/valo_night.png') no-repeat center center /contain;
 }
 .Button.btn_agent_filter_all
 {
@@ -11005,13 +11021,13 @@
 .Button.Search_Btn[userstatus=pushed],
 .Button.Search_Btn[userstatus=selected]
 {
-	cursor : TEXT("auto","pointer");
-	-nexa-border : 2px solid #101823;
+	cursor : pointer;
+	-nexa-border : 2px solid #000000;
 	border-radius : 20px;
-	color : white;
+	color : black;
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 0px 0px 0px 0px;
-	background : #ff4654;
+	background : #ffffff;
 	box-shadow : 0px 0px 20px #ffffff;
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
