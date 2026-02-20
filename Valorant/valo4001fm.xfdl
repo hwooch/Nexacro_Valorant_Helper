@@ -57,13 +57,13 @@ this.fn_setThemeCss = function()
     if (sThemeColor == "white") {
         nexacro.loadStyle("xcssrc::theme_white.xcss");
 		// html 연결
-		//this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map_white.html";
-		this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map_white.html";
+		this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map_white.html";
+		//this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map_white.html";
     } else {
         nexacro.loadStyle("xcssrc::theme_black.xcss");
 		// html 연결
-		//this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map_black.html";
-		this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map_black.html";
+		this.webView_map.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/map_black.html";
+		//this.webView_map.url = "http://localhost:8088/edupack_egov/p03/project030/map_black.html";
     }
     this.resetScroll();
 };

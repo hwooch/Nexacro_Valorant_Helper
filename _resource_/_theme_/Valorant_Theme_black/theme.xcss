@@ -4227,6 +4227,23 @@
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 	-nexa-padding : 5px 0px 0px;
+}
+.Static.sta_hide_screen
+{
+	background : #31313c;
+	border-radius : 20px;
+	color : white;
+	font : normal 50pt/normal "AppleSDGothicNeoH00";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}
+.Static.sta_recent_match
+{
+	background : #31313c;
+	-nexa-border : 0px solid white;
+	color : white;
+	font : 20px/normal "AppleSDGothicNeoEB00";
+	-nexa-padding : 0px 0px 0px 20px;
 }.Static[status=disabled],.StaticControl[status=disabled]
 {
 	color : #999999;
@@ -4292,6 +4309,16 @@
 .Static.sta_border2
 {
 	background : #1f2326;
+}
+.Static.sta_hole
+{
+	background : #31313c;
+	color : white;
+	border-radius : 200px;
+	font : normal 20px/normal "AppleSDGothicNeoB00";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+	-nexa-padding : 5px 0px 0px;
 }/* TextArea */
 .TextArea,.TextAreaControl
 {
@@ -6785,6 +6812,12 @@
 .ListView.list_statistics
 {
 	background : #31313c;
+}
+.ListView.list_recent_match
+{
+	background : #31313c;
+	-nexa-border : 0px solid white;
+	border-radius : 0px 0px 20px 20px;
 }.ListView[status=mouseover],
 .ListView[status=focused]
 {
@@ -10898,15 +10931,23 @@
 	background : #3c4149;
 	border-radius : 20px;
 	cursor : pointer;
-	/* 선택 사항: 그림자 효과 */
 	box-shadow : 0px 2px 5px rgba(0,0,0,0.2);
 	-nexa-border : 0px none;
 }
-.Div.div_game_zone
+.Div.div_recent_history
+{
+	background : #31313c;
+	border-radius : 20px;
+}.Div.div_game_zone
 {
 	border-radius : 20px;
 	-nexa-border : 3px solid gray;
 	background : rgba(128,128,128,0.5);
+}
+.Div.div_user_status
+{
+	border-radius : 20px;
+	background : #31313c;
 }
 .Div.div_page
 {
@@ -11467,10 +11508,18 @@
 	font : normal 14pt/normal "이사만루체 Medium";
 	color : white;
 }
+.Button.btn_new_search
+{
+	-nexa-border : 8px solid #f74451;
+	border-radius : 20px;
+	color : #f74451;
+	cursor : pointer;
+	font : normal 20pt/normal "이사만루체 Medium";
+
+}
 .Button.btn_new_search[status=mouseover]
 {
 	box-shadow : 0px 0px 10px #FFFFFF;
-
 }
 .ListView.star_empty
 {
@@ -11693,6 +11742,18 @@
 	cursor : pointer;
 	box-shadow : 0px 0px 5px #FFFFFF;
 	-nexa-text-align : center;
+}
+.ListView.list_recent_match .body .cell.description
+{
+	color : #98979f;
+}
+.ListView.list_recent_match .body .cell.cell_red
+{
+	color : #e84057;
+}
+.ListView.list_statistics .body .cell.cell_red
+{
+	color : #e84057;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>

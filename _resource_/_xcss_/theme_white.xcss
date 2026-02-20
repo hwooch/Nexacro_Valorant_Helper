@@ -10730,6 +10730,11 @@
 	-nexa-border : 3px solid gray;
 	background : rgba(40,40,40,0.5);
 }
+.Div.div_user_status
+{
+	border-radius : 20px;
+	background : #75758e;
+}
 .Div.div_page
 {
 	border-radius : 0px 0px 20px 20px;
@@ -10842,7 +10847,19 @@
 	font : 22px/normal "이사만루체 Medium";
 	-nexa-padding : 5px 0px 0px;
 }
-.Button.top_logout
+.ListView.list_recent_match
+{
+	background : #75758e;
+	-nexa-border : 0px solid white;
+	border-radius : 0px 0px 20px 20px;
+}.Static.sta_recent_match
+{
+	background : #75758e;
+	-nexa-border : 0px solid white;
+	color : white;
+	font : 20px/normal "AppleSDGothicNeoEB00";
+	-nexa-padding : 0px 0px 0px 20px;
+}.Button.top_logout
 {
 	cursor : pointer;
 	background : #242429;
@@ -11300,6 +11317,15 @@
 	box-shadow : 0px 0px 10px #FFFFFF;
 
 }
+.Button.btn_new_search
+{
+	-nexa-border : 8px solid white;
+	border-radius : 20px;
+	color : white;
+	cursor : pointer;
+	font : normal 20pt/normal "이사만루체 Medium";
+
+}
 .ListView.star_empty
 {
 }
@@ -11520,9 +11546,31 @@
 {
 	background : #cccccc;
 }
-.Static.sta_border2
+.ListView.list_recent_match .body .cell.description
+{
+	color : #d8d8de;
+}
+.ListView.list_recent_match .body .cell.cell_red
+{
+	color : #00ffba;
+}
+.Static.sta_hole
+{
+	background : #75758e;
+	color : white;
+	border-radius : 200px;
+	font : normal 20px/normal "AppleSDGothicNeoB00";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+	-nexa-padding : 5px 0px 0px;
+}.Static.sta_border2
 {
 	background : #cccccc;
+}
+.Div.div_recent_history
+{
+	background : #75758e;
+	border-radius : 20px;
 }.Button.btn_space,
 .Button.btn_space[status=disabled],
 .Button.btn_space[status=mouseover],
@@ -11532,7 +11580,15 @@
 {
 	background : #969696;
 }
-.Button.btn_agent_filter_all[status=mouseover]
+.Static.sta_hide_screen
+{
+	background : #aaaaaa;
+	border-radius : 20px;
+	color : white;
+	font : normal 50pt/normal "AppleSDGothicNeoH00";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+}.Button.btn_agent_filter_all[status=mouseover]
 {
 	-nexa-border : 15px solid #31313c;
 	background : #31313c;
@@ -11551,6 +11607,10 @@
 	font : normal 15pt/normal "이사만루체 Light";
 	-nexa-text-align : right;
 	cursor : pointer;
+}
+.ListView.list_statistics .body .cell.cell_red
+{
+	color : #eb9c00;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>

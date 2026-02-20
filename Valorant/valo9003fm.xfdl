@@ -241,7 +241,7 @@ this.fn_finishGame = function()
 {
     this.sGameState = "IDLE";
 	this.div_game_zone.form.sta_msg.text = ""; // 텍스트 지움
-    this.div_game_zone.background = "rgba(128,128,128,0.5)"; // 배경 초기화
+    this.div_game_zone.background = ""; // 배경 초기화
     
     // 평균 계산
     var nSum = 0;

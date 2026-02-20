@@ -12,7 +12,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="sta_result" taborder="3" text="진행 시간 : 0.000 초" top="70" height="50" font="normal 30pt/normal &quot;이사만루체 Medium&quot;" color="white" visible="true" fittocontents="width" width="380" left="825"/>
+        <Button id="sta_result" taborder="3" text="진행 시간 (단위 : 초) : 0.000" top="70" height="50" font="normal 30pt/normal &quot;이사만루체 Medium&quot;" color="white" visible="true" fittocontents="width" width="380" left="825"/>
         <Button id="btn_go_ranking" taborder="4" text="랭킹&#13;&#10;보러가기" left="80" top="sta_game_description:50" height="100" font="normal 20pt/normal &quot;이사만루체 Medium&quot;" color="white" fittocontents="none" background="#31313c" visible="true" width="160" border="3px solid #8e8e8e" borderRadius="20px" onmouseenter="Button_onmouseenter" onmouseleave="Button_onmouseleave" onclick="btn_go_ranking_onclick"/>
       </Layout>
     </Layouts>
@@ -104,7 +104,7 @@ this.btn_game_start_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
     this.nCurrentCount = 0;
 	
 	// 게임 시작하자마자 타이머 설정
-	this.sta_result.text = "진행 시간 : 0.000 초";
+	this.sta_result.text = "진행 시간 (단위 : 초) : 0.000";
     this.sta_result.visible = true;
 	
     this.div_game_zone.form.btn_game_start.visible = false; // 시작 버튼 숨김
@@ -197,7 +197,7 @@ this.fn_finishGame = function()
 	
     var nSec = (nDiff / 1000).toFixed(3);
 	
-	this.sta_result.text = "진행 시간 : "+ nSec + " 초";
+	this.sta_result.text = "진행 시간 (단위 : 초) : " + nSec;
 	
 	var sMsgId = "msg.notice.game_result";	//메세지ID
 	var arrArg = [nSec];			//메세지취환될값 배열[생략가능]
@@ -328,7 +328,7 @@ this.valo9002fm_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
         var nSec = (nDiff / 1000).toFixed(3);
         
         // sta_result에 실시간 업데이트
-        this.sta_result.text = "진행 시간 : " + nSec + " 초";
+		this.sta_result.text = "진행 시간 (단위 : 초) : " + nSec;
 		this.resetScroll();
     }
 };
