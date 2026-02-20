@@ -6,9 +6,9 @@
         <Div id="div_user_status" taborder="0" left="34" top="20" height="150" right="34" formscrollbartype="none none" formscrolltype="none" cssclass="div_user_status">
           <Layouts>
             <Layout>
-              <Static id="Logo_CHAMBER" taborder="3" left="750" top="-250" height="921" text="" right="750"/>
-              <Static id="sta_user_status" taborder="0" top="15" width="540" height="120" color="white" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="left" text="티어 조회 중 ..." fittocontents="width" padding="0px 0px 0px 130px" left="Logo_CHAMBER:83"/>
-              <Static id="sta_user_tag" taborder="2" top="15" height="120" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="사용자 태그" fittocontents="width" right="Logo_CHAMBER:30" textAlign="right" width="242"/>
+              <Static id="Logo_CHAMBER" taborder="3" left="720" top="-320" height="921" text="" right="720"/>
+              <Static id="sta_user_status" taborder="0" top="15" width="540" height="120" color="white" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" textAlign="left" text="티어 조회 중 ..." fittocontents="width" padding="0px 0px 0px 130px" left="Logo_CHAMBER:53"/>
+              <Static id="sta_user_tag" taborder="2" top="15" height="120" font="normal 22pt/normal &quot;AppleSDGothicNeoB00&quot;" color="#bbbbc7" text="사용자 태그" fittocontents="width" right="Logo_CHAMBER:-10" textAlign="right" width="242"/>
               <Static id="sta_user_name" taborder="1" top="15" height="120" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" right="sta_user_tag:0" width="400"/>
             </Layout>
           </Layouts>
@@ -117,14 +117,14 @@
         </Div>
         <Static id="sta_devide_0" taborder="15" left="34" top="sta_statistics:-2" width="400" height="2" cssclass="sta_border2"/>
         <Button id="btn_space_3" taborder="18" left="34" top="list_weapon:0" width="400" height="20"/>
-        <ListView id="list_match_list" taborder="19" left="468" top="div_recent_history:10" height="690" binddataset="ds_list" border="0px none" right="34" background="transparent" oncellclick="list_match_list_oncellclick" onmousemove="list_match_list_onmousemove" bandinitstatus="collapse" bandexpandtype="none">
+        <ListView id="list_match_list" taborder="19" left="468" top="div_recent_history:10" height="690" binddataset="ds_list" border="0px none" right="34" background="transparent" oncellclick="list_match_list_oncellclick" onmousemove="list_match_list_onmousemove" bandinitstatus="collapse" bandexpandtype="none" cssclass="list_match_list">
           <Formats>
             <Format id="default">
               <Band id="body" width="100%" height="150" background="transparent" border="0px none" borderRadius="10px 10px" expandbartype="false">
                 <Cell id="cell_win_background" left="10" top="10" right="0" bottom="0" background="bind:RESULT_COLOR" borderRadius="0px 10px 10px 0px" text=""/>
-                <Cell id="Cell20" left="20" top="20" width="155" height="35" text="bind:START_TIME" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#7f9eb1"/>
+                <Cell id="Cell20" left="20" top="20" width="155" height="35" text="bind:START_TIME" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" cssclass="cell_description"/>
                 <Cell id="cell_result" left="20" top="63" width="155" height="35" text="bind:RESULT" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white"/>
-                <Cell id="Cell24" left="20" width="155" text="bind:PLAY_TIME" height="35" top="106" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#7f9eb1"/>
+                <Cell id="Cell24" left="20" width="155" text="bind:PLAY_TIME" height="35" top="106" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" cssclass="cell_description"/>
                 <Cell id="cell_match_agent_icon" left="190" top="20" width="90" height="90" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="imagecontrol"/>
                 <Cell id="cell_rank" left="200" width="70" height="25" text="expr:RANK + &quot;등&quot;" background="#57646f" bottom="9" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white" borderRadius="20px"/>
                 <Cell id="Cell27" left="314" top="33" width="33" height="37" text="bind:KILL" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
@@ -132,9 +132,9 @@
                 <Cell id="Cell29" left="367" top="33" width="33" height="37" text="bind:DEATH" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#e84057"/>
                 <Cell id="Cell30" left="402" top="33" width="15" height="37" text="/" textAlign="center" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#8f9eb1"/>
                 <Cell id="Cell31" left="420" top="33" width="33" height="37" text="bind:ASSIST" font="normal 24px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white"/>
-                <Cell id="Cell32" left="316" top="74" width="135" height="31" text="expr:(( KILL + ASSIST ) / DEATH ).toFixed(2) + &quot; : 1 평점&quot;" textAlign="center" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" color="#8f9eb1"/>
-                <Cell id="Cell33" left="316" top="104" width="135" height="21" text="bind:TIER" textAlign="center" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1"/>
-                <Cell id="Cell34" left="501" top="28" width="135" height="45" text="bind:MAP" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
+                <Cell id="Cell32" left="316" top="74" width="135" height="31" text="expr:(( KILL + ASSIST ) / DEATH ).toFixed(2) + &quot; : 1 평점&quot;" textAlign="center" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" cssclass="cell_description"/>
+                <Cell id="Cell33" left="316" top="104" width="135" height="21" text="bind:TIER" textAlign="center" font="normal 16px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" cssclass="cell_description"/>
+                <Cell id="Cell34" left="501" top="28" width="135" height="45" text="bind:MAP" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" textAlign="center" cssclass="cell_description"/>
                 <Cell id="Cell35" left="503" top="73" width="40" height="45" text="bind:MY_SCORE" font="normal 34px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#00bba3" textAlign="center"/>
                 <Cell id="Cell36" left="548" top="73" width="40" height="45" text=":" font="normal 34px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="white" textAlign="center"/>
                 <Cell id="Cell37" left="593" top="73" width="40" height="45" text="bind:ENEMY_SCORE" font="normal 34px/normal &quot;AppleSDGothicNeoH00&quot;" displaytype="text" color="#e84057" textAlign="center"/>
@@ -143,10 +143,10 @@
                 <Cell id="Cell40" left="965" top="84" width="105" height="35" text="bind:HS_RATE" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white" textAlign="center"/>
                 <Cell id="Cell41" left="1120" top="84" width="105" height="35" text="bind:ADR" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="white" textAlign="center"/>
                 <Cell id="cell_win_color" left="0" top="10" width="10" bottom="0" background="bind:RESULT_BAR" borderRadius="10px 0px 0px 10px"/>
-                <Cell id="Cell01" left="698" top="43" width="105" height="35" text="K/D" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
-                <Cell id="Cell02" left="818" top="43" width="125" height="35" text="평균 전투 점수" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
-                <Cell id="Cell03" left="1085" top="43" width="175" height="35" text="라운드당 평균 데미지" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
-                <Cell id="Cell04" left="965" top="43" width="105" height="35" text="헤드샷 %" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" color="#9e9eb1" textAlign="center"/>
+                <Cell id="Cell01" left="698" top="43" width="105" height="35" text="K/D" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" textAlign="center" cssclass="cell_description"/>
+                <Cell id="Cell02" left="818" top="43" width="125" height="35" text="평균 전투 점수" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" textAlign="center" cssclass="cell_description"/>
+                <Cell id="Cell03" left="1085" top="43" width="175" height="35" text="라운드당 평균 데미지" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" textAlign="center" cssclass="cell_description"/>
+                <Cell id="Cell04" left="965" top="43" width="105" height="35" text="헤드샷 %" font="normal 20px/normal &quot;AppleSDGothicNeoB00&quot;" displaytype="text" textAlign="center" cssclass="cell_description"/>
                 <Cell id="Cell00" left="0" height="10" right="0" top="0"/>
                 <Cell id="cell_star" top="32" width="38" height="36" right="32" text="" imagestretch="fixaspectratio" cssclass="bind:STAR_CSS"/>
                 <Cell id="cell_expand" width="38" height="36" right="32" displaytype="imagecontrol" imagestretch="fixaspectratio" bottom="12"/>

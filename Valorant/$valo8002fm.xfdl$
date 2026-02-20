@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="valo8002fm" width="2000" height="980" titletext="회원 관리">
+    <Layouts>
+      <Layout height="980" mobileorientation="landscape" width="2000">
+        <Static id="sta_discord_name" taborder="0" top="90" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="회원 관리" fittocontents="width" textAlign="right" width="149" left="186" verticalAlign="bottom"/>
+        <Grid id="grd_party" taborder="1" left="150" top="190" height="852" binddataset="gds_party" autofittype="col" borderRadius="20px 20px 0px 0px" tabstop="false" cssclass="grid_test" oncellclick="grd_party_oncellclick" scrolltype="none" scrollbartype="none none" width="1700">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="372"/>
+                <Column size="85"/>
+                <Column size="53"/>
+                <Column size="74"/>
+                <Column size="64"/>
+                <Column size="106"/>
+                <Column size="382"/>
+                <Column size="48"/>
+                <Column size="181"/>
+                <Column size="48"/>
+                <Column size="70"/>
+                <Column size="170"/>
+                <Column size="42"/>
+              </Columns>
+              <Rows>
+                <Row size="60" band="head"/>
+                <Row size="60"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="플레이어"/>
+                <Cell col="1" text="마이크"/>
+                <Cell col="2" colspan="2" text="선호 클래스"/>
+                <Cell col="4" colspan="2" text="티어"/>
+                <Cell col="6" text="메모"/>
+                <Cell col="7" colspan="3" text="승/패"/>
+                <Cell col="10" text="승률"/>
+                <Cell col="11" text="등록일시" font="normal 20px/normal &quot;이사만루체 Light&quot;"/>
+                <Cell col="12"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:USER_NAME +&quot; #&quot;+ USER_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px" cursor="pointer"/>
+                <Cell col="1" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" displaytype="imagecontrol" imagestretch="fixaspectratio" text="expr:USER_MIC == 'on' ? 'theme://images/valo_mic_on_green.png' : 'theme://images/valo_mic_off_gray.png'" padding="10px"/>
+                <Cell col="2" text="expr:comp.parent.fn_getClassImage(USER_CLASS)" textAlign="center" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,0px,1px solid black,1px solid #292932" displaytype="imagecontrol" imagestretch="fixaspectratio" padding="10px 0px 10px 10px"/>
+                <Cell col="3" text="bind:USER_CLASS" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black,0px"/>
+                <Cell col="4" textAlign="right" font="normal 15pt/normal &quot;이사만루체 Light&quot;" border="0px,0px,1px solid black,1px solid #292932" imagestretch="fixaspectratio" displaytype="imagecontrol" text="bind:TIER_ICON" padding="3px 0px 3px 10px"/>
+                <Cell col="5" border="0px,1px solid #292932,1px solid black,0px" text="bind:TIER" font="normal 13pt/normal &quot;이사만루체 Light&quot;"/>
+                <Cell col="6" text="expr:String(USER_MEMO).length &gt; 20 ? String(USER_MEMO).substr(0, 20) + &quot;. . . &quot; : USER_MEMO" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" cursor="pointer" padding="0px 0px 0px 30px"/>
+                <Cell col="7" text="expr:&quot; &quot;+WINS+&quot;승&quot;" border="0px,0px,1px solid black,1px solid #292932" textAlign="center" font="normal 11pt/normal &quot;이사만루체 Light&quot;"/>
+                <Cell col="8" border="0px,0px,1px solid black" font="normal 15pt/normal &quot;이사만루체 Light&quot;" displaytype="progressbarcontrol" progressbarsmooth="true" padding="10px" color="purple" expr="expr:GAMES == 0 ? 0 : (parseInt(WINS) / parseInt(GAMES)) * 100"/>
+                <Cell col="9" text="expr:GAMES-WINS+&quot;패 &quot;" border="0px,1px solid #292932,1px solid black,0px" textAlign="center" font="normal 11pt/normal &quot;이사만루체 Light&quot;"/>
+                <Cell col="10" border="0px,1px solid #292932,1px solid black" text="expr:WIN_RATES + &quot;%&quot;" font="normal 13pt/normal &quot;이사만루체 Light&quot;" textAlign="center" color="#00ffba"/>
+                <Cell col="11" text="bind:WRITE_TIME" border="0px,1px solid #292932,1px solid black" textAlign="center" font="normal 11pt/normal &quot;이사만루체 Light&quot;"/>
+                <Cell col="12" border="0px,0px,1px solid black,1px solid #292932" displaytype="buttoncontrol" edittype="button" text="º º º"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

@@ -11192,6 +11192,14 @@
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 }
+.Button.btn_member
+{
+	background : #31313c;
+	font : normal 22pt/normal "AppleSDGothicNeoB00";
+	color : white;
+	border-radius : 20px;
+	-nexa-padding : 5px 0px 0px;
+}
 .Button.btn_next
 {
 	cursor : pointer;
@@ -11743,4 +11751,12 @@
 .ListView.list_statistics .body .cell.cell_red
 {
 	color : #e84057;
+}
+.ListView.list_match_list .body .cell.cell_description
+{
+	color : #8f9eb1;
+}
+.Button.btn_member[status=mouseover]
+{
+	box-shadow : 0px 0px 10px #FFFFFF;
 }

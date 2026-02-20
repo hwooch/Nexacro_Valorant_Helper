@@ -10992,6 +10992,14 @@
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 }
+.Button.btn_member
+{
+	background : #75758e;
+	font : normal 22pt/normal "AppleSDGothicNeoB00";
+	color : white;
+	border-radius : 20px;
+	-nexa-padding : 5px 0px 0px;
+}
 .Button.btn_switch_theme
 {
 	cursor : pointer;
@@ -11550,6 +11558,10 @@
 {
 	color : #d8d8de;
 }
+.ListView.list_match_list .body .cell.cell_description
+{
+	color : #d8d8de;
+}
 .ListView.list_recent_match .body .cell.cell_red
 {
 	color : #00ffba;
@@ -11611,6 +11623,10 @@
 .ListView.list_statistics .body .cell.cell_red
 {
 	color : #eb9c00;
+}
+.Button.btn_member[status=mouseover]
+{
+	box-shadow : 0px 0px 10px #FFFFFF;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
