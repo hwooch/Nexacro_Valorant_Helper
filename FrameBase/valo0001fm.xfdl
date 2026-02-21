@@ -182,6 +182,9 @@ this.btn_discord_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 					if (objWorkFrame.formurl == "Valorant::valo8001fm.xfdl") {
 						this.btn_Search.click();
 					}
+					if (objWorkFrame.formurl == "Valorant::valo8002fm.xfdl") {
+						this.btn_Search.click();
+					}
 					
 					this.resetScroll();
 				}
@@ -276,8 +279,8 @@ this.fn_startDiscordLogin = function()
     this.fv_loopCount = 0;
 	
     var client_id = "1455113535951474731";
-    //var redirect_uri = encodeURIComponent("http://localhost:8088/edupack_egov/callback.do");
-	var redirect_uri = encodeURIComponent("http://172.10.14.135:8088/edupack_egov/callback.do");
+    var redirect_uri = encodeURIComponent("http://localhost:8088/edupack_egov/callback.do");
+	//var redirect_uri = encodeURIComponent("http://172.10.14.135:8088/edupack_egov/callback.do");
     //var scope = encodeURIComponent("identify connections");
 	var scope = encodeURIComponent("identify connections guilds.join");
     

@@ -10995,10 +10995,18 @@
 .Button.btn_member
 {
 	background : #75758e;
-	font : normal 22pt/normal "AppleSDGothicNeoB00";
+	font : normal 15pt/normal "이사만루체 Light";
 	color : white;
 	border-radius : 20px;
-	-nexa-padding : 5px 0px 0px;
+	cursor : pointer;
+}
+.Button.btn_back
+{
+	background : #75758e;
+	font : normal 15pt/normal "이사만루체 Light";
+	color : white;
+	border-radius : 20px;
+	cursor : pointer;
 }
 .Button.btn_switch_theme
 {
@@ -11508,14 +11516,32 @@
 .Button.toggle_collapse
 {
 	cursor : pointer;
-	background : url('theme://images/valo_arrow_down.png') no-repeat center center /contain #242429;
+	background : url('theme://images/valo_arrow_down.png') no-repeat center center /contain #75758e;
 	-nexa-border : 2px solid #8e8e8e;
 	border-radius : 20px;
+}
+.Static.sta_write_party
+{
+	background : #75758e;
+	color : white;
+	-nexa-border : 0px solid white;
+	border-radius : 20px 20px 0px 0px;
+	font : normal 25px/normal "AppleSDGothicNeoEB00";
+	-nexa-padding : 0px 20px;
+}
+.Static.sta_save_list
+{
+	background : #75758e;
+	color : white;
+	-nexa-border : 0px solid white,0px solid white,2px solid #75758e;
+	border-radius : 20px 20px 0px 0px;
+	font : normal 25px/normal "AppleSDGothicNeoEB00";
+	-nexa-padding : 0px 20px;
 }
 .Button.toggle_expand
 {
 	cursor : pointer;
-	background : url('theme://images/valo_arrow_up.png') no-repeat center center /contain #242429;
+	background : url('theme://images/valo_arrow_up.png') no-repeat center center /contain #75758e;
 	-nexa-border : 2px solid #8e8e8e;
 	border-radius : 20px;
 }
@@ -11523,10 +11549,7 @@
 .Button.toggle_collapse[userstatus=pushed],
 .Button.toggle_collapse[userstatus=selected]
 {
-	cursor : pointer;
-	background : url('theme://images/valo_arrow_down_red.png') no-repeat center center /contain #242429;
-	-nexa-border : 2px solid #8e8e8e;
-	border-radius : 20px;
+	background : url('theme://images/valo_arrow_down_black.png') no-repeat center center /contain #75758e;
 	box-shadow : 0px 0px 10px #ffffff;
 	
 }
@@ -11534,10 +11557,7 @@
 .Button.toggle_expand[userstatus=pushed],
 .Button.toggle_expand[userstatus=selected]
 {
-	cursor : pointer;
-	background : url('theme://images/valo_arrow_up_red.png') no-repeat center center /contain #242429;
-	-nexa-border : 2px solid #8e8e8e;
-	border-radius : 20px;
+	background : url('theme://images/valo_arrow_up_black.png') no-repeat center center /contain #75758e;
 	box-shadow : 0px 0px 10px #ffffff;
 	
 }.Static.sta_alert
@@ -11625,6 +11645,10 @@
 	color : #eb9c00;
 }
 .Button.btn_member[status=mouseover]
+{
+	box-shadow : 0px 0px 10px #FFFFFF;
+}
+.Button.btn_back[status=mouseover]
 {
 	box-shadow : 0px 0px 10px #FFFFFF;
 }

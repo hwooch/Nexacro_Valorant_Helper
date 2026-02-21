@@ -3,8 +3,8 @@
   <Form id="valo7002fm" width="2000" height="980" titletext="신고 목록 확인" onload="valo7002fm_onload" onclose="valo7002fm_onclose" color="white">
     <Layouts>
       <Layout height="980" mobileorientation="landscape" width="2000">
-        <Button id="btn_refuse" taborder="1" text="거절" top="40" width="110" height="60" background="#4d4d60" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;" onclick="btn_refuse_onclick" cssclass="btn_shadow" borderRadius="20px" right="100" cursor="pointer"/>
-        <Button id="btn_accept" taborder="0" text="수락" top="40" height="60" background="#4d4d60" color="white" font="normal 15pt/normal &quot;이사만루체 Light&quot;" onclick="btn_accept_onclick" cssclass="btn_shadow" borderRadius="20px" right="btn_refuse:30" width="110" cursor="pointer"/>
+        <Button id="btn_refuse" taborder="1" text="거절" top="40" width="110" height="60" onclick="btn_refuse_onclick" cssclass="btn_back" right="100"/>
+        <Button id="btn_accept" taborder="0" text="수락" top="40" height="60" onclick="btn_accept_onclick" cssclass="btn_back" right="btn_refuse:30" width="110"/>
         <Static id="sta_description" taborder="5" text="접수된 신고 내역" left="150" top="140" width="188" height="31" font="normal 20pt/normal &quot;이사만루체 Medium&quot;"/>
         <Grid id="grd_report" taborder="2" left="150" top="sta_description:30" height="582" binddataset="gds_report" autofittype="col" border="1px solid #1f2326" background="#31313c" borderRadius="20px" tabstop="false" cssclass="grid_test" scrolltype="none" scrollbartype="none none" width="1700" font="normal 30pt/normal &quot;이사만루체 Medium&quot;" nodatatext="신고 내역이 존재하지 않습니다." extendsizetype="row">
           <Formats>
@@ -37,7 +37,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_back" taborder="3" left="100" top="40" width="110" height="60" background="#4d4d60" text="돌아가기" textAlign="center" padding="0px px 0px 0px" borderRadius="20px" font="normal 15pt/normal &quot;이사만루체 Light&quot;" color="white" cssclass="btn_shadow" onclick="btn_back_onclick" cursor="pointer"/>
+        <Button id="btn_back" taborder="3" left="100" top="40" width="110" height="60" text="돌아가기" cssclass="btn_back" onclick="btn_back_onclick" textAlign="center"/>
         <Button id="btn_space_0" taborder="4" left="990" top="grd_report:0" width="120" height="30"/>
         <Static id="sta_description_1" taborder="6" text="처리할 신고 내역을 클릭 후 버튼을 통해 처리하세요." left="sta_description:40" top="140" width="575" height="31" cssclass="sta_weapon_description"/>
       </Layout>

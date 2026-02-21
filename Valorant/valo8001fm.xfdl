@@ -3,11 +3,11 @@
   <Form id="valo8001fm" width="2000" height="980" titletext="마이페이지" onload="valo8001fm_onload" onclose="valo8001fm_onclose">
     <Layouts>
       <Layout height="980" width="2000">
-        <Static id="sta_discord_name" taborder="2" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="디스코드 이름" fittocontents="width" textAlign="right" width="218" left="250" verticalAlign="bottom"/>
-        <Static id="sta_nothing" taborder="3" top="84" height="33" text=" 님의 연동된 라이엇 아이디" fittocontents="width" width="306" left="sta_discord_name:0" cssclass="sta_nothing"/>
-        <Static id="sta_user_name" taborder="0" top="71" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" width="184" left="sta_nothing:50" verticalAlign="bottom"/>
-        <Static id="sta_user_tag" taborder="1" top="84" height="33" text="사용자 태그" fittocontents="width" width="133" left="sta_user_name:10" cssclass="sta_nothing"/>
-        <Static id="sta_save_list" taborder="4" text="내가 저장한 전적 기록" left="250" top="sta_discord_name:40" height="70" background="#31313c" borderRadius="20px 20px 0px 0px" font="normal 25px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 20px" border="0px,0px,2px #1f2326" width="254"/>
+        <Static id="sta_discord_name" taborder="2" top="70" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="디스코드 이름" fittocontents="width" textAlign="right" width="218" left="250" verticalAlign="bottom"/>
+        <Static id="sta_nothing" taborder="3" top="83" height="33" text=" 님의 연동된 라이엇 아이디" fittocontents="width" width="306" left="sta_discord_name:0" cssclass="sta_nothing"/>
+        <Static id="sta_user_name" taborder="0" top="70" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="사용자 이름" fittocontents="width" textAlign="right" width="184" left="sta_nothing:50" verticalAlign="bottom"/>
+        <Static id="sta_user_tag" taborder="1" top="83" height="33" text="사용자 태그" fittocontents="width" width="133" left="sta_user_name:10" cssclass="sta_nothing"/>
+        <Static id="sta_save_list" taborder="4" text="내가 저장한 전적 기록" left="250" top="sta_discord_name:40" height="70" width="254" cssclass="sta_save_list"/>
         <ListView id="list_match_list" taborder="5" left="250" top="sta_save_list:0" height="353" binddataset="ds_list" border="0px none" right="250" background="transparent" oncellclick="list_match_list_oncellclick" onmousemove="list_match_list_onmousemove" bandinitstatus="collapse" cssclass="list_match_list">
           <Formats>
             <Format id="default">
@@ -99,14 +99,14 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="sta_write_party" taborder="6" text="내가 작성한 파티 구인 글" left="grd_party:-1700" top="list_match_list:40" background="#31313c" borderRadius="20px 20px 0px 0px" font="normal 25px/normal &quot;AppleSDGothicNeoEB00&quot;" color="white" padding="0px 20px" border="0px" width="282" height="70"/>
+        <Static id="sta_write_party" taborder="6" text="내가 작성한 파티 구인 글" left="grd_party:-1700" top="list_match_list:40" width="282" height="70" cssclass="sta_write_party"/>
         <Static id="sta_space_1" taborder="7" left="250" top="sta_save_list:0" height="328" right="250" visible="false" text="저장한 전적 기록이 없습니다." font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" textAlign="center" color="white" background="#31313c" borderRadius="0px 20px 20px"/>
         <Button id="btn_space_0" taborder="9" left="990" top="grd_party:0" width="120" height="30"/>
         <PopupMenu id="popup_menu" left="1788" top="476" width="145" height="163" onmenuclick="popup_menu_onmenuclick" innerdataset="ds_menu" idcolumn="id" levelcolumn="level" captioncolumn="caption" cssclass="test"/>
         <Button id="btn_toggle_list" taborder="10" left="sta_save_list:20" top="162" width="60" height="60" onclick="btn_collapse_onclick" cssclass="toggle_collapse"/>
         <Button id="btn_toggle_party" taborder="11" left="sta_write_party:20" top="list_match_list:45" width="60" height="60" onclick="btn_collapse_onclick" cssclass="toggle_collapse"/>
         <Static id="sta_space_2" taborder="12" left="150" top="sta_write_party:0" height="328" visible="false" text="작성한 글이 없습니다." font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" textAlign="center" color="white" background="#31313c" borderRadius="0px 20px 20px" width="1700"/>
-        <Button id="btn_member" taborder="13" text="회원 관리" top="60" width="150" height="65" onclick="btn_member_onclick" cssclass="btn_member" right="250"/>
+        <Button id="btn_member" taborder="13" text="회원 관리" top="70" width="110" height="60" onclick="btn_member_onclick" cssclass="btn_member" right="250" cursor="pointer"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();

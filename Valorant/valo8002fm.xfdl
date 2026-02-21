@@ -3,7 +3,7 @@
   <Form id="valo8002fm" width="2000" height="980" titletext="회원 관리">
     <Layouts>
       <Layout height="980" mobileorientation="landscape" width="2000">
-        <Static id="sta_discord_name" taborder="0" top="90" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="회원 관리" fittocontents="width" textAlign="right" width="149" left="186" verticalAlign="bottom"/>
+        <Static id="sta_discord_name" taborder="0" top="70" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="회원 관리" fittocontents="width" textAlign="right" width="150" left="250" verticalAlign="bottom"/>
         <Grid id="grd_party" taborder="1" left="150" top="190" height="852" binddataset="gds_party" autofittype="col" borderRadius="20px 20px 0px 0px" tabstop="false" cssclass="grid_test" oncellclick="grd_party_oncellclick" scrolltype="none" scrollbartype="none none" width="1700">
           <Formats>
             <Format id="default">
@@ -55,7 +55,17 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="btn_back" taborder="2" top="70" width="110" height="60" text="돌아가기" textAlign="center" cssclass="btn_back" onclick="btn_back_onclick" cursor="pointer" right="250"/>
+        <Button id="btn_space_0" taborder="3" left="990" top="grd_party:0" width="120" height="30"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+this.btn_back_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
+	objWorkFrame.formurl = "Valorant::valo8001fm.xfdl";
+};
+]]></Script>
   </Form>
 </FDL>

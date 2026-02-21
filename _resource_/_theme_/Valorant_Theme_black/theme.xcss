@@ -11206,12 +11206,19 @@
 .Button.btn_member
 {
 	background : #31313c;
-	font : normal 22pt/normal "AppleSDGothicNeoB00";
+	font : normal 15pt/normal "이사만루체 Light";
 	color : white;
 	border-radius : 20px;
-	-nexa-padding : 5px 0px 0px;
+	cursor : pointer;
 }
-.Button.btn_next
+.Button.btn_back
+{
+	background : #31313c;
+	font : normal 15pt/normal "이사만루체 Light";
+	color : white;
+	border-radius : 20px;
+	cursor : pointer;
+}.Button.btn_next
 {
 	cursor : pointer;
 	font : normal 30pt/normal "AppleSDGothicNeoH00";
@@ -11406,6 +11413,24 @@
 .Static.sta_POP_Error
 {
 	background : url('theme://images/img_Error.png') no-repeat center center;
+}
+.Static.sta_save_list
+{
+	background : #31313c;
+	color : white;
+	-nexa-border : 0px,0px,2px #1f2326;
+	border-radius : 20px 20px 0px 0px;
+	font : normal 25px/normal "AppleSDGothicNeoEB00";
+	-nexa-padding : 0px 20px;
+}
+.Static.sta_write_party
+{
+	background : #31313c;
+	color : white;
+	-nexa-border : 0px solid white;
+	border-radius : 20px 20px 0px 0px;
+	font : normal 25px/normal "AppleSDGothicNeoEB00";
+	-nexa-padding : 0px 20px;
 }
 .Button.btn_WF_FillRed[status=mouseover],
 .Button.btn_WF_FillRed[userstatus=pushed],
@@ -11718,23 +11743,15 @@
 .Button.toggle_collapse[userstatus=pushed],
 .Button.toggle_collapse[userstatus=selected]
 {
-	cursor : pointer;
 	background : url('theme://images/valo_arrow_down_red.png') no-repeat center center /contain #242429;
-	-nexa-border : 2px solid #8e8e8e;
-	border-radius : 20px;
 	box-shadow : 0px 0px 10px #ffffff;
-	
 }
 .Button.toggle_expand[status=mouseover],
 .Button.toggle_expand[userstatus=pushed],
 .Button.toggle_expand[userstatus=selected]
 {
-	cursor : pointer;
 	background : url('theme://images/valo_arrow_up_red.png') no-repeat center center /contain #242429;
-	-nexa-border : 2px solid #8e8e8e;
-	border-radius : 20px;
 	box-shadow : 0px 0px 10px #ffffff;
-	
 }.Button.btn_next[status=mouseover]
 {
 	box-shadow : 0px 0px 5px #FFFFFF;
@@ -11768,6 +11785,10 @@
 	color : #8f9eb1;
 }
 .Button.btn_member[status=mouseover]
+{
+	box-shadow : 0px 0px 10px #FFFFFF;
+}
+.Button.btn_back[status=mouseover]
 {
 	box-shadow : 0px 0px 10px #FFFFFF;
 }
