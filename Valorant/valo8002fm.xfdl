@@ -75,7 +75,7 @@ this.fn_getMember = function()
 this.fn_Callback = function(svcId, errCode, errMsg)
 {
     if(errCode < 0) {
-		this.gfnAlert("msg.notice.search_failed", [errMsg], "nodata"); //////////////////
+		this.gfnAlert("msg.notice.search_failed", [errMsg], "nodata");
         return;
     }
     // 멤버 DB 조회
@@ -139,7 +139,7 @@ this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChange
 };
 
 
-// [수정] 실제 CSS를 변경하는 로직 (그리드 헤더 + 버튼 스타일 강제 리로딩)
+// 테마에 따른 디자인 동적 변경
 this.fn_setThemeCss = function()
 {
     // 현재 데이터셋에 설정된 값 가져오기
@@ -155,8 +155,7 @@ this.fn_setThemeCss = function()
         this.grd_member.setCellProperty( "head", 4, "background", "#9b9baf" );
         this.grd_member.setCellProperty( "head", 5, "background", "#85859d" );
         this.grd_member.setCellProperty( "head", 6, "background", "#9b9baf" );
-        this.grd_member.setCellProperty( "head", 7, "background", "#85859d" );
-        this.grd_member.setCellProperty( "head", 8, "background", "#9b9baf" );
+        this.grd_member.setCellProperty( "head", 7, "background", "#9b9baf" );
         
     } else {
         nexacro.loadStyle("xcssrc::theme_black.xcss");
@@ -167,8 +166,7 @@ this.fn_setThemeCss = function()
         this.grd_member.setCellProperty( "head", 4, "background", "#63637c" );
         this.grd_member.setCellProperty( "head", 5, "background", "#4d4d60" );
         this.grd_member.setCellProperty( "head", 6, "background", "#63637c" );
-        this.grd_member.setCellProperty( "head", 7, "background", "#4d4d60" );
-        this.grd_member.setCellProperty( "head", 8, "background", "#63637c" );
+        this.grd_member.setCellProperty( "head", 7, "background", "#63637c" );
     }
     
     this.resetScroll();
@@ -188,7 +186,7 @@ this.grd_member_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEvent
 		
 		// 본인의 계정은 권한 변경할 수 없음
 		if (sTargetDiscordId == sMyDiscordId) {
-			this.gfnAlert("msg.notice.cant_switch", "", "nodata"); //////////////////
+			this.gfnAlert("msg.notice.cant_switch", "", "nodata");
 			return;
 		}
 		
@@ -199,11 +197,11 @@ this.grd_member_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEvent
 		
 		// 권한 변경 확인 받기   
         var sMsgId = "msg.confirm.switch";  //메세지ID
-        var arrArg = [sCheckPerm];          //메세지취환될값 배열[생략가능]
-        var sPopId = sMsgId;                //메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
-        var sMsgCallback = "fnMsgCallback"; //메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
+        var arrArg = [sCheckPerm];          //메세지 치환될값 배열 [생략가능]
+        var sPopId = sMsgId;                //메세지 팝업ID [생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+        var sMsgCallback = "fnMsgCallback"; //메세지 콜백 [생략가능] * confirm성 메시지를 사용 시 반드시 필요
         
-        // function 전달
+		// 공통함수 확인/취소 팝업
         this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
                 if (strVal == true) {
                     // 확인 선택
