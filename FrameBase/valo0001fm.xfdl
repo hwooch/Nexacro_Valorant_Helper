@@ -69,6 +69,8 @@ this.fn_setThemeCss = function()
 // 모든 버튼이 공유할 onclick 이벤트
 this.btn_common_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {	
+	this.btn_mypage.cssclass = "top_mypage";
+	
 	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
 	// 메인 프레임의 url을 변경
 	switch(obj.id) {

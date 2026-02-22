@@ -357,6 +357,10 @@ this.valo7001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 // 화면 닫힐 때
 this.valo7001fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 {
+	// 트랜잭션 로딩바 다시 활성화
+	var objEnv = nexacro.getEnvironment();
+    objEnv.usewaitcursor = true;	
+	
     // 이벤트 핸들러 제거
     this.fvApp.gds_login.removeEventHandler("onrowsetchanged", this.fn_LoginDataChanged, this);
     this.fvApp.gds_login.removeEventHandler("onload", this.fn_LoginDataChanged, this);

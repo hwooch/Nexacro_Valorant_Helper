@@ -100,12 +100,12 @@
           </Formats>
         </Grid>
         <Static id="sta_write_party" taborder="6" text="내가 작성한 파티 구인 글" left="grd_party:-1700" top="list_match_list:40" width="282" height="70" cssclass="sta_write_party"/>
-        <Static id="sta_space_1" taborder="7" left="250" top="sta_save_list:0" height="328" right="250" visible="false" text="저장한 전적 기록이 없습니다." font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" textAlign="center" color="white" background="#31313c" borderRadius="0px 20px 20px"/>
+        <Static id="sta_space_1" taborder="7" left="250" top="sta_save_list:0" height="328" right="250" visible="false" text="저장한 전적 기록이 없습니다." cssclass="sta_space"/>
         <Button id="btn_space_0" taborder="9" left="990" top="grd_party:0" width="120" height="30"/>
         <PopupMenu id="popup_menu" left="1788" top="476" width="145" height="163" onmenuclick="popup_menu_onmenuclick" innerdataset="ds_menu" idcolumn="id" levelcolumn="level" captioncolumn="caption" cssclass="test"/>
         <Button id="btn_toggle_list" taborder="10" left="sta_save_list:20" top="162" width="60" height="60" onclick="btn_collapse_onclick" cssclass="toggle_collapse"/>
         <Button id="btn_toggle_party" taborder="11" left="sta_write_party:20" top="list_match_list:45" width="60" height="60" onclick="btn_collapse_onclick" cssclass="toggle_collapse"/>
-        <Static id="sta_space_2" taborder="12" left="150" top="sta_write_party:0" height="328" visible="false" text="작성한 글이 없습니다." font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" textAlign="center" color="white" background="#31313c" borderRadius="0px 20px 20px" width="1700"/>
+        <Static id="sta_space_2" taborder="12" left="150" top="sta_write_party:0" height="328" visible="false" text="작성한 글이 없습니다." width="1700" cssclass="sta_space"/>
         <Button id="btn_member" taborder="13" text="회원 관리" top="70" width="110" height="60" onclick="btn_member_onclick" cssclass="btn_member" right="250" cursor="pointer"/>
       </Layout>
     </Layouts>
@@ -164,6 +164,13 @@ this.valo8001fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     
     // 최초 로드시 현재 저장된 테마를 강제로 한 번 적용
     this.fn_setThemeCss();
+	
+	// 운영자만 회원 관리
+	if ( this.fvApp.gds_login.getColumn(0, "PERMISSION") == "1" ) {
+        this.btn_member.visible = "true";
+    } else {
+        this.btn_member.visible = "false";
+    }
 	
 	this.resetScroll();
 };
@@ -356,6 +363,10 @@ this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListV
 
 this.valo8001fm_onclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 {
+	// 트랜잭션 로딩바 다시 활성화
+	var objEnv = nexacro.getEnvironment();
+    objEnv.usewaitcursor = true;	
+	
 	this.fvApp.gds_party.filter("");
 	
 	// 테마 이벤트 핸들러 제거

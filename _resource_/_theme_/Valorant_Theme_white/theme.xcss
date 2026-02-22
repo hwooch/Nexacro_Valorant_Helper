@@ -7304,6 +7304,14 @@
 	word-spacing : ;
     /* No style applied */
 }
+.Static.sta_space
+{
+	background : #75758e;
+	border-radius : 0px 20px 20px;
+	color : white;
+	font : normal 30pt/normal "AppleSDGothicNeoH00";
+	-nexa-text-align : center;
+}
 /* CheckBoxSetControl */
 .CheckBoxSetControl
 {
@@ -11303,10 +11311,7 @@
 	-nexa-padding : 0px 15px 0px 55px;
 	-nexa-vertical-align : middle;
 	-nexa-text-align : right;
-}.Button.top_mypage[status=disabled],
-.Button.top_mypage[status=mouseover],
-.Button.top_mypage[userstatus=pushed],
-.Button.top_mypage[userstatus=selected]
+}.Button.top_mypage[status=mouseover]
 {
 	cursor : pointer;
 	background : url('theme://images/valo_mypage.png') no-repeat left center /contain #242429;
@@ -11612,9 +11617,18 @@
 {
 	background : #969696;
 }
-.Static.sta_hide_screen
+.Button.btn_space_2,
+.Button.btn_space_2[status=disabled],
+.Button.btn_space_2[status=mouseover],
+.Button.btn_space_2[status=focused],
+.Button.btn_space_2[userstatus=pushed],
+.Button.btn_space_2[userstatus=selected]
 {
 	background : #aaaaaa;
+}
+.Static.sta_hide_screen
+{
+	background : #75758e;
 	border-radius : 20px;
 	color : white;
 	font : normal 50pt/normal "AppleSDGothicNeoH00";

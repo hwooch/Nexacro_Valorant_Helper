@@ -28,7 +28,7 @@
                 <Cell col="4" text="신고 시간"/>
               </Band>
               <Band id="body">
-                <Cell text="expr:REPORTER_RIOT_NAME +&quot; #&quot;+ REPORTER_RIOT_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>
+                <Cell text="expr:REPORTER_RIOT_NAME == &quot;연동된 계정이 존재하지 않습니다.&quot; ? &quot;라이엇 계정 미연동 사용자&quot; : REPORTER_RIOT_NAME +&quot; #&quot;+ REPORTER_RIOT_TAG" border="0px,1px solid #292932,1px solid black,0px" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>
                 <Cell col="1" text="bind:REPORT_REASON" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" wordWrap="char" displaytype="text" padding="15px"/>
                 <Cell col="2" text="expr:WRITER_RIOT_NAME +&quot; #&quot;+ WRITER_RIOT_TAG" border="0px,1px solid #292932,1px solid black" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" padding="0px 0px 0px 20px"/>
                 <Cell col="3" text="bind:WRITER_MEMO" textAlign="left" font="normal 13pt/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" wordWrap="char" padding="15px"/>
@@ -155,7 +155,7 @@ this.btn_refuse_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.fn_Callback = function(svcID, errorCode, errorMsg)
 {
     if(errorCode < 0) {
-        alert("에러 발생: " + errorMsg);
+        //alert("에러 발생: " + errorMsg);
         return;
     }
     
@@ -165,12 +165,10 @@ this.fn_Callback = function(svcID, errorCode, errorMsg)
     }
 	switch(svcID) {
 	case "refuseReport":
-		alert("신고가 거절되었습니다. (신고 내역 삭제 완료)");
 		this.fn_search_report(); // 목록 재조회
 		break;
 		
 	case "acceptReport":
-		alert("신고가 수락되었습니다. (게시글 및 신고 내역 삭제 완료)");
 		this.fn_search_report(); // 목록 재조회
 		break;
 	}
@@ -213,6 +211,8 @@ this.fn_setThemeCss = function()
         this.grd_report.setCellProperty( "head", 2, "background", "#9b9baf" );
         this.grd_report.setCellProperty( "head", 3, "background", "#85859d" );
         this.grd_report.setCellProperty( "head", 4, "background", "#9b9baf" );
+		
+		this.grd_report.background = "#75758e";
         
     } else {
         nexacro.loadStyle("xcssrc::theme_black.xcss");
@@ -221,6 +221,8 @@ this.fn_setThemeCss = function()
         this.grd_report.setCellProperty( "head", 2, "background", "#63637c" );
         this.grd_report.setCellProperty( "head", 3, "background", "#4d4d60" );
         this.grd_report.setCellProperty( "head", 4, "background", "#63637c" );
+		
+		this.grd_report.background = "#31313c";
     }
     
     

@@ -155,9 +155,9 @@
           </Formats>
         </ListView>
         <Button id="btn_space_1" taborder="20" left="1010" top="list_match_list:0" width="400" height="20"/>
-        <Button id="btn_space_2" taborder="21" left="2730" top="630" bottom="0" right="-2730" cssclass="btn_space"/>
-        <Static id="sta_hide_screen" taborder="17" left="2764" top="190" right="-2696" bottom="20" text="" cssclass="sta_hide_screen"/>
         <Button id="btn_new_search_2" taborder="22" top="div_user_status:80" text="다른 플레이어&#13;&#10;검색하기" onclick="div_recent_history_btn_new_search_onclick" cssclass="btn_new_search" height="100" left="850" visible="false" right="850"/>
+        <Button id="btn_space_2" taborder="21" left="0" top="630" bottom="0" right="0" cssclass="btn_space_2"/>
+        <Static id="sta_hide_screen" taborder="17" left="34" top="190" right="34" bottom="20" text="" cssclass="sta_hide_screen"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
