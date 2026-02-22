@@ -25,7 +25,6 @@
 // 현재 선택된 버튼을 저장할 변수, 최초는 전적검색 버튼
 this.fv_selectedBtn = this.btn_Search;
 
-// 화면이 첫 로딩 될때
 this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	// 전적검색 버튼이 가장 위로 올라오게
@@ -69,6 +68,7 @@ this.fn_setThemeCss = function()
 // 모든 버튼이 공유할 onclick 이벤트
 this.btn_common_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {	
+	// 마이페이지 버튼이 눌렸었다면 css 풀어줌
 	this.btn_mypage.cssclass = "top_mypage";
 	
 	var objWorkFrame = this.fvApp.mainframe.VFrameSet00.WorkFrame;
@@ -160,7 +160,7 @@ this.sta_logo_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 this.fv_loopCount  = 0;    // 현재 반복 횟수
-this.fv_maxLoop    = 60;   // 최대 반복 횟수 (60초 = 1분)
+this.fv_maxLoop    = 60;   // 최대 반복 횟수 (60초)
 // 로그인 버튼 클릭
 this.btn_discord_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	
@@ -170,7 +170,6 @@ this.btn_discord_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 		var sPopId = sMsgId;				//메세지팝업ID[생략가능] *해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
 		var sMsgCallback = "fnMsgCallback";	//메세지콜백[생략가능] * confirm성 메시지를 사용 시 반드시 필요
 		
-		// function 전달
 		this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
 				if (strVal == true) {
 					// 확인 선택
@@ -246,13 +245,13 @@ this.fn_Callback = function(svcID, errorCode, errorMsg)
             if (this.fvApp.gds_login.getRowCount() > 0) {
                 this.killTimer(7777); // 타이머 종료
                 
-                //var username = this.fvApp.gds_login.getColumn(0, "RIOT_ID") + " #" + this.fvApp.gds_login.getColumn(0, "RIOT_TAG");
-				var username = this.fvApp.gds_login.getColumn(0, "RIOT_ID");
+                var username = this.fvApp.gds_login.getColumn(0, "RIOT_ID");
 				var discordusername = this.fvApp.gds_login.getColumn(0, "USER_NAME");
+				
 				if( username == "연동된 계정이 존재하지 않습니다." ){
-					this.gfnAlert("msg.notice.login5", [discordusername], "nodata"); //////////////////
+					this.gfnAlert("msg.notice.login5", [discordusername], "nodata");
 				} else {
-					this.gfnAlert("msg.notice.login1", [username], "nodata"); //////////////////
+					this.gfnAlert("msg.notice.login1", [username], "nodata");
 				}
 				// 디스코드 로그인이 다 성공했을 때
 				if(this.btn_discord_login.cssclass == "top_login") {
@@ -266,7 +265,7 @@ this.fn_Callback = function(svcID, errorCode, errorMsg)
         // 로그인 취소/실패 감지 시 (ErrorCode -99)
         else if (errorCode == -99) {
             this.killTimer(7777);
-			this.gfnAlert("msg.notice.login3", "", "nodata"); //////////////////
+			this.gfnAlert("msg.notice.login3", "", "nodata");
         }
         else if (errorCode == -1) {
             // 로그인 대기중으로 아무동작 하지 않음 (계속 타이머 돎)
@@ -293,6 +292,7 @@ this.fn_startDiscordLogin = function()
     + "&scope=" + scope
 	+ "&prompt=consent";
     
+	// 브라우저 실행
     system.execBrowser(authUrl);
     
     // 타이머 시작
@@ -307,7 +307,7 @@ this.DiscordLogin_Check = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
 	
 	if(this.fv_loopCount > this.fv_maxLoop) {
 		this.killTimer(7777);
-		this.gfnAlert("msg.notice.login2", "", "nodata"); //////////////////
+		this.gfnAlert("msg.notice.login2", "", "nodata");
 		
 		return;
 	}
