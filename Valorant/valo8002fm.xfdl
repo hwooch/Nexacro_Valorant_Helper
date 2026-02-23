@@ -51,6 +51,7 @@
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+var deleteUserId = "";
 
 this.btn_back_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -76,7 +77,7 @@ this.fn_getMember = function()
 this.fn_Callback = function(svcId, errCode, errMsg)
 {
     if(errCode < 0) {
-		this.gfnAlert("msg.notice.search_failed", [errMsg], "nodata");
+		this.gfnAlert("msg.server.error", "", "nodata");
         return;
     }
     // 멤버 DB 조회
@@ -88,6 +89,11 @@ this.fn_Callback = function(svcId, errCode, errMsg)
 	
 	// 권한 업데이트 완료 시 재조회
 	if (svcId == "updatePermission") {
+		this.fn_getMember();
+	}
+	// 회원 탈퇴처리 완료 시 재조회
+	if (svcId == "deleteUserInfo") {
+		this.gfnAlert("msg.notice.delete_complete", "", "nodata");
 		this.fn_getMember();
 	}
 };
@@ -226,7 +232,8 @@ this.grd_member_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEvent
 		
 		// 현재 클릭한 행 인덱스 저장
         this.nRow = e.row;
-        
+        deleteUserId = this.ds_member.getColumn(nRow, "DISCORD_ID");
+		
         this.popup_menu.trackPopupByComponent(obj, e.clientx, e.clienty);
 	}
 };
@@ -250,7 +257,14 @@ this.popup_menu_onmenuclick = function(obj:nexacro.PopupMenu,e:nexacro.MenuClick
 		this.gfnAlert(sMsgId, arrArg, sPopId, function(strId, strVal) {
 				if (strVal == true) {
 					// 확인 선택
-					// 트랜잭션으로 모든 정보 날리기
+					var strSvcID        = "deleteUserInfo";
+					var strURL          = "SvcUrl::deleteUserInfo.do";
+					var strInDatasets   = "";
+					var strOutDatasets  = "";
+					var strArgument     = "discordId=" + nexacro.wrapQuote(deleteUserId);
+					var strCallbackFunc = "fn_Callback";
+					
+					this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
 				}
 				else {
 					// 취소 선택

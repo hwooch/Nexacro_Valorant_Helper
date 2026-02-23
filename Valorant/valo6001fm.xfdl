@@ -606,7 +606,6 @@ this.btn_normal_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	//this.video_weapon.url = "http://localhost:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
 	this.video_weapon.url = "http://172.10.14.135:8088/edupack_egov/p03/project030/valo_weapon_shoot_video/" + weaponNameEng + "_Left" + ".mp4";
 	this.video_weapon.play();
-	this.video_weapon.repeat = true;
 	
 	this.fn_setThemeCss();
 };

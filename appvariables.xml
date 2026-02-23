@@ -2076,9 +2076,16 @@
         </Row>
         <Row>
           <Col id="MSG_ID">msg.confirm.delete</Col>
-          <Col id="MSG_TEXT">이 회원의 모든 정보를 삭제시키겠습니까?</Col>
-          <Col id="MSG_TEXT_EN">이 회원의 모든 정보를 삭제시키겠습니까?</Col>
+          <Col id="MSG_TEXT">이 회원의 모든 정보를 삭제시키겠습니까?\n삭제된 데이터는 복구할 수 없습니다.</Col>
+          <Col id="MSG_TEXT_EN">이 회원의 모든 정보를 삭제시키겠습니까?\n삭제된 데이터는 복구할 수 없습니다.</Col>
           <Col id="MSG_TYPE">C</Col>
+          <Col id="MSG_ICON">ERR</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.notice.delete_complete</Col>
+          <Col id="MSG_TEXT">모든 정보 삭제가 완료되었습니다.</Col>
+          <Col id="MSG_TEXT_EN">모든 정보 삭제가 완료되었습니다.</Col>
+          <Col id="MSG_TYPE">A</Col>
           <Col id="MSG_ICON">ERR</Col>
         </Row>
       </Rows>
