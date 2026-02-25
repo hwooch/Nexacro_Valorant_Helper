@@ -185,9 +185,7 @@ this.fn_LoginDataChanged = function(obj:nexacro.NormalDataset, e:nexacro.DSRowse
         this.fn_setLogoutState();
     }
 };
-/* =================================================================
-로그인 / 로그아웃 상태 변화 처리
-================================================================= */
+
 
 // 로그인 성공 시 호출할 함수
 this.fn_setLoginState = function()
@@ -209,10 +207,7 @@ this.fn_setLoginState = function()
     this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArgument, strCallbackFunc);
 };
 
-/**
-* [함수 2] 로그아웃 시 호출할 함수
-* 설명: 로그아웃 버튼 클릭 시 이 함수를 실행하세요.
-*/
+// 로그아웃 시 호출할 함수
 this.fn_setLogoutState = function()
 {
     this.list_match_list.enableevent = false;
@@ -228,6 +223,7 @@ this.fn_setLogoutState = function()
 	
     this.list_match_list.enableevent = true;
 };
+
 // 화면 로드시에 이름 입력했던걸 기반으로 전적 검색
 this.valo1002fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -455,24 +451,23 @@ this.fn_Callback = function(svcId, errCode, errMsg)
     else if (svcId == "searchMatch") {
 		
 		this.ds_list.addColumn("STAR_CSS", "string");
-		// 디버깅용 로그 (개발자 도구 F12 또는 넥사크로 Output 창 확인)
 		
-		this.list_match_list.enableevent = false; // 그리기 일시 중지 (속도 향상)
+		this.list_match_list.enableevent = false; // 그리기 일시 중지
 		for(var i=0; i<this.ds_list.getRowCount(); i++)
         {
             var sMatchId = this.ds_list.getColumn(i, "MATCH_ID");
-            var sStarCss = "star_empty"; // 기본값: 빈 별
+            var sStarCss = "star_empty";
             
             // ds_saved_ids 안에 해당 MATCH_ID가 있다면
             if(this.ds_saved_ids.findRow("MATCH_ID", sMatchId) >= 0) {
-                sStarCss = "star_fill"; // 채운 별
+                sStarCss = "star_fill";
             }
             
-            // 데이터셋에 값을 박아넣음 (ListView 바인딩이 되어 있어야 함)
+            // 데이터셋에 값을 넣음
             this.ds_list.setColumn(i, "STAR_CSS", sStarCss);
         }
 		
-        this.list_match_list.enableevent = true; // 그리기 재개
+        this.list_match_list.enableevent = true; // 그리기
 		
 		
 		this.list_agent.setCellProperty("body", "CellAgentIcon", "background", 
@@ -577,7 +572,7 @@ this.fn_drawRecentHistory = function(nLimit)
     var nHeight = 40;   // 박스 높이
     var nGap = 10;       // 박스 간격
 	
-    // 5. 반복문으로 데이터 순회 및 박스 생성
+    // 반복문으로 데이터 만큼 박스 생성
     for (var i = 0; i < nCount; i++) {
         
         // 데이터셋에서 승패 여부 가져오기 
@@ -619,7 +614,7 @@ this.fn_drawRecentHistory = function(nLimit)
         nLeft = nLeft + nWidth + nGap;
     }
 	
-    // 6. 텍스트 요약 정보 표시 (예: "10전 4승 0무 6패")
+    // 텍스트 요약 정보 표시 (예: "10전 4승 0무 6패")
 	var nRate = Math.round((nWins / nCount) * 100);
     var sSummary = nCount + "전 " + nWins + "승 " + nDraws + "무 " + nLosses + "패";
 	this.div_recent_history.form.sta_hole.text = nRate+"%";
@@ -700,7 +695,7 @@ this.list_match_list_oncellclick = function(obj:nexacro.ListView,e:nexacro.ListV
 	if(e.cellid == 'cell_star')
 	{
 		
-		// 1. 로그인 체크 (ds_login에 데이터가 없으면 로그인 안 된 것으로 간주)
+		// 로그인 체크 (ds_login에 데이터가 없으면 로그인 안 된 것으로 간주)
         if (this.fvApp.gds_login.getRowCount() == 0) {
 			this.gfnAlert("msg.notice.login4", "", "nodata"); //////////////////
             return;
@@ -745,31 +740,6 @@ this.list_match_list_oncellclick = function(obj:nexacro.ListView,e:nexacro.ListV
 			this.transaction(strsvcid, strurl, strindatasets, stroutdatasets, strargument, strcallbackfunc);
 		}
 	}
-	// 	if(e.cellid == 'cell_expand')
-	// 	{
-	// 		if(obj.getBandExpandStatus(e.row))
-	// 		{
-	// 			obj.hideDetailBand(e.row);
-	// 			count--;
-	// 		}
-	// 		else
-	// 		{
-	// 			obj.showDetailBand(e.row);
-	// 			count++;
-	// 		}
-	// 		
-	// 		var nRowHeight = 150;
-	// 		var nDetailHeight = 50;
-	// 		
-	// 		var nTotalCount = this.ds_list.getRowCount();
-	// 		var nNewHeight = nTotalCount * nRowHeight + nDetailHeight * count;
-	// 		if (nNewHeight == 0) { // 값이 없으면 높이 0
-	// 			nNewHeight = 0;
-	// 		}
-	// 		
-	// 		this.list_match_list.height = nNewHeight;
-	// 		this.resetScroll();
-	// 	}
 };
 
 this.list_match_list_onmousemove = function(obj:nexacro.ListView,e:nexacro.ListViewMouseEventInfo)

@@ -140,7 +140,7 @@ this.btn_agent_filter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
     this.fnSearch();
 };
 
-// [수정] 버튼 스타일 통합 관리 함수 (하드코딩 제거 및 테마 반영)
+// 버튼 스타일
 // status: "normal" (평소/어둠), "selected" (클릭/밝음), "hover" (마우스올림/밝음)
 this.fn_setFilterStyle = function(obj, status)
 {
@@ -151,7 +151,7 @@ this.fn_setFilterStyle = function(obj, status)
     var btn_icon_write  = "theme://images/valo_write.png";
 	
 	
-    // 1. 현재 테마 색상 확인
+    // 현재 테마 색상 확인
     var sTheme = this.fvApp.gds_theme.getColumn(0, "COLOR");
     var sColor = "";
     var sNormalColor = "";   // 평소 색상
@@ -167,7 +167,6 @@ this.fn_setFilterStyle = function(obj, status)
     
     // 선택되었거나 마우스가 올라갔을 때
     if (status == "selected" || status == "hover") {
-        //obj.opacity = "";
         sColor = sActiveColor;
         
         obj.border = "15px solid " + sActiveColor;
@@ -182,7 +181,6 @@ this.fn_setFilterStyle = function(obj, status)
     } 
     // 평소 상태 (어두운/기본 상태)
     else {
-        //obj.opacity = "70%";
         sColor = sNormalColor; // 테마에 맞는 기본색
         
         obj.border = "15px solid " + sNormalColor;
@@ -191,7 +189,7 @@ this.fn_setFilterStyle = function(obj, status)
         obj.boxShadow = "";
     }
     
-    // 3. 배경 이미지 설정 (계산된 색상 적용)
+    // 배경 이미지 설정 (계산된 색상 적용)
     switch(obj.id) {
     case "btn_agent_filter_all":
         obj.background = "url('theme://images/valo_all.png') no-repeat left top /contain " + sColor;
@@ -376,7 +374,7 @@ this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChange
 };
 
 
-// [수정] 실제 CSS를 변경하는 로직 (그리드 헤더 + 버튼 스타일 강제 리로딩)
+// 실제 CSS를 변경
 this.fn_setThemeCss = function()
 {
     // 현재 데이터셋에 설정된 값 가져오기
@@ -408,7 +406,7 @@ this.fn_setThemeCss = function()
         this.grd_party.setCellProperty( "head", 8, "background", "#63637c" );
     }
     
-    // [추가] 테마가 바뀌었으니 필터 버튼들도 현재 테마에 맞는 색상으로 다시 그려줌
+    // 테마가 바뀌었으니 필터 버튼들도 현재 테마에 맞는 색상으로 다시 그려줌
     var arrBtnIds = [
         "btn_agent_filter_all", 
         "btn_agent_filter_watch", 

@@ -271,7 +271,7 @@ this.Button_onmouseleave = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
 };
 
 
-// 버튼 스타일 통합 관리 함수
+// 버튼 스타일
 // status: "normal" (평소/어둠), "selected" (클릭/밝음), "hover" (마우스올림/밝음)
 this.fn_setFilterStyle = function(obj, status)
 {
@@ -373,7 +373,7 @@ this.Button_mic_onmouseleave = function(obj:nexacro.Button,e:nexacro.MouseEventI
 };
 
 
-// 버튼 스타일 통합 관리 함수
+// 버튼 스타일
 // status: "normal" (평소/어둠), "selected" (클릭/밝음), "hover" (마우스올림/밝음)
 this.fn_setMicStyle = function(obj, status)
 {

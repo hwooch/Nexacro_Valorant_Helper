@@ -381,7 +381,7 @@ this.fn_change_theme = function(obj:nexacro.NormalDataset, e:nexacro.DSColChange
 };
 
 
-// [수정] 실제 CSS를 변경하는 로직 (그리드 헤더 + 버튼 스타일 강제 리로딩)
+// 실제 CSS를 변경하는 로직
 this.fn_setThemeCss = function()
 {
     // 현재 데이터셋에 설정된 값 가져오기

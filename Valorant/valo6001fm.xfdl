@@ -723,7 +723,7 @@ this.btn_next_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
     this.fn_startAnimateScroll(1200); // 1200 만큼 오른쪽으로
 };
 
-// 애니메이션 시작 세팅 함수
+// 애니메이션 시작
 this.fn_startAnimateScroll = function(nOffset)
 {
     var objHScroll = this.div_weapon.form.hscrollbar;
@@ -743,7 +743,7 @@ this.fn_startAnimateScroll = function(nOffset)
     this.setTimer(this.fv_timerId, 10);
 };
 
-// 부드러운 감속 로직 (ontimer 이벤트에 연결)
+// 부드러운 감속 로직
 this.valo6001fm_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
 {
     if (e.timerid == this.fv_timerId)

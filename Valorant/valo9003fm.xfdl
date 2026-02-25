@@ -21,7 +21,7 @@
 // 설정 변수
 this.nTotalRounds  = 3;      // 총 진행할 라운드 수
 this.nCurrentRound = 0;      // 현재 라운드 (1 ~ 3)
-this.arrScores     = [];     // 라운드별 점수(ms) 저장 배열
+this.arrScores     = [];     // 라운드별 점수
 
 // 상태 관리 변수
 this.sGameState    = "IDLE"; // IDLE(대기), WAIT(빨강-기다림), NOW(초록-클릭), FAIL(너무빠름), RESULT(라운드끝)
@@ -222,7 +222,7 @@ this.div_game_zone_onclick = function(obj:nexacro.Div, e:nexacro.ClickEventInfo)
             this.div_game_zone.form.sta_msg.text = nScore + " ms\n(클릭해서 다음 라운드 진행)";
         }
     }
-    // C. 결과 화면/실패 화면에서 클릭 (다음 진행)
+    // 결과 화면/실패 화면에서 클릭 (다음 진행)
     else if (this.sGameState == "RESULT" || this.sGameState == "FAIL") {
         // 마지막 라운드였다면 게임 종료
         if (this.sGameState == "RESULT" && this.nCurrentRound >= this.nTotalRounds) {
@@ -282,7 +282,6 @@ this.fn_finishGame = function()
     this.resetScroll();
 };
 
-// === [기존 통신 로직 유지] ===
 this.fn_searchHighScore = function() {
     var sDiscordId = this.fvApp.gds_login.getColumn(0, "DISCORD_ID");
     

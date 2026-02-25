@@ -110,8 +110,8 @@ this.fn_setThemeCss = function()
 		theme_Color_On = "#6e6e86";
     }
 	
-	// 3. [추가] 모든 필터 버튼을 'OFF' 스타일로 강제 초기화 (다시 그리기)
-    //    (현재 선택된 버튼이 있다면 그것은 나중에 클릭 이벤트에서 다시 ON으로 바뀜)
+	// 모든 필터 버튼을 'OFF' 스타일로 강제 초기화 (다시 그리기)
+    // (현재 선택된 버튼이 있다면 나중에 클릭 이벤트에서 다시 ON으로 바뀜)
     var arrBtnIds = [
         "btn_agent_filter_all", 
         "btn_agent_filter_watch", 
@@ -128,13 +128,13 @@ this.fn_setThemeCss = function()
         }
     }
 	
-    // 4. 만약 이미 선택된 버튼이 있다면, 걔만 다시 'ON' 스타일 적용 (테마 바꿀 때 유지 위해)
+    // 만약 이미 선택된 버튼이 있다면, 걔만 다시 'ON' 스타일 적용
     if (this.fv_selectedFilterBtn) {
         this.fn_setFilterStyle(this.fv_selectedFilterBtn, "on");
     }
 	
 	
-	// 1. 현재 테마 색상 결정
+	// 현재 테마 색상 결정
     var sTheme = this.fvApp.gds_theme.getColumn(0, "COLOR");
     var sBgColor = "";     // 배경색 & 평소 테두리
     var sSelectColor = ""; // 선택된 테두리
@@ -147,24 +147,22 @@ this.fn_setThemeCss = function()
         sSelectColor = "#6e6e86";
     }
 
-    // 2. 현재 선택된(재생중인) 스킬 이름 찾기 (스킬 설명 텍스트에서 유추)
+    // 현재 선택된스킬 이름 찾기
     var sCurrentSkillName = "";
     if (this.sta_skill_name.text != "") {
-        // 예: "스킬 1 ( Q ) - 붐봇"  -> 뒤에 있는 이름이 버튼 텍스트와 같음
-        // 정확히 매칭하기 위해 버튼을 돌면서 확인합니다.
     }
 
-    // 3. 버튼 4개 순회하며 다시 그리기
+    // 버튼 4개 다시 그리기
     for(var i = 0; i < 4; i++) {
         var objBtn = this.components["btn_skill_" + i];
         
         // 버튼이 있고, 데이터가 세팅된 상태(u_iconUrl 있음)라면
         if (objBtn && objBtn.u_iconUrl) {
             
-            // (1) 배경 다시 칠하기 (저장해둔 URL + 새 배경색)
+            // 배경 다시 칠하기 (저장해둔 URL + 새 배경색)
             objBtn.set_background("url('" + objBtn.u_iconUrl + "') no-repeat center top /contain " + sBgColor);
             
-            // (2) 테두리 다시 칠하기
+            // 테두리 다시 칠하기
             // 현재 설명창(sta_skill_name)에 이 버튼의 스킬 이름이 포함되어 있으면 '선택된 상태'로 간주
             if (this.sta_skill_name.text.indexOf(objBtn.text) > -1 && this.sta_skill_name.text != "") {
                 objBtn.set_border("10px solid " + sSelectColor);
@@ -418,7 +416,6 @@ var btn_agent_info = "https://media.valorant-api.com/agents/roles/1b47567f-8f7b-
 
 this.btn_agent_filter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	//alert(obj.id);
 	// 이미 선택된 버튼을 또 누르면 아무것도 안 함
     if (this.fv_selectedFilterBtn == obj) {
 		return;
@@ -515,7 +512,7 @@ this.Button_onmouseenter = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
 
 this.Button_onmouseleave = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
 {
-	// [수정] 현재 선택된 버튼이라면 스타일을 끄지 않고 리턴
+	// 현재 선택된 버튼이라면 스타일을 끄지 않고 리턴
     if (this.fv_selectedFilterBtn == obj) {
         return;
     }
@@ -536,7 +533,7 @@ this.btn_next_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
     this.fn_startAnimateScroll(1000); // 1000 만큼 오른쪽으로
 };
 
-// 애니메이션 시작 세팅 함수
+// 애니메이션 시작
 this.fn_startAnimateScroll = function(nOffset)
 {
     var objHScroll = this.div_agent.form.hscrollbar;
@@ -556,7 +553,7 @@ this.fn_startAnimateScroll = function(nOffset)
     this.setTimer(this.fv_timerId, 10);
 };
 
-// 부드러운 감속 로직 (ontimer 이벤트에 연결)
+// 부드러운 감속 로직
 this.valo5001fm_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
 {
     if (e.timerid == this.fv_timerId)

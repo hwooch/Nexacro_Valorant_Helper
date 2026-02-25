@@ -126,7 +126,7 @@ this.fn_createTarget = function()
     var nDivWidth  = this.div_game_zone.getOffsetWidth();
     var nDivHeight = this.div_game_zone.getOffsetHeight();
     
-    // 공 크기 (50x50)
+    // 공 크기 (60*60)
     var nBtnSize = 60;
     
     // 랜덤 좌표 계산 (화면 밖으로 나가지 않게 처리)
@@ -134,7 +134,7 @@ this.fn_createTarget = function()
     var nLeft = Math.floor(Math.random() * (nDivWidth - nBtnSize - 20)) + 10;
     var nTop  = Math.floor(Math.random() * (nDivHeight - nBtnSize - 20)) + 10;
     
-    // 동적 컴포넌트 ID 생성 (btn_target_0, btn_target_1 ...)
+    // 동적 컴포넌트
     var sBtnId = "btn_target_" + this.nCurrentCount;
     
     // 버튼 생성
@@ -143,9 +143,9 @@ this.fn_createTarget = function()
     
 	// - 방사형 그라데이션 (빛 반사 효과)
     // - circle at 30% 30% : 빛이 왼쪽 위(30%, 30%) 위치에서 시작
-    // - #ffb6c1 : 하이라이트 (연한 분홍/흰색)
-    // - #ff4757 : 본래 색 (빨강)
-    // - #8e001c : 그림자 (진한 빨강/검정)
+    // - #ffc0cb : 하이라이트 (연한 분홍/흰색)
+    // - red : 본래 색 (빨강)
+    // - #990000 : 그림자 (진한 빨강/검정)
 	objBtn.background = "radial-gradient(circle at 30% 30%, #ffc0cb, red, #990000)";
     objBtn.border = "0px none";
     objBtn.borderRadius = "50%";
@@ -176,10 +176,10 @@ this.fn_target_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
     
     // 게임 진행 판단
     if (this.nCurrentCount < this.nTotalTargets) {
-        // 아직 20개 안 채웠으면 다음 공 생성
+        // 아직 10개 안 채웠으면 다음 공 생성
         this.fn_createTarget();
     } else {
-        // 20개 다 클릭했으면 게임 종료
+        // 10개 다 클릭했으면 게임 종료
         this.fn_finishGame();
 		this.cursor = "";
     }
