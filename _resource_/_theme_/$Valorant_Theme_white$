@@ -9681,6 +9681,13 @@
 	-nexa-border : 2px solid white;
 	-nexa-padding : 0px 0px 0px 5px;
 }
+.Calendar.cal_WF_Month,
+.Calendar.cal_WF_Month[status=mouseover],
+.Calendar.cal_WF_Month[status=focused]
+{
+	-nexa-border : 0px none;
+	box-shadow : 0px 0px 0px #FFFFFF;
+}
 .Calendar.valo_cal[status=disabled],
 .Calendar.valo_cal[status=mouseover],
 .Calendar.valo_cal[status=focused],

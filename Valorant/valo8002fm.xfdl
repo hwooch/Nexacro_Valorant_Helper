@@ -31,12 +31,12 @@
                 <Cell col="7"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:DISCORD_ID" border="0px,1px solid #292932,1px solid black,0px" font="normal 15px/normal &quot;이사만루체 Light&quot;" textAlign="left" padding="0px 0px 0px 20px"/>
-                <Cell col="1" font="normal 15px/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" imagestretch="fixaspectratio" text="expr:RIOT_ID== &quot;연동된 계정이 존재하지 않습니다.&quot; ? RIOT_ID : RIOT_ID+&quot; #&quot;+RIOT_TAG" padding="0px 0px 0px 20px"/>
-                <Cell col="2" font="normal 15px/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" imagestretch="fixaspectratio" text="bind:USER_NAME" padding="0px 0px 0px 20px"/>
+                <Cell text="bind:DISCORD_ID" border="0px,1px solid #292932,1px solid black,0px" font="normal 16px/normal &quot;이사만루체 Light&quot;" textAlign="left" padding="0px 0px 0px 20px"/>
+                <Cell col="1" font="normal 16px/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" imagestretch="fixaspectratio" text="expr:RIOT_ID== &quot;연동된 계정이 존재하지 않습니다.&quot; ? RIOT_ID : RIOT_ID+&quot; #&quot;+RIOT_TAG" padding="0px 0px 0px 20px"/>
+                <Cell col="2" font="normal 16px/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black" imagestretch="fixaspectratio" text="bind:USER_NAME" padding="0px 0px 0px 20px"/>
                 <Cell col="3" text="bind:SIGN_DATE" textAlign="center" font="normal 15px/normal &quot;이사만루체 Light&quot;" border="0px,1px solid #292932,1px solid black"/>
                 <Cell col="4" border="0px,1px solid #292932,1px solid black" text="bind:LOGIN_COUNT" font="normal 18px/normal &quot;이사만루체 Light&quot;" textAlign="center"/>
-                <Cell col="5" text="expr:PERMISSION == &quot;0&quot; ? &quot;일반&quot; : &quot;운영자&quot;" border="0px,1px solid #292932,1px solid black" textAlign="center" font="normal 17px/normal &quot;이사만루체 Light&quot;" cursor="pointer"/>
+                <Cell col="5" text="expr:PERMISSION == &quot;0&quot; ? &quot;일반&quot; : &quot;운영자&quot;" border="0px,1px solid #292932,1px solid black" textAlign="center" font="normal 19px/normal &quot;이사만루체 Light&quot;" cursor="pointer"/>
                 <Cell col="6" text="bind:LAST_LOGIN" border="0px,1px solid #292932,1px solid black" textAlign="center" font="normal 15px/normal &quot;이사만루체 Light&quot;"/>
                 <Cell col="7" border="0px,0px,1px solid black,1px solid #292932" text="º º º" displaytype="buttoncontrol" edittype="button" cursor="pointer"/>
               </Band>
@@ -254,6 +254,10 @@ this.fn_setThemeCss = function()
         this.grd_member.setCellProperty( "head", 5, "background", "#85859d" );
         this.grd_member.setCellProperty( "head", 6, "background", "#9b9baf" );
         this.grd_member.setCellProperty( "head", 7, "background", "#9b9baf" );
+		
+		this.div_cal.form.pdvCal.background = "#999999";
+		this.div_cal.form.pdvCal.borderRadius = "10px";
+		this.div_cal.form.pdvCal.border = "2px solid white";
         
     } else {
         nexacro.loadStyle("xcssrc::theme_black.xcss");
@@ -265,6 +269,10 @@ this.fn_setThemeCss = function()
         this.grd_member.setCellProperty( "head", 5, "background", "#4d4d60" );
         this.grd_member.setCellProperty( "head", 6, "background", "#63637c" );
         this.grd_member.setCellProperty( "head", 7, "background", "#63637c" );
+		
+		this.div_cal.form.pdvCal.background = "#202027";
+		this.div_cal.form.pdvCal.borderRadius = "10px";
+		this.div_cal.form.pdvCal.border = "2px solid white";
     }
     
     this.resetScroll();

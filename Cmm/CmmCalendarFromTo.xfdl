@@ -10,10 +10,10 @@
           <Layouts>
             <Layout>
               <Button id="btnPdvClose" taborder="0" top="5" width="21" height="21" right="11" onclick="pdvCal_btnPdvCancle_onclick" cssclass="btn_POP_Close"/>
-              <Calendar id="pdvCalFrom" taborder="2" left="10" top="10" width="290" height="240" dateformat="yyyy-MM-dd" editformat="yyyy-MM-dd" type="monthonly" showmonthspin="false" usetrailingday="false" popuptype="none" value="" border="0px none" cssclass="cal_WF_Month"/>
-              <Calendar id="pdvCalTo" taborder="1" top="10" width="290" height="240" dateformat="yyyy-MM-dd" editformat="yyyy-MM-dd" type="monthonly" showmonthspin="false" border="0px none" cssclass="cal_WF_Month" right="10"/>
-              <Button id="btnPdvConfirm" taborder="4" text="확인" left="239" top="269" width="60" height="28" onclick="pdvCal_btnPdvConfirm_onclick" uWord="popup.ok" cssclass="btn_WF_FillBlue"/>
-              <Button id="btnPdvCancle" taborder="3" text="취소" left="362" top="269" width="60" height="28" onclick="pdvCal_btnPdvCancle_onclick" uWord="popup.cancel" cssclass="btn_WF_LineGray"/>
+              <Calendar id="pdvCalFrom" taborder="2" left="10" top="10" width="310" height="240" dateformat="yyyy-MM-dd" editformat="yyyy-MM-dd" type="monthonly" showmonthspin="false" usetrailingday="false" popuptype="none" value="" border="0px none" cssclass="cal_WF_Month"/>
+              <Calendar id="pdvCalTo" taborder="1" top="10" width="310" height="240" dateformat="yyyy-MM-dd" editformat="yyyy-MM-dd" type="monthonly" showmonthspin="false" border="0px none" cssclass="cal_WF_Month" right="10"/>
+              <Button id="btnPdvConfirm" taborder="4" text="확인" left="pdvCalFrom:-110" top="265" width="80" height="40" onclick="pdvCal_btnPdvConfirm_onclick" uWord="popup.ok" cssclass="btn_WF_FillRed"/>
+              <Button id="btnPdvCancle" taborder="3" text="취소" top="265" height="40" onclick="pdvCal_btnPdvCancle_onclick" uWord="popup.cancel" cssclass="btn_WF_FillGray" right="pdvCalTo:-109" width="80"/>
             </Layout>
           </Layouts>
         </PopupDiv>
