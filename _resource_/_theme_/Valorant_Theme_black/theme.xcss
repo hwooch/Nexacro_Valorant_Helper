@@ -316,36 +316,12 @@
 {
 	background : #ffffff;
 	-nexa-border : 1px solid #d5d5d5;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .Calendar[status=mouseover],.CalendarControl[status=mouseover],.Calendar[status=focused],.CalendarControl[status=focused]
 {
-	-nexa-border : 1px solid #5a86cd;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
+	cursor : auto;
+	box-shadow : 0px 0px 5px #FFFFFF;
 }
 
 .Calendar[status=readonly],.CalendarControl[status=readonly]
@@ -370,299 +346,67 @@
 {
 	color : #999999;
 	background : #efefef;
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	border-radius : ;
-	box-shadow : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .Calendar .calendaredit,.CalendarControl .calendaredit
 {
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 	/* Same as MaskEditControl */
 }
 
-.Calendar .dropbutton,.CalendarControl .dropbutton
+.Calendar .dropbutton
 {
-	-nexa-icon : URL('theme://images/btn_WF_Calendar.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
-}
-
-.Calendar .dropbutton[status=disabled],.CalendarControl .dropbutton[status=disabled]
+	/*-nexa-icon : URL('theme://images/btn_WF_Calendar.png');*/
+}.Calendar.valo_cal
 {
-	-nexa-icon : URL('theme://images/btn_WF_Calendar_D.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
+	font : 24px "이사만루체 Medium";
+	border-radius : 10px;
+	color : white;
+	background : #31313c;
+	-nexa-border : 2px solid white;
+	-nexa-padding : 0px 0px 0px 5px;
+}.Calendar .dropbutton[status=disabled],.CalendarControl .dropbutton[status=disabled]
+{
+	/*-nexa-icon : URL('theme://images/btn_WF_Calendar_D.png');*/
 }
 
 .Calendar .calendarspinupbutton,.CalendarControl .calendarspinupbutton
 {
 	-nexa-icon : URL('theme://images/btn_WF_Spinup.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .Calendar .calendarspinupbutton[status=mouseover],.CalendarControl .calendarspinupbutton[status=mouseover]
 {
 	-nexa-icon : URL('theme://images/btn_WF_Spinup_O.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .Calendar .calendarspinupbutton[userstatus=pushed],.CalendarControl .calendarspinupbutton[userstatus=pushed]
 {
 	-nexa-icon : URL('theme://images/btn_WF_Spinup_P.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .Calendar .calendarspinupbutton[status=disabled],.CalendarControl .calendarspinupbutton[status=disabled]
 {
 	-nexa-icon : URL('theme://images/btn_WF_Spinup_D.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .Calendar .calendarspindownbutton,.CalendarControl .calendarspindownbutton
 {
 	-nexa-icon : URL('theme://images/btn_WF_Spindown.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .Calendar .calendarspindownbutton[status=mouseover],.CalendarControl .calendarspindownbutton[status=mouseover]
 {
 	-nexa-icon : URL('theme://images/btn_WF_Spindown_O.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .Calendar .calendarspindownbutton[userstatus=pushed],.CalendarControl .calendarspindownbutton[userstatus=pushed]
 {
 	-nexa-icon : URL('theme://images/btn_WF_Spindown_P.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 .Calendar .calendarspindownbutton[status=disabled],.CalendarControl .calendarspindownbutton[status=disabled]
 {
 	-nexa-icon : URL('theme://images/btn_WF_Spindown_D.png');
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-icon-position : ;
-	-nexa-padding : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	-nexa-rtl-icon : ;
-	-nexa-text-align : ;
-	-nexa-text-decoration : ;
-	-nexa-text-padding : ;
-	-nexa-vertical-align : ;
-	-nexa-word-wrap : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 }
 
 
@@ -4264,6 +4008,10 @@
 	letter-spacing : ;
 	opacity : ;
 	word-spacing : ;
+}
+.Static.cal_text
+{
+	color : #555555;
 }
 .Static.sta_nothing
 {
@@ -11203,7 +10951,11 @@
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 }
-.Button.btn_search_ranking
+.PopupDiv.pdiv_WF_Area
+{
+	-nexa-border : 1px solid #d3dce1;
+	background : #ffffff;
+}.Button.btn_search_ranking
 {
 	cursor : pointer;
 	border-radius : 20px;
@@ -11618,6 +11370,16 @@
 	font : normal 15pt/normal "이사만루체 Light";
 	cursor : pointer;
 }
+.Combo.combo_search_filter
+{
+	background : #31313c;
+	-nexa-border : 0px solid #6e6e86;
+	-nexa-padding : 0px 0px 0px 5px;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	cursor : pointer;
+}
 .Combo.valo_combo_tier .dropbutton
 {
 	-nexa-padding : 1px 2px 0px 0px;
@@ -11625,7 +11387,23 @@
 	-nexa-border : 15px solid #6e6e86;
 	cursor : pointer;
 }
+.Combo.combo_search_filter .dropbutton
+{
+	-nexa-padding : 1px 2px 0px 0px;
+	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
+	-nexa-border : 15px solid #31313c;
+	cursor : pointer;
+}
 .Combo.valo_combo_tier .combolist
+{
+	font : normal 15pt/normal "이사만루체 Light";
+	color : white;
+	background : #4c4c5a;
+	-nexa-border : 2px solid #b1b1b1;
+	border-radius : 20px;
+
+}
+.Combo.combo_search_filter .combolist
 {
 	font : normal 15pt/normal "이사만루체 Light";
 	color : white;
@@ -11641,7 +11419,19 @@
 	-nexa-border : 15px solid #6e6e86;
 	cursor : pointer;
 }
+.Combo.combo_search_filter .dropbutton[status=mouseover],
+.Combo.combo_search_filter .dropbutton[status=focused]
+{
+	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
+	-nexa-border : 15px solid #31313c;
+	cursor : pointer;
+}
 .Combo.valo_combo_tier[status=mouseover]
+{
+	cursor : pointer;
+	box-shadow : 0px 0px 5px #FFFFFF;
+}
+.Combo.combo_search_filter[status=mouseover]
 {
 	cursor : pointer;
 	box-shadow : 0px 0px 5px #FFFFFF;
@@ -11649,7 +11439,16 @@
 .Combo.valo_combo_tier[status=focused]
 {
 	cursor : pointer;
+}
+.Combo.combo_search_filter[status=focused]
+{
+	cursor : pointer;
 }.Combo.valo_combo_tier .comboedit
+{
+	cursor : pointer;
+	
+}
+.Combo.combo_search_filter .comboedit
 {
 	cursor : pointer;
 	
@@ -11662,7 +11461,19 @@
 	-nexa-padding : 10px;
 	
 }
+.Combo.combo_search_filter .combolist .listboxitem
+{
+	color : white;
+	background : #31313c;
+	cursor : pointer;
+	-nexa-padding : 10px;
+	
+}
 .Combo.valo_combo_tier .combolist .listboxitem[status=mouseover]
+{
+	background : #6e6e86;
+}
+.Combo.combo_search_filter .combolist .listboxitem[status=mouseover]
 {
 	background : #6e6e86;
 }
@@ -11671,7 +11482,16 @@
 {
 	-nexa-border : 2px solid #b1b1b1;
 }
+.Combo.combo_search_filter .combolist[status=focused],
+.Combo.combo_search_filter .combolist[status=mouseover]
+{
+	-nexa-border : 2px solid #b1b1b1;
+}
 .Combo.valo_combo_tier .combolist .listboxitem[userstatus=selected]
+{
+	background : #6e6e86;
+}
+.Combo.combo_search_filter .combolist .listboxitem[userstatus=selected]
 {
 	background : #6e6e86;
 }
@@ -11821,7 +11641,27 @@
 	box-shadow : 0px 0px 10px #FFFFFF;
 	background : #6e6e86;	
 }
-]]></CSSData>
+.Calendar.valo_cal[status=disabled],
+.Calendar.valo_cal[status=mouseover],
+.Calendar.valo_cal[status=focused],
+.Calendar.valo_cal[status=readonly]
+{
+	font : 24px "이사만루체 Medium";
+	border-radius : 10px;
+	color : white;
+	background : #31313c;
+	-nexa-border : 2px solid white;
+	-nexa-padding : 0px 0px 0px 5px;
+	cursor : auto;
+	box-shadow : 0px 0px 5px #FFFFFF;
+}
+.Calendar.valo_cal .dropbutton
+{
+	cursor : pointer;
+	background : url('theme://images/valo_cal_white.png') no-repeat center center /contain;
+	-nexa-border : 15px solid transparent;
+	-nexa-icon : url('theme://images/valo_no_color.png');
+}]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>
   <CSSData type="mobile_small"><![CDATA[]]></CSSData>

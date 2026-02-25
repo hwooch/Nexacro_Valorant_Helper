@@ -9683,7 +9683,36 @@
 	opacity : ;
 	word-spacing : ;
 }
-.DateRangePicker .datepickergroup .datepicker .body .weekband[status=disabled], .DateRangePickerControl .datepickergroup .datepicker .body .weekband[status=disabled], .PopupDateRangePicker .datepickergroup .datepicker .body .weekband[status=disabled]
+.Calendar.valo_cal
+{
+	font : 24px "이사만루체 Medium";
+	border-radius : 10px;
+	color : white;
+	background : #75758e;
+	-nexa-border : 2px solid white;
+	-nexa-padding : 0px 0px 0px 5px;
+}
+.Calendar.valo_cal[status=disabled],
+.Calendar.valo_cal[status=mouseover],
+.Calendar.valo_cal[status=focused],
+.Calendar.valo_cal[status=readonly]
+{
+	font : 24px "이사만루체 Medium";
+	border-radius : 10px;
+	color : white;
+	background : #75758e;
+	-nexa-border : 2px solid white;
+	-nexa-padding : 0px 0px 0px 5px;
+	cursor : auto;
+	box-shadow : 0px 0px 5px #FFFFFF;
+}
+.Calendar.valo_cal .dropbutton
+{
+	cursor : pointer;
+	background : url('theme://images/valo_cal_white.png') no-repeat center center /contain;
+	-nexa-border : 15px solid transparent;
+	-nexa-icon : url('theme://images/valo_no_color.png');
+}.DateRangePicker .datepickergroup .datepicker .body .weekband[status=disabled], .DateRangePickerControl .datepickergroup .datepicker .body .weekband[status=disabled], .PopupDateRangePicker .datepickergroup .datepicker .body .weekband[status=disabled]
 {
 	background : #ffffff;
 	-nexa-border : ;
@@ -11000,6 +11029,10 @@
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 }
+.Static.cal_text
+{
+	color : white;
+}
 .Button.btn_member
 {
 	background : #75758e;
@@ -11397,6 +11430,16 @@
 	font : normal 15pt/normal "이사만루체 Light";
 	cursor : pointer;
 }
+.Combo.combo_search_filter
+{
+	background : #75758e;
+	-nexa-border : 0px solid #75758e;
+	-nexa-padding : 0px 0px 0px 5px;
+	color : white;
+	border-radius : 20px;
+	font : normal 15pt/normal "이사만루체 Light";
+	cursor : pointer;
+}
 .Combo.valo_combo_tier .dropbutton
 {
 	-nexa-padding : 1px 2px 0px 0px;
@@ -11404,7 +11447,23 @@
 	-nexa-border : 15px solid #31313c;
 	cursor : pointer;
 }
+.Combo.combo_search_filter .dropbutton
+{
+	-nexa-padding : 1px 2px 0px 0px;
+	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
+	-nexa-border : 15px solid #75758e;
+	cursor : pointer;
+}
 .Combo.valo_combo_tier .combolist
+{
+	font : normal 15pt/normal "이사만루체 Light";
+	color : white;
+	background : #4c4c5a;
+	-nexa-border : 2px solid #b1b1b1;
+	border-radius : 20px;
+
+}
+.Combo.combo_search_filter .combolist
 {
 	font : normal 15pt/normal "이사만루체 Light";
 	color : white;
@@ -11420,7 +11479,19 @@
 	-nexa-border : 15px solid #31313c;
 	cursor : pointer;
 }
+.Combo.combo_search_filter .dropbutton[status=mouseover],
+.Combo.combo_search_filter .dropbutton[status=focused]
+{
+	background : url('theme://images/valo_arrow_down.png') no-repeat right center /contain;
+	-nexa-border : 15px solid #75758e;
+	cursor : pointer;
+}
 .Combo.valo_combo_tier[status=mouseover]
+{
+	cursor : pointer;
+	box-shadow : 0px 0px 5px #FFFFFF;
+}
+.Combo.combo_search_filter[status=mouseover]
 {
 	cursor : pointer;
 	box-shadow : 0px 0px 5px #FFFFFF;
@@ -11428,7 +11499,16 @@
 .Combo.valo_combo_tier[status=focused]
 {
 	cursor : pointer;
+}
+.Combo.combo_search_filter[status=focused]
+{
+	cursor : pointer;
 }.Combo.valo_combo_tier .comboedit
+{
+	cursor : pointer;
+	
+}
+.Combo.combo_search_filter .comboedit
 {
 	cursor : pointer;
 	
@@ -11441,7 +11521,19 @@
 	-nexa-padding : 10px;
 	
 }
+.Combo.combo_search_filter .combolist .listboxitem
+{
+	color : white;
+	background : #31313c;
+	cursor : pointer;
+	-nexa-padding : 10px;
+	
+}
 .Combo.valo_combo_tier .combolist .listboxitem[status=mouseover]
+{
+	background : #75758e;
+}
+.Combo.combo_search_filter .combolist .listboxitem[status=mouseover]
 {
 	background : #75758e;
 }
@@ -11450,7 +11542,16 @@
 {
 	-nexa-border : 2px solid #b1b1b1;
 }
+.Combo.combo_search_filter .combolist[status=focused],
+.Combo.combo_search_filter .combolist[status=mouseover]
+{
+	-nexa-border : 2px solid #b1b1b1;
+}
 .Combo.valo_combo_tier .combolist .listboxitem[userstatus=selected]
+{
+	background : #75758e;
+}
+.Combo.combo_search_filter .combolist .listboxitem[userstatus=selected]
 {
 	background : #75758e;
 }
