@@ -70,5 +70,17 @@
   </Services>
   <Protocols/>
   <DeviceAdaptors/>
-  <Update/>
+  <Update>
+    <Os name="Windows" url="./" timeout="30" retry="3" autoupdate="auto" updatetype="server">
+      <Version name="Windows 11, Windows 10, Windows 8 / 8.1, Windows 7, Windows Vista, Windows Server 2003, Windows Server 2008, Windows Server 2012, Windows Server 2016" enginesetupkey="3D10EE09-348B-4B0B-AD04-69A3CE921D1C">
+        <Resource type="Engine" file="EduNexacroN_SetupRuntime_x86.exe" version="24.0.0.800" targetpath="./"/>
+      </Version>
+      <Version name="Windows 11 64bit, Windows 10 64bit, Windows 8 / 8.1 64bit, Windows 7 64bit, Windows Vista 64bit, Windows Server 2003 64bit, Windows Server 2008 64bit, Windows Server 2012 64bit, Windows Server 2016 64bit" enginesetupkey="3E221E7D-2ECF-4EF4-AD16-C69972112C86">
+        <Resource type="Engine" file="EduNexacroN_SetupRuntime_x64.exe" version="24.0.0.800" targetpath="./"/>
+      </Version>
+    </Os>
+  </Update>
+  <Deploy>
+    <Os name="Windows"/>
+  </Deploy>
 </TypeDefinition>
