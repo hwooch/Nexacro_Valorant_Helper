@@ -4166,19 +4166,6 @@
 /* PopupDiv (No style applied) */
 .Div,.PopupDiv
 {
-	-nexa-border : ;
-	-nexa-edge : ;
-	-nexa-rtl-background-image : ;
-	-nexa-rtl-edge-image : ;
-	background : ;
-	border-radius : ;
-	box-shadow : ;
-	color : ;
-	cursor : ;
-	font : ;
-	letter-spacing : ;
-	opacity : ;
-	word-spacing : ;
 	/* No style applied */
 }
 
@@ -10951,10 +10938,16 @@
 	-nexa-text-align : center;
 	-nexa-vertical-align : middle;
 }
+.Calendar.cal_WF_Month,
+.Calendar.cal_WF_Month[status=mouseover],
+.Calendar.cal_WF_Month[status=focused]
+{
+	-nexa-border : 0px none;
+	box-shadow : 0px 0px 0px #FFFFFF;
+}
 .PopupDiv.pdiv_WF_Area
 {
-	-nexa-border : 1px solid #d3dce1;
-	background : #ffffff;
+	background : #31313c;
 }.Button.btn_search_ranking
 {
 	cursor : pointer;
@@ -11661,7 +11654,61 @@
 	background : url('theme://images/valo_cal_white.png') no-repeat center center /contain;
 	-nexa-border : 15px solid transparent;
 	-nexa-icon : url('theme://images/valo_no_color.png');
-}]]></CSSData>
+}.Calendar.cal_WF_Month .datepicker .head
+{
+	background : #4d4d60;
+	-nexa-border : 0px solid white;
+}
+.Calendar.cal_WF_Month .datepicker .head .monthspin
+{
+	background : #4d4d60;
+	cursor : pointer;
+}
+.Calendar.cal_WF_Month .datepicker .head .monthstatic[status=mouseover]
+{
+	background : #4d4d60;
+	cursor : pointer;
+
+}
+.Calendar.cal_WF_Month .datepicker .head .monthspin .spinedit
+{
+	background : #4d4d60;
+}
+.Calendar.cal_WF_Month .datepicker .head .yearspin
+{
+	background : #4d4d60;
+	cursor : pointer;
+
+}
+.Calendar.cal_WF_Month .datepicker .head .yearspin .spinedit
+{
+	background : #4d4d60;
+	cursor : pointer;
+}
+.Calendar.cal_WF_Month .datepicker .head .yearstatic
+{
+	background : #4d4d60;
+	cursor : pointer;
+}
+.Calendar.cal_WF_Month .datepicker .body .weekband
+{
+	background : #63637c;
+	-nexa-border : 0px solid white;
+}
+.Calendar.cal_WF_Month .datepicker .body
+{
+	-nexa-border : 0px solid white;
+
+}
+.Calendar.cal_WF_Month .datepicker .head .nextbutton
+{
+	cursor : pointer;
+}
+.Calendar.cal_WF_Month .datepicker .head .prevbutton
+{
+	cursor : pointer;
+}
+]]></CSSData>
   <CSSData type="desktop"><![CDATA[]]></CSSData>
   <CSSData type="mobile_large"><![CDATA[]]></CSSData>
   <CSSData type="mobile_small"><![CDATA[]]></CSSData>
