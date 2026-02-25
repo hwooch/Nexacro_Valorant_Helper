@@ -3,7 +3,7 @@
   <Form id="valo8002fm" width="2000" height="980" titletext="회원 관리" onload="valo8002fm_onload" onclose="valo8002fm_onclose" onclick="valo8002fm_onclick">
     <Layouts>
       <Layout height="980" mobileorientation="landscape" width="2000">
-        <Grid id="grd_member" taborder="1" left="120" top="280" height="852" binddataset="ds_member" autofittype="col" borderRadius="20px 20px 0px 0px" tabstop="false" cssclass="grid_test" scrolltype="none" scrollbartype="none none" width="1700" oncellclick="grd_member_oncellclick" nodatatext="조건에 맞는 회원 정보가 없습니다.">
+        <Grid id="grd_member" taborder="1" left="120" top="250" height="852" binddataset="ds_member" autofittype="col" borderRadius="20px 20px 0px 0px" tabstop="false" cssclass="grid_test" scrolltype="none" scrollbartype="none none" width="1700" oncellclick="grd_member_oncellclick" nodatatext="조건에 맞는 회원 정보가 없습니다.">
           <Formats>
             <Format id="default">
               <Columns>
@@ -43,10 +43,10 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="sta_discord_name" taborder="0" top="77" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="회원 관리" fittocontents="width" textAlign="center" width="150" left="grd_member:-1700" verticalAlign="bottom"/>
-        <Button id="btn_back" taborder="2" top="70" width="110" height="60" text="돌아가기" textAlign="center" cssclass="btn_back" onclick="btn_back_onclick" cursor="pointer" left="grd_member:-115"/>
-        <Static id="sta_discord_name00" taborder="3" top="70" height="46" text="권한 셀 클릭시 권한 변경 가능" fittocontents="width" width="246" left="sta_discord_name:30" cssclass="sta_weapon_description" verticalAlign="bottom"/>
-        <PopupMenu id="popup_menu" left="1380" top="32" width="145" height="163" onmenuclick="popup_menu_onmenuclick" innerdataset="ds_menu" idcolumn="id" levelcolumn="level" captioncolumn="caption" cssclass="test"/>
+        <Static id="sta_discord_name" taborder="0" top="47" height="46" font="normal 30pt/normal &quot;AppleSDGothicNeoH00&quot;" color="white" text="회원 관리" fittocontents="width" textAlign="center" width="150" left="grd_member:-1700" verticalAlign="bottom"/>
+        <Button id="btn_back" taborder="2" top="40" width="110" height="60" text="돌아가기" textAlign="center" cssclass="btn_back" onclick="btn_back_onclick" cursor="pointer" left="grd_member:-115"/>
+        <Static id="sta_discord_name00" taborder="3" top="40" height="46" text="권한 셀 클릭시 권한 변경 가능" fittocontents="width" width="246" left="sta_discord_name:30" cssclass="sta_weapon_description" verticalAlign="bottom"/>
+        <PopupMenu id="popup_menu" left="1370" top="30" width="145" height="163" onmenuclick="popup_menu_onmenuclick" innerdataset="ds_menu" idcolumn="id" levelcolumn="level" captioncolumn="caption" cssclass="test"/>
         <Static id="sta_space" taborder="4" top="grd_member:-2" height="2" background="black" width="1700" left="120"/>
         <Div id="divPage" taborder="5" left="120" url="Cmm::CmmPaging.xfdl" height="100" text="" top="sta_space:-1" cssclass="div_page" width="1700">
           <Layouts>
@@ -54,10 +54,10 @@
           </Layouts>
         </Div>
         <Button id="btn_space" taborder="6" left="862" top="divPage:0" height="30" right="920"/>
-        <Combo id="combo_search_filter" taborder="9" left="grd_member:-1700" top="157" width="205" height="77" innerdataset="ds_search_value" cssclass="combo_search_filter" index="0" tabstop="false" cursor="pointer" text="티어 전체" value="1" codecolumn="CODE" datacolumn="DATA" onitemchanged="combo_search_filter_onitemchanged"/>
-        <Div id="div_cal" taborder="7" left="combo_search_filter:20" top="152" width="674" url="Cmm::CmmCalendarFromTo.xfdl" height="87" text=""/>
-        <Button id="btn_search" taborder="8" text="검색" top="157" width="77" height="77" cssclass="btn_search_ranking" left="div_cal:20" onclick="btn_search_onclick"/>
-        <Button id="btn_search_reset" taborder="10" text="초기화" top="157" width="87" height="77" cssclass="btn_search_ranking" left="btn_search:20" onclick="btn_search_reset_onclick"/>
+        <Combo id="combo_search_filter" taborder="9" left="grd_member:-1700" top="127" width="205" height="77" innerdataset="ds_search_value" cssclass="combo_search_filter" index="0" tabstop="false" cursor="pointer" text="티어 전체" value="1" codecolumn="CODE" datacolumn="DATA" onitemchanged="combo_search_filter_onitemchanged"/>
+        <Div id="div_cal" taborder="7" left="combo_search_filter:20" top="122" width="674" url="Cmm::CmmCalendarFromTo.xfdl" height="87" text=""/>
+        <Button id="btn_search" taborder="8" text="검색" top="127" width="77" height="77" cssclass="btn_search_ranking" left="div_cal:20" onclick="btn_search_onclick"/>
+        <Button id="btn_search_reset" taborder="10" text="초기화" top="127" width="87" height="77" cssclass="btn_search_ranking" left="btn_search:20" onclick="btn_search_reset_onclick"/>
         <Button id="btn_focus" taborder="11" left="0" width="0" height="0" top="50%"/>
       </Layout>
     </Layouts>
