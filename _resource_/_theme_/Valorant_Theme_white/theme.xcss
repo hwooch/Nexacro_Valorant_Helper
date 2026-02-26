@@ -11699,11 +11699,13 @@
 }
 .ListView.list_recent_match .body .cell.description
 {
-	color : #d8d8de;
+	/*color : #d8d8de;*/
+	color : white;
 }
 .ListView.list_match_list .body .cell.cell_description
 {
-	color : #d8d8de;
+	/*color : #d8d8de;*/
+	color : white;
 }
 .ListView.list_recent_match .body .cell.cell_red
 {

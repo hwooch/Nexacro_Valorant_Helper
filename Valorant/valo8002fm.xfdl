@@ -54,7 +54,7 @@
           </Layouts>
         </Div>
         <Button id="btn_space" taborder="6" left="862" top="divPage:0" height="30" right="920"/>
-        <Combo id="combo_search_filter" taborder="9" left="grd_member:-1700" top="127" width="205" height="77" innerdataset="ds_search_value" cssclass="combo_search_filter" index="0" tabstop="false" cursor="pointer" text="티어 전체" value="1" codecolumn="CODE" datacolumn="DATA" onitemchanged="combo_search_filter_onitemchanged"/>
+        <Combo id="combo_search_filter" taborder="9" left="grd_member:-1700" top="127" width="215" height="77" innerdataset="ds_search_value" cssclass="combo_search_filter" index="0" tabstop="false" cursor="pointer" text="티어 전체" value="1" codecolumn="CODE" datacolumn="DATA" onitemchanged="combo_search_filter_onitemchanged"/>
         <Div id="div_cal" taborder="7" left="combo_search_filter:20" top="122" width="674" url="Cmm::CmmCalendarFromTo.xfdl" height="87" text=""/>
         <Button id="btn_search" taborder="8" text="검색" top="127" width="77" height="77" cssclass="btn_search_ranking" left="div_cal:20" onclick="btn_search_onclick"/>
         <Button id="btn_search_reset" taborder="10" text="초기화" top="127" width="87" height="77" cssclass="btn_search_ranking" left="btn_search:20" onclick="btn_search_reset_onclick"/>
