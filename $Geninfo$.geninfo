@@ -10,7 +10,7 @@
       <GeneratorInfo rule_version="1.3"/>
     </Rule>
     <Info project="C:\EduPack24\workspace\edupack_egov\src\main\p03\project030\" generated="C:\EduPack24\workspace\edupack_egov\src\main\webapp\p03\project030\">
-      <File url="typedefinition.xml" checksum="20260225192724" errormsg=""/>
+      <File url="typedefinition.xml" checksum="20260226134308" errormsg=""/>
       <File url="appvariables.xml" checksum="20260223094655" errormsg=""/>
       <File url="environment.xml" checksum="20260213131218" errormsg=""/>
       <File url="_resource_\_theme_\Valorant_Theme_white\theme.xcss" checksum="20260226130517" errormsg=""/>
